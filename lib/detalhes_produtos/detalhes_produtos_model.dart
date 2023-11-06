@@ -8,9 +8,7 @@ class DetalhesProdutosModel extends FlutterFlowModel<DetalhesProdutosWidget> {
 
   final unfocusNode = FocusNode();
   // State field(s) for RadioButton widget.
-  FormFieldController<String>? radioButtonValueController1;
-  // State field(s) for RadioButton widget.
-  FormFieldController<String>? radioButtonValueController2;
+  FormFieldController<String>? radioButtonValueController;
 
   /// Initialization and disposal methods.
 
@@ -26,6 +24,5 @@ class DetalhesProdutosModel extends FlutterFlowModel<DetalhesProdutosWidget> {
 
   /// Additional helper methods are added here.
 
-  String? get radioButtonValue1 => radioButtonValueController1?.value;
-  String? get radioButtonValue2 => radioButtonValueController2?.value;
+  String? get radioButtonValue => radioButtonValueController?.value;
 }

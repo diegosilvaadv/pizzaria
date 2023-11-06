@@ -224,7 +224,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                   .toList(),
                                           onChanged: (val) => setState(() {}),
                                           controller: _model
-                                                  .radioButtonValueController1 ??=
+                                                  .radioButtonValueController ??=
                                               FormFieldController<String>(null),
                                           optionHeight: 32.0,
                                           textStyle:
@@ -250,77 +250,52 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         );
                                       },
                                     ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        StreamBuilder<List<PreferenciasRecord>>(
-                                          stream: queryPreferenciasRecord(),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    valueColor:
-                                                        AlwaysStoppedAnimation<
-                                                            Color>(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                    ),
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            List<PreferenciasRecord>
-                                                radioButtonPreferenciasRecordList =
-                                                snapshot.data!;
-                                            return FlutterFlowRadioButton(
-                                              options:
-                                                  radioButtonPreferenciasRecordList
-                                                      .map((e) => formatNumber(
-                                                            e.valor,
-                                                            formatType:
-                                                                FormatType
-                                                                    .decimal,
-                                                            decimalType:
-                                                                DecimalType
-                                                                    .commaDecimal,
-                                                            currency: 'R\$',
-                                                          ))
-                                                      .toList()
-                                                      .toList(),
-                                              onChanged: (val) =>
-                                                  setState(() {}),
-                                              controller: _model
-                                                      .radioButtonValueController2 ??=
-                                                  FormFieldController<String>(
-                                                      null),
-                                              optionHeight: 32.0,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium,
-                                              buttonPosition:
-                                                  RadioButtonPosition.left,
-                                              direction: Axis.vertical,
-                                              radioButtonColor:
+                                    StreamBuilder<List<PreferenciasRecord>>(
+                                      stream: queryPreferenciasRecord(),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
-                                              inactiveRadioButtonColor:
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                        List<PreferenciasRecord>
+                                            columnPreferenciasRecordList =
+                                            snapshot.data!;
+                                        return Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: List.generate(
+                                              columnPreferenciasRecordList
+                                                  .length, (columnIndex) {
+                                            final columnPreferenciasRecord =
+                                                columnPreferenciasRecordList[
+                                                    columnIndex];
+                                            return Text(
+                                              formatNumber(
+                                                columnPreferenciasRecord.valor,
+                                                formatType: FormatType.decimal,
+                                                decimalType:
+                                                    DecimalType.commaDecimal,
+                                                currency: 'R\$',
+                                              ),
+                                              style:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              toggleable: true,
-                                              horizontalAlignment:
-                                                  WrapAlignment.start,
-                                              verticalAlignment:
-                                                  WrapCrossAlignment.start,
+                                                      .bodyMedium,
                                             );
-                                          },
-                                        ),
-                                      ],
+                                          }),
+                                        );
+                                      },
                                     ),
                                   ],
                                 ),
