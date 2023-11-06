@@ -298,7 +298,6 @@ class _HomepageWidgetState extends State<HomepageWidget>
                             const Duration(milliseconds: 2000),
                             () => setState(() {}),
                           ),
-                          autofocus: true,
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: 'Pesquisa',
