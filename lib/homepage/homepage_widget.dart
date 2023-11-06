@@ -26,7 +26,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
 
     _model.tabBarController = TabController(
       vsync: this,
-      length: 3,
+      length: 5,
       initialIndex: 0,
     )..addListener(() => setState(() {}));
   }
@@ -81,8 +81,9 @@ class _HomepageWidgetState extends State<HomepageWidget>
                 child: Column(
                   children: [
                     Align(
-                      alignment: const Alignment(0.0, 0),
+                      alignment: const Alignment(-1.0, 0),
                       child: TabBar(
+                        isScrollable: true,
                         labelColor: FlutterFlowTheme.of(context).primaryText,
                         unselectedLabelColor:
                             FlutterFlowTheme.of(context).secondaryText,
@@ -104,6 +105,12 @@ class _HomepageWidgetState extends State<HomepageWidget>
                           ),
                           Tab(
                             text: 'Pizza Doce',
+                          ),
+                          Tab(
+                            text: 'Example 4',
+                          ),
+                          Tab(
+                            text: 'Example 5',
                           ),
                         ],
                         controller: _model.tabBarController,
@@ -310,6 +317,24 @@ class _HomepageWidgetState extends State<HomepageWidget>
                           ),
                           Text(
                             'Tab View 3',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  fontSize: 32.0,
+                                ),
+                          ),
+                          Text(
+                            'Tab View 4',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  fontSize: 32.0,
+                                ),
+                          ),
+                          Text(
+                            'Tab View 5',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
