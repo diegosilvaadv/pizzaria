@@ -94,27 +94,33 @@ class _HomepageWidgetState extends State<HomepageWidget>
           elevation: 8.0,
           child: Stack(
             children: [
-              const Icon(
-                Icons.local_grocery_store,
-                color: Colors.white,
-                size: 24.0,
-              ),
-              badges.Badge(
-                badgeContent: Text(
-                  '1',
-                  style: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Readex Pro',
-                        color: Colors.white,
-                      ),
+              const Align(
+                alignment: AlignmentDirectional(0.00, 0.00),
+                child: Icon(
+                  Icons.local_grocery_store,
+                  color: Color(0xAB1D2428),
+                  size: 24.0,
                 ),
-                showBadge: true,
-                shape: badges.BadgeShape.circle,
-                badgeColor: const Color(0xFFFD6907),
-                elevation: 4.0,
-                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
-                position: badges.BadgePosition.topEnd(),
-                animationType: badges.BadgeAnimationType.scale,
-                toAnimate: true,
+              ),
+              Align(
+                alignment: const AlignmentDirectional(1.00, -1.00),
+                child: badges.Badge(
+                  badgeContent: Text(
+                    '1',
+                    style: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Readex Pro',
+                          color: Colors.white,
+                        ),
+                  ),
+                  showBadge: true,
+                  shape: badges.BadgeShape.circle,
+                  badgeColor: const Color(0xFFFD6907),
+                  elevation: 4.0,
+                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                  position: badges.BadgePosition.topEnd(),
+                  animationType: badges.BadgeAnimationType.scale,
+                  toAnimate: true,
+                ),
               ),
             ],
           ),

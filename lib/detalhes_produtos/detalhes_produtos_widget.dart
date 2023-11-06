@@ -288,6 +288,8 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                               snapshot.data!;
                                           return Column(
                                             mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: List.generate(
                                                 columnPreferenciasRecordList
                                                     .length, (columnIndex) {
