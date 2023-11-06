@@ -226,7 +226,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                           controller: _model
                                                   .radioButtonValueController ??=
                                               FormFieldController<String>(null),
-                                          optionHeight: 32.0,
+                                          optionHeight: 18.0,
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .labelMedium,
