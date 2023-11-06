@@ -273,6 +273,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                         controller: _model.tabBarController,
                         children: [
                           SingleChildScrollView(
+                            primary: false,
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -447,7 +448,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                           .descricao
                                                                           .maybeHandleOverflow(
                                                                         maxChars:
-                                                                            70,
+                                                                            50,
                                                                         replacement:
                                                                             '…',
                                                                       ),
