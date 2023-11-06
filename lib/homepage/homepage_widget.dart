@@ -444,7 +444,13 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                   Expanded(
                                                                     child: Text(
                                                                       listViewProdutosRecord
-                                                                          .descricao,
+                                                                          .descricao
+                                                                          .maybeHandleOverflow(
+                                                                        maxChars:
+                                                                            70,
+                                                                        replacement:
+                                                                            '…',
+                                                                      ),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
