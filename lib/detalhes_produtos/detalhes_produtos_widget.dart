@@ -1,5 +1,5 @@
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_checkbox_group.dart';
+import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
@@ -216,36 +216,39 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                           );
                                         }
                                         List<PreferenciasRecord>
-                                            checkboxGroupPreferenciasRecordList =
+                                            radioButtonPreferenciasRecordList =
                                             snapshot.data!;
-                                        return FlutterFlowCheckboxGroup(
+                                        return FlutterFlowRadioButton(
                                           options:
-                                              checkboxGroupPreferenciasRecordList
-                                                  .map((e) => e.reference.id)
+                                              radioButtonPreferenciasRecordList
+                                                  .map((e) => e.massas)
+                                                  .toList()
                                                   .toList(),
-                                          onChanged: (val) => setState(() =>
-                                              _model.checkboxGroupValues = val),
+                                          onChanged: (val) => setState(() {}),
                                           controller: _model
-                                                  .checkboxGroupValueController ??=
-                                              FormFieldController<List<String>>(
-                                            [],
-                                          ),
-                                          activeColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                          checkColor:
-                                              FlutterFlowTheme.of(context).info,
-                                          checkboxBorderColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryText,
+                                                  .radioButtonValueController ??=
+                                              FormFieldController<String>(null),
+                                          optionHeight: 32.0,
                                           textStyle:
                                               FlutterFlowTheme.of(context)
+                                                  .labelMedium,
+                                          selectedTextStyle:
+                                              FlutterFlowTheme.of(context)
                                                   .bodyMedium,
-                                          checkboxBorderRadius:
-                                              BorderRadius.circular(4.0),
-                                          initialized:
-                                              _model.checkboxGroupValues !=
-                                                  null,
+                                          buttonPosition:
+                                              RadioButtonPosition.left,
+                                          direction: Axis.vertical,
+                                          radioButtonColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                          inactiveRadioButtonColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryText,
+                                          toggleable: false,
+                                          horizontalAlignment:
+                                              WrapAlignment.start,
+                                          verticalAlignment:
+                                              WrapCrossAlignment.start,
                                         );
                                       },
                                     ),

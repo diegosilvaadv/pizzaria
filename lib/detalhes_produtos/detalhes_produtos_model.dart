@@ -7,9 +7,8 @@ class DetalhesProdutosModel extends FlutterFlowModel<DetalhesProdutosWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for CheckboxGroup widget.
-  List<String>? checkboxGroupValues;
-  FormFieldController<List<String>>? checkboxGroupValueController;
+  // State field(s) for RadioButton widget.
+  FormFieldController<String>? radioButtonValueController;
 
   /// Initialization and disposal methods.
 
@@ -24,4 +23,6 @@ class DetalhesProdutosModel extends FlutterFlowModel<DetalhesProdutosWidget> {
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
+
+  String? get radioButtonValue => radioButtonValueController?.value;
 }
