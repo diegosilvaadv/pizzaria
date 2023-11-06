@@ -226,13 +226,21 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                           controller: _model
                                                   .radioButtonValueController ??=
                                               FormFieldController<String>(null),
-                                          optionHeight: 18.0,
+                                          optionHeight: 30.0,
                                           textStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .labelMedium,
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    fontSize: 18.0,
+                                                  ),
                                           selectedTextStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyMedium,
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    fontSize: 18.0,
+                                                  ),
                                           buttonPosition:
                                               RadioButtonPosition.left,
                                           direction: Axis.vertical,
@@ -250,52 +258,70 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         );
                                       },
                                     ),
-                                    StreamBuilder<List<PreferenciasRecord>>(
-                                      stream: queryPreferenciasRecord(),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          6.0, 0.0, 0.0, 0.0),
+                                      child: StreamBuilder<
+                                          List<PreferenciasRecord>>(
+                                        stream: queryPreferenciasRecord(),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                          Color>(
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          );
-                                        }
-                                        List<PreferenciasRecord>
-                                            columnPreferenciasRecordList =
-                                            snapshot.data!;
-                                        return Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: List.generate(
-                                              columnPreferenciasRecordList
-                                                  .length, (columnIndex) {
-                                            final columnPreferenciasRecord =
-                                                columnPreferenciasRecordList[
-                                                    columnIndex];
-                                            return Text(
-                                              formatNumber(
-                                                columnPreferenciasRecord.valor,
-                                                formatType: FormatType.decimal,
-                                                decimalType:
-                                                    DecimalType.commaDecimal,
-                                                currency: 'R\$',
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
                                             );
-                                          }),
-                                        );
-                                      },
+                                          }
+                                          List<PreferenciasRecord>
+                                              columnPreferenciasRecordList =
+                                              snapshot.data!;
+                                          return Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: List.generate(
+                                                columnPreferenciasRecordList
+                                                    .length, (columnIndex) {
+                                              final columnPreferenciasRecord =
+                                                  columnPreferenciasRecordList[
+                                                      columnIndex];
+                                              return Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 6.0, 0.0, 6.0),
+                                                child: Text(
+                                                  formatNumber(
+                                                    columnPreferenciasRecord
+                                                        .valor,
+                                                    formatType:
+                                                        FormatType.decimal,
+                                                    decimalType: DecimalType
+                                                        .commaDecimal,
+                                                    currency: 'R\$',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        fontSize: 18.0,
+                                                      ),
+                                                ),
+                                              );
+                                            }),
+                                          );
+                                        },
+                                      ),
                                     ),
                                   ],
                                 ),
