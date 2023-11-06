@@ -31,11 +31,11 @@ class _LoginWidgetState extends State<LoginWidget>
       length: 2,
       initialIndex: 0,
     )..addListener(() => setState(() {}));
-    _model.textController1 ??= TextEditingController();
-    _model.textFieldFocusNode1 ??= FocusNode();
+    _model.emailloginController ??= TextEditingController();
+    _model.emailloginFocusNode ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController();
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.senhaloginController ??= TextEditingController();
+    _model.senhaloginFocusNode ??= FocusNode();
 
     _model.nomeController ??= TextEditingController();
     _model.nomeFocusNode ??= FocusNode();
@@ -153,9 +153,9 @@ class _LoginWidgetState extends State<LoginWidget>
                                                   .fromSTEB(8.0, 0.0, 8.0, 0.0),
                                               child: TextFormField(
                                                 controller:
-                                                    _model.textController1,
+                                                    _model.emailloginController,
                                                 focusNode:
-                                                    _model.textFieldFocusNode1,
+                                                    _model.emailloginFocusNode,
                                                 autofocus: true,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
@@ -232,7 +232,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                 keyboardType:
                                                     TextInputType.emailAddress,
                                                 validator: _model
-                                                    .textController1Validator
+                                                    .emailloginControllerValidator
                                                     .asValidator(context),
                                               ),
                                             ),
@@ -250,12 +250,12 @@ class _LoginWidgetState extends State<LoginWidget>
                                                     8.0, 0.0, 8.0, 0.0),
                                             child: TextFormField(
                                               controller:
-                                                  _model.textController2,
+                                                  _model.senhaloginController,
                                               focusNode:
-                                                  _model.textFieldFocusNode2,
+                                                  _model.senhaloginFocusNode,
                                               autofocus: true,
                                               obscureText:
-                                                  !_model.passwordVisibility,
+                                                  !_model.senhaloginVisibility,
                                               decoration: InputDecoration(
                                                 labelText: 'Senha',
                                                 labelStyle:
@@ -318,14 +318,14 @@ class _LoginWidgetState extends State<LoginWidget>
                                                 suffixIcon: InkWell(
                                                   onTap: () => setState(
                                                     () => _model
-                                                            .passwordVisibility =
+                                                            .senhaloginVisibility =
                                                         !_model
-                                                            .passwordVisibility,
+                                                            .senhaloginVisibility,
                                                   ),
                                                   focusNode: FocusNode(
                                                       skipTraversal: true),
                                                   child: Icon(
-                                                    _model.passwordVisibility
+                                                    _model.senhaloginVisibility
                                                         ? Icons
                                                             .visibility_outlined
                                                         : Icons
@@ -343,7 +343,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                               keyboardType:
                                                   TextInputType.visiblePassword,
                                               validator: _model
-                                                  .textController2Validator
+                                                  .senhaloginControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -359,8 +359,24 @@ class _LoginWidgetState extends State<LoginWidget>
                                             MainAxisAlignment.center,
                                         children: [
                                           FFButtonWidget(
-                                            onPressed: () {
-                                              print('Button pressed ...');
+                                            onPressed: () async {
+                                              GoRouter.of(context)
+                                                  .prepareAuthEvent();
+
+                                              final user = await authManager
+                                                  .signInWithEmail(
+                                                context,
+                                                _model
+                                                    .emailloginController.text,
+                                                _model
+                                                    .senhaloginController.text,
+                                              );
+                                              if (user == null) {
+                                                return;
+                                              }
+
+                                              context.goNamedAuth(
+                                                  'homepage', context.mounted);
                                             },
                                             text: 'Entrar',
                                             options: FFButtonOptions(
