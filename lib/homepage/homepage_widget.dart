@@ -242,6 +242,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                     Align(
                       alignment: const Alignment(0.0, 0),
                       child: TabBar(
+                        isScrollable: true,
                         labelColor: FlutterFlowTheme.of(context).primaryText,
                         unselectedLabelColor:
                             FlutterFlowTheme.of(context).secondaryText,
@@ -273,7 +274,6 @@ class _HomepageWidgetState extends State<HomepageWidget>
                         controller: _model.tabBarController,
                         children: [
                           SingleChildScrollView(
-                            primary: false,
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
