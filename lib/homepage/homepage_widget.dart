@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -63,30 +64,65 @@ class _HomepageWidgetState extends State<HomepageWidget>
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           automaticallyImplyLeading: false,
-          title: Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(100.0),
-                  child: Image.asset(
-                    'assets/images/pizzaria.png',
+          title: StreamBuilder<List<UsersRecord>>(
+            stream: queryUsersRecord(
+              queryBuilder: (usersRecord) => usersRecord.where(
+                'uid',
+                isEqualTo: currentUserUid,
+              ),
+              singleRecord: true,
+            ),
+            builder: (context, snapshot) {
+              // Customize what your widget looks like when it's loading.
+              if (!snapshot.hasData) {
+                return Center(
+                  child: SizedBox(
                     width: 50.0,
                     height: 50.0,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              Text(
-                'APP PIZZARIA',
-                style: FlutterFlowTheme.of(context).titleLarge.override(
-                      fontFamily: 'Outfit',
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.bold,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        FlutterFlowTheme.of(context).primary,
+                      ),
                     ),
-              ),
-            ],
+                  ),
+                );
+              }
+              List<UsersRecord> rowUsersRecordList = snapshot.data!;
+              // Return an empty Container when the item does not exist.
+              if (snapshot.data!.isEmpty) {
+                return Container();
+              }
+              final rowUsersRecord = rowUsersRecordList.isNotEmpty
+                  ? rowUsersRecordList.first
+                  : null;
+              return Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Olá, ${valueOrDefault<String>(
+                      rowUsersRecord?.displayName,
+                      'Fulano',
+                    )}',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Readex Pro',
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                  ),
+                  const Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Icon(
+                        Icons.view_list,
+                        color: Color(0xFFFD6907),
+                        size: 30.0,
+                      ),
+                    ],
+                  ),
+                ],
+              );
+            },
           ),
           actions: const [],
           centerTitle: false,
@@ -97,6 +133,30 @@ class _HomepageWidgetState extends State<HomepageWidget>
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(100.0),
+                      child: Image.asset(
+                        'assets/images/pizzaria.png',
+                        width: 100.0,
+                        height: 100.0,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Text(
+                      'APP PIZZARIA',
+                      style: FlutterFlowTheme.of(context).titleLarge.override(
+                            fontFamily: 'Outfit',
+                            fontSize: 25.0,
+                          ),
+                    ),
+                  ],
+                ),
+              ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
                 child: Row(
@@ -117,7 +177,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                           autofocus: true,
                           obscureText: false,
                           decoration: InputDecoration(
-                            labelText: 'Pesquisar',
+                            labelText: 'Pesquisa',
                             labelStyle:
                                 FlutterFlowTheme.of(context).labelMedium,
                             hintStyle: FlutterFlowTheme.of(context).labelMedium,
@@ -188,7 +248,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                         labelStyle:
                             FlutterFlowTheme.of(context).titleMedium.override(
                                   fontFamily: 'Readex Pro',
-                                  fontSize: 15.0,
+                                  fontSize: 14.0,
                                 ),
                         unselectedLabelStyle: const TextStyle(),
                         indicatorColor: const Color(0xFFFD6907),
@@ -196,10 +256,10 @@ class _HomepageWidgetState extends State<HomepageWidget>
                             const EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 4.0, 4.0),
                         tabs: const [
                           Tab(
-                            text: 'Pizza Grande',
+                            text: 'Pizza Salgada',
                           ),
                           Tab(
-                            text: 'Pizza Doce',
+                            text: 'Pízza Doce',
                           ),
                           Tab(
                             text: 'Pizza Broto',
@@ -212,159 +272,171 @@ class _HomepageWidgetState extends State<HomepageWidget>
                       child: TabBarView(
                         controller: _model.tabBarController,
                         children: [
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              StreamBuilder<List<ProdutosRecord>>(
-                                stream: queryProdutosRecord(),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
+                          SingleChildScrollView(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                StreamBuilder<List<ProdutosRecord>>(
+                                  stream: queryProdutosRecord(
+                                    queryBuilder: (produtosRecord) =>
+                                        produtosRecord.where(
+                                      'tag',
+                                      isEqualTo: 'pizza salgada',
+                                    ),
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    );
-                                  }
-                                  List<ProdutosRecord>
-                                      listViewProdutosRecordList =
-                                      snapshot.data!;
-                                  return ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount:
-                                        listViewProdutosRecordList.length,
-                                    itemBuilder: (context, listViewIndex) {
-                                      final listViewProdutosRecord =
-                                          listViewProdutosRecordList[
-                                              listViewIndex];
-                                      return Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 10.0, 10.0, 10.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Container(
-                                              width: double.infinity,
-                                              height: 132.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                borderRadius:
-                                                    BorderRadius.circular(16.0),
-                                              ),
-                                              child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 10.0, 10.0, 10.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              16.0),
-                                                      child: Image.network(
-                                                        listViewProdutosRecord
-                                                            .img,
-                                                        width: 100.0,
-                                                        height: 100.0,
-                                                        fit: BoxFit.cover,
+                                      );
+                                    }
+                                    List<ProdutosRecord>
+                                        listViewProdutosRecordList =
+                                        snapshot.data!;
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount:
+                                          listViewProdutosRecordList.length,
+                                      itemBuilder: (context, listViewIndex) {
+                                        final listViewProdutosRecord =
+                                            listViewProdutosRecordList[
+                                                listViewIndex];
+                                        return Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 10.0, 10.0, 10.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width: double.infinity,
+                                                height: 136.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          16.0),
+                                                ),
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(10.0, 10.0,
+                                                          10.0, 10.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        child: Image.network(
+                                                          valueOrDefault<
+                                                              String>(
+                                                            listViewProdutosRecord
+                                                                .img,
+                                                            'https://static.itdg.com.br/images/1200-630/c0402ec0fd16e13c7b7b691151d53e1d/277814-original.jpg',
+                                                          ),
+                                                          width: 100.0,
+                                                          height: 100.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
                                                       ),
-                                                    ),
-                                                    Expanded(
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Expanded(
-                                                                  child: Text(
-                                                                    listViewProdutosRecord
-                                                                        .name,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleLarge,
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          6.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Text(
-                                                                    formatNumber(
-                                                                      listViewProdutosRecord
-                                                                          .price,
-                                                                      formatType:
-                                                                          FormatType
-                                                                              .decimal,
-                                                                      decimalType:
-                                                                          DecimalType
-                                                                              .commaDecimal,
-                                                                      currency:
-                                                                          'R\$',
+                                                      Expanded(
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            6.0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child:
+                                                                          Text(
+                                                                        listViewProdutosRecord
+                                                                            .nomeProduto,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Readex Pro',
+                                                                              fontSize: 18.0,
+                                                                            ),
+                                                                      ),
                                                                     ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleLarge
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Outfit',
-                                                                          fontSize:
-                                                                              20.0,
-                                                                          fontWeight:
-                                                                              FontWeight.normal,
-                                                                        ),
-                                                                  ),
-                                                                ],
+                                                                  ],
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          6.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Row(
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            6.0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child:
+                                                                          Text(
+                                                                        formatNumber(
+                                                                          listViewProdutosRecord
+                                                                              .valorPizza,
+                                                                          formatType:
+                                                                              FormatType.decimal,
+                                                                          decimalType:
+                                                                              DecimalType.commaDecimal,
+                                                                          currency:
+                                                                              'R\$',
+                                                                        ),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Readex Pro',
+                                                                              fontSize: 20.0,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Row(
                                                                 mainAxisSize:
                                                                     MainAxisSize
                                                                         .max,
@@ -372,21 +444,15 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                   Expanded(
                                                                     child: Text(
                                                                       listViewProdutosRecord
-                                                                          .description
-                                                                          .maybeHandleOverflow(
-                                                                        maxChars:
-                                                                            50,
-                                                                        replacement:
-                                                                            '…',
-                                                                      ),
+                                                                          .descricao,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .titleLarge
+                                                                          .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Outfit',
+                                                                                'Readex Pro',
                                                                             fontSize:
-                                                                                14.0,
+                                                                                15.0,
                                                                             fontWeight:
                                                                                 FontWeight.w300,
                                                                           ),
@@ -394,23 +460,23 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                   ),
                                                                 ],
                                                               ),
-                                                            ),
-                                                          ],
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    },
-                                  );
-                                },
-                              ),
-                            ],
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
                           Text(
                             'Tab View 2',

@@ -15,67 +15,43 @@ class ProdutosRecord extends FirestoreRecord {
     _initializeFields();
   }
 
-  // "name" field.
-  String? _name;
-  String get name => _name ?? '';
-  bool hasName() => _name != null;
+  // "nome_produto" field.
+  String? _nomeProduto;
+  String get nomeProduto => _nomeProduto ?? '';
+  bool hasNomeProduto() => _nomeProduto != null;
 
-  // "description" field.
-  String? _description;
-  String get description => _description ?? '';
-  bool hasDescription() => _description != null;
-
-  // "specifications" field.
-  String? _specifications;
-  String get specifications => _specifications ?? '';
-  bool hasSpecifications() => _specifications != null;
-
-  // "price" field.
-  double? _price;
-  double get price => _price ?? 0.0;
-  bool hasPrice() => _price != null;
-
-  // "created_at" field.
-  DateTime? _createdAt;
-  DateTime? get createdAt => _createdAt;
-  bool hasCreatedAt() => _createdAt != null;
-
-  // "modified_at" field.
-  DateTime? _modifiedAt;
-  DateTime? get modifiedAt => _modifiedAt;
-  bool hasModifiedAt() => _modifiedAt != null;
-
-  // "on_sale" field.
-  bool? _onSale;
-  bool get onSale => _onSale ?? false;
-  bool hasOnSale() => _onSale != null;
-
-  // "sale_price" field.
-  double? _salePrice;
-  double get salePrice => _salePrice ?? 0.0;
-  bool hasSalePrice() => _salePrice != null;
-
-  // "quantity" field.
-  int? _quantity;
-  int get quantity => _quantity ?? 0;
-  bool hasQuantity() => _quantity != null;
+  // "descricao" field.
+  String? _descricao;
+  String get descricao => _descricao ?? '';
+  bool hasDescricao() => _descricao != null;
 
   // "img" field.
   String? _img;
   String get img => _img ?? '';
   bool hasImg() => _img != null;
 
+  // "valor_pizza" field.
+  double? _valorPizza;
+  double get valorPizza => _valorPizza ?? 0.0;
+  bool hasValorPizza() => _valorPizza != null;
+
+  // "valor_pizza_meia" field.
+  double? _valorPizzaMeia;
+  double get valorPizzaMeia => _valorPizzaMeia ?? 0.0;
+  bool hasValorPizzaMeia() => _valorPizzaMeia != null;
+
+  // "tag" field.
+  String? _tag;
+  String get tag => _tag ?? '';
+  bool hasTag() => _tag != null;
+
   void _initializeFields() {
-    _name = snapshotData['name'] as String?;
-    _description = snapshotData['description'] as String?;
-    _specifications = snapshotData['specifications'] as String?;
-    _price = castToType<double>(snapshotData['price']);
-    _createdAt = snapshotData['created_at'] as DateTime?;
-    _modifiedAt = snapshotData['modified_at'] as DateTime?;
-    _onSale = snapshotData['on_sale'] as bool?;
-    _salePrice = castToType<double>(snapshotData['sale_price']);
-    _quantity = castToType<int>(snapshotData['quantity']);
+    _nomeProduto = snapshotData['nome_produto'] as String?;
+    _descricao = snapshotData['descricao'] as String?;
     _img = snapshotData['img'] as String?;
+    _valorPizza = castToType<double>(snapshotData['valor_pizza']);
+    _valorPizzaMeia = castToType<double>(snapshotData['valor_pizza_meia']);
+    _tag = snapshotData['tag'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -113,29 +89,21 @@ class ProdutosRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createProdutosRecordData({
-  String? name,
-  String? description,
-  String? specifications,
-  double? price,
-  DateTime? createdAt,
-  DateTime? modifiedAt,
-  bool? onSale,
-  double? salePrice,
-  int? quantity,
+  String? nomeProduto,
+  String? descricao,
   String? img,
+  double? valorPizza,
+  double? valorPizzaMeia,
+  String? tag,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'name': name,
-      'description': description,
-      'specifications': specifications,
-      'price': price,
-      'created_at': createdAt,
-      'modified_at': modifiedAt,
-      'on_sale': onSale,
-      'sale_price': salePrice,
-      'quantity': quantity,
+      'nome_produto': nomeProduto,
+      'descricao': descricao,
       'img': img,
+      'valor_pizza': valorPizza,
+      'valor_pizza_meia': valorPizzaMeia,
+      'tag': tag,
     }.withoutNulls,
   );
 
@@ -147,30 +115,22 @@ class ProdutosRecordDocumentEquality implements Equality<ProdutosRecord> {
 
   @override
   bool equals(ProdutosRecord? e1, ProdutosRecord? e2) {
-    return e1?.name == e2?.name &&
-        e1?.description == e2?.description &&
-        e1?.specifications == e2?.specifications &&
-        e1?.price == e2?.price &&
-        e1?.createdAt == e2?.createdAt &&
-        e1?.modifiedAt == e2?.modifiedAt &&
-        e1?.onSale == e2?.onSale &&
-        e1?.salePrice == e2?.salePrice &&
-        e1?.quantity == e2?.quantity &&
-        e1?.img == e2?.img;
+    return e1?.nomeProduto == e2?.nomeProduto &&
+        e1?.descricao == e2?.descricao &&
+        e1?.img == e2?.img &&
+        e1?.valorPizza == e2?.valorPizza &&
+        e1?.valorPizzaMeia == e2?.valorPizzaMeia &&
+        e1?.tag == e2?.tag;
   }
 
   @override
   int hash(ProdutosRecord? e) => const ListEquality().hash([
-        e?.name,
-        e?.description,
-        e?.specifications,
-        e?.price,
-        e?.createdAt,
-        e?.modifiedAt,
-        e?.onSale,
-        e?.salePrice,
-        e?.quantity,
-        e?.img
+        e?.nomeProduto,
+        e?.descricao,
+        e?.img,
+        e?.valorPizza,
+        e?.valorPizzaMeia,
+        e?.tag
       ]);
 
   @override
