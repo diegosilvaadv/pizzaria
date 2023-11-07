@@ -699,7 +699,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                             FFAppState().quantity + 1;
                                         FFAppState().soma = FFAppState().soma +
                                             functions.soma(
-                                                FFAppState().soma,
+                                                widget.valor!,
                                                 FFAppState()
                                                     .quantity
                                                     .toDouble());

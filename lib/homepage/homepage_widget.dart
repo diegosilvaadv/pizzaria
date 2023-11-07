@@ -482,6 +482,9 @@ class _HomepageWidgetState extends State<HomepageWidget>
                         tabs: const [
                           Tab(
                             text: 'Pizza Salgada',
+                            icon: Icon(
+                              Icons.local_pizza,
+                            ),
                           ),
                           Tab(
                             text: 'Pízza Doce',
