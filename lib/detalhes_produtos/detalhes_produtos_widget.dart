@@ -686,7 +686,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                         height: 100.0,
                         decoration: BoxDecoration(
                           color: valueOrDefault<Color>(
-                            _model.radioButtonValue != _model.radioButtonValue
+                            _model.radioButtonValue == _model.radioButtonValue
                                 ? const Color(0xFF26CB3A)
                                 : FlutterFlowTheme.of(context)
                                     .primaryBackground,
