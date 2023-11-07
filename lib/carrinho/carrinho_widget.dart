@@ -364,7 +364,15 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                 ),
                                 Text(
                                   formatNumber(
-                                    FFAppState().totalprice,
+                                    functions.finalPrice(
+                                        FFAppState()
+                                            .ProdutosDoCarrinho[
+                                                FFAppState().contador]
+                                            .valor,
+                                        FFAppState()
+                                            .ProdutosDoCarrinho[
+                                                FFAppState().contador]
+                                            .quantity),
                                     formatType: FormatType.decimal,
                                     decimalType: DecimalType.commaDecimal,
                                     currency: 'R\$',
