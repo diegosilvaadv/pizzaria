@@ -59,6 +59,8 @@ class _HomepageWidgetState extends State<HomepageWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

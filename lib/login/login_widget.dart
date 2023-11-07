@@ -48,6 +48,8 @@ class _LoginWidgetState extends State<LoginWidget>
 
     _model.senhaconfController ??= TextEditingController();
     _model.senhaconfFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
