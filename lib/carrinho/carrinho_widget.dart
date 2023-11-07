@@ -1,6 +1,5 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -102,7 +101,6 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                 onTap: () async {
                                   setState(() {
                                     FFAppState().ProdutosDoCarrinho = [];
-                                    FFAppState().soma = 0;
                                   });
                                 },
                                 child: Text(
@@ -260,15 +258,6 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                         FFAppState()
                                                             .removeAtIndexFromProdutosDoCarrinho(
                                                                 pedidosIndex);
-                                                        FFAppState()
-                                                            .soma = FFAppState()
-                                                                .soma +
-                                                            functions.subtracao(functions.soma(
-                                                                pedidosItem
-                                                                    .valor
-                                                                    .toDouble(),
-                                                                pedidosItem
-                                                                    .quantity));
                                                       });
                                                     },
                                                     child: Icon(
@@ -363,12 +352,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                       ),
                                 ),
                                 Text(
-                                  formatNumber(
-                                    FFAppState().soma,
-                                    formatType: FormatType.decimal,
-                                    decimalType: DecimalType.commaDecimal,
-                                    currency: 'R\$',
-                                  ),
+                                  'R\$ 66,90',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(

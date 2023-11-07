@@ -147,7 +147,6 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         onTap: () async {
                                           setState(() {
                                             FFAppState().quantity = 0;
-                                            FFAppState().soma = 0;
                                           });
                                           context.safePop();
                                         },
@@ -663,7 +662,8 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                       setState(() {
                                         FFAppState().quantity =
                                             FFAppState().quantity + -1;
-                                        FFAppState().soma = FFAppState().soma +
+                                        FFAppState().totalprice = FFAppState()
+                                                .totalprice +
                                             functions.subtracao(functions.soma(
                                                 widget.valor!,
                                                 FFAppState().quantity));
@@ -702,9 +702,12 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                       FFAppState().update(() {
                                         FFAppState().quantity =
                                             FFAppState().quantity + 1;
-                                        FFAppState().soma = FFAppState().soma +
-                                            functions.soma(widget.valor!,
-                                                FFAppState().quantity);
+                                      });
+                                      setState(() {
+                                        FFAppState().totalprice =
+                                            FFAppState().totalprice +
+                                                functions.soma(widget.valor!,
+                                                    FFAppState().quantity);
                                       });
                                     } else {
                                       return;
@@ -758,12 +761,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                       ),
                                 ),
                                 Text(
-                                  formatNumber(
-                                    FFAppState().soma,
-                                    formatType: FormatType.decimal,
-                                    decimalType: DecimalType.commaDecimal,
-                                    currency: 'R\$',
-                                  ),
+                                  'R\$ 66,90',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(

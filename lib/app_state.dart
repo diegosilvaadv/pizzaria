@@ -112,12 +112,6 @@ class FFAppState extends ChangeNotifier {
   set quantity(int value) {
     _quantity = value;
   }
-
-  double _soma = 0;
-  double get soma => _soma;
-  set soma(double value) {
-    _soma = value;
-  }
 }
 
 LatLng? _latLngFromString(String? val) {
