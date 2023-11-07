@@ -125,6 +125,7 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                         .override(
                                           fontFamily: 'Readex Pro',
                                           fontSize: 20.0,
+                                          fontWeight: FontWeight.w500,
                                         ),
                                   ),
                                 ],
