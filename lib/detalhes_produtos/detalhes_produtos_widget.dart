@@ -78,7 +78,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                         topRight: Radius.circular(0.0),
                       ),
                       child: Image.network(
-                        'https://picsum.photos/seed/881/600',
+                        widget.img!,
                         width: double.infinity,
                         height: 300.0,
                         fit: BoxFit.cover,
@@ -91,10 +91,19 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Icon(
-                            Icons.chevron_left_outlined,
-                            color: Colors.white,
-                            size: 35.0,
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.safePop();
+                            },
+                            child: const Icon(
+                              Icons.chevron_left_outlined,
+                              color: Colors.white,
+                              size: 35.0,
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
@@ -103,7 +112,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Text(
-                                  'titulo',
+                                  widget.titulo!,
                                   style: FlutterFlowTheme.of(context)
                                       .titleLarge
                                       .override(
@@ -138,7 +147,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                     children: [
                       Expanded(
                         child: Text(
-                          'descricao',
+                          widget.descricao!,
                           style: FlutterFlowTheme.of(context).bodyMedium,
                         ),
                       ),
@@ -152,7 +161,12 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Text(
-                        'valor',
+                        formatNumber(
+                          widget.valor,
+                          formatType: FormatType.decimal,
+                          decimalType: DecimalType.commaDecimal,
+                          currency: 'R\$',
+                        ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
                               color: const Color(0xFF26CB3A),
