@@ -145,11 +145,11 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          context.safePop();
                                           setState(() {
                                             FFAppState().quantity = 0;
                                             FFAppState().soma = 0;
                                           });
+                                          context.safePop();
                                         },
                                         child: Icon(
                                           Icons.chevron_left_outlined,
@@ -236,7 +236,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          fontSize: 15.0,
+                                          fontSize: 16.0,
                                         ),
                                   ),
                                 ),
