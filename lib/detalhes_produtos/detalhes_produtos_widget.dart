@@ -145,7 +145,9 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          setState(() {});
+                                          setState(() {
+                                            FFAppState().quantity = 1;
+                                          });
                                           context.safePop();
                                         },
                                         child: Icon(
@@ -233,7 +235,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          fontSize: 16.0,
+                                          fontSize: 15.0,
                                         ),
                                   ),
                                 ),
@@ -739,6 +741,9 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         .totalprice +
                                     functions.finalPrice(
                                         widget.valor!, FFAppState().quantity);
+                              });
+                              setState(() {
+                                FFAppState().quantity = 1;
                               });
 
                               context.pushNamed('carrinho');
