@@ -127,6 +127,136 @@ class _HomepageWidgetState extends State<HomepageWidget>
             ],
           ),
         ),
+        drawer: Drawer(
+          elevation: 16.0,
+          child: Opacity(
+            opacity: 0.8,
+            child: Align(
+              alignment: const AlignmentDirectional(0.00, 0.00),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Align(
+                    alignment: const AlignmentDirectional(0.00, 0.00),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 12.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              if ((Theme.of(context).brightness ==
+                                      Brightness.light) ==
+                                  true) {
+                                setDarkModeSetting(context, ThemeMode.dark);
+                                if (animationsMap[
+                                        'containerOnActionTriggerAnimation'] !=
+                                    null) {
+                                  animationsMap[
+                                          'containerOnActionTriggerAnimation']!
+                                      .controller
+                                      .forward(from: 0.0);
+                                }
+                              } else {
+                                setDarkModeSetting(context, ThemeMode.light);
+                                if (animationsMap[
+                                        'containerOnActionTriggerAnimation'] !=
+                                    null) {
+                                  animationsMap[
+                                          'containerOnActionTriggerAnimation']!
+                                      .controller
+                                      .reverse();
+                                }
+                              }
+                            },
+                            child: Container(
+                              width: 80.0,
+                              height: 40.0,
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFF1F4F8),
+                                borderRadius: BorderRadius.circular(20.0),
+                                border: Border.all(
+                                  color: const Color(0xFFE0E3E7),
+                                  width: 1.0,
+                                ),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    2.0, 2.0, 2.0, 2.0),
+                                child: Stack(
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  children: [
+                                    const Align(
+                                      alignment:
+                                          AlignmentDirectional(-0.90, 0.00),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            6.0, 0.0, 0.0, 0.0),
+                                        child: Icon(
+                                          Icons.wb_sunny_rounded,
+                                          color: Color(0xFF57636C),
+                                          size: 24.0,
+                                        ),
+                                      ),
+                                    ),
+                                    const Align(
+                                      alignment:
+                                          AlignmentDirectional(1.00, 0.00),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 6.0, 0.0),
+                                        child: Icon(
+                                          Icons.mode_night_rounded,
+                                          color: Color(0xFF57636C),
+                                          size: 24.0,
+                                        ),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment:
+                                          const AlignmentDirectional(1.00, 0.00),
+                                      child: Container(
+                                        width: 36.0,
+                                        height: 36.0,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              blurRadius: 4.0,
+                                              color: Color(0x430B0D0F),
+                                              offset: Offset(0.0, 2.0),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(30.0),
+                                          shape: BoxShape.rectangle,
+                                        ),
+                                      ).animateOnActionTrigger(
+                                        animationsMap[
+                                            'containerOnActionTriggerAnimation']!,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           automaticallyImplyLeading: false,
@@ -176,113 +306,30 @@ class _HomepageWidgetState extends State<HomepageWidget>
                           fontWeight: FontWeight.w500,
                         ),
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        if ((Theme.of(context).brightness ==
-                                Brightness.light) ==
-                            true) {
-                          setDarkModeSetting(context, ThemeMode.dark);
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
                           if (animationsMap[
                                   'containerOnActionTriggerAnimation'] !=
                               null) {
-                            animationsMap['containerOnActionTriggerAnimation']!
+                            await animationsMap[
+                                    'containerOnActionTriggerAnimation']!
                                 .controller
                                 .forward(from: 0.0);
                           }
-                        } else {
-                          setDarkModeSetting(context, ThemeMode.light);
-                          if (animationsMap[
-                                  'containerOnActionTriggerAnimation'] !=
-                              null) {
-                            animationsMap['containerOnActionTriggerAnimation']!
-                                .controller
-                                .reverse();
-                          }
-                        }
-                      },
-                      child: Container(
-                        width: 80.0,
-                        height: 40.0,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFF1F4F8),
-                          borderRadius: BorderRadius.circular(20.0),
-                          border: Border.all(
-                            color: const Color(0xFFE0E3E7),
-                            width: 1.0,
-                          ),
+                          scaffoldKey.currentState!.openDrawer();
+                        },
+                        child: const Icon(
+                          Icons.dehaze,
+                          color: Color(0xFFFD6907),
+                          size: 30.0,
                         ),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              2.0, 2.0, 2.0, 2.0),
-                          child: Stack(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
-                            children: [
-                              const Align(
-                                alignment: AlignmentDirectional(-0.90, 0.00),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      6.0, 0.0, 0.0, 0.0),
-                                  child: Icon(
-                                    Icons.wb_sunny_rounded,
-                                    color: Color(0xFF57636C),
-                                    size: 24.0,
-                                  ),
-                                ),
-                              ),
-                              const Align(
-                                alignment: AlignmentDirectional(1.00, 0.00),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 6.0, 0.0),
-                                  child: Icon(
-                                    Icons.mode_night_rounded,
-                                    color: Color(0xFF57636C),
-                                    size: 24.0,
-                                  ),
-                                ),
-                              ),
-                              Align(
-                                alignment: const AlignmentDirectional(1.00, 0.00),
-                                child: Container(
-                                  width: 36.0,
-                                  height: 36.0,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        blurRadius: 4.0,
-                                        color: Color(0x430B0D0F),
-                                        offset: Offset(0.0, 2.0),
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(30.0),
-                                    shape: BoxShape.rectangle,
-                                  ),
-                                ).animateOnActionTrigger(
-                                  animationsMap[
-                                      'containerOnActionTriggerAnimation']!,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Icon(
-                        Icons.view_list,
-                        color: Color(0xFFFD6907),
-                        size: 30.0,
                       ),
                     ],
                   ),
