@@ -428,7 +428,8 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                               });
                               await showModalBottomSheet(
                                 isScrollControlled: true,
-                                backgroundColor: Colors.transparent,
+                                backgroundColor: const Color(0x76000000),
+                                barrierColor: const Color(0x86000000),
                                 enableDrag: false,
                                 context: context,
                                 builder: (context) {

@@ -65,7 +65,7 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
         children: [
           Container(
             width: double.infinity,
-            height: 427.0,
+            height: 518.0,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
             ),
@@ -97,7 +97,7 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                       ),
                     ],
                   ),
-                  if (FFAppState().preferencias)
+                  if (FFAppState().preferencias == true)
                     Padding(
                       padding: const EdgeInsetsDirectional.fromSTEB(
                           10.0, 10.0, 10.0, 10.0),
