@@ -98,8 +98,8 @@ class _HomepageWidgetState extends State<HomepageWidget>
                 alignment: AlignmentDirectional(0.00, 0.00),
                 child: Icon(
                   Icons.local_grocery_store,
-                  color: Color(0xAB1D2428),
-                  size: 24.0,
+                  color: Colors.white,
+                  size: 30.0,
                 ),
               ),
               Align(
@@ -114,7 +114,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                   ),
                   showBadge: true,
                   shape: badges.BadgeShape.circle,
-                  badgeColor: const Color(0xFFFD6907),
+                  badgeColor: const Color(0xFF88180F),
                   elevation: 4.0,
                   padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
                   position: badges.BadgePosition.topEnd(),
