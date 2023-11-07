@@ -261,7 +261,10 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     StreamBuilder<List<PreferenciasRecord>>(
-                                      stream: queryPreferenciasRecord(),
+                                      stream: queryPreferenciasRecord(
+                                        queryBuilder: (preferenciasRecord) =>
+                                            preferenciasRecord.orderBy('valor'),
+                                      ),
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
                                         if (!snapshot.hasData) {
@@ -337,7 +340,11 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                           6.0, 0.0, 0.0, 0.0),
                                       child: StreamBuilder<
                                           List<PreferenciasRecord>>(
-                                        stream: queryPreferenciasRecord(),
+                                        stream: queryPreferenciasRecord(
+                                          queryBuilder: (preferenciasRecord) =>
+                                              preferenciasRecord
+                                                  .orderBy('valor'),
+                                        ),
                                         builder: (context, snapshot) {
                                           // Customize what your widget looks like when it's loading.
                                           if (!snapshot.hasData) {
@@ -382,7 +389,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                         FormatType.decimal,
                                                     decimalType: DecimalType
                                                         .commaDecimal,
-                                                    currency: 'R\$',
+                                                    currency: '+ R\$',
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -411,7 +418,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
