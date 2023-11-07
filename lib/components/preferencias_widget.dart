@@ -182,17 +182,6 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                             width: 100.0,
                                             height: 52.0,
                                             decoration: BoxDecoration(
-                                              color: valueOrDefault<Color>(
-                                                FFAppState().preferencias
-                                                    ? FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondary
-                                                    : FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                              ),
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                             ),
@@ -207,10 +196,21 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                                   children: [
                                                     ToggleIcon(
                                                       onPressed: () async {
-                                                        setState(() => FFAppState()
-                                                                .preferencias =
-                                                            !FFAppState()
-                                                                .preferencias);
+                                                        setState(
+                                                          () =>
+                                                              FFAppState()
+                                                                      .preferec[
+                                                                          listViewIndex]
+                                                                      .select
+                                                                  ? FFAppState()
+                                                                      .preferec[
+                                                                          listViewIndex]
+                                                                      .select
+                                                                  : FFAppState()
+                                                                      .preferec[
+                                                                          listViewIndex]
+                                                                      .select,
+                                                        );
                                                         setState(() {
                                                           FFAppState()
                                                               .total = FFAppState()
@@ -220,7 +220,9 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                                         });
                                                       },
                                                       value: FFAppState()
-                                                          .preferencias,
+                                                          .preferec[
+                                                              listViewIndex]
+                                                          .select,
                                                       onIcon: Icon(
                                                         Icons.check_box,
                                                         color:
@@ -463,7 +465,6 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                       setState(() {
                                         FFAppState().quantity = 1;
                                         FFAppState().total = 0;
-                                        FFAppState().preferencias = false;
                                       });
 
                                       context.pushNamed('carrinho');

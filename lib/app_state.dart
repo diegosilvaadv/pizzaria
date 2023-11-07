@@ -88,12 +88,6 @@ class FFAppState extends ChangeNotifier {
         _ProdutosDoCarrinho.map((x) => x.serialize()).toList());
   }
 
-  bool _preferencias = false;
-  bool get preferencias => _preferencias;
-  set preferencias(bool value) {
-    _preferencias = value;
-  }
-
   int _contador = -1;
   int get contador => _contador;
   set contador(int value) {
@@ -117,6 +111,35 @@ class FFAppState extends ChangeNotifier {
   double get total => _total;
   set total(double value) {
     _total = value;
+  }
+
+  List<PreferenciasStruct> _preferec = [];
+  List<PreferenciasStruct> get preferec => _preferec;
+  set preferec(List<PreferenciasStruct> value) {
+    _preferec = value;
+  }
+
+  void addToPreferec(PreferenciasStruct value) {
+    _preferec.add(value);
+  }
+
+  void removeFromPreferec(PreferenciasStruct value) {
+    _preferec.remove(value);
+  }
+
+  void removeAtIndexFromPreferec(int index) {
+    _preferec.removeAt(index);
+  }
+
+  void updatePreferecAtIndex(
+    int index,
+    PreferenciasStruct Function(PreferenciasStruct) updateFn,
+  ) {
+    _preferec[index] = updateFn(_preferec[index]);
+  }
+
+  void insertAtIndexInPreferec(int index, PreferenciasStruct value) {
+    _preferec.insert(index, value);
   }
 }
 
