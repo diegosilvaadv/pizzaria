@@ -232,7 +232,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          fontSize: 15.0,
+                                          fontSize: 16.0,
                                         ),
                                   ),
                                 ),
@@ -538,18 +538,16 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium,
                                         enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
+                                          borderSide: const BorderSide(
+                                            color: Color(0x3EFD6907),
                                             width: 2.0,
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
+                                          borderSide: const BorderSide(
+                                            color: Color(0xFFFD6907),
                                             width: 2.0,
                                           ),
                                           borderRadius:
@@ -575,7 +573,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         ),
                                         filled: true,
                                         fillColor: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
+                                            .primaryBackground,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
@@ -701,7 +699,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                             FFAppState().quantity + 1;
                                         FFAppState().soma = FFAppState().soma +
                                             functions.soma(
-                                                widget.valor!,
+                                                FFAppState().soma,
                                                 FFAppState()
                                                     .quantity
                                                     .toDouble());
