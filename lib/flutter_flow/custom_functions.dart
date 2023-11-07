@@ -21,5 +21,5 @@ double soma(
 }
 
 double subtracao(double valor1) {
-  return valor1 * -1;
+  return valor1 * -1.toDouble();
 }
