@@ -685,7 +685,10 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                         width: 230.0,
                         height: 100.0,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          color: colorFromCssString(
+                            _model.radioButtonValue!,
+                            defaultColor: const Color(0xFF26CB3A),
+                          ),
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: Padding(
