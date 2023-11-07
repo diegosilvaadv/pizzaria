@@ -176,7 +176,7 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                         return FlutterFlowRadioButton(
                                           options:
                                               radioButtonPreferenciasRecordList
-                                                  .map((e) => e.massas)
+                                                  .map((e) => e.reference.id)
                                                   .toList()
                                                   .toList(),
                                           onChanged: (val) => setState(() {}),
