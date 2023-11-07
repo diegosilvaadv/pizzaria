@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -123,7 +124,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                               ),
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 10.0, 10.0, 10.0),
+                                    10.0, 30.0, 10.0, 10.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
@@ -660,6 +661,12 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                       setState(() {
                                         FFAppState().quantity =
                                             FFAppState().quantity + -1;
+                                        FFAppState().soma = FFAppState().soma +
+                                            functions.subtracao(functions.soma(
+                                                widget.valor!,
+                                                FFAppState()
+                                                    .quantity
+                                                    .toDouble()));
                                       });
                                     } else {
                                       return;
@@ -697,6 +704,12 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                       setState(() {
                                         FFAppState().quantity =
                                             FFAppState().quantity + 1;
+                                        FFAppState().soma = FFAppState().soma +
+                                            functions.soma(
+                                                widget.valor!,
+                                                FFAppState()
+                                                    .quantity
+                                                    .toDouble());
                                       });
                                     } else {
                                       return;
