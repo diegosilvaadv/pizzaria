@@ -1,10 +1,8 @@
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_count_controller.dart';
 import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -632,59 +630,90 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                      child: Container(
-                        width: 130.0,
-                        height: 50.0,
-                        decoration: BoxDecoration(
-                          color: const Color(0x00FD6907),
-                          borderRadius: BorderRadius.circular(8.0),
-                          shape: BoxShape.rectangle,
-                          border: Border.all(
-                            color: const Color(0x000CEB29),
-                            width: 2.0,
+                    Align(
+                      alignment: const AlignmentDirectional(-1.00, 0.00),
+                      child: Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
+                        child: Container(
+                          width: 136.0,
+                          height: 100.0,
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                        ),
-                        child: FlutterFlowCountController(
-                          decrementIconBuilder: (enabled) => FaIcon(
-                            FontAwesomeIcons.minus,
-                            color: enabled
-                                ? FlutterFlowTheme.of(context).secondaryText
-                                : FlutterFlowTheme.of(context).alternate,
-                            size: 20.0,
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                8.0, 0.0, 8.0, 0.0),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed('carrinho');
+                              },
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      setState(() {
+                                        FFAppState().quantity =
+                                            FFAppState().quantity + -1;
+                                      });
+                                    },
+                                    child: FaIcon(
+                                      FontAwesomeIcons.minus,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 24.0,
+                                    ),
+                                  ),
+                                  Text(
+                                    formatNumber(
+                                      FFAppState().quantity,
+                                      formatType: FormatType.custom,
+                                      format: '',
+                                      locale: '',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                  ),
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      setState(() {
+                                        FFAppState().quantity =
+                                            FFAppState().quantity + 1;
+                                      });
+                                    },
+                                    child: FaIcon(
+                                      FontAwesomeIcons.plus,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 24.0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                          incrementIconBuilder: (enabled) => FaIcon(
-                            FontAwesomeIcons.plus,
-                            color: enabled
-                                ? const Color(0xFFFD6907)
-                                : FlutterFlowTheme.of(context).alternate,
-                            size: 20.0,
-                          ),
-                          countBuilder: (count) => Text(
-                            count.toString(),
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  fontSize: 15.0,
-                                ),
-                          ),
-                          count: _model.countControllerValue ??= 1,
-                          updateCount: (count) async {
-                            setState(() => _model.countControllerValue = count);
-                            setState(() {
-                              FFAppState().soma = FFAppState().soma +
-                                  functions.soma(widget.valor!,
-                                      _model.countControllerValue!.toDouble());
-                            });
-                          },
-                          stepSize: 1,
-                          minimum: 1,
-                          maximum: 99,
                         ),
                       ),
                     ),
@@ -707,22 +736,6 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              setState(() {
-                                FFAppState().soma = FFAppState().soma +
-                                    functions.soma(
-                                        widget.valor!,
-                                        _model.countControllerValue!
-                                            .toDouble());
-                                FFAppState().addToProdutosDoCarrinho(
-                                    ProdutosCarrinhoStruct(
-                                  nomeProduto: widget.titulo,
-                                  img: widget.img,
-                                  valor: widget.valor,
-                                  quantidade:
-                                      _model.countControllerValue?.toDouble(),
-                                ));
-                              });
-
                               context.pushNamed('carrinho');
                             },
                             child: Row(

@@ -19,9 +19,6 @@ class FFAppState extends ChangeNotifier {
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
     _safeInit(() {
-      _soma = prefs.getDouble('ff_soma') ?? _soma;
-    });
-    _safeInit(() {
       _ProdutosDoCarrinho = prefs
               .getStringList('ff_ProdutosDoCarrinho')
               ?.map((x) {
@@ -38,6 +35,9 @@ class FFAppState extends ChangeNotifier {
           _ProdutosDoCarrinho;
     });
     _safeInit(() {
+      _soma = prefs.getDouble('ff_soma') ?? _soma;
+    });
+    _safeInit(() {
       _totalprice = prefs.getDouble('ff_totalprice') ?? _totalprice;
     });
   }
@@ -48,25 +48,6 @@ class FFAppState extends ChangeNotifier {
   }
 
   late SharedPreferences prefs;
-
-  bool _preferencias = false;
-  bool get preferencias => _preferencias;
-  set preferencias(bool value) {
-    _preferencias = value;
-  }
-
-  double _soma = 0.0;
-  double get soma => _soma;
-  set soma(double value) {
-    _soma = value;
-    prefs.setDouble('ff_soma', value);
-  }
-
-  int _contador = -1;
-  int get contador => _contador;
-  set contador(int value) {
-    _contador = value;
-  }
 
   List<ProdutosCarrinhoStruct> _ProdutosDoCarrinho = [];
   List<ProdutosCarrinhoStruct> get ProdutosDoCarrinho => _ProdutosDoCarrinho;
@@ -110,11 +91,36 @@ class FFAppState extends ChangeNotifier {
         _ProdutosDoCarrinho.map((x) => x.serialize()).toList());
   }
 
+  bool _preferencias = false;
+  bool get preferencias => _preferencias;
+  set preferencias(bool value) {
+    _preferencias = value;
+  }
+
+  double _soma = 0.0;
+  double get soma => _soma;
+  set soma(double value) {
+    _soma = value;
+    prefs.setDouble('ff_soma', value);
+  }
+
+  int _contador = -1;
+  int get contador => _contador;
+  set contador(int value) {
+    _contador = value;
+  }
+
   double _totalprice = 0;
   double get totalprice => _totalprice;
   set totalprice(double value) {
     _totalprice = value;
     prefs.setDouble('ff_totalprice', value);
+  }
+
+  int _quantity = 1;
+  int get quantity => _quantity;
+  set quantity(int value) {
+    _quantity = value;
   }
 }
 
