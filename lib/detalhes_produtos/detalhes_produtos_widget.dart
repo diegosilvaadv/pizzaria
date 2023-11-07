@@ -91,18 +91,27 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              context.safePop();
-                            },
-                            child: const Icon(
-                              Icons.chevron_left_outlined,
-                              color: Colors.white,
-                              size: 35.0,
+                          Card(
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            elevation: 4.0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.safePop();
+                              },
+                              child: Icon(
+                                Icons.chevron_left_outlined,
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                size: 35.0,
+                              ),
                             ),
                           ),
                           Card(
@@ -134,13 +143,26 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                               ),
                             ),
                           ),
-                          const Row(
+                          Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Icon(
-                                Icons.local_grocery_store,
-                                color: Colors.white,
-                                size: 24.0,
+                              Card(
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                elevation: 4.0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                child: const Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      6.0, 6.0, 6.0, 6.0),
+                                  child: Icon(
+                                    Icons.local_grocery_store,
+                                    color: Colors.white,
+                                    size: 24.0,
+                                  ),
+                                ),
                               ),
                             ],
                           ),
