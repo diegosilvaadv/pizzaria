@@ -5,12 +5,6 @@ import 'preferencias_widget.dart' show PreferenciasWidget;
 import 'package:flutter/material.dart';
 
 class PreferenciasModel extends FlutterFlowModel<PreferenciasWidget> {
-  ///  Local state fields for this component.
-
-  ProdutosCarrinhoStruct? produtos;
-  void updateProdutosStruct(Function(ProdutosCarrinhoStruct) updateFn) =>
-      updateFn(produtos ??= ProdutosCarrinhoStruct());
-
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for RadioButton widget.

@@ -1,4 +1,3 @@
-import '/backend/schema/structs/index.dart';
 import '/components/preferencias_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -413,22 +412,6 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              setState(() {
-                                FFAppState().addToProdutosDoCarrinho(
-                                    ProdutosCarrinhoStruct(
-                                  nomeProduto: widget.titulo,
-                                  img: widget.img,
-                                  quantity: FFAppState().quantity,
-                                  valor: widget.valor,
-                                ));
-                                FFAppState().totalprice = FFAppState()
-                                        .totalprice +
-                                    functions.finalPrice(
-                                        widget.valor!, FFAppState().quantity);
-                              });
-                              setState(() {
-                                FFAppState().quantity = 1;
-                              });
                               await showModalBottomSheet(
                                 isScrollControlled: true,
                                 backgroundColor: Colors.transparent,
@@ -443,9 +426,12 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         : FocusScope.of(context).unfocus(),
                                     child: Padding(
                                       padding: MediaQuery.viewInsetsOf(context),
-                                      child: const SizedBox(
-                                        height: 750.0,
-                                        child: PreferenciasWidget(),
+                                      child: PreferenciasWidget(
+                                        titulo: widget.titulo!,
+                                        valor: widget.valor!,
+                                        descricao: widget.descricao!,
+                                        quantidade: FFAppState().quantity,
+                                        img: widget.img!,
                                       ),
                                     ),
                                   );

@@ -10,7 +10,20 @@ import 'preferencias_model.dart';
 export 'preferencias_model.dart';
 
 class PreferenciasWidget extends StatefulWidget {
-  const PreferenciasWidget({super.key});
+  const PreferenciasWidget({
+    super.key,
+    required this.titulo,
+    required this.valor,
+    required this.descricao,
+    required this.quantidade,
+    required this.img,
+  });
+
+  final String? titulo;
+  final double? valor;
+  final String? descricao;
+  final int? quantidade;
+  final String? img;
 
   @override
   _PreferenciasWidgetState createState() => _PreferenciasWidgetState();
@@ -444,16 +457,15 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                       setState(() {
                                         FFAppState().addToProdutosDoCarrinho(
                                             ProdutosCarrinhoStruct(
-                                          nomeProduto:
-                                              _model.produtos?.nomeProduto,
-                                          img: _model.produtos?.img,
+                                          nomeProduto: widget.titulo,
+                                          img: widget.img,
                                           quantity: FFAppState().quantity,
-                                          valor: _model.produtos?.valor,
+                                          valor: widget.valor,
                                         ));
                                         FFAppState().totalprice =
                                             FFAppState().totalprice +
                                                 functions.finalPrice(
-                                                    _model.produtos!.valor,
+                                                    widget.valor!,
                                                     FFAppState().quantity);
                                       });
                                       setState(() {
