@@ -97,7 +97,7 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                       ),
                     ],
                   ),
-                  if (FFAppState().preferencias == true)
+                  if (FFAppState().preferencias == false)
                     Padding(
                       padding: const EdgeInsetsDirectional.fromSTEB(
                           10.0, 10.0, 10.0, 10.0),
