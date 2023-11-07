@@ -85,6 +85,7 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                         onTap: () async {
                           setState(() {
                             FFAppState().total = 0;
+                            FFAppState().quantity = 1;
                           });
                           Navigator.pop(context);
                         },
@@ -172,38 +173,42 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
-                                                ToggleIcon(
-                                                  onPressed: () async {
-                                                    setState(() => FFAppState()
-                                                            .preferencias =
-                                                        !FFAppState()
-                                                            .preferencias);
-                                                    setState(() {
-                                                      FFAppState()
-                                                          .total = FFAppState()
-                                                              .total +
-                                                          listViewPreferenciasRecord
-                                                              .valormassa;
-                                                    });
-                                                  },
-                                                  value:
-                                                      FFAppState().preferencias,
-                                                  onIcon: Icon(
-                                                    Icons.check_box,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                    size: 25.0,
+                                                if (FFAppState().preferencias ==
+                                                    false)
+                                                  ToggleIcon(
+                                                    onPressed: () async {
+                                                      setState(() => FFAppState()
+                                                              .preferencias =
+                                                          !FFAppState()
+                                                              .preferencias);
+                                                      setState(() {
+                                                        FFAppState()
+                                                            .total = FFAppState()
+                                                                .total +
+                                                            listViewPreferenciasRecord
+                                                                .valormassa;
+                                                      });
+                                                    },
+                                                    value: FFAppState()
+                                                        .preferencias,
+                                                    onIcon: Icon(
+                                                      Icons.check_box,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      size: 25.0,
+                                                    ),
+                                                    offIcon: Icon(
+                                                      Icons
+                                                          .check_box_outline_blank,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 25.0,
+                                                    ),
                                                   ),
-                                                  offIcon: Icon(
-                                                    Icons
-                                                        .check_box_outline_blank,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    size: 25.0,
-                                                  ),
-                                                ),
                                                 Text(
                                                   listViewPreferenciasRecord
                                                       .massas,
@@ -440,8 +445,7 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                         ),
                                         Text(
                                           formatNumber(
-                                            functions.finalPrice(
-                                                FFAppState().total,
+                                            functions.finalPrice(widget.valor!,
                                                 FFAppState().quantity),
                                             formatType: FormatType.decimal,
                                             decimalType:
