@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
@@ -206,6 +207,39 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                                               const Color(0xFF26CB3A),
                                                           fontSize: 20.0,
                                                         ),
+                                                  ),
+                                                ),
+                                                ToggleIcon(
+                                                  onPressed: () async {
+                                                    await listViewPreferenciasRecord
+                                                        .reference
+                                                        .update({
+                                                      ...mapToFirestore(
+                                                        {
+                                                          'selecionar':
+                                                              !listViewPreferenciasRecord
+                                                                  .selecionar,
+                                                        },
+                                                      ),
+                                                    });
+                                                  },
+                                                  value:
+                                                      listViewPreferenciasRecord
+                                                          .selecionar,
+                                                  onIcon: Icon(
+                                                    Icons.check_box,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    size: 25.0,
+                                                  ),
+                                                  offIcon: Icon(
+                                                    Icons
+                                                        .check_box_outline_blank,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 25.0,
                                                   ),
                                                 ),
                                               ],
