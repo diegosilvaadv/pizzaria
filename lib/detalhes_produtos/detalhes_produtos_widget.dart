@@ -646,71 +646,70 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                           child: Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 8.0, 0.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                context.pushNamed('carrinho');
-                              },
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      if (FFAppState().quantity != 1) {
-                                        setState(() {
-                                          FFAppState().quantity =
-                                              FFAppState().quantity + -1;
-                                        });
-                                      } else {
-                                        return;
-                                      }
-                                    },
-                                    child: FaIcon(
-                                      FontAwesomeIcons.minus,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 24.0,
-                                    ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    if (FFAppState().quantity != 1) {
+                                      setState(() {
+                                        FFAppState().quantity =
+                                            FFAppState().quantity + -1;
+                                      });
+                                    } else {
+                                      return;
+                                    }
+                                  },
+                                  child: FaIcon(
+                                    FontAwesomeIcons.minus,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 24.0,
                                   ),
-                                  Text(
-                                    FFAppState().quantity.toString(),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          fontSize: 20.0,
-                                          fontWeight: FontWeight.w600,
-                                        ),
+                                ),
+                                Text(
+                                  formatNumber(
+                                    FFAppState().quantity,
+                                    formatType: FormatType.custom,
+                                    format: '',
+                                    locale: '',
                                   ),
-                                  InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    if (FFAppState().quantity == 10) {
                                       setState(() {
                                         FFAppState().quantity =
                                             FFAppState().quantity + 1;
                                       });
-                                    },
-                                    child: FaIcon(
-                                      FontAwesomeIcons.plus,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 24.0,
-                                    ),
+                                    } else {
+                                      return;
+                                    }
+                                  },
+                                  child: FaIcon(
+                                    FontAwesomeIcons.plus,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 24.0,
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
