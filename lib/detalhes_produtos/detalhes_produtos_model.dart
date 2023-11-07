@@ -13,6 +13,8 @@ class DetalhesProdutosModel extends FlutterFlowModel<DetalhesProdutosWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  // State field(s) for CountController widget.
+  int? countControllerValue;
 
   /// Initialization and disposal methods.
 
