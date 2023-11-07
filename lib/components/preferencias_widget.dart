@@ -1,8 +1,6 @@
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -134,175 +132,89 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                             Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    StreamBuilder<List<PreferenciasRecord>>(
-                                      stream: queryPreferenciasRecord(
-                                        queryBuilder: (preferenciasRecord) =>
-                                            preferenciasRecord
-                                                .orderBy('valormassa'),
-                                      )..listen((snapshot) async {
-                                          List<PreferenciasRecord>
-                                              radioButtonPreferenciasRecordList =
-                                              snapshot;
-                                          if (_model.radioButtonPreviousSnapshot !=
-                                                  null &&
-                                              !const ListEquality(
-                                                      PreferenciasRecordDocumentEquality())
-                                                  .equals(
-                                                      radioButtonPreferenciasRecordList,
-                                                      _model
-                                                          .radioButtonPreviousSnapshot)) {
-                                            setState(() {
-                                              FFAppState()
-                                                  .totalprice = FFAppState()
-                                                      .totalprice +
-                                                  radioButtonPreferenciasRecordList[
-                                                          FFAppState().contador]
-                                                      .valormassa;
-                                            });
-
-                                            setState(() {});
-                                          }
-                                          _model.radioButtonPreviousSnapshot =
-                                              snapshot;
-                                        }),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<PreferenciasRecord>
-                                            radioButtonPreferenciasRecordList =
-                                            snapshot.data!;
-                                        return FlutterFlowRadioButton(
-                                          options:
-                                              radioButtonPreferenciasRecordList
-                                                  .map((e) => e.reference.id)
-                                                  .toList()
-                                                  .toList(),
-                                          onChanged: (val) => setState(() {}),
-                                          controller: _model
-                                                  .radioButtonValueController ??=
-                                              FormFieldController<String>(null),
-                                          optionHeight: 30.0,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    fontSize: 18.0,
-                                                  ),
-                                          selectedTextStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    fontSize: 18.0,
-                                                  ),
-                                          buttonPosition:
-                                              RadioButtonPosition.left,
-                                          direction: Axis.vertical,
-                                          radioButtonColor:
+                                StreamBuilder<List<PreferenciasRecord>>(
+                                  stream: queryPreferenciasRecord(),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
                                               FlutterFlowTheme.of(context)
                                                   .primary,
-                                          inactiveRadioButtonColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryText,
-                                          toggleable: false,
-                                          horizontalAlignment:
-                                              WrapAlignment.start,
-                                          verticalAlignment:
-                                              WrapCrossAlignment.start,
-                                        );
-                                      },
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          6.0, 0.0, 0.0, 0.0),
-                                      child: StreamBuilder<
-                                          List<PreferenciasRecord>>(
-                                        stream: queryPreferenciasRecord(
-                                          queryBuilder: (preferenciasRecord) =>
-                                              preferenciasRecord
-                                                  .orderBy('valormassa'),
+                                            ),
+                                          ),
                                         ),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  valueColor:
-                                                      AlwaysStoppedAnimation<
-                                                          Color>(
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                  ),
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                          List<PreferenciasRecord>
-                                              columnPreferenciasRecordList =
-                                              snapshot.data!;
-                                          return Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: List.generate(
-                                                columnPreferenciasRecordList
-                                                    .length, (columnIndex) {
-                                              final columnPreferenciasRecord =
-                                                  columnPreferenciasRecordList[
-                                                      columnIndex];
-                                              return Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 6.0, 0.0, 6.0),
-                                                child: Text(
-                                                  formatNumber(
-                                                    columnPreferenciasRecord
-                                                        .valormassa,
-                                                    formatType:
-                                                        FormatType.decimal,
-                                                    decimalType: DecimalType
-                                                        .commaDecimal,
-                                                    currency: '+ R\$',
-                                                  ),
+                                      );
+                                    }
+                                    List<PreferenciasRecord>
+                                        listViewPreferenciasRecordList =
+                                        snapshot.data!;
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount:
+                                          listViewPreferenciasRecordList.length,
+                                      itemBuilder: (context, listViewIndex) {
+                                        final listViewPreferenciasRecord =
+                                            listViewPreferenciasRecordList[
+                                                listViewIndex];
+                                        return Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Text(
+                                                  listViewPreferenciasRecord
+                                                      .massas,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily:
                                                             'Readex Pro',
-                                                        fontSize: 16.0,
+                                                        fontSize: 20.0,
                                                       ),
                                                 ),
-                                              );
-                                            }),
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                  ],
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          6.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    formatNumber(
+                                                      listViewPreferenciasRecord
+                                                          .valormassa,
+                                                      formatType:
+                                                          FormatType.decimal,
+                                                      decimalType: DecimalType
+                                                          .periodDecimal,
+                                                      currency: 'R\$',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color:
+                                                              const Color(0xFF26CB3A),
+                                                          fontSize: 20.0,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  },
                                 ),
                               ],
                             ),
