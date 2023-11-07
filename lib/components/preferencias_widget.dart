@@ -84,6 +84,9 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          setState(() {
+                            FFAppState().total = 0;
+                          });
                           Navigator.pop(context);
                         },
                         child: Icon(
@@ -470,6 +473,7 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                       });
                                       setState(() {
                                         FFAppState().quantity = 1;
+                                        FFAppState().total = 0;
                                       });
 
                                       context.pushNamed('carrinho');
