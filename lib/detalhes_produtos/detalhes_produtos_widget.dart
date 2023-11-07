@@ -731,7 +731,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                 Text(
                                   valueOrDefault<String>(
                                     FFAppState().quantity.toString(),
-                                    '0',
+                                    '1',
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -753,8 +753,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                             FFAppState().quantity + 1;
                                         FFAppState().totalprice = FFAppState()
                                                 .totalprice +
-                                            functions.soma(widget.valor!,
-                                                _model.countControllerValue!);
+                                            functions.soma(widget.valor!, 1);
                                       });
                                     } else {
                                       return;
