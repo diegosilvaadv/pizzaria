@@ -103,194 +103,198 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                       ),
                     ],
                   ),
-                  if (FFAppState().preferencias == false)
-                    Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          10.0, 10.0, 10.0, 10.0),
-                      child: Card(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        color: FlutterFlowTheme.of(context).primaryBackground,
-                        elevation: 4.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              6.0, 6.0, 6.0, 6.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 10.0, 10.0, 10.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Text(
-                                      'Escolha a sua Preferência',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            fontSize: 20.0,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Column(
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+                    child: Card(
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      elevation: 4.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 10.0, 10.0, 10.0),
+                              child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  StreamBuilder<List<PreferenciasRecord>>(
-                                    stream: queryPreferenciasRecord(),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50.0,
-                                            height: 50.0,
-                                            child: CircularProgressIndicator(
-                                              valueColor:
-                                                  AlwaysStoppedAnimation<Color>(
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
-                                              ),
+                                  Text(
+                                    'Escolha a sua Preferência',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                StreamBuilder<List<PreferenciasRecord>>(
+                                  stream: queryPreferenciasRecord(),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
                                             ),
                                           ),
-                                        );
-                                      }
-                                      List<PreferenciasRecord>
-                                          listViewPreferenciasRecordList =
-                                          snapshot.data!;
-                                      return ListView.builder(
-                                        padding: EdgeInsets.zero,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount:
-                                            listViewPreferenciasRecordList
-                                                .length,
-                                        itemBuilder: (context, listViewIndex) {
-                                          final listViewPreferenciasRecord =
-                                              listViewPreferenciasRecordList[
-                                                  listViewIndex];
-                                          return Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 6.0),
-                                            child: Container(
-                                              width: 100.0,
-                                              height: 52.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                        ),
+                                      );
+                                    }
+                                    List<PreferenciasRecord>
+                                        listViewPreferenciasRecordList =
+                                        snapshot.data!;
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      primary: false,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount:
+                                          listViewPreferenciasRecordList.length,
+                                      itemBuilder: (context, listViewIndex) {
+                                        final listViewPreferenciasRecord =
+                                            listViewPreferenciasRecordList[
+                                                listViewIndex];
+                                        return Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 6.0),
+                                          child: Container(
+                                            width: 100.0,
+                                            height: 52.0,
+                                            decoration: BoxDecoration(
+                                              color: colorFromCssString(
+                                                FFAppState()
+                                                    .preferencias
+                                                    .toString(),
+                                                defaultColor: const Color(0xFF26CB3A),
                                               ),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      ToggleIcon(
-                                                        onPressed: () async {
-                                                          setState(() => FFAppState()
-                                                                  .preferencias =
-                                                              !FFAppState()
-                                                                  .preferencias);
-                                                          setState(() {
-                                                            FFAppState()
-                                                                .total = FFAppState()
-                                                                    .total +
-                                                                listViewPreferenciasRecord
-                                                                    .valormassa;
-                                                          });
-                                                        },
-                                                        value: FFAppState()
-                                                            .preferencias,
-                                                        onIcon: Icon(
-                                                          Icons.check_box,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          size: 25.0,
-                                                        ),
-                                                        offIcon: Icon(
-                                                          Icons
-                                                              .check_box_outline_blank,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                          size: 25.0,
-                                                        ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    ToggleIcon(
+                                                      onPressed: () async {
+                                                        setState(() => FFAppState()
+                                                                .preferencias =
+                                                            !FFAppState()
+                                                                .preferencias);
+                                                        setState(() {
+                                                          FFAppState()
+                                                              .total = FFAppState()
+                                                                  .total +
+                                                              listViewPreferenciasRecord
+                                                                  .valormassa;
+                                                        });
+                                                      },
+                                                      value: FFAppState()
+                                                          .preferencias,
+                                                      onIcon: Icon(
+                                                        Icons.check_box,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        size: 25.0,
                                                       ),
-                                                      Text(
-                                                        listViewPreferenciasRecord
-                                                            .massas,
+                                                      offIcon: Icon(
+                                                        Icons
+                                                            .check_box_outline_blank,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 25.0,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      listViewPreferenciasRecord
+                                                          .massas,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                fontSize: 20.0,
+                                                              ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  6.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        formatNumber(
+                                                          listViewPreferenciasRecord
+                                                              .valormassa,
+                                                          formatType: FormatType
+                                                              .decimal,
+                                                          decimalType:
+                                                              DecimalType
+                                                                  .periodDecimal,
+                                                          currency: 'R\$',
+                                                        ),
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .bodyMedium
                                                             .override(
                                                               fontFamily:
                                                                   'Readex Pro',
+                                                              color: const Color(
+                                                                  0xFF26CB3A),
                                                               fontSize: 20.0,
                                                             ),
                                                       ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    6.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          formatNumber(
-                                                            listViewPreferenciasRecord
-                                                                .valormassa,
-                                                            formatType:
-                                                                FormatType
-                                                                    .decimal,
-                                                            decimalType:
-                                                                DecimalType
-                                                                    .periodDecimal,
-                                                            currency: 'R\$',
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                color: const Color(
-                                                                    0xFF26CB3A),
-                                                                fontSize: 20.0,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
                                             ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
                     ),
+                  ),
                   Padding(
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
