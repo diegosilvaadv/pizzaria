@@ -37,6 +37,9 @@ class FFAppState extends ChangeNotifier {
               .toList() ??
           _ProdutosDoCarrinho;
     });
+    _safeInit(() {
+      _totalprice = prefs.getDouble('ff_totalprice') ?? _totalprice;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -105,6 +108,13 @@ class FFAppState extends ChangeNotifier {
     _ProdutosDoCarrinho.insert(index, value);
     prefs.setStringList('ff_ProdutosDoCarrinho',
         _ProdutosDoCarrinho.map((x) => x.serialize()).toList());
+  }
+
+  double _totalprice = 0;
+  double get totalprice => _totalprice;
+  set totalprice(double value) {
+    _totalprice = value;
+    prefs.setDouble('ff_totalprice', value);
   }
 }
 

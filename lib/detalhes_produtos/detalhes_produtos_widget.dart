@@ -317,33 +317,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                     (preferenciasRecord) =>
                                                         preferenciasRecord
                                                             .orderBy('valor'),
-                                              )..listen((snapshot) async {
-                                                  List<PreferenciasRecord>
-                                                      radioButtonPreferenciasRecordList =
-                                                      snapshot;
-                                                  if (_model.radioButtonPreviousSnapshot !=
-                                                          null &&
-                                                      !const ListEquality(
-                                                              PreferenciasRecordDocumentEquality())
-                                                          .equals(
-                                                              radioButtonPreferenciasRecordList,
-                                                              _model
-                                                                  .radioButtonPreviousSnapshot)) {
-                                                    setState(() {
-                                                      FFAppState()
-                                                          .soma = FFAppState()
-                                                              .soma +
-                                                          radioButtonPreferenciasRecordList[
-                                                                  FFAppState()
-                                                                      .contador]
-                                                              .valor;
-                                                    });
-
-                                                    setState(() {});
-                                                  }
-                                                  _model.radioButtonPreviousSnapshot =
-                                                      snapshot;
-                                                }),
+                                              ),
                                               builder: (context, snapshot) {
                                                 // Customize what your widget looks like when it's loading.
                                                 if (!snapshot.hasData) {
@@ -715,7 +689,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                         width: 230.0,
                         height: 100.0,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          color: const Color(0xFF26CB3A),
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: Padding(
@@ -760,7 +734,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                 ),
                                 Text(
                                   formatNumber(
-                                    widget.valor,
+                                    FFAppState().soma,
                                     formatType: FormatType.decimal,
                                     decimalType: DecimalType.commaDecimal,
                                     currency: 'R\$',
