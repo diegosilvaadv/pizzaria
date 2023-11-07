@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -139,7 +140,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                       height: 100.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
+                                            .primaryBackground,
                                         borderRadius:
                                             BorderRadius.circular(16.0),
                                       ),
@@ -235,6 +236,51 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                     ),
                                                   ],
                                                 ),
+                                              ),
+                                            ),
+                                            Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.00, 0.00),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      setState(() {
+                                                        FFAppState()
+                                                            .removeAtIndexFromProdutosDoCarrinho(
+                                                                pedidosIndex);
+                                                        FFAppState()
+                                                            .soma = FFAppState()
+                                                                .soma +
+                                                            functions.subtracao(
+                                                                functions.soma(
+                                                                    pedidosItem
+                                                                        .valor,
+                                                                    pedidosItem
+                                                                        .quantidade));
+                                                      });
+                                                    },
+                                                    child: Icon(
+                                                      Icons.delete_forever,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      size: 24.0,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                           ],

@@ -19,3 +19,7 @@ double soma(
 ) {
   return num1 * num2;
 }
+
+double subtracao(double valor1) {
+  return valor1 * -1;
+}
