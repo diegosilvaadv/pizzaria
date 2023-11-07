@@ -665,10 +665,14 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      setState(() {
-                                        FFAppState().quantity =
-                                            FFAppState().quantity + -1;
-                                      });
+                                      if (FFAppState().quantity == 1) {
+                                        setState(() {
+                                          FFAppState().quantity =
+                                              FFAppState().quantity + -1;
+                                        });
+                                      } else {
+                                        return;
+                                      }
                                     },
                                     child: FaIcon(
                                       FontAwesomeIcons.minus,
@@ -678,12 +682,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                     ),
                                   ),
                                   Text(
-                                    formatNumber(
-                                      FFAppState().quantity,
-                                      formatType: FormatType.custom,
-                                      format: '',
-                                      locale: '',
-                                    ),
+                                    FFAppState().quantity.toString(),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
