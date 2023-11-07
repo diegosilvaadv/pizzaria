@@ -761,7 +761,12 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                       ),
                                 ),
                                 Text(
-                                  'R\$ 66,90',
+                                  formatNumber(
+                                    FFAppState().totalprice,
+                                    formatType: FormatType.decimal,
+                                    decimalType: DecimalType.commaDecimal,
+                                    currency: 'R\$',
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
