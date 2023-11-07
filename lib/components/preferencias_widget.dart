@@ -68,6 +68,12 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
             height: 518.0,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(0.0),
+                bottomRight: Radius.circular(0.0),
+                topLeft: Radius.circular(16.0),
+                topRight: Radius.circular(16.0),
+              ),
             ),
             child: SingleChildScrollView(
               child: Column(
@@ -127,7 +133,7 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                           .override(
                                             fontFamily: 'Readex Pro',
                                             fontSize: 20.0,
-                                            fontWeight: FontWeight.w500,
+                                            fontWeight: FontWeight.normal,
                                           ),
                                     ),
                                   ],
@@ -175,7 +181,7 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                                     0.0, 0.0, 0.0, 6.0),
                                             child: Container(
                                               width: 100.0,
-                                              height: 44.0,
+                                              height: 52.0,
                                               decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)
@@ -185,6 +191,8 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                               ),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
                                                 children: [
                                                   Row(
                                                     mainAxisSize:
@@ -466,8 +474,7 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                         ),
                                         Text(
                                           formatNumber(
-                                            functions.finalPrice(widget.valor!,
-                                                FFAppState().quantity),
+                                            FFAppState().total,
                                             formatType: FormatType.decimal,
                                             decimalType:
                                                 DecimalType.commaDecimal,
