@@ -678,7 +678,10 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                   ),
                                 ),
                                 Text(
-                                  FFAppState().quantity.toString(),
+                                  valueOrDefault<String>(
+                                    FFAppState().quantity.toString(),
+                                    '0',
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
