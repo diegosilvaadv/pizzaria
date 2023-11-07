@@ -107,13 +107,13 @@ class FFAppState extends ChangeNotifier {
     prefs.setDouble('ff_totalprice', value);
   }
 
-  int _quantity = 0;
+  int _quantity = 1;
   int get quantity => _quantity;
   set quantity(int value) {
     _quantity = value;
   }
 
-  double _soma = 0.0;
+  double _soma = 0;
   double get soma => _soma;
   set soma(double value) {
     _soma = value;

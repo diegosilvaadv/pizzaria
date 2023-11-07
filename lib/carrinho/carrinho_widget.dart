@@ -102,7 +102,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                 onTap: () async {
                                   setState(() {
                                     FFAppState().ProdutosDoCarrinho = [];
-                                    FFAppState().soma = 0.0;
+                                    FFAppState().soma = 0;
                                   });
                                 },
                                 child: Text(
