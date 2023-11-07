@@ -454,6 +454,7 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                       setState(() {
                                         FFAppState().quantity = 1;
                                         FFAppState().total = 0;
+                                        FFAppState().preferencias = false;
                                       });
 
                                       context.pushNamed('carrinho');
