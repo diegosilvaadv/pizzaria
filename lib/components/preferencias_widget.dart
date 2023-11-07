@@ -171,6 +171,38 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
+                                                ToggleIcon(
+                                                  onPressed: () async {
+                                                    setState(() => FFAppState()
+                                                            .preferencias =
+                                                        !FFAppState()
+                                                            .preferencias);
+                                                    setState(() {
+                                                      FFAppState()
+                                                          .total = FFAppState()
+                                                              .total +
+                                                          listViewPreferenciasRecord
+                                                              .valormassa;
+                                                    });
+                                                  },
+                                                  value:
+                                                      FFAppState().preferencias,
+                                                  onIcon: Icon(
+                                                    Icons.check_box,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    size: 25.0,
+                                                  ),
+                                                  offIcon: Icon(
+                                                    Icons
+                                                        .check_box_outline_blank,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 25.0,
+                                                  ),
+                                                ),
                                                 Text(
                                                   listViewPreferenciasRecord
                                                       .massas,
@@ -207,39 +239,6 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                                               const Color(0xFF26CB3A),
                                                           fontSize: 20.0,
                                                         ),
-                                                  ),
-                                                ),
-                                                ToggleIcon(
-                                                  onPressed: () async {
-                                                    await listViewPreferenciasRecord
-                                                        .reference
-                                                        .update({
-                                                      ...mapToFirestore(
-                                                        {
-                                                          'selecionar':
-                                                              !listViewPreferenciasRecord
-                                                                  .selecionar,
-                                                        },
-                                                      ),
-                                                    });
-                                                  },
-                                                  value:
-                                                      listViewPreferenciasRecord
-                                                          .selecionar,
-                                                  onIcon: Icon(
-                                                    Icons.check_box,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                    size: 25.0,
-                                                  ),
-                                                  offIcon: Icon(
-                                                    Icons
-                                                        .check_box_outline_blank,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    size: 25.0,
                                                   ),
                                                 ),
                                               ],

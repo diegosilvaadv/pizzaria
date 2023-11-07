@@ -88,7 +88,7 @@ class FFAppState extends ChangeNotifier {
         _ProdutosDoCarrinho.map((x) => x.serialize()).toList());
   }
 
-  bool _preferencias = false;
+  bool _preferencias = true;
   bool get preferencias => _preferencias;
   set preferencias(bool value) {
     _preferencias = value;
