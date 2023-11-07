@@ -237,7 +237,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          fontSize: 15.0,
+                                          fontSize: 16.0,
                                         ),
                                   ),
                                 ),
@@ -711,11 +711,10 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                       setState(() {
                                         FFAppState().quantity =
                                             FFAppState().quantity + -1;
-                                        FFAppState().totalprice = FFAppState()
-                                                .totalprice +
-                                            functions.subtracao(functions.soma(
-                                                widget.valor!,
-                                                FFAppState().quantity));
+                                        FFAppState().totalprice =
+                                            FFAppState().totalprice +
+                                                functions.subtracao(functions
+                                                    .soma(widget.valor!, -1));
                                       });
                                     } else {
                                       return;
