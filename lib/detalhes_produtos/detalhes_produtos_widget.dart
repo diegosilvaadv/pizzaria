@@ -693,7 +693,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    if (FFAppState().quantity == 10) {
+                                    if (FFAppState().quantity != 10) {
                                       setState(() {
                                         FFAppState().quantity =
                                             FFAppState().quantity + 1;
