@@ -35,6 +35,9 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DetalhesProdutosModel());
+
+    _model.textController ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
   }
 
   @override
@@ -414,6 +417,93 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                         ),
                       ],
                     ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 6.0, 0.0),
+                        child: Icon(
+                          Icons.chat_sharp,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 24.0,
+                        ),
+                      ),
+                      Text(
+                        'Alguma Observação?',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              fontSize: 18.0,
+                            ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 10.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 0.0),
+                          child: TextFormField(
+                            controller: _model.textController,
+                            focusNode: _model.textFieldFocusNode,
+                            autofocus: true,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelText:
+                                  'Ex: Tirar a cebola, ponto da carne etc.',
+                              labelStyle:
+                                  FlutterFlowTheme.of(context).labelMedium,
+                              hintStyle:
+                                  FlutterFlowTheme.of(context).labelMedium,
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).error,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).error,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              filled: true,
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            validator: _model.textControllerValidator
+                                .asValidator(context),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Padding(

@@ -9,6 +9,10 @@ class DetalhesProdutosModel extends FlutterFlowModel<DetalhesProdutosWidget> {
   final unfocusNode = FocusNode();
   // State field(s) for RadioButton widget.
   FormFieldController<String>? radioButtonValueController;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController;
+  String? Function(BuildContext, String?)? textControllerValidator;
 
   /// Initialization and disposal methods.
 
@@ -18,6 +22,8 @@ class DetalhesProdutosModel extends FlutterFlowModel<DetalhesProdutosWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
+    textFieldFocusNode?.dispose();
+    textController?.dispose();
   }
 
   /// Action blocks are added here.
