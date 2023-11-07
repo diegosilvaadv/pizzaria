@@ -232,7 +232,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          fontSize: 16.0,
+                                          fontSize: 15.0,
                                         ),
                                   ),
                                 ),
@@ -676,7 +676,10 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                   ),
                                 ),
                                 Text(
-                                  FFAppState().quantity.toString(),
+                                  valueOrDefault<String>(
+                                    FFAppState().quantity.toString(),
+                                    '0',
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -692,7 +695,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     if (FFAppState().quantity != 10) {
-                                      setState(() {
+                                      FFAppState().update(() {
                                         FFAppState().quantity =
                                             FFAppState().quantity + 1;
                                         FFAppState().soma = FFAppState().soma +

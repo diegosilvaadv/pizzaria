@@ -12,13 +12,13 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
   ProdutosCarrinhoStruct({
     String? nomeProduto,
     String? img,
-    double? valor,
     int? quantity,
+    int? valor,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _nomeProduto = nomeProduto,
         _img = img,
-        _valor = valor,
         _quantity = quantity,
+        _valor = valor,
         super(firestoreUtilData);
 
   // "NomeProduto" field.
@@ -33,13 +33,6 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
   set img(String? val) => _img = val;
   bool hasImg() => _img != null;
 
-  // "valor" field.
-  double? _valor;
-  double get valor => _valor ?? 0.0;
-  set valor(double? val) => _valor = val;
-  void incrementValor(double amount) => _valor = valor + amount;
-  bool hasValor() => _valor != null;
-
   // "quantity" field.
   int? _quantity;
   int get quantity => _quantity ?? 0;
@@ -47,12 +40,19 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
   void incrementQuantity(int amount) => _quantity = quantity + amount;
   bool hasQuantity() => _quantity != null;
 
+  // "valor" field.
+  int? _valor;
+  int get valor => _valor ?? 0;
+  set valor(int? val) => _valor = val;
+  void incrementValor(int amount) => _valor = valor + amount;
+  bool hasValor() => _valor != null;
+
   static ProdutosCarrinhoStruct fromMap(Map<String, dynamic> data) =>
       ProdutosCarrinhoStruct(
         nomeProduto: data['NomeProduto'] as String?,
         img: data['img'] as String?,
-        valor: castToType<double>(data['valor']),
         quantity: castToType<int>(data['quantity']),
+        valor: castToType<int>(data['valor']),
       );
 
   static ProdutosCarrinhoStruct? maybeFromMap(dynamic data) =>
@@ -63,8 +63,8 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
   Map<String, dynamic> toMap() => {
         'NomeProduto': _nomeProduto,
         'img': _img,
-        'valor': _valor,
         'quantity': _quantity,
+        'valor': _valor,
       }.withoutNulls;
 
   @override
@@ -77,12 +77,12 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
           _img,
           ParamType.String,
         ),
-        'valor': serializeParam(
-          _valor,
-          ParamType.double,
-        ),
         'quantity': serializeParam(
           _quantity,
+          ParamType.int,
+        ),
+        'valor': serializeParam(
+          _valor,
           ParamType.int,
         ),
       }.withoutNulls;
@@ -100,13 +100,13 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
-        valor: deserializeParam(
-          data['valor'],
-          ParamType.double,
-          false,
-        ),
         quantity: deserializeParam(
           data['quantity'],
+          ParamType.int,
+          false,
+        ),
+        valor: deserializeParam(
+          data['valor'],
           ParamType.int,
           false,
         ),
@@ -120,20 +120,20 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
     return other is ProdutosCarrinhoStruct &&
         nomeProduto == other.nomeProduto &&
         img == other.img &&
-        valor == other.valor &&
-        quantity == other.quantity;
+        quantity == other.quantity &&
+        valor == other.valor;
   }
 
   @override
   int get hashCode =>
-      const ListEquality().hash([nomeProduto, img, valor, quantity]);
+      const ListEquality().hash([nomeProduto, img, quantity, valor]);
 }
 
 ProdutosCarrinhoStruct createProdutosCarrinhoStruct({
   String? nomeProduto,
   String? img,
-  double? valor,
   int? quantity,
+  int? valor,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -142,8 +142,8 @@ ProdutosCarrinhoStruct createProdutosCarrinhoStruct({
     ProdutosCarrinhoStruct(
       nomeProduto: nomeProduto,
       img: img,
-      valor: valor,
       quantity: quantity,
+      valor: valor,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

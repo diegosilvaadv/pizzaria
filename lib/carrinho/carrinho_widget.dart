@@ -263,12 +263,12 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                         FFAppState()
                                                             .soma = FFAppState()
                                                                 .soma +
-                                                            functions.subtracao(
-                                                                functions.soma(
-                                                                    pedidosItem
-                                                                        .valor,
-                                                                    pedidosItem
-                                                                        .quantity));
+                                                            functions.subtracao(functions.soma(
+                                                                pedidosItem
+                                                                    .valor
+                                                                    .toDouble(),
+                                                                pedidosItem
+                                                                    .quantity));
                                                       });
                                                     },
                                                     child: Icon(
