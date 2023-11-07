@@ -105,23 +105,33 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                               size: 35.0,
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                10.0, 0.0, 0.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Text(
-                                  widget.titulo!,
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleLarge
-                                      .override(
-                                        fontFamily: 'Outfit',
-                                        color: Colors.white,
-                                        fontSize: 20.0,
-                                      ),
-                                ),
-                              ],
+                          Card(
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            elevation: 4.0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(6.0),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 5.0, 10.0, 5.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    widget.titulo!,
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleLarge
+                                        .override(
+                                          fontFamily: 'Outfit',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontSize: 20.0,
+                                        ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           const Row(
@@ -250,7 +260,14 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                           onChanged: (val) => setState(() {}),
                                           controller: _model
                                                   .radioButtonValueController ??=
-                                              FormFieldController<String>(null),
+                                              FormFieldController<String>(
+                                                  formatNumber(
+                                            widget.valor,
+                                            formatType: FormatType.decimal,
+                                            decimalType:
+                                                DecimalType.commaDecimal,
+                                            currency: 'R\$',
+                                          )),
                                           optionHeight: 30.0,
                                           textStyle:
                                               FlutterFlowTheme.of(context)
