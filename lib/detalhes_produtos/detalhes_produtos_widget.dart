@@ -412,6 +412,11 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              setState(() {
+                                FFAppState().total = FFAppState().total +
+                                    functions.finalPrice(
+                                        widget.valor!, FFAppState().quantity);
+                              });
                               await showModalBottomSheet(
                                 isScrollControlled: true,
                                 backgroundColor: Colors.transparent,

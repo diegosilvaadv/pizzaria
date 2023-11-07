@@ -489,13 +489,7 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                               ),
                                         ),
                                         Text(
-                                          formatNumber(
-                                            FFAppState().totalprice,
-                                            formatType: FormatType.decimal,
-                                            decimalType:
-                                                DecimalType.periodDecimal,
-                                            currency: 'R\$',
-                                          ),
+                                          'R\$ 66,90',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
