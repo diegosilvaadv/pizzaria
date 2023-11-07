@@ -490,7 +490,9 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                         ),
                                         Text(
                                           formatNumber(
-                                            FFAppState().total,
+                                            functions.finalPrice(
+                                                FFAppState().total,
+                                                FFAppState().quantity),
                                             formatType: FormatType.decimal,
                                             decimalType:
                                                 DecimalType.commaDecimal,
