@@ -9,7 +9,18 @@ import 'detalhes_produtos_model.dart';
 export 'detalhes_produtos_model.dart';
 
 class DetalhesProdutosWidget extends StatefulWidget {
-  const DetalhesProdutosWidget({super.key});
+  const DetalhesProdutosWidget({
+    super.key,
+    required this.titulo,
+    required this.descricao,
+    required this.img,
+    required this.valor,
+  });
+
+  final String? titulo;
+  final String? descricao;
+  final String? img;
+  final double? valor;
 
   @override
   _DetalhesProdutosWidgetState createState() => _DetalhesProdutosWidgetState();

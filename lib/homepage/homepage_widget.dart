@@ -496,7 +496,30 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                   Colors.transparent,
                                               onTap: () async {
                                                 context.pushNamed(
-                                                    'detalhes_produtos');
+                                                  'detalhes_produtos',
+                                                  queryParameters: {
+                                                    'titulo': serializeParam(
+                                                      listViewProdutosRecord
+                                                          .nomeProduto,
+                                                      ParamType.String,
+                                                    ),
+                                                    'descricao': serializeParam(
+                                                      listViewProdutosRecord
+                                                          .descricao,
+                                                      ParamType.String,
+                                                    ),
+                                                    'img': serializeParam(
+                                                      listViewProdutosRecord
+                                                          .img,
+                                                      ParamType.String,
+                                                    ),
+                                                    'valor': serializeParam(
+                                                      listViewProdutosRecord
+                                                          .valorPizza,
+                                                      ParamType.double,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
                                               },
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
