@@ -4,9 +4,11 @@ import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'detalhes_produtos_model.dart';
 export 'detalhes_produtos_model.dart';
 
@@ -61,6 +63,8 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
         ),
       );
     }
+
+    context.watch<FFAppState>();
 
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
@@ -685,41 +689,65 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                         width: 230.0,
                         height: 100.0,
                         decoration: BoxDecoration(
-                          color: valueOrDefault<Color>(
-                            _model.radioButtonValue == _model.radioButtonValue
-                                ? const Color(0xFF26CB3A)
-                                : FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                            FlutterFlowTheme.of(context).primaryBackground,
-                          ),
+                          color: FlutterFlowTheme.of(context).primaryBackground,
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               8.0, 0.0, 8.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Adicionar',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      fontSize: 18.0,
-                                    ),
-                              ),
-                              Text(
-                                'R\$ 66,90',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      fontSize: 20.0,
-                                    ),
-                              ),
-                            ],
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              setState(() {
+                                FFAppState().soma = FFAppState().soma +
+                                    functions.soma(
+                                        widget.valor!,
+                                        _model.countControllerValue!
+                                            .toDouble());
+                                FFAppState().addToProdutosDoCarrinho(
+                                    ProdutosCarrinhoStruct(
+                                  nomeProduto: widget.titulo,
+                                  img: widget.img,
+                                  valor: widget.valor,
+                                  quantidade:
+                                      _model.countControllerValue?.toDouble(),
+                                ));
+                              });
+
+                              context.pushNamed('carrinho');
+                            },
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Adicionar',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        fontSize: 18.0,
+                                      ),
+                                ),
+                                Text(
+                                  formatNumber(
+                                    widget.valor,
+                                    formatType: FormatType.decimal,
+                                    decimalType: DecimalType.commaDecimal,
+                                    currency: 'R\$',
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        fontSize: 20.0,
+                                      ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

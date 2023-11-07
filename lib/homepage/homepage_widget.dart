@@ -8,6 +8,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:provider/provider.dart';
 import 'homepage_model.dart';
 export 'homepage_model.dart';
 
@@ -81,6 +82,8 @@ class _HomepageWidgetState extends State<HomepageWidget>
       );
     }
 
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -94,37 +97,46 @@ class _HomepageWidgetState extends State<HomepageWidget>
           },
           backgroundColor: const Color(0xFF0CEB29),
           elevation: 8.0,
-          child: Stack(
-            children: [
-              const Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
-                child: Icon(
-                  Icons.local_grocery_store,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
-              ),
-              Align(
-                alignment: const AlignmentDirectional(1.00, -1.00),
-                child: badges.Badge(
-                  badgeContent: Text(
-                    '1',
-                    style: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Readex Pro',
-                          color: Colors.white,
-                        ),
+          child: InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              context.pushNamed('carrinho');
+            },
+            child: Stack(
+              children: [
+                const Align(
+                  alignment: AlignmentDirectional(0.00, 0.00),
+                  child: Icon(
+                    Icons.local_grocery_store,
+                    color: Colors.white,
+                    size: 30.0,
                   ),
-                  showBadge: true,
-                  shape: badges.BadgeShape.circle,
-                  badgeColor: const Color(0xFF88180F),
-                  elevation: 4.0,
-                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
-                  position: badges.BadgePosition.topEnd(),
-                  animationType: badges.BadgeAnimationType.scale,
-                  toAnimate: true,
                 ),
-              ),
-            ],
+                Align(
+                  alignment: const AlignmentDirectional(1.00, -1.00),
+                  child: badges.Badge(
+                    badgeContent: Text(
+                      '1',
+                      style: FlutterFlowTheme.of(context).titleSmall.override(
+                            fontFamily: 'Readex Pro',
+                            color: Colors.white,
+                          ),
+                    ),
+                    showBadge: true,
+                    shape: badges.BadgeShape.circle,
+                    badgeColor: const Color(0xFF88180F),
+                    elevation: 4.0,
+                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                    position: badges.BadgePosition.topEnd(),
+                    animationType: badges.BadgeAnimationType.scale,
+                    toAnimate: true,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         drawer: Drawer(

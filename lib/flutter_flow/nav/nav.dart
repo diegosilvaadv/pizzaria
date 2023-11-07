@@ -99,6 +99,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             img: params.getParam('img', ParamType.String),
             valor: params.getParam('valor', ParamType.double),
           ),
+        ),
+        FFRoute(
+          name: 'carrinho',
+          path: '/carrinho',
+          builder: (context, params) => const CarrinhoWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
