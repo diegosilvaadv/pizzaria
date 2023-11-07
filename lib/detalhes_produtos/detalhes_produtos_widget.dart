@@ -146,6 +146,10 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           context.safePop();
+                                          setState(() {
+                                            FFAppState().quantity = 0;
+                                            FFAppState().soma = 0;
+                                          });
                                         },
                                         child: Icon(
                                           Icons.chevron_left_outlined,
