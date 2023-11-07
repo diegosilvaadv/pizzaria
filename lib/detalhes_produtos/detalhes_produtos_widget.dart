@@ -184,11 +184,19 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                       Expanded(
                         child: Text(
                           widget.descricao!,
-                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    fontSize: 15.0,
+                                  ),
                         ),
                       ),
                     ],
                   ),
+                ),
+                Divider(
+                  thickness: 1.0,
+                  color: FlutterFlowTheme.of(context).secondaryText,
                 ),
                 Padding(
                   padding:
@@ -206,28 +214,26 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
                               color: const Color(0xFF26CB3A),
-                              fontSize: 20.0,
+                              fontSize: 25.0,
                               fontWeight: FontWeight.w600,
                             ),
                       ),
                     ],
                   ),
                 ),
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 15.0),
-                      child: Container(
-                        width: double.infinity,
-                        height: 319.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(16.0),
-                        ),
-                        child: Column(
+                Card(
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                  elevation: 4.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
@@ -384,7 +390,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                       .override(
                                                         fontFamily:
                                                             'Readex Pro',
-                                                        fontSize: 18.0,
+                                                        fontSize: 16.0,
                                                       ),
                                                 ),
                                               );
@@ -399,9 +405,41 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                             ),
                           ],
                         ),
-                      ),
+                      ],
                     ),
-                  ],
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'TOTAL: ',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      Text(
+                        formatNumber(
+                          widget.valor,
+                          formatType: FormatType.decimal,
+                          decimalType: DecimalType.commaDecimal,
+                          currency: 'R\$',
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              color: const Color(0xFF26CB3A),
+                              fontSize: 25.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
