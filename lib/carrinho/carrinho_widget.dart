@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -258,6 +259,15 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                         FFAppState()
                                                             .removeAtIndexFromProdutosDoCarrinho(
                                                                 pedidosIndex);
+                                                        FFAppState()
+                                                            .totalprice = FFAppState()
+                                                                .totalprice +
+                                                            functions.subtracao(
+                                                                functions.finalPrice(
+                                                                    pedidosItem
+                                                                        .valor,
+                                                                    pedidosItem
+                                                                        .quantity));
                                                       });
                                                     },
                                                     child: Icon(
@@ -352,11 +362,17 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                       ),
                                 ),
                                 Text(
-                                  'R\$ 66,90',
+                                  formatNumber(
+                                    FFAppState().totalprice,
+                                    formatType: FormatType.decimal,
+                                    decimalType: DecimalType.commaDecimal,
+                                    currency: 'R\$',
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Readex Pro',
+                                        color: const Color(0xFF26CB3A),
                                         fontSize: 20.0,
                                       ),
                                 ),
