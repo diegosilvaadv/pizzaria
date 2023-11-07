@@ -35,9 +35,6 @@ class FFAppState extends ChangeNotifier {
           _ProdutosDoCarrinho;
     });
     _safeInit(() {
-      _soma = prefs.getDouble('ff_soma') ?? _soma;
-    });
-    _safeInit(() {
       _totalprice = prefs.getDouble('ff_totalprice') ?? _totalprice;
     });
   }
@@ -97,13 +94,6 @@ class FFAppState extends ChangeNotifier {
     _preferencias = value;
   }
 
-  double _soma = 0.0;
-  double get soma => _soma;
-  set soma(double value) {
-    _soma = value;
-    prefs.setDouble('ff_soma', value);
-  }
-
   int _contador = -1;
   int get contador => _contador;
   set contador(int value) {
@@ -121,6 +111,12 @@ class FFAppState extends ChangeNotifier {
   int get quantity => _quantity;
   set quantity(int value) {
     _quantity = value;
+  }
+
+  double _soma = 0.0;
+  double get soma => _soma;
+  set soma(double value) {
+    _soma = value;
   }
 }
 
