@@ -711,12 +711,6 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                       setState(() {
                                         FFAppState().quantity =
                                             FFAppState().quantity + -1;
-                                        FFAppState().totalprice =
-                                            FFAppState().totalprice +
-                                                functions.subtracao(
-                                                    functions.finalPrice(
-                                                        widget.valor!,
-                                                        FFAppState().quantity));
                                       });
                                     } else {
                                       return;
@@ -752,10 +746,6 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                       FFAppState().update(() {
                                         FFAppState().quantity =
                                             FFAppState().quantity + 1;
-                                        FFAppState().totalprice =
-                                            FFAppState().totalprice +
-                                                functions.finalPrice(
-                                                    widget.valor!, 1);
                                       });
                                     } else {
                                       return;
