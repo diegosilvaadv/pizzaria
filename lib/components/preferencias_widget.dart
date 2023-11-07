@@ -182,11 +182,16 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                             width: 100.0,
                                             height: 52.0,
                                             decoration: BoxDecoration(
-                                              color: colorFromCssString(
-                                                FFAppState()
-                                                    .preferencias
-                                                    .toString(),
-                                                defaultColor: const Color(0xFF26CB3A),
+                                              color: valueOrDefault<Color>(
+                                                FFAppState().preferencias
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondary
+                                                    : FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
                                               ),
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
