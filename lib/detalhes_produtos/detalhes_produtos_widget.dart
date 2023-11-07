@@ -674,8 +674,14 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                 ),
                           ),
                           count: _model.countControllerValue ??= 1,
-                          updateCount: (count) => setState(
-                              () => _model.countControllerValue = count),
+                          updateCount: (count) async {
+                            setState(() => _model.countControllerValue = count);
+                            setState(() {
+                              FFAppState().soma = FFAppState().soma +
+                                  functions.soma(widget.valor!,
+                                      _model.countControllerValue!.toDouble());
+                            });
+                          },
                           stepSize: 1,
                           minimum: 1,
                           maximum: 99,
