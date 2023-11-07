@@ -317,7 +317,33 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                     (preferenciasRecord) =>
                                                         preferenciasRecord
                                                             .orderBy('valor'),
-                                              ),
+                                              )..listen((snapshot) async {
+                                                  List<PreferenciasRecord>
+                                                      radioButtonPreferenciasRecordList =
+                                                      snapshot;
+                                                  if (_model.radioButtonPreviousSnapshot !=
+                                                          null &&
+                                                      !const ListEquality(
+                                                              PreferenciasRecordDocumentEquality())
+                                                          .equals(
+                                                              radioButtonPreferenciasRecordList,
+                                                              _model
+                                                                  .radioButtonPreviousSnapshot)) {
+                                                    setState(() {
+                                                      FFAppState()
+                                                          .soma = FFAppState()
+                                                              .soma +
+                                                          radioButtonPreferenciasRecordList[
+                                                                  FFAppState()
+                                                                      .contador]
+                                                              .valor;
+                                                    });
+
+                                                    setState(() {});
+                                                  }
+                                                  _model.radioButtonPreviousSnapshot =
+                                                      snapshot;
+                                                }),
                                               builder: (context, snapshot) {
                                                 // Customize what your widget looks like when it's loading.
                                                 if (!snapshot.hasData) {

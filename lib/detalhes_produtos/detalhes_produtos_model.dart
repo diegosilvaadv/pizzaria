@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'detalhes_produtos_widget.dart' show DetalhesProdutosWidget;
@@ -9,6 +10,7 @@ class DetalhesProdutosModel extends FlutterFlowModel<DetalhesProdutosWidget> {
   final unfocusNode = FocusNode();
   // State field(s) for RadioButton widget.
   FormFieldController<String>? radioButtonValueController;
+  List<PreferenciasRecord>? radioButtonPreviousSnapshot;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
