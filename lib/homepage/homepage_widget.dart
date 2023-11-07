@@ -531,11 +531,8 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                         BorderRadius.circular(
                                                             8.0),
                                                     child: Image.network(
-                                                      valueOrDefault<String>(
-                                                        listViewProdutosRecord
-                                                            .img,
-                                                        'https://static.itdg.com.br/images/1200-630/c0402ec0fd16e13c7b7b691151d53e1d/277814-original.jpg',
-                                                      ),
+                                                      listViewProdutosRecord
+                                                          .img,
                                                       width: 100.0,
                                                       height: 100.0,
                                                       fit: BoxFit.cover,
