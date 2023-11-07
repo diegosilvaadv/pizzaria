@@ -137,7 +137,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                         8.0, 0.0, 8.0, 8.0),
                                     child: Container(
                                       width: 100.0,
-                                      height: 100.0,
+                                      height: 111.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBackground,
@@ -195,44 +195,54 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                         ),
                                                       ],
                                                     ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Text(
-                                                          '${formatNumber(
-                                                            pedidosItem.valor,
-                                                            formatType:
-                                                                FormatType
-                                                                    .decimal,
-                                                            decimalType:
-                                                                DecimalType
-                                                                    .commaDecimal,
-                                                            currency: 'R\$',
-                                                          )} X ${formatNumber(
-                                                            pedidosItem
-                                                                .quantity,
-                                                            formatType:
-                                                                FormatType
-                                                                    .custom,
-                                                            format: '',
-                                                            locale: '',
-                                                          )}',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                color: const Color(
-                                                                    0xFF26CB3A),
-                                                                fontSize: 15.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                              ),
-                                                        ),
-                                                      ],
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  6.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Text(
+                                                            '${formatNumber(
+                                                              pedidosItem.valor,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .decimal,
+                                                              decimalType:
+                                                                  DecimalType
+                                                                      .commaDecimal,
+                                                              currency: 'R\$',
+                                                            )} X ${formatNumber(
+                                                              pedidosItem
+                                                                  .quantity,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .custom,
+                                                              format: '',
+                                                              locale: '',
+                                                            )}',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  color: const Color(
+                                                                      0xFF26CB3A),
+                                                                  fontSize:
+                                                                      20.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ],
                                                 ),
