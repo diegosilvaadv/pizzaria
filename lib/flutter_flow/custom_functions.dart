@@ -13,7 +13,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '/backend/schema/structs/index.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
-double soma(
+double finalPrice(
   double num1,
   int num2,
 ) {
