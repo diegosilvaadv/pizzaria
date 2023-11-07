@@ -70,18 +70,22 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
               children: [
                 Stack(
                   children: [
-                    ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(16.0),
-                        bottomRight: Radius.circular(16.0),
-                        topLeft: Radius.circular(0.0),
-                        topRight: Radius.circular(0.0),
-                      ),
-                      child: Image.network(
-                        widget.img!,
-                        width: double.infinity,
-                        height: 300.0,
-                        fit: BoxFit.cover,
+                    Hero(
+                      tag: widget.img!,
+                      transitionOnUserGestures: true,
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(16.0),
+                          bottomRight: Radius.circular(16.0),
+                          topLeft: Radius.circular(0.0),
+                          topRight: Radius.circular(0.0),
+                        ),
+                        child: Image.network(
+                          widget.img!,
+                          width: double.infinity,
+                          height: 300.0,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                     Padding(
@@ -213,8 +217,8 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          15.0, 15.0, 15.0, 15.0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 15.0),
                       child: Container(
                         width: double.infinity,
                         height: 319.0,
