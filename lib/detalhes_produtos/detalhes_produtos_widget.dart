@@ -147,7 +147,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           setState(() {
-                                            FFAppState().quantity = 1;
+                                            FFAppState().quantity = 0;
                                             FFAppState().totalprice = 0;
                                           });
                                           context.safePop();
@@ -715,10 +715,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                 .totalprice +
                                             functions.subtracao(functions.soma(
                                                 widget.valor!,
-                                                FFAppState()
-                                                    .ProdutosDoCarrinho[
-                                                        FFAppState().quantity]
-                                                    .quantity));
+                                                FFAppState().quantity));
                                       });
                                     } else {
                                       return;
@@ -734,7 +731,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                 Text(
                                   valueOrDefault<String>(
                                     FFAppState().quantity.toString(),
-                                    '1',
+                                    '0',
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
