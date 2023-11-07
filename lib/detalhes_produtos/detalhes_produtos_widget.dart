@@ -230,7 +230,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          fontSize: 15.0,
+                                          fontSize: 16.0,
                                         ),
                                   ),
                                 ),
@@ -247,6 +247,15 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
+                                Text(
+                                  'Valor: ',
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleLarge
+                                      .override(
+                                        fontFamily: 'Outfit',
+                                        fontSize: 25.0,
+                                      ),
+                                ),
                                 Text(
                                   formatNumber(
                                     widget.valor,
