@@ -730,6 +730,16 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              setState(() {
+                                FFAppState().addToProdutosDoCarrinho(
+                                    ProdutosCarrinhoStruct(
+                                  nomeProduto: widget.titulo,
+                                  img: widget.img,
+                                  quantity: FFAppState().quantity,
+                                  valor: widget.valor,
+                                ));
+                              });
+
                               context.pushNamed('carrinho');
                             },
                             child: Row(

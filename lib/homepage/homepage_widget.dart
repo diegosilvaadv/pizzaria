@@ -535,7 +535,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                       listViewProdutosRecordList[listViewIndex];
                                   return Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 10.0, 10.0, 10.0),
+                                        10.0, 10.0, 10.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
