@@ -680,12 +680,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                   ),
                                 ),
                                 Text(
-                                  formatNumber(
-                                    FFAppState().quantity,
-                                    formatType: FormatType.custom,
-                                    format: '',
-                                    locale: '',
-                                  ),
+                                  FFAppState().quantity.toString(),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
