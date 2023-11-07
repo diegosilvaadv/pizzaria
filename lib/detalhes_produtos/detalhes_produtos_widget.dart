@@ -147,7 +147,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           setState(() {
-                                            FFAppState().quantity = 0;
+                                            FFAppState().quantity = 1;
                                             FFAppState().totalprice = 0;
                                           });
                                           context.safePop();
@@ -237,7 +237,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          fontSize: 16.0,
+                                          fontSize: 15.0,
                                         ),
                                   ),
                                 ),
@@ -711,10 +711,14 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                       setState(() {
                                         FFAppState().quantity =
                                             FFAppState().quantity + -1;
-                                        FFAppState().totalprice =
-                                            FFAppState().totalprice +
-                                                functions.subtracao(functions
-                                                    .soma(widget.valor!, -1));
+                                        FFAppState().totalprice = FFAppState()
+                                                .totalprice +
+                                            functions.subtracao(functions.soma(
+                                                widget.valor!,
+                                                FFAppState()
+                                                    .ProdutosDoCarrinho[
+                                                        FFAppState().quantity]
+                                                    .quantity));
                                       });
                                     } else {
                                       return;
