@@ -738,6 +738,10 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                   quantity: FFAppState().quantity,
                                   valor: widget.valor,
                                 ));
+                                FFAppState().totalprice = FFAppState()
+                                        .totalprice +
+                                    functions.finalPrice(
+                                        widget.valor!, FFAppState().quantity);
                               });
 
                               context.pushNamed('carrinho');

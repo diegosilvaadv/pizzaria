@@ -363,20 +363,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                       ),
                                 ),
                                 Text(
-                                  formatNumber(
-                                    functions.finalPrice(
-                                        FFAppState()
-                                            .ProdutosDoCarrinho[
-                                                FFAppState().contador]
-                                            .valor,
-                                        FFAppState()
-                                            .ProdutosDoCarrinho[
-                                                FFAppState().contador]
-                                            .quantity),
-                                    formatType: FormatType.decimal,
-                                    decimalType: DecimalType.commaDecimal,
-                                    currency: 'R\$',
-                                  ),
+                                  'R\$ 66,90',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
