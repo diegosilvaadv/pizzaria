@@ -15,7 +15,7 @@ import '/auth/firebase_auth/auth_util.dart';
 
 double soma(
   double num1,
-  double num2,
+  int num2,
 ) {
   return num1 * num2.toDouble();
 }

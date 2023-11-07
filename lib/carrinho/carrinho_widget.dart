@@ -211,7 +211,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                             currency: 'R\$',
                                                           )} X ${formatNumber(
                                                             pedidosItem
-                                                                .quantidade,
+                                                                .quantity,
                                                             formatType:
                                                                 FormatType
                                                                     .custom,
@@ -268,7 +268,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                                     pedidosItem
                                                                         .valor,
                                                                     pedidosItem
-                                                                        .quantidade));
+                                                                        .quantity));
                                                       });
                                                     },
                                                     child: Icon(

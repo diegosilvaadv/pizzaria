@@ -13,12 +13,12 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
     String? nomeProduto,
     String? img,
     double? valor,
-    double? quantidade,
+    int? quantity,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _nomeProduto = nomeProduto,
         _img = img,
         _valor = valor,
-        _quantidade = quantidade,
+        _quantity = quantity,
         super(firestoreUtilData);
 
   // "NomeProduto" field.
@@ -40,19 +40,19 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
   void incrementValor(double amount) => _valor = valor + amount;
   bool hasValor() => _valor != null;
 
-  // "quantidade" field.
-  double? _quantidade;
-  double get quantidade => _quantidade ?? 0.0;
-  set quantidade(double? val) => _quantidade = val;
-  void incrementQuantidade(double amount) => _quantidade = quantidade + amount;
-  bool hasQuantidade() => _quantidade != null;
+  // "quantity" field.
+  int? _quantity;
+  int get quantity => _quantity ?? 0;
+  set quantity(int? val) => _quantity = val;
+  void incrementQuantity(int amount) => _quantity = quantity + amount;
+  bool hasQuantity() => _quantity != null;
 
   static ProdutosCarrinhoStruct fromMap(Map<String, dynamic> data) =>
       ProdutosCarrinhoStruct(
         nomeProduto: data['NomeProduto'] as String?,
         img: data['img'] as String?,
         valor: castToType<double>(data['valor']),
-        quantidade: castToType<double>(data['quantidade']),
+        quantity: castToType<int>(data['quantity']),
       );
 
   static ProdutosCarrinhoStruct? maybeFromMap(dynamic data) =>
@@ -64,7 +64,7 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
         'NomeProduto': _nomeProduto,
         'img': _img,
         'valor': _valor,
-        'quantidade': _quantidade,
+        'quantity': _quantity,
       }.withoutNulls;
 
   @override
@@ -81,9 +81,9 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
           _valor,
           ParamType.double,
         ),
-        'quantidade': serializeParam(
-          _quantidade,
-          ParamType.double,
+        'quantity': serializeParam(
+          _quantity,
+          ParamType.int,
         ),
       }.withoutNulls;
 
@@ -105,9 +105,9 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
           ParamType.double,
           false,
         ),
-        quantidade: deserializeParam(
-          data['quantidade'],
-          ParamType.double,
+        quantity: deserializeParam(
+          data['quantity'],
+          ParamType.int,
           false,
         ),
       );
@@ -121,19 +121,19 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
         nomeProduto == other.nomeProduto &&
         img == other.img &&
         valor == other.valor &&
-        quantidade == other.quantidade;
+        quantity == other.quantity;
   }
 
   @override
   int get hashCode =>
-      const ListEquality().hash([nomeProduto, img, valor, quantidade]);
+      const ListEquality().hash([nomeProduto, img, valor, quantity]);
 }
 
 ProdutosCarrinhoStruct createProdutosCarrinhoStruct({
   String? nomeProduto,
   String? img,
   double? valor,
-  double? quantidade,
+  int? quantity,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -143,7 +143,7 @@ ProdutosCarrinhoStruct createProdutosCarrinhoStruct({
       nomeProduto: nomeProduto,
       img: img,
       valor: valor,
-      quantidade: quantidade,
+      quantity: quantity,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

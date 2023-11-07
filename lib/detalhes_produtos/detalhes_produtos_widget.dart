@@ -662,9 +662,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         FFAppState().soma = FFAppState().soma +
                                             functions.subtracao(functions.soma(
                                                 widget.valor!,
-                                                FFAppState()
-                                                    .quantity
-                                                    .toDouble()));
+                                                FFAppState().quantity));
                                       });
                                     } else {
                                       return;
@@ -701,11 +699,8 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         FFAppState().quantity =
                                             FFAppState().quantity + 1;
                                         FFAppState().soma = FFAppState().soma +
-                                            functions.soma(
-                                                widget.valor!,
-                                                FFAppState()
-                                                    .quantity
-                                                    .toDouble());
+                                            functions.soma(widget.valor!,
+                                                FFAppState().quantity);
                                       });
                                     } else {
                                       return;
