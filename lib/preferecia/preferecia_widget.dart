@@ -141,6 +141,10 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                   setState(() {
                                     FFAppState().condicao =
                                         FFAppState().condicao + 1;
+                                    FFAppState().total = FFAppState().total +
+                                        prefereciaPreferenciasRecordList[
+                                                FFAppState().contador]
+                                            .valormassa;
                                   });
                                 },
                                 controller:
@@ -234,10 +238,47 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                         ),
                       ),
                     ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                      child: Card(
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        elevation: 4.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              10.0, 10.0, 10.0, 10.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                formatNumber(
+                                  FFAppState().total,
+                                  formatType: FormatType.custom,
+                                  currency: 'R\$',
+                                  format: '.00',
+                                  locale: 'pt_BR',
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 30.0,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                     if (FFAppState().condicao != 0)
                       Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            0.0, 20.0, 0.0, 10.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -248,7 +289,7 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                   FFAppState().condicao = 0;
                                 });
 
-                                context.pushNamed('homepage');
+                                context.goNamed('homepage');
                               },
                               text: 'Continar Comprando',
                               options: FFButtonOptions(
@@ -289,7 +330,7 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                   FFAppState().condicao = 0;
                                 });
 
-                                context.pushNamed('carrinho');
+                                context.goNamed('carrinho');
                               },
                               text: 'Ir Para o Carrinho',
                               options: FFButtonOptions(
