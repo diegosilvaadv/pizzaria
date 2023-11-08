@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -112,7 +111,7 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: Colors.white,
-                      fontSize: 25.0,
+                      fontSize: 24.0,
                       fontWeight: FontWeight.w500,
                     ),
               ),
@@ -155,13 +154,12 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                   setState(() => _model.dropDownValue = val);
                                   setState(() {
                                     FFAppState().total = FFAppState().total +
-                                        functions.soma(
-                                            prefereciaPreferenciasRecordList
-                                                .where((e) => e.hasValormassa())
-                                                .toList()
-                                                .length
-                                                .toDouble(),
-                                            FFAppState().total);
+                                        prefereciaPreferenciasRecordList
+                                            .where((e) => e.hasValormassa())
+                                            .toList()
+                                            .length
+                                            .toDouble() +
+                                        FFAppState().total;
                                   });
                                 },
                                 width: 350.0,
