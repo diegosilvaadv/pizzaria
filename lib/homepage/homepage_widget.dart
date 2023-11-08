@@ -301,111 +301,124 @@ class _HomepageWidgetState extends State<HomepageWidget>
                 title: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    StreamBuilder<List<UsersRecord>>(
-                      stream: queryUsersRecord(
-                        queryBuilder: (usersRecord) => usersRecord.where(
-                          'uid',
-                          isEqualTo: currentUserUid,
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                      child: StreamBuilder<List<UsersRecord>>(
+                        stream: queryUsersRecord(
+                          queryBuilder: (usersRecord) => usersRecord.where(
+                            'uid',
+                            isEqualTo: currentUserUid,
+                          ),
+                          singleRecord: true,
                         ),
-                        singleRecord: true,
-                      ),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 50.0,
-                              height: 50.0,
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  FlutterFlowTheme.of(context).primary,
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    FlutterFlowTheme.of(context).primary,
+                                  ),
                                 ),
                               ),
-                            ),
+                            );
+                          }
+                          List<UsersRecord> rowUsersRecordList = snapshot.data!;
+                          // Return an empty Container when the item does not exist.
+                          if (snapshot.data!.isEmpty) {
+                            return Container();
+                          }
+                          final rowUsersRecord = rowUsersRecordList.isNotEmpty
+                              ? rowUsersRecordList.first
+                              : null;
+                          return Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Olá, ${valueOrDefault<String>(
+                                  rowUsersRecord?.displayName,
+                                  'Fulano',
+                                )}',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      scaffoldKey.currentState!.openDrawer();
+                                    },
+                                    child: const Icon(
+                                      Icons.dehaze,
+                                      color: Color(0xFFFD6907),
+                                      size: 30.0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           );
-                        }
-                        List<UsersRecord> rowUsersRecordList = snapshot.data!;
-                        // Return an empty Container when the item does not exist.
-                        if (snapshot.data!.isEmpty) {
-                          return Container();
-                        }
-                        final rowUsersRecord = rowUsersRecordList.isNotEmpty
-                            ? rowUsersRecordList.first
-                            : null;
-                        return Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Olá, ${valueOrDefault<String>(
-                                rowUsersRecord?.displayName,
-                                'Fulano',
-                              )}',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    if (animationsMap[
-                                            'containerOnActionTriggerAnimation'] !=
-                                        null) {
-                                      await animationsMap[
-                                              'containerOnActionTriggerAnimation']!
-                                          .controller
-                                          .forward(from: 0.0);
-                                    }
-                                    scaffoldKey.currentState!.openDrawer();
-                                  },
-                                  child: const Icon(
-                                    Icons.dehaze,
-                                    color: Color(0xFFFD6907),
-                                    size: 30.0,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        );
-                      },
+                        },
+                      ),
                     ),
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          10.0, 10.0, 10.0, 10.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(100.0),
-                            child: Image.asset(
-                              'assets/images/pizzaria.png',
-                              width: 100.0,
-                              height: 100.0,
-                              fit: BoxFit.cover,
-                            ),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 100.0,
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [Color(0x93E46D1F), Color(0x86613416)],
+                            stops: [0.0, 1.0],
+                            begin: AlignmentDirectional(0.34, -1.0),
+                            end: AlignmentDirectional(-0.34, 1.0),
                           ),
-                          Text(
-                            'APP PIZZARIA',
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  fontSize: 25.0,
-                                  fontWeight: FontWeight.bold,
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              10.0, 10.0, 10.0, 10.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(100.0),
+                                child: Image.asset(
+                                  'assets/images/pizzaria.png',
+                                  width: 100.0,
+                                  height: 100.0,
+                                  fit: BoxFit.cover,
                                 ),
+                              ),
+                              Text(
+                                'APP PIZZARIA',
+                                style: FlutterFlowTheme.of(context)
+                                    .titleLarge
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      fontSize: 25.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
                   ],
