@@ -230,7 +230,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                                           context)
                                                                       .secondaryText,
                                                                   fontSize:
-                                                                      20.0,
+                                                                      15.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
