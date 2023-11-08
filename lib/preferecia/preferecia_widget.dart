@@ -356,13 +356,13 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                     valorpreferecias:
                                         prefereciaPreferenciasRecordList
                                             .where((e) => e.hasValormassa())
-                                            .toList()
-                                            .length
-                                            .toDouble(),
-                                    massaNome: 'teste',
+                                            .toList()[0]
+                                            .valormassa,
+                                    massaNome:
+                                        prefereciaPreferenciasRecordList[0]
+                                            .massas,
                                   ));
                                   FFAppState().condicao = 0;
-                                  FFAppState().total = 0;
                                 });
 
                                 context.pushNamed(
