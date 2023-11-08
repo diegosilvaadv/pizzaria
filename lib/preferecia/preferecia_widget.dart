@@ -2,6 +2,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -95,30 +96,138 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
             ),
             body: SafeArea(
               top: true,
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  FlutterFlowRadioButton(
-                    options: prefereciaPreferenciasRecordList
-                        .map((e) => e.massas)
-                        .toList()
-                        .toList(),
-                    onChanged: (val) => setState(() {}),
-                    controller: _model.radioButtonValueController ??=
-                        FormFieldController<String>(null),
-                    optionHeight: 32.0,
-                    textStyle: FlutterFlowTheme.of(context).labelMedium,
-                    selectedTextStyle: FlutterFlowTheme.of(context).bodyMedium,
-                    buttonPosition: RadioButtonPosition.left,
-                    direction: Axis.vertical,
-                    radioButtonColor: FlutterFlowTheme.of(context).primary,
-                    inactiveRadioButtonColor:
-                        FlutterFlowTheme.of(context).secondaryText,
-                    toggleable: false,
-                    horizontalAlignment: WrapAlignment.start,
-                    verticalAlignment: WrapCrossAlignment.start,
-                  ),
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          10.0, 10.0, 10.0, 10.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 161.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            FlutterFlowRadioButton(
+                              options: prefereciaPreferenciasRecordList
+                                  .map((e) => e.massas)
+                                  .toList()
+                                  .toList(),
+                              onChanged: (val) => setState(() {}),
+                              controller: _model.radioButtonValueController ??=
+                                  FormFieldController<String>(null),
+                              optionHeight: 25.0,
+                              textStyle:
+                                  FlutterFlowTheme.of(context).labelMedium,
+                              selectedTextStyle:
+                                  FlutterFlowTheme.of(context).bodyMedium,
+                              buttonPosition: RadioButtonPosition.left,
+                              direction: Axis.vertical,
+                              radioButtonColor:
+                                  FlutterFlowTheme.of(context).primary,
+                              inactiveRadioButtonColor:
+                                  FlutterFlowTheme.of(context).secondaryText,
+                              toggleable: false,
+                              horizontalAlignment: WrapAlignment.start,
+                              verticalAlignment: WrapCrossAlignment.start,
+                            ),
+                            StreamBuilder<List<PreferenciasRecord>>(
+                              stream: queryPreferenciasRecord(),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          FlutterFlowTheme.of(context).primary,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }
+                                List<PreferenciasRecord>
+                                    columnPreferenciasRecordList =
+                                    snapshot.data!;
+                                return Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: List.generate(
+                                      columnPreferenciasRecordList.length,
+                                      (columnIndex) {
+                                    final columnPreferenciasRecord =
+                                        columnPreferenciasRecordList[
+                                            columnIndex];
+                                    return Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 7.0),
+                                      child: Text(
+                                        'Hello World',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              fontSize: 15.0,
+                                            ),
+                                      ),
+                                    );
+                                  }),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          FFButtonWidget(
+                            onPressed: () {
+                              print('Button pressed ...');
+                            },
+                            text: 'Button',
+                            options: FFButtonOptions(
+                              height: 40.0,
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  24.0, 0.0, 24.0, 0.0),
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: Colors.white,
+                                  ),
+                              elevation: 3.0,
+                              borderSide: const BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
