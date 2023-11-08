@@ -24,7 +24,7 @@ double soma(
   double num1,
   double num2,
 ) {
-  return num1 + num2.toDouble();
+  return num1 + num2;
 }
 
 double subtracao(double valor1) {
