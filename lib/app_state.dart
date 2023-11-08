@@ -197,6 +197,12 @@ class FFAppState extends ChangeNotifier {
     prefs.setStringList('ff_prefereciasApp',
         _prefereciasApp.map((x) => x.serialize()).toList());
   }
+
+  int _condicao = 0;
+  int get condicao => _condicao;
+  set condicao(int value) {
+    _condicao = value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

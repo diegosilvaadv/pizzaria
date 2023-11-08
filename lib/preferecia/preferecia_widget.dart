@@ -91,6 +91,7 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                       fontFamily: 'Outfit',
                       color: Colors.white,
                       fontSize: 22.0,
+                      fontWeight: FontWeight.w500,
                     ),
               ),
               actions: const [],
@@ -127,7 +128,13 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                     .map((e) => e.massas)
                                     .toList()
                                     .toList(),
-                                onChanged: (val) => setState(() {}),
+                                onChanged: (val) async {
+                                  setState(() {});
+                                  setState(() {
+                                    FFAppState().condicao =
+                                        FFAppState().condicao + 1;
+                                  });
+                                },
                                 controller:
                                     _model.radioButtonValueController ??=
                                         FormFieldController<String>('1'),
@@ -228,62 +235,33 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          FFButtonWidget(
-                            onPressed: () async {
-                              if (_model.radioButtonValue != '0') {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'true',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
+                          if (FFAppState().condicao == 1)
+                            FFButtonWidget(
+                              onPressed: () {
+                                print('Button pressed ...');
+                              },
+                              text: 'Button',
+                              options: FFButtonOptions(
+                                height: 40.0,
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).primary,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: Colors.white,
                                     ),
-                                    duration: const Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).secondary,
-                                  ),
-                                );
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'false',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
-                                    ),
-                                    duration: const Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).secondary,
-                                  ),
-                                );
-                              }
-                            },
-                            text: 'Button',
-                            options: FFButtonOptions(
-                              height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).primary,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    color: Colors.white,
-                                  ),
-                              elevation: 3.0,
-                              borderSide: const BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
+                                elevation: 3.0,
+                                borderSide: const BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
-                              borderRadius: BorderRadius.circular(8.0),
                             ),
-                          ),
                         ],
                       ),
                     ),
