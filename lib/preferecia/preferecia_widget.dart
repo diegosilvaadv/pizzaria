@@ -1,5 +1,5 @@
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_radio_button.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -145,110 +145,48 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              FlutterFlowRadioButton(
+                              FlutterFlowDropDown<String>(
+                                controller: _model.dropDownValueController ??=
+                                    FormFieldController<String>(null),
                                 options: prefereciaPreferenciasRecordList
                                     .map((e) => e.massas)
-                                    .toList()
                                     .toList(),
                                 onChanged: (val) async {
-                                  setState(() {});
+                                  setState(() => _model.dropDownValue = val);
                                   setState(() {
-                                    FFAppState().condicao =
-                                        FFAppState().condicao + 1;
                                     FFAppState().total = FFAppState().total +
                                         functions.soma(
                                             prefereciaPreferenciasRecordList
                                                 .where((e) => e.hasValormassa())
-                                                .toList()[0]
-                                                .valormassa,
-                                            FFAppState().totalprice);
+                                                .toList()
+                                                .length
+                                                .toDouble(),
+                                            FFAppState().total);
                                   });
                                 },
-                                controller:
-                                    _model.radioButtonValueController ??=
-                                        FormFieldController<String>(null),
-                                optionHeight: 28.0,
+                                width: 350.0,
+                                height: 50.0,
                                 textStyle:
-                                    FlutterFlowTheme.of(context).labelMedium,
-                                selectedTextStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      fontSize: 18.0,
-                                    ),
-                                buttonPosition: RadioButtonPosition.left,
-                                direction: Axis.vertical,
-                                radioButtonColor: const Color(0xFF26CB3A),
-                                inactiveRadioButtonColor: const Color(0xFFCBCECF),
-                                toggleable: false,
-                                horizontalAlignment: WrapAlignment.start,
-                                verticalAlignment: WrapCrossAlignment.start,
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    4.0, 3.0, 0.0, 0.0),
-                                child: StreamBuilder<List<PreferenciasRecord>>(
-                                  stream: queryPreferenciasRecord(
-                                    queryBuilder: (preferenciasRecord) =>
-                                        preferenciasRecord.orderBy('Massas'),
-                                  ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: CircularProgressIndicator(
-                                            valueColor:
-                                                AlwaysStoppedAnimation<Color>(
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    List<PreferenciasRecord>
-                                        columnPreferenciasRecordList =
-                                        snapshot.data!;
-                                    return Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: List.generate(
-                                          columnPreferenciasRecordList.length,
-                                          (columnIndex) {
-                                        final columnPreferenciasRecord =
-                                            columnPreferenciasRecordList[
-                                                columnIndex];
-                                        return Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 7.0),
-                                          child: Text(
-                                            formatNumber(
-                                              columnPreferenciasRecord
-                                                  .valormassa,
-                                              formatType: FormatType.custom,
-                                              currency: '+ R\$',
-                                              format: '.00',
-                                              locale: 'pt_BR',
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Roboto',
-                                                  fontSize: 18.0,
-                                                ),
-                                          ),
-                                        );
-                                      }),
-                                    );
-                                  },
+                                    FlutterFlowTheme.of(context).bodyMedium,
+                                hintText: 'Please select...',
+                                icon: Icon(
+                                  Icons.keyboard_arrow_down_rounded,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 24.0,
                                 ),
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                elevation: 2.0,
+                                borderColor:
+                                    FlutterFlowTheme.of(context).alternate,
+                                borderWidth: 2.0,
+                                borderRadius: 8.0,
+                                margin: const EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 4.0, 16.0, 4.0),
+                                hidesUnderline: true,
+                                isSearchable: false,
+                                isMultiSelect: false,
                               ),
                             ],
                           ),

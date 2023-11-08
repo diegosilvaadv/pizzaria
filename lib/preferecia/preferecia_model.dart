@@ -7,8 +7,9 @@ class PrefereciaModel extends FlutterFlowModel<PrefereciaWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for RadioButton widget.
-  FormFieldController<String>? radioButtonValueController;
+  // State field(s) for DropDown widget.
+  String? dropDownValue;
+  FormFieldController<String>? dropDownValueController;
 
   /// Initialization and disposal methods.
 
@@ -23,6 +24,4 @@ class PrefereciaModel extends FlutterFlowModel<PrefereciaWidget> {
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
-
-  String? get radioButtonValue => radioButtonValueController?.value;
 }
