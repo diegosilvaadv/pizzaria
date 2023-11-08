@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'preferecia_model.dart';
@@ -26,6 +27,13 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PrefereciaModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        FFAppState().condicao = 0;
+      });
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -149,10 +157,8 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                     ),
                                 buttonPosition: RadioButtonPosition.left,
                                 direction: Axis.vertical,
-                                radioButtonColor:
-                                    FlutterFlowTheme.of(context).primary,
-                                inactiveRadioButtonColor:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                radioButtonColor: const Color(0xFF26CB3A),
+                                inactiveRadioButtonColor: const Color(0xFFCBCECF),
                                 toggleable: false,
                                 horizontalAlignment: WrapAlignment.start,
                                 verticalAlignment: WrapCrossAlignment.start,
