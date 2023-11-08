@@ -138,53 +138,65 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                               horizontalAlignment: WrapAlignment.start,
                               verticalAlignment: WrapCrossAlignment.start,
                             ),
-                            StreamBuilder<List<PreferenciasRecord>>(
-                              stream: queryPreferenciasRecord(),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 2.0, 0.0, 0.0),
+                              child: StreamBuilder<List<PreferenciasRecord>>(
+                                stream: queryPreferenciasRecord(),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  );
-                                }
-                                List<PreferenciasRecord>
-                                    columnPreferenciasRecordList =
-                                    snapshot.data!;
-                                return Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: List.generate(
-                                      columnPreferenciasRecordList.length,
-                                      (columnIndex) {
-                                    final columnPreferenciasRecord =
-                                        columnPreferenciasRecordList[
-                                            columnIndex];
-                                    return Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 7.0),
-                                      child: Text(
-                                        'Hello World',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              fontSize: 15.0,
-                                            ),
-                                      ),
                                     );
-                                  }),
-                                );
-                              },
+                                  }
+                                  List<PreferenciasRecord>
+                                      columnPreferenciasRecordList =
+                                      snapshot.data!;
+                                  return Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: List.generate(
+                                        columnPreferenciasRecordList.length,
+                                        (columnIndex) {
+                                      final columnPreferenciasRecord =
+                                          columnPreferenciasRecordList[
+                                              columnIndex];
+                                      return Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 7.0),
+                                        child: Text(
+                                          formatNumber(
+                                            columnPreferenciasRecord.valormassa,
+                                            formatType: FormatType.custom,
+                                            currency: 'R\$',
+                                            format: '.00',
+                                            locale: 'pt_BR',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 15.0,
+                                              ),
+                                        ),
+                                      );
+                                    }),
+                                  );
+                                },
+                              ),
                             ),
                           ],
                         ),
