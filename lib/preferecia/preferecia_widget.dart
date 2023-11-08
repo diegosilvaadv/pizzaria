@@ -363,6 +363,7 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                       FFAppState().totalprice +
                                           functions.finalPrice(
                                               widget.valor!, widget.quanty!);
+                                  FFAppState().total = 0;
                                 });
 
                                 context.goNamed('carrinho');
