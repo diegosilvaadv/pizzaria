@@ -353,7 +353,13 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                     img: widget.img,
                                     quantity: widget.quanty,
                                     valor: widget.valor,
-                                    valorpreferecias: 1.0,
+                                    valorpreferecias:
+                                        prefereciaPreferenciasRecordList
+                                            .first.valormassa,
+                                    massaNome: prefereciaPreferenciasRecordList
+                                        .first
+                                        .hasMassas()
+                                        .toString(),
                                   ));
                                   FFAppState().totalprice =
                                       FFAppState().totalprice +

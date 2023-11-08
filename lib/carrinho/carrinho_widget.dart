@@ -58,7 +58,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           iconTheme:
               IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
-          automaticallyImplyLeading: true,
+          automaticallyImplyLeading: false,
           title: Text(
             'Carrinho',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
@@ -137,7 +137,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                         8.0, 0.0, 8.0, 8.0),
                                     child: Container(
                                       width: 100.0,
-                                      height: 111.0,
+                                      height: 137.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBackground,
@@ -168,6 +168,8 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                 child: Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
                                                   children: [
@@ -194,6 +196,48 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                           ),
                                                         ),
                                                       ],
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  6.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Text(
+                                                            '${pedidosItem.massaNome}${formatNumber(
+                                                              pedidosItem
+                                                                  .valorpreferecias,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .custom,
+                                                              currency: 'R\$',
+                                                              format: '.00',
+                                                              locale: 'pt_BR',
+                                                            )}',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  fontSize:
+                                                                      20.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                     Padding(
                                                       padding:
@@ -320,9 +364,9 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                 ),
                 child: Container(
                   width: double.infinity,
-                  height: 70.0,
+                  height: 80.0,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).primaryBackground,
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
                     boxShadow: const [
                       BoxShadow(
                         blurRadius: 5.0,
@@ -346,7 +390,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 6.0, 6.0),
+                            const EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           height: 100.0,
@@ -363,7 +407,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Continuar',
+                                  'Ir para Pagamento',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
