@@ -419,11 +419,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                 ),
                                 Text(
                                   formatNumber(
-                                    FFAppState().totalprice +
-                                        FFAppState()
-                                            .ProdutosDoCarrinho
-                                            .first
-                                            .valorpreferecias,
+                                    FFAppState().totalprice,
                                     formatType: FormatType.custom,
                                     currency: 'R\$',
                                     format: '.00',
