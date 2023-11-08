@@ -53,7 +53,7 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
     return StreamBuilder<List<PreferenciasRecord>>(
       stream: queryPreferenciasRecord(
         queryBuilder: (preferenciasRecord) =>
-            preferenciasRecord.orderBy('valormassa'),
+            preferenciasRecord.orderBy('Massas'),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -128,11 +128,9 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                     .toList()
                                     .toList(),
                                 onChanged: (val) => setState(() {}),
-                                controller: _model
-                                        .radioButtonValueController ??=
-                                    FormFieldController<String>(
-                                        prefereciaPreferenciasRecordList.length
-                                            .toString()),
+                                controller:
+                                    _model.radioButtonValueController ??=
+                                        FormFieldController<String>('1'),
                                 optionHeight: 28.0,
                                 textStyle:
                                     FlutterFlowTheme.of(context).labelMedium,
