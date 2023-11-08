@@ -210,7 +210,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                             MainAxisSize.max,
                                                         children: [
                                                           Text(
-                                                            '${pedidosItem.hasMassaNome().toString()}${formatNumber(
+                                                            '${pedidosItem.massaNome}${formatNumber(
                                                               pedidosItem
                                                                   .valorpreferecias,
                                                               formatType:
