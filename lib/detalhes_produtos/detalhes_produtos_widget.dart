@@ -168,27 +168,28 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        3.0, 3.0, 3.0, 3.0),
-                                                child: Text(
-                                                  valueOrDefault<String>(
-                                                    widget.produtoRef
-                                                        ?.nomeProduto,
-                                                    'Nome',
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          3.0, 3.0, 3.0, 3.0),
+                                                  child: Text(
+                                                    valueOrDefault<String>(
+                                                      widget.produtoRef
+                                                          ?.nomeProduto,
+                                                      'Nome',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleLarge
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          fontSize: 21.0,
+                                                        ),
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .titleLarge
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        fontSize: 21.0,
-                                                      ),
                                                 ),
                                               ),
                                             ],
@@ -393,14 +394,17 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
-                                                          Icon(
-                                                            Icons
-                                                                .check_box_sharp,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText,
-                                                            size: 24.0,
-                                                          ),
+                                                          if (FFAppState()
+                                                                  .preferec !=
+                                                              0.0)
+                                                            Icon(
+                                                              Icons
+                                                                  .check_box_sharp,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryText,
+                                                              size: 24.0,
+                                                            ),
                                                           Icon(
                                                             Icons
                                                                 .check_box_outline_blank,
@@ -431,15 +435,21 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                                         0.0,
                                                                         0.0),
                                                             child: Text(
-                                                              formatNumber(
-                                                                listViewPreferenciasRecord
-                                                                    .valormassa,
-                                                                formatType:
-                                                                    FormatType
-                                                                        .custom,
-                                                                currency: 'R\$',
-                                                                format: '.00',
-                                                                locale: 'pt_BR',
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                formatNumber(
+                                                                  listViewPreferenciasRecord
+                                                                      .valormassa,
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .custom,
+                                                                  currency:
+                                                                      'R\$',
+                                                                  format: '.00',
+                                                                  locale:
+                                                                      'pt_BR',
+                                                                ),
+                                                                '00.00',
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
