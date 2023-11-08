@@ -534,13 +534,14 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                             choiceChipsProdutosRecordList =
                                             snapshot.data!;
                                         return FlutterFlowChoiceChips(
-                                          options: choiceChipsProdutosRecordList
-                                              .map((e) => e.tag)
-                                              .toList()
-                                              .map((label) => ChipData(label))
-                                              .toList(),
+                                          options: const [
+                                            ChipData('Pizza Salgada'),
+                                            ChipData('pizza broto'),
+                                            ChipData('pizza doce')
+                                          ],
                                           onChanged: (val) => setState(() =>
-                                              _model.choiceChipsValues = val),
+                                              _model.choiceChipsValue =
+                                                  val?.first),
                                           selectedChipStyle: ChipStyle(
                                             backgroundColor:
                                                 FlutterFlowTheme.of(context)
@@ -580,14 +581,14 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                           ),
                                           chipSpacing: 8.0,
                                           rowSpacing: 12.0,
-                                          multiselect: true,
+                                          multiselect: false,
                                           initialized:
-                                              _model.choiceChipsValues != null,
+                                              _model.choiceChipsValue != null,
                                           alignment: WrapAlignment.start,
                                           controller: _model
                                                   .choiceChipsValueController ??=
                                               FormFieldController<List<String>>(
-                                            [],
+                                            ['Pizza Salgada'],
                                           ),
                                           wrapped: true,
                                         );
@@ -603,8 +604,10 @@ class _HomepageWidgetState extends State<HomepageWidget>
                     ),
                     StreamBuilder<List<ProdutosRecord>>(
                       stream: queryProdutosRecord(
-                        queryBuilder: (produtosRecord) => produtosRecord
-                            .whereIn('tag', _model.choiceChipsValues),
+                        queryBuilder: (produtosRecord) => produtosRecord.where(
+                          'tag',
+                          isEqualTo: _model.choiceChipsValue,
+                        ),
                       ),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
@@ -625,6 +628,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                             snapshot.data!;
                         return ListView.builder(
                           padding: EdgeInsets.zero,
+                          primary: false,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           itemCount: listViewProdutosRecordList.length,

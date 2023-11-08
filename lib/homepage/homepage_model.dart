@@ -12,7 +12,7 @@ class HomepageModel extends FlutterFlowModel<HomepageWidget> {
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
   // State field(s) for ChoiceChips widget.
-  List<String>? choiceChipsValues;
+  String? choiceChipsValue;
   FormFieldController<List<String>>? choiceChipsValueController;
 
   /// Initialization and disposal methods.
