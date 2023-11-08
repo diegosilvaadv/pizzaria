@@ -664,9 +664,9 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                           FormatType
                                                                               .custom,
                                                                       format:
-                                                                          '  var f = NumberFormat("###.0#", "en_US");   print(f.format(12.345));       ==> 12.34',
+                                                                          '.00',
                                                                       locale:
-                                                                          '',
+                                                                          'pt_BR',
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
