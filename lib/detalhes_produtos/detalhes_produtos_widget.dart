@@ -391,10 +391,10 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                         });
 
                                                         await listViewPreferenciasRecord
-                                                            .userPrefere!
+                                                            .reference
                                                             .update(
-                                                                createUsersRecordData(
-                                                          pprefereUser: true,
+                                                                createPreferenciasRecordData(
+                                                          select: true,
                                                         ));
                                                       },
                                                       child: Row(
@@ -413,9 +413,8 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                               size: 24.0,
                                                             ),
                                                           if (listViewPreferenciasRecord
-                                                                  .userPrefere ==
-                                                              listViewPreferenciasRecord
-                                                                  .userPrefere)
+                                                                  .select ==
+                                                              false)
                                                             Icon(
                                                               Icons
                                                                   .check_box_outline_blank,
