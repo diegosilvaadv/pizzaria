@@ -379,437 +379,473 @@ class _HomepageWidgetState extends State<HomepageWidget>
             ),
             body: SafeArea(
               top: true,
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          10.0, 10.0, 10.0, 10.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(100.0),
-                            child: Image.asset(
-                              'assets/images/pizzaria.png',
-                              width: 100.0,
-                              height: 100.0,
-                              fit: BoxFit.cover,
-                            ),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(100.0),
+                          child: Image.asset(
+                            'assets/images/pizzaria.png',
+                            width: 100.0,
+                            height: 100.0,
+                            fit: BoxFit.cover,
                           ),
-                          Text(
-                            'APP PIZZARIA',
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  fontSize: 25.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
-                        ],
-                      ),
+                        ),
+                        Text(
+                          'APP PIZZARIA',
+                          style:
+                              FlutterFlowTheme.of(context).titleLarge.override(
+                                    fontFamily: 'Outfit',
+                                    fontSize: 25.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                        ),
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          10.0, 10.0, 10.0, 10.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 0.0, 8.0, 0.0),
-                              child: TextFormField(
-                                controller: _model.textController,
-                                focusNode: _model.textFieldFocusNode,
-                                onChanged: (_) => EasyDebounce.debounce(
-                                  '_model.textController',
-                                  const Duration(milliseconds: 2000),
-                                  () => setState(() {}),
-                                ),
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelText: 'Pesquisa',
-                                  labelStyle:
-                                      FlutterFlowTheme.of(context).labelMedium,
-                                  hintStyle:
-                                      FlutterFlowTheme.of(context).labelMedium,
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(16.0),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(16.0),
-                                  ),
-                                  errorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(16.0),
-                                  ),
-                                  focusedErrorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(16.0),
-                                  ),
-                                  filled: true,
-                                  fillColor: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  suffixIcon: _model
-                                          .textController!.text.isNotEmpty
-                                      ? InkWell(
-                                          onTap: () async {
-                                            _model.textController?.clear();
-                                            setState(() {});
-                                          },
-                                          child: Icon(
-                                            Icons.clear,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            size: 20.0,
-                                          ),
-                                        )
-                                      : null,
-                                ),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
-                                validator: _model.textControllerValidator
-                                    .asValidator(context),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Column(
+                  ),
+                  SingleChildScrollView(
+                    child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               10.0, 10.0, 10.0, 10.0),
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Container(
-                                  width: MediaQuery.sizeOf(context).width * 1.0,
-                                  decoration: const BoxDecoration(),
-                                  child: Align(
-                                    alignment:
-                                        const AlignmentDirectional(-1.00, 0.00),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 8.0, 8.0),
-                                      child:
-                                          StreamBuilder<List<ProdutosRecord>>(
-                                        stream: queryProdutosRecord(),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  valueColor:
-                                                      AlwaysStoppedAnimation<
-                                                          Color>(
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                  ),
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                          List<ProdutosRecord>
-                                              choiceChipsProdutosRecordList =
-                                              snapshot.data!;
-                                          return FlutterFlowChoiceChips(
-                                            options: const [
-                                              ChipData('Pizza Salgada'),
-                                              ChipData('pizza broto'),
-                                              ChipData('pizza doce')
-                                            ],
-                                            onChanged: (val) => setState(() =>
-                                                _model.choiceChipsValue =
-                                                    val?.first),
-                                            selectedChipStyle: ChipStyle(
-                                              backgroundColor:
-                                                  const Color(0xFFC05A16),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                              iconColor: Colors.white,
-                                              iconSize: 18.0,
-                                              elevation: 4.0,
-                                              borderColor: const Color(0xFFFD6907),
-                                              borderWidth: 2.0,
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            unselectedChipStyle: ChipStyle(
-                                              backgroundColor:
-                                                  const Color(0xFFF8F8F8),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium,
-                                              iconColor: Colors.white,
-                                              iconSize: 18.0,
-                                              elevation: 0.0,
-                                              borderColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            chipSpacing: 8.0,
-                                            rowSpacing: 12.0,
-                                            multiselect: false,
-                                            initialized:
-                                                _model.choiceChipsValue != null,
-                                            alignment: WrapAlignment.start,
-                                            controller: _model
-                                                    .choiceChipsValueController ??=
-                                                FormFieldController<
-                                                    List<String>>(
-                                              ['Pizza Salgada'],
-                                            ),
-                                            wrapped: false,
-                                          );
-                                        },
-                                      ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 0.0, 8.0, 0.0),
+                                  child: TextFormField(
+                                    controller: _model.textController,
+                                    focusNode: _model.textFieldFocusNode,
+                                    onChanged: (_) => EasyDebounce.debounce(
+                                      '_model.textController',
+                                      const Duration(milliseconds: 2000),
+                                      () => setState(() {}),
                                     ),
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Pesquisa',
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium,
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium,
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(16.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(16.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(16.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(16.0),
+                                      ),
+                                      filled: true,
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      suffixIcon: _model
+                                              .textController!.text.isNotEmpty
+                                          ? InkWell(
+                                              onTap: () async {
+                                                _model.textController?.clear();
+                                                setState(() {});
+                                              },
+                                              child: Icon(
+                                                Icons.clear,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 20.0,
+                                              ),
+                                            )
+                                          : null,
+                                    ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    validator: _model.textControllerValidator
+                                        .asValidator(context),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
-                    StreamBuilder<List<ProdutosRecord>>(
-                      stream: queryProdutosRecord(
-                        queryBuilder: (produtosRecord) => produtosRecord.where(
-                          'tag',
-                          isEqualTo: _model.choiceChipsValue,
-                        ),
-                      ),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 50.0,
-                              height: 50.0,
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  FlutterFlowTheme.of(context).primary,
-                                ),
-                              ),
-                            ),
-                          );
-                        }
-                        List<ProdutosRecord> listViewProdutosRecordList =
-                            snapshot.data!;
-                        return ListView.builder(
-                          padding: EdgeInsets.zero,
-                          primary: false,
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          itemCount: listViewProdutosRecordList.length,
-                          itemBuilder: (context, listViewIndex) {
-                            final listViewProdutosRecord =
-                                listViewProdutosRecordList[listViewIndex];
-                            return Padding(
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 10.0, 10.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Container(
-                                    width: double.infinity,
-                                    height: 136.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      borderRadius: BorderRadius.circular(16.0),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 10.0, 10.0, 10.0),
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          context.pushNamed(
-                                            'detalhes_produtos',
-                                            queryParameters: {
-                                              'produtoRef': serializeParam(
-                                                listViewProdutosRecord,
-                                                ParamType.Document,
-                                              ),
-                                            }.withoutNulls,
-                                            extra: <String, dynamic>{
-                                              'produtoRef':
-                                                  listViewProdutosRecord,
-                                            },
-                                          );
-                                        },
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: Image.network(
-                                                listViewProdutosRecord.img,
-                                                width: 100.0,
-                                                height: 100.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 0.0, 0.0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  6.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Expanded(
-                                                            child: Text(
-                                                              listViewProdutosRecord
-                                                                  .nomeProduto,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
-                                                                    fontSize:
-                                                                        18.0,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                        ],
+                                  10.0, 10.0, 10.0, 10.0),
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Container(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          1.0,
+                                      decoration: const BoxDecoration(),
+                                      child: Align(
+                                        alignment:
+                                            const AlignmentDirectional(-1.00, 0.00),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 8.0, 8.0, 8.0),
+                                          child: StreamBuilder<
+                                              List<ProdutosRecord>>(
+                                            stream: queryProdutosRecord(),
+                                            builder: (context, snapshot) {
+                                              // Customize what your widget looks like when it's loading.
+                                              if (!snapshot.hasData) {
+                                                return Center(
+                                                  child: SizedBox(
+                                                    width: 50.0,
+                                                    height: 50.0,
+                                                    child:
+                                                        CircularProgressIndicator(
+                                                      valueColor:
+                                                          AlwaysStoppedAnimation<
+                                                              Color>(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary,
                                                       ),
                                                     ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  6.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Expanded(
-                                                            child: Text(
-                                                              formatNumber(
-                                                                listViewProdutosRecord
-                                                                    .valorPizza,
-                                                                formatType:
-                                                                    FormatType
-                                                                        .custom,
-                                                                currency: 'R\$',
-                                                                format: '.00',
-                                                                locale: 'pt_BR',
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
-                                                                    color: const Color(
-                                                                        0xFF26CB3A),
-                                                                    fontSize:
-                                                                        20.0,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Expanded(
-                                                          child: Text(
-                                                            listViewProdutosRecord
-                                                                .descricao
-                                                                .maybeHandleOverflow(
-                                                              maxChars: 50,
-                                                              replacement: '…',
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  fontSize:
-                                                                      15.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w300,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
+                                                  ),
+                                                );
+                                              }
+                                              List<ProdutosRecord>
+                                                  choiceChipsProdutosRecordList =
+                                                  snapshot.data!;
+                                              return FlutterFlowChoiceChips(
+                                                options: const [
+                                                  ChipData('pizza salgada'),
+                                                  ChipData('pizza broto'),
+                                                  ChipData('pizza doce')
+                                                ],
+                                                onChanged: (val) => setState(
+                                                    () => _model
+                                                            .choiceChipsValue =
+                                                        val?.first),
+                                                selectedChipStyle: ChipStyle(
+                                                  backgroundColor:
+                                                      const Color(0xFFC05A16),
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium,
+                                                  iconColor: Colors.white,
+                                                  iconSize: 18.0,
+                                                  elevation: 4.0,
+                                                  borderColor:
+                                                      const Color(0xFFFD6907),
+                                                  borderWidth: 2.0,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
                                                 ),
-                                              ),
-                                            ),
-                                          ],
+                                                unselectedChipStyle: ChipStyle(
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryBackground,
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium,
+                                                  iconColor: Colors.white,
+                                                  iconSize: 18.0,
+                                                  elevation: 0.0,
+                                                  borderColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                chipSpacing: 8.0,
+                                                rowSpacing: 12.0,
+                                                multiselect: false,
+                                                initialized:
+                                                    _model.choiceChipsValue !=
+                                                        null,
+                                                alignment: WrapAlignment.start,
+                                                controller: _model
+                                                        .choiceChipsValueController ??=
+                                                    FormFieldController<
+                                                        List<String>>(
+                                                  ['pizza salgada'],
+                                                ),
+                                                wrapped: false,
+                                              );
+                                            },
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
+                            ),
+                          ],
+                        ),
+                        StreamBuilder<List<ProdutosRecord>>(
+                          stream: queryProdutosRecord(
+                            queryBuilder: (produtosRecord) =>
+                                produtosRecord.where(
+                              'tag',
+                              isEqualTo: _model.choiceChipsValue,
+                            ),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }
+                            List<ProdutosRecord> listViewProdutosRecordList =
+                                snapshot.data!;
+                            return ListView.builder(
+                              padding: EdgeInsets.zero,
+                              primary: false,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: listViewProdutosRecordList.length,
+                              itemBuilder: (context, listViewIndex) {
+                                final listViewProdutosRecord =
+                                    listViewProdutosRecordList[listViewIndex];
+                                return Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 10.0, 10.0, 0.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Container(
+                                        width: double.infinity,
+                                        height: 136.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(16.0),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 10.0, 10.0, 10.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed(
+                                                'detalhes_produtos',
+                                                queryParameters: {
+                                                  'produtoRef': serializeParam(
+                                                    listViewProdutosRecord,
+                                                    ParamType.Document,
+                                                  ),
+                                                }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'produtoRef':
+                                                      listViewProdutosRecord,
+                                                },
+                                              );
+                                            },
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  child: Image.network(
+                                                    listViewProdutosRecord.img,
+                                                    width: 100.0,
+                                                    height: 100.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(10.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      6.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Expanded(
+                                                                child: Text(
+                                                                  listViewProdutosRecord
+                                                                      .nomeProduto,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Readex Pro',
+                                                                        fontSize:
+                                                                            18.0,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      6.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Expanded(
+                                                                child: Text(
+                                                                  formatNumber(
+                                                                    listViewProdutosRecord
+                                                                        .valorPizza,
+                                                                    formatType:
+                                                                        FormatType
+                                                                            .custom,
+                                                                    currency:
+                                                                        'R\$',
+                                                                    format:
+                                                                        '.00',
+                                                                    locale:
+                                                                        'pt_BR',
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Readex Pro',
+                                                                        color: const Color(
+                                                                            0xFF26CB3A),
+                                                                        fontSize:
+                                                                            20.0,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Expanded(
+                                                              child: Text(
+                                                                listViewProdutosRecord
+                                                                    .descricao
+                                                                    .maybeHandleOverflow(
+                                                                  maxChars: 50,
+                                                                  replacement:
+                                                                      '…',
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      fontSize:
+                                                                          15.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w300,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
                             );
                           },
-                        );
-                      },
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
