@@ -329,9 +329,16 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                 .toList()
                                                 .map((label) => ChipData(label))
                                                 .toList(),
-                                        onChanged: (val) => setState(() =>
-                                            _model.choiceChipsValue =
-                                                val?.first),
+                                        onChanged: (val) async {
+                                          setState(() => _model
+                                              .choiceChipsValue = val?.first);
+                                          setState(() {
+                                            FFAppState().preferec = FFAppState()
+                                                    .preferec +
+                                                choiceChipsPreferenciasRecordList
+                                                    .first.valormassa;
+                                          });
+                                        },
                                         selectedChipStyle: ChipStyle(
                                           backgroundColor:
                                               FlutterFlowTheme.of(context)
@@ -383,19 +390,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         controller: _model
                                                 .choiceChipsValueController ??=
                                             FormFieldController<List<String>>(
-                                          [
-                                            formatNumber(
-                                              choiceChipsPreferenciasRecordList
-                                                  .where(
-                                                      (e) => e.hasValormassa())
-                                                  .toList()[0]
-                                                  .valormassa,
-                                              formatType: FormatType.custom,
-                                              currency: 'R\$',
-                                              format: '.00',
-                                              locale: 'pt_BR',
-                                            )
-                                          ],
+                                          ['Massa Fina'],
                                         ),
                                         wrapped: true,
                                       );
@@ -586,8 +581,9 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                 Text(
                                   valueOrDefault<String>(
                                     formatNumber(
-                                      widget.produtoRef!.valorPizza *
-                                          FFAppState().quantity,
+                                      (widget.produtoRef!.valorPizza *
+                                              FFAppState().quantity) +
+                                          FFAppState().preferec,
                                       formatType: FormatType.custom,
                                       currency: 'R\$',
                                       format: '.00',

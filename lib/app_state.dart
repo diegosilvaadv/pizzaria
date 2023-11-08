@@ -37,21 +37,6 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _totalprice = prefs.getDouble('ff_totalprice') ?? _totalprice;
     });
-    _safeInit(() {
-      _prefereciasApp = prefs
-              .getStringList('ff_prefereciasApp')
-              ?.map((x) {
-                try {
-                  return PreferenciasStruct.fromSerializableMap(jsonDecode(x));
-                } catch (e) {
-                  print("Can't decode persisted data type. Error: $e.");
-                  return null;
-                }
-              })
-              .withoutNulls
-              .toList() ??
-          _prefereciasApp;
-    });
   }
 
   void update(VoidCallback callback) {
@@ -128,51 +113,16 @@ class FFAppState extends ChangeNotifier {
     _total = value;
   }
 
-  List<PreferenciasStruct> _prefereciasApp = [];
-  List<PreferenciasStruct> get prefereciasApp => _prefereciasApp;
-  set prefereciasApp(List<PreferenciasStruct> value) {
-    _prefereciasApp = value;
-    prefs.setStringList(
-        'ff_prefereciasApp', value.map((x) => x.serialize()).toList());
-  }
-
-  void addToPrefereciasApp(PreferenciasStruct value) {
-    _prefereciasApp.add(value);
-    prefs.setStringList('ff_prefereciasApp',
-        _prefereciasApp.map((x) => x.serialize()).toList());
-  }
-
-  void removeFromPrefereciasApp(PreferenciasStruct value) {
-    _prefereciasApp.remove(value);
-    prefs.setStringList('ff_prefereciasApp',
-        _prefereciasApp.map((x) => x.serialize()).toList());
-  }
-
-  void removeAtIndexFromPrefereciasApp(int index) {
-    _prefereciasApp.removeAt(index);
-    prefs.setStringList('ff_prefereciasApp',
-        _prefereciasApp.map((x) => x.serialize()).toList());
-  }
-
-  void updatePrefereciasAppAtIndex(
-    int index,
-    PreferenciasStruct Function(PreferenciasStruct) updateFn,
-  ) {
-    _prefereciasApp[index] = updateFn(_prefereciasApp[index]);
-    prefs.setStringList('ff_prefereciasApp',
-        _prefereciasApp.map((x) => x.serialize()).toList());
-  }
-
-  void insertAtIndexInPrefereciasApp(int index, PreferenciasStruct value) {
-    _prefereciasApp.insert(index, value);
-    prefs.setStringList('ff_prefereciasApp',
-        _prefereciasApp.map((x) => x.serialize()).toList());
-  }
-
   int _condicao = 0;
   int get condicao => _condicao;
   set condicao(int value) {
     _condicao = value;
+  }
+
+  double _preferec = 0;
+  double get preferec => _preferec;
+  set preferec(double value) {
+    _preferec = value;
   }
 }
 
