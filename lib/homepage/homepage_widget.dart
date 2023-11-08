@@ -497,107 +497,107 @@ class _HomepageWidgetState extends State<HomepageWidget>
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Container(
-                                width: MediaQuery.sizeOf(context).width * 1.0,
-                                decoration: const BoxDecoration(),
-                                child: Align(
-                                  alignment: const AlignmentDirectional(-1.00, 0.00),
-                                  child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 8.0, 8.0, 8.0),
-                                    child: StreamBuilder<List<ProdutosRecord>>(
-                                      stream: queryProdutosRecord(),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              10.0, 10.0, 10.0, 10.0),
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Container(
+                                  width: MediaQuery.sizeOf(context).width * 1.0,
+                                  decoration: const BoxDecoration(),
+                                  child: Align(
+                                    alignment:
+                                        const AlignmentDirectional(-1.00, 0.00),
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 8.0, 8.0, 8.0),
+                                      child:
+                                          StreamBuilder<List<ProdutosRecord>>(
+                                        stream: queryProdutosRecord(),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                          Color>(
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                  ),
                                                 ),
                                               ),
+                                            );
+                                          }
+                                          List<ProdutosRecord>
+                                              choiceChipsProdutosRecordList =
+                                              snapshot.data!;
+                                          return FlutterFlowChoiceChips(
+                                            options: const [
+                                              ChipData('Pizza Salgada'),
+                                              ChipData('pizza broto'),
+                                              ChipData('pizza doce')
+                                            ],
+                                            onChanged: (val) => setState(() =>
+                                                _model.choiceChipsValue =
+                                                    val?.first),
+                                            selectedChipStyle: ChipStyle(
+                                              backgroundColor:
+                                                  const Color(0xFFC05A16),
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                              iconColor: Colors.white,
+                                              iconSize: 18.0,
+                                              elevation: 4.0,
+                                              borderColor: const Color(0xFFFD6907),
+                                              borderWidth: 2.0,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
                                             ),
+                                            unselectedChipStyle: ChipStyle(
+                                              backgroundColor:
+                                                  const Color(0xFFF8F8F8),
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium,
+                                              iconColor: Colors.white,
+                                              iconSize: 18.0,
+                                              elevation: 0.0,
+                                              borderColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            chipSpacing: 8.0,
+                                            rowSpacing: 12.0,
+                                            multiselect: false,
+                                            initialized:
+                                                _model.choiceChipsValue != null,
+                                            alignment: WrapAlignment.start,
+                                            controller: _model
+                                                    .choiceChipsValueController ??=
+                                                FormFieldController<
+                                                    List<String>>(
+                                              ['Pizza Salgada'],
+                                            ),
+                                            wrapped: false,
                                           );
-                                        }
-                                        List<ProdutosRecord>
-                                            choiceChipsProdutosRecordList =
-                                            snapshot.data!;
-                                        return FlutterFlowChoiceChips(
-                                          options: const [
-                                            ChipData('Pizza Salgada'),
-                                            ChipData('pizza broto'),
-                                            ChipData('pizza doce')
-                                          ],
-                                          onChanged: (val) => setState(() =>
-                                              _model.choiceChipsValue =
-                                                  val?.first),
-                                          selectedChipStyle: ChipStyle(
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .accent1,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium,
-                                            iconColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .info,
-                                            iconSize: 18.0,
-                                            elevation: 4.0,
-                                            borderColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
-                                            borderWidth: 2.0,
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          unselectedChipStyle: ChipStyle(
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryBackground,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium,
-                                            iconColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryText,
-                                            iconSize: 18.0,
-                                            elevation: 0.0,
-                                            borderColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .alternate,
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          chipSpacing: 8.0,
-                                          rowSpacing: 12.0,
-                                          multiselect: false,
-                                          initialized:
-                                              _model.choiceChipsValue != null,
-                                          alignment: WrapAlignment.start,
-                                          controller: _model
-                                                  .choiceChipsValueController ??=
-                                              FormFieldController<List<String>>(
-                                            ['Pizza Salgada'],
-                                          ),
-                                          wrapped: true,
-                                        );
-                                      },
+                                        },
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ],
