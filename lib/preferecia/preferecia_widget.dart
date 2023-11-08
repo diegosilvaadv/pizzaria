@@ -112,7 +112,7 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: Colors.white,
-                      fontSize: 25.0,
+                      fontSize: 24.0,
                       fontWeight: FontWeight.w500,
                     ),
               ),
@@ -354,8 +354,9 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                     quantity: widget.quanty,
                                     valor: widget.valor,
                                     valorpreferecias:
-                                        prefereciaPreferenciasRecordList[
-                                                FFAppState().contador]
+                                        prefereciaPreferenciasRecordList
+                                            .where((e) => e.hasValormassa())
+                                            .toList()[1]
                                             .valormassa,
                                     massaNome: prefereciaPreferenciasRecordList
                                         .first.massas,
