@@ -112,7 +112,7 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: Colors.white,
-                      fontSize: 25.0,
+                      fontSize: 24.0,
                       fontWeight: FontWeight.w500,
                     ),
               ),
@@ -157,9 +157,7 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                         FFAppState().condicao + 1;
                                     FFAppState().total = FFAppState().total +
                                         functions.soma(
-                                            prefereciaPreferenciasRecordList[0]
-                                                .valormassa,
-                                            FFAppState().totalprice);
+                                            10.0, FFAppState().totalprice);
                                   });
                                 },
                                 controller:
