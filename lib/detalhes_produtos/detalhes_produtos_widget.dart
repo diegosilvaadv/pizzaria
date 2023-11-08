@@ -377,11 +377,25 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         chipSpacing: 12.0,
                                         rowSpacing: 12.0,
                                         multiselect: false,
+                                        initialized:
+                                            _model.choiceChipsValue != null,
                                         alignment: WrapAlignment.center,
                                         controller: _model
                                                 .choiceChipsValueController ??=
                                             FormFieldController<List<String>>(
-                                          [],
+                                          [
+                                            formatNumber(
+                                              choiceChipsPreferenciasRecordList
+                                                  .where(
+                                                      (e) => e.hasValormassa())
+                                                  .toList()[0]
+                                                  .valormassa,
+                                              formatType: FormatType.custom,
+                                              currency: 'R\$',
+                                              format: '.00',
+                                              locale: 'pt_BR',
+                                            )
+                                          ],
                                         ),
                                         wrapped: true,
                                       );
