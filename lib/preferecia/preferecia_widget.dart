@@ -346,39 +346,31 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                           children: [
                             FFButtonWidget(
                               onPressed: () async {
-                                setState(() {
-                                  FFAppState().condicao = 0;
-                                  FFAppState().addToProdutosDoCarrinho(
-                                      ProdutosCarrinhoStruct(
-                                    nomeProduto: widget.titulo,
-                                    img: widget.img,
-                                    quantity: widget.quanty,
-                                    valor: widget.valor,
-                                    valorpreferecias:
-                                        prefereciaPreferenciasRecordList
-                                            .where((e) => e.hasValormassa())
-                                            .toList()[1]
-                                            .valormassa,
-                                    massaNome:
-                                        prefereciaPreferenciasRecordList[0]
-                                            .massas,
-                                  ));
-                                  FFAppState().totalprice =
-                                      FFAppState().totalprice +
-                                          functions.finalPrice(
-                                              widget.valor!, widget.quanty!);
-                                  FFAppState().total = 0;
-                                });
+                                if (FFAppState().ProdutosDoCarrinho.isNotEmpty) {
+                                  setState(() {
+                                    FFAppState().contador = -1;
+                                  });
+                                  while (FFAppState().contador <=
+                                      FFAppState().ProdutosDoCarrinho.length) {
+                                    setState(() {
+                                      FFAppState().contador =
+                                          FFAppState().contador + 1;
+                                      FFAppState().addToProdutosDoCarrinho(
+                                          ProdutosCarrinhoStruct(
+                                        nomeProduto: widget.titulo,
+                                        img: widget.img,
+                                        quantity: widget.quanty,
+                                        valor: widget.valor,
+                                        valorpreferecias: 1.0,
+                                        massaNome: 'ola',
+                                      ));
+                                    });
 
-                                context.goNamed(
-                                  'carrinho',
-                                  extra: <String, dynamic>{
-                                    kTransitionInfoKey: const TransitionInfo(
-                                      hasTransition: true,
-                                      transitionType: PageTransitionType.fade,
-                                    ),
-                                  },
-                                );
+                                    context.pushNamed('carrinho');
+                                  }
+                                } else {
+                                  return;
+                                }
                               },
                               text: 'Ir Para o Carrinho',
                               options: FFButtonOptions(
