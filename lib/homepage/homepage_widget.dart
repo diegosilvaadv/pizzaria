@@ -663,10 +663,8 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                       formatType:
                                                                           FormatType
                                                                               .custom,
-                                                                      currency:
-                                                                          'R\$',
                                                                       format:
-                                                                          ',00,00',
+                                                                          '  var f = NumberFormat("###.0#", "en_US");   print(f.format(12.345));       ==> 12.34',
                                                                       locale:
                                                                           '',
                                                                     ),
