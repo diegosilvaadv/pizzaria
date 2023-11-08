@@ -20,6 +20,13 @@ double finalPrice(
   return num1 * num2.toDouble();
 }
 
+double soma(
+  double num1,
+  double num2,
+) {
+  return num1 + num2.toDouble();
+}
+
 double subtracao(double valor1) {
   return valor1 * -1.toDouble();
 }
