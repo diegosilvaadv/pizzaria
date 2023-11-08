@@ -157,8 +157,8 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                         FFAppState().condicao + 1;
                                     FFAppState().total = FFAppState().total +
                                         functions.soma(
-                                            prefereciaPreferenciasRecordList
-                                                .first.valormassa,
+                                            prefereciaPreferenciasRecordList[0]
+                                                .valormassa,
                                             FFAppState().totalprice);
                                   });
                                 },
