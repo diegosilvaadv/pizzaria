@@ -1,5 +1,3 @@
-import '/backend/backend.dart';
-import '/components/preferencias_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -407,121 +405,63 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 6.0, 6.0),
-                      child: StreamBuilder<List<PreferenciasRecord>>(
-                        stream: queryPreferenciasRecord(),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    FlutterFlowTheme.of(context).primary,
-                                  ),
-                                ),
-                              ),
-                            );
-                          }
-                          List<PreferenciasRecord>
-                              containerPreferenciasRecordList = snapshot.data!;
-                          return Container(
-                            width: 230.0,
-                            height: 100.0,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFF26CB3A),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 0.0, 8.0, 0.0),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  setState(() {
-                                    FFAppState().total = FFAppState().total +
-                                        functions.finalPrice(widget.valor!,
-                                            FFAppState().quantity);
-                                    FFAppState()
-                                        .addToPreferec(PreferenciasStruct(
-                                      select: false,
-                                      massa: containerPreferenciasRecordList[
-                                              FFAppState().contador]
-                                          .massas,
-                                      valor: containerPreferenciasRecordList[
-                                              FFAppState().contador]
-                                          .valormassa,
-                                    ));
-                                  });
-                                  await showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    backgroundColor: const Color(0x76000000),
-                                    barrierColor: const Color(0x86000000),
-                                    enableDrag: false,
-                                    context: context,
-                                    builder: (context) {
-                                      return GestureDetector(
-                                        onTap: () => _model
-                                                .unfocusNode.canRequestFocus
-                                            ? FocusScope.of(context)
-                                                .requestFocus(
-                                                    _model.unfocusNode)
-                                            : FocusScope.of(context).unfocus(),
-                                        child: Padding(
-                                          padding:
-                                              MediaQuery.viewInsetsOf(context),
-                                          child: PreferenciasWidget(
-                                            titulo: widget.titulo!,
-                                            valor: widget.valor!,
-                                            descricao: widget.descricao!,
-                                            quantidade: FFAppState().quantity,
-                                            img: widget.img!,
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ).then((value) => safeSetState(() {}));
-                                },
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Adicionar',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            fontSize: 18.0,
-                                          ),
-                                    ),
-                                    Text(
-                                      formatNumber(
-                                        functions.finalPrice(widget.valor!,
-                                            FFAppState().quantity),
-                                        formatType: FormatType.custom,
-                                        currency: 'R\$',
-                                        format: '.00',
-                                        locale: 'pt_BR',
+                      child: Container(
+                        width: 230.0,
+                        height: 100.0,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF26CB3A),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              setState(() {
+                                FFAppState().total = FFAppState().total +
+                                    functions.finalPrice(
+                                        widget.valor!, FFAppState().quantity);
+                              });
+
+                              context.pushNamed('Preferecia');
+                            },
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Adicionar',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        fontSize: 18.0,
                                       ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            fontSize: 20.0,
-                                          ),
-                                    ),
-                                  ],
                                 ),
-                              ),
+                                Text(
+                                  formatNumber(
+                                    functions.finalPrice(
+                                        widget.valor!, FFAppState().quantity),
+                                    formatType: FormatType.custom,
+                                    currency: 'R\$',
+                                    format: '.00',
+                                    locale: 'pt_BR',
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        fontSize: 20.0,
+                                      ),
+                                ),
+                              ],
                             ),
-                          );
-                        },
+                          ),
+                        ),
                       ),
                     ),
                   ],

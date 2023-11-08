@@ -1,6 +1,5 @@
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
@@ -92,7 +91,6 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                           setState(() {
                             FFAppState().total = 0;
                             FFAppState().quantity = 1;
-                            FFAppState().preferec = [];
                           });
                           Navigator.pop(context);
                         },
@@ -142,144 +140,66 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                             Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Builder(
-                                  builder: (context) {
-                                    final preferencias =
-                                        FFAppState().preferec.toList();
-                                    return ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      primary: false,
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: preferencias.length,
-                                      itemBuilder:
-                                          (context, preferenciasIndex) {
-                                        final preferenciasItem =
-                                            preferencias[preferenciasIndex];
-                                        return Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 6.0),
-                                          child: Container(
-                                            width: 100.0,
-                                            height: 52.0,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            child: Column(
+                                ListView(
+                                  padding: EdgeInsets.zero,
+                                  primary: false,
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 6.0),
+                                      child: Container(
+                                        width: 100.0,
+                                        height: 52.0,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Row(
                                               mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
                                               children: [
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    ToggleIcon(
-                                                      onPressed: () async {
-                                                        setState(
-                                                          () => FFAppState()
-                                                                  .prefere
-                                                                  .where(
-                                                                      (e) => e)
-                                                                  .toList()
-                                                                  .contains(
-                                                                      preferenciasItem
-                                                                          .select)
-                                                              ? FFAppState()
-                                                                  .prefere
-                                                                  .where(
-                                                                      (e) => e)
-                                                                  .toList()
-                                                                  .remove(
-                                                                      preferenciasItem
-                                                                          .select)
-                                                              : FFAppState()
-                                                                  .prefere
-                                                                  .where(
-                                                                      (e) => e)
-                                                                  .toList()
-                                                                  .add(preferenciasItem
-                                                                      .select),
-                                                        );
-                                                      },
-                                                      value: FFAppState()
-                                                          .prefere
-                                                          .where((e) => e)
-                                                          .toList()
-                                                          .contains(
-                                                              preferenciasItem
-                                                                  .select),
-                                                      onIcon: Icon(
-                                                        Icons.check_box,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        size: 25.0,
+                                                Text(
+                                                  'Hello World',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        fontSize: 20.0,
                                                       ),
-                                                      offIcon: Icon(
-                                                        Icons
-                                                            .check_box_outline_blank,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        size: 25.0,
-                                                      ),
-                                                    ),
-                                                    Text(
-                                                      preferenciasItem.massa,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                fontSize: 20.0,
-                                                              ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  6.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        formatNumber(
-                                                          preferenciasItem
-                                                              .valor,
-                                                          formatType:
-                                                              FormatType.custom,
-                                                          currency: 'R\$',
-                                                          format: '.00',
-                                                          locale: 'pt_BR',
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          6.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Hello World',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color:
+                                                              const Color(0xFF26CB3A),
+                                                          fontSize: 20.0,
                                                         ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Readex Pro',
-                                                              color: const Color(
-                                                                  0xFF26CB3A),
-                                                              fontSize: 20.0,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                  ],
+                                                  ),
                                                 ),
                                               ],
                                             ),
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),

@@ -104,6 +104,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'carrinho',
           path: '/carrinho',
           builder: (context, params) => const CarrinhoWidget(),
+        ),
+        FFRoute(
+          name: 'Preferecia',
+          path: '/preferecia',
+          builder: (context, params) => const PrefereciaWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

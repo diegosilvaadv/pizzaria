@@ -37,6 +37,21 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _totalprice = prefs.getDouble('ff_totalprice') ?? _totalprice;
     });
+    _safeInit(() {
+      _prefereciasApp = prefs
+              .getStringList('ff_prefereciasApp')
+              ?.map((x) {
+                try {
+                  return PreferenciasStruct.fromSerializableMap(jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _prefereciasApp;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -113,35 +128,6 @@ class FFAppState extends ChangeNotifier {
     _total = value;
   }
 
-  List<PreferenciasStruct> _preferec = [];
-  List<PreferenciasStruct> get preferec => _preferec;
-  set preferec(List<PreferenciasStruct> value) {
-    _preferec = value;
-  }
-
-  void addToPreferec(PreferenciasStruct value) {
-    _preferec.add(value);
-  }
-
-  void removeFromPreferec(PreferenciasStruct value) {
-    _preferec.remove(value);
-  }
-
-  void removeAtIndexFromPreferec(int index) {
-    _preferec.removeAt(index);
-  }
-
-  void updatePreferecAtIndex(
-    int index,
-    PreferenciasStruct Function(PreferenciasStruct) updateFn,
-  ) {
-    _preferec[index] = updateFn(_preferec[index]);
-  }
-
-  void insertAtIndexInPreferec(int index, PreferenciasStruct value) {
-    _preferec.insert(index, value);
-  }
-
   List<bool> _prefere = [];
   List<bool> get prefere => _prefere;
   set prefere(List<bool> value) {
@@ -169,6 +155,47 @@ class FFAppState extends ChangeNotifier {
 
   void insertAtIndexInPrefere(int index, bool value) {
     _prefere.insert(index, value);
+  }
+
+  List<PreferenciasStruct> _prefereciasApp = [];
+  List<PreferenciasStruct> get prefereciasApp => _prefereciasApp;
+  set prefereciasApp(List<PreferenciasStruct> value) {
+    _prefereciasApp = value;
+    prefs.setStringList(
+        'ff_prefereciasApp', value.map((x) => x.serialize()).toList());
+  }
+
+  void addToPrefereciasApp(PreferenciasStruct value) {
+    _prefereciasApp.add(value);
+    prefs.setStringList('ff_prefereciasApp',
+        _prefereciasApp.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromPrefereciasApp(PreferenciasStruct value) {
+    _prefereciasApp.remove(value);
+    prefs.setStringList('ff_prefereciasApp',
+        _prefereciasApp.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromPrefereciasApp(int index) {
+    _prefereciasApp.removeAt(index);
+    prefs.setStringList('ff_prefereciasApp',
+        _prefereciasApp.map((x) => x.serialize()).toList());
+  }
+
+  void updatePrefereciasAppAtIndex(
+    int index,
+    PreferenciasStruct Function(PreferenciasStruct) updateFn,
+  ) {
+    _prefereciasApp[index] = updateFn(_prefereciasApp[index]);
+    prefs.setStringList('ff_prefereciasApp',
+        _prefereciasApp.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInPrefereciasApp(int index, PreferenciasStruct value) {
+    _prefereciasApp.insert(index, value);
+    prefs.setStringList('ff_prefereciasApp',
+        _prefereciasApp.map((x) => x.serialize()).toList());
   }
 }
 
