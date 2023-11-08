@@ -7,12 +7,8 @@ class PrefereciaModel extends FlutterFlowModel<PrefereciaWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for ChoiceChips widget.
-  String? choiceChipsValue;
-  FormFieldController<List<String>>? choiceChipsValueController;
-  // State field(s) for CheckboxGroup widget.
-  List<String>? checkboxGroupValues;
-  FormFieldController<List<String>>? checkboxGroupValueController;
+  // State field(s) for RadioButton widget.
+  FormFieldController<String>? radioButtonValueController;
 
   /// Initialization and disposal methods.
 
@@ -27,4 +23,6 @@ class PrefereciaModel extends FlutterFlowModel<PrefereciaWidget> {
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
+
+  String? get radioButtonValue => radioButtonValueController?.value;
 }
