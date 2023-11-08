@@ -394,9 +394,9 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
-                                                          if (FFAppState()
-                                                                  .preferec !=
-                                                              0.0)
+                                                          if (listViewPreferenciasRecord
+                                                                  .select ==
+                                                              false)
                                                             Icon(
                                                               Icons
                                                                   .check_box_sharp,
