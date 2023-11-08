@@ -661,12 +661,13 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                           .valorPizza,
                                                                       formatType:
                                                                           FormatType
-                                                                              .decimal,
-                                                                      decimalType:
-                                                                          DecimalType
-                                                                              .commaDecimal,
+                                                                              .custom,
                                                                       currency:
                                                                           'R\$',
+                                                                      format:
+                                                                          '00,00',
+                                                                      locale:
+                                                                          '',
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
