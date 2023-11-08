@@ -105,7 +105,7 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                           10.0, 10.0, 10.0, 10.0),
                       child: Container(
                         width: double.infinity,
-                        height: 168.0,
+                        height: 201.0,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
@@ -193,7 +193,7 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                               columnPreferenciasRecord
                                                   .valormassa,
                                               formatType: FormatType.custom,
-                                              currency: 'R\$',
+                                              currency: '+ R\$',
                                               format: '.00',
                                               locale: 'pt_BR',
                                             ),
