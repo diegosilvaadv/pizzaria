@@ -377,6 +377,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                       style: FlutterFlowTheme.of(context).titleLarge.override(
                             fontFamily: 'Outfit',
                             fontSize: 25.0,
+                            fontWeight: FontWeight.w600,
                           ),
                     ),
                   ],
@@ -665,7 +666,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                       currency:
                                                                           'R\$',
                                                                       format:
-                                                                          '00,00',
+                                                                          '.00',
                                                                       locale:
                                                                           '',
                                                                     ),
