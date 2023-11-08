@@ -51,7 +51,10 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
     context.watch<FFAppState>();
 
     return StreamBuilder<List<PreferenciasRecord>>(
-      stream: queryPreferenciasRecord(),
+      stream: queryPreferenciasRecord(
+        queryBuilder: (preferenciasRecord) =>
+            preferenciasRecord.orderBy('valormassa'),
+      ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -113,7 +116,7 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                         ),
                         child: Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              4.0, 4.0, 4.0, 4.0),
+                              6.0, 6.0, 6.0, 6.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -151,7 +154,11 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     4.0, 3.0, 0.0, 0.0),
                                 child: StreamBuilder<List<PreferenciasRecord>>(
-                                  stream: queryPreferenciasRecord(),
+                                  stream: queryPreferenciasRecord(
+                                    queryBuilder: (preferenciasRecord) =>
+                                        preferenciasRecord
+                                            .orderBy('valormassa'),
+                                  ),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
                                     if (!snapshot.hasData) {
@@ -224,8 +231,7 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                         children: [
                           FFButtonWidget(
                             onPressed: () async {
-                              if (_model.radioButtonValue ==
-                                  _model.radioButtonValue) {
+                              if (_model.radioButtonValue == '1') {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
