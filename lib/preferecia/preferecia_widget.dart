@@ -346,31 +346,34 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                           children: [
                             FFButtonWidget(
                               onPressed: () async {
-                                if (FFAppState().ProdutosDoCarrinho.isNotEmpty) {
-                                  setState(() {
-                                    FFAppState().contador = -1;
-                                  });
-                                  while (FFAppState().contador <=
-                                      FFAppState().ProdutosDoCarrinho.length) {
-                                    setState(() {
-                                      FFAppState().contador =
-                                          FFAppState().contador + 1;
-                                      FFAppState().addToProdutosDoCarrinho(
-                                          ProdutosCarrinhoStruct(
-                                        nomeProduto: widget.titulo,
-                                        img: widget.img,
-                                        quantity: widget.quanty,
-                                        valor: widget.valor,
-                                        valorpreferecias: 1.0,
-                                        massaNome: 'ola',
-                                      ));
-                                    });
+                                setState(() {
+                                  FFAppState().addToProdutosDoCarrinho(
+                                      ProdutosCarrinhoStruct(
+                                    nomeProduto: widget.titulo,
+                                    img: widget.img,
+                                    quantity: widget.quanty,
+                                    valor: widget.valor,
+                                    valorpreferecias:
+                                        prefereciaPreferenciasRecordList
+                                            .where((e) => e.hasValormassa())
+                                            .toList()
+                                            .length
+                                            .toDouble(),
+                                    massaNome: 'teste',
+                                  ));
+                                  FFAppState().condicao = 0;
+                                  FFAppState().total = 0;
+                                });
 
-                                    context.pushNamed('carrinho');
-                                  }
-                                } else {
-                                  return;
-                                }
+                                context.pushNamed(
+                                  'carrinho',
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: const TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType: PageTransitionType.fade,
+                                    ),
+                                  },
+                                );
                               },
                               text: 'Ir Para o Carrinho',
                               options: FFButtonOptions(
