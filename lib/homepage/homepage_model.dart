@@ -1,4 +1,5 @@
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'homepage_widget.dart' show HomepageWidget;
 import 'package:flutter/material.dart';
 
@@ -10,10 +11,9 @@ class HomepageModel extends FlutterFlowModel<HomepageWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-  // State field(s) for TabBar widget.
-  TabController? tabBarController;
-  int get tabBarCurrentIndex =>
-      tabBarController != null ? tabBarController!.index : 0;
+  // State field(s) for ChoiceChips widget.
+  List<String>? choiceChipsValues;
+  FormFieldController<List<String>>? choiceChipsValueController;
 
   /// Initialization and disposal methods.
 
@@ -25,8 +25,6 @@ class HomepageModel extends FlutterFlowModel<HomepageWidget> {
     unfocusNode.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();
-
-    tabBarController?.dispose();
   }
 
   /// Action blocks are added here.
