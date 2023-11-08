@@ -389,6 +389,13 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                               listViewPreferenciasRecord
                                                                   .valormassa;
                                                         });
+
+                                                        await listViewPreferenciasRecord
+                                                            .userPrefere!
+                                                            .update(
+                                                                createUsersRecordData(
+                                                          pprefereUser: true,
+                                                        ));
                                                       },
                                                       child: Row(
                                                         mainAxisSize:
@@ -396,7 +403,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                         children: [
                                                           if (listViewPreferenciasRecord
                                                                   .select ==
-                                                              false)
+                                                              true)
                                                             Icon(
                                                               Icons
                                                                   .check_box_sharp,
@@ -405,14 +412,18 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                                   .secondaryText,
                                                               size: 24.0,
                                                             ),
-                                                          Icon(
-                                                            Icons
-                                                                .check_box_outline_blank,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText,
-                                                            size: 24.0,
-                                                          ),
+                                                          if (listViewPreferenciasRecord
+                                                                  .userPrefere ==
+                                                              listViewPreferenciasRecord
+                                                                  .userPrefere)
+                                                            Icon(
+                                                              Icons
+                                                                  .check_box_outline_blank,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryText,
+                                                              size: 24.0,
+                                                            ),
                                                           Text(
                                                             listViewPreferenciasRecord
                                                                 .massas,

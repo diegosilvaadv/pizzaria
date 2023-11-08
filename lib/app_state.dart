@@ -124,6 +124,36 @@ class FFAppState extends ChangeNotifier {
   set preferec(double value) {
     _preferec = value;
   }
+
+  List<PrefenciasAppSStruct> _preferenciadatatype = [];
+  List<PrefenciasAppSStruct> get preferenciadatatype => _preferenciadatatype;
+  set preferenciadatatype(List<PrefenciasAppSStruct> value) {
+    _preferenciadatatype = value;
+  }
+
+  void addToPreferenciadatatype(PrefenciasAppSStruct value) {
+    _preferenciadatatype.add(value);
+  }
+
+  void removeFromPreferenciadatatype(PrefenciasAppSStruct value) {
+    _preferenciadatatype.remove(value);
+  }
+
+  void removeAtIndexFromPreferenciadatatype(int index) {
+    _preferenciadatatype.removeAt(index);
+  }
+
+  void updatePreferenciadatatypeAtIndex(
+    int index,
+    PrefenciasAppSStruct Function(PrefenciasAppSStruct) updateFn,
+  ) {
+    _preferenciadatatype[index] = updateFn(_preferenciadatatype[index]);
+  }
+
+  void insertAtIndexInPreferenciadatatype(
+      int index, PrefenciasAppSStruct value) {
+    _preferenciadatatype.insert(index, value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
