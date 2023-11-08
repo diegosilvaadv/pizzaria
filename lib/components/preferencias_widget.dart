@@ -1,6 +1,5 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
@@ -194,53 +193,6 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   children: [
-                                                    ToggleIcon(
-                                                      onPressed: () async {
-                                                        setState(
-                                                          () =>
-                                                              FFAppState()
-                                                                      .preferec[
-                                                                          listViewIndex]
-                                                                      .select
-                                                                  ? FFAppState()
-                                                                      .preferec[
-                                                                          listViewIndex]
-                                                                      .select
-                                                                  : FFAppState()
-                                                                      .preferec[
-                                                                          listViewIndex]
-                                                                      .select,
-                                                        );
-                                                        setState(() {
-                                                          FFAppState()
-                                                              .total = FFAppState()
-                                                                  .total +
-                                                              listViewPreferenciasRecord
-                                                                  .valormassa;
-                                                        });
-                                                      },
-                                                      value: FFAppState()
-                                                          .preferec[
-                                                              listViewIndex]
-                                                          .select,
-                                                      onIcon: Icon(
-                                                        Icons.check_box,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        size: 25.0,
-                                                      ),
-                                                      offIcon: Icon(
-                                                        Icons
-                                                            .check_box_outline_blank,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        size: 25.0,
-                                                      ),
-                                                    ),
                                                     Text(
                                                       listViewPreferenciasRecord
                                                           .massas,
