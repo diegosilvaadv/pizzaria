@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'homepage_model.dart';
 export 'homepage_model.dart';
 
@@ -377,48 +378,37 @@ class _HomepageWidgetState extends State<HomepageWidget>
                       ),
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                      child: Container(
-                        width: double.infinity,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [Color(0x93E46D1F), Color(0x86613416)],
-                            stops: [0.0, 1.0],
-                            begin: AlignmentDirectional(0.34, -1.0),
-                            end: AlignmentDirectional(-0.34, 1.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          10.0, 10.0, 10.0, 10.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(100.0),
+                            child: Image.asset(
+                              'assets/images/pizzaria.png',
+                              width: 100.0,
+                              height: 100.0,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              10.0, 10.0, 10.0, 10.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(100.0),
-                                child: Image.asset(
-                                  'assets/images/pizzaria.png',
-                                  width: 100.0,
-                                  height: 100.0,
-                                  fit: BoxFit.cover,
+                          GradientText(
+                            'APP PIZZARIA',
+                            style: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  fontSize: 25.0,
+                                  fontWeight: FontWeight.w600,
                                 ),
-                              ),
-                              Text(
-                                'APP PIZZARIA',
-                                style: FlutterFlowTheme.of(context)
-                                    .titleLarge
-                                    .override(
-                                      fontFamily: 'Outfit',
-                                      fontSize: 25.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                              ),
+                            colors: [
+                              const Color(0xFFE46D1F),
+                              FlutterFlowTheme.of(context).secondary
                             ],
+                            gradientDirection: GradientDirection.ltr,
+                            gradientType: GradientType.linear,
                           ),
-                        ),
+                        ],
                       ),
                     ),
                   ],
