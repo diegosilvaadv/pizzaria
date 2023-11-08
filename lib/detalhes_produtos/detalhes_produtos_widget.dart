@@ -259,9 +259,10 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                 Text(
                                   formatNumber(
                                     widget.valor,
-                                    formatType: FormatType.decimal,
-                                    decimalType: DecimalType.periodDecimal,
+                                    formatType: FormatType.custom,
                                     currency: 'R\$',
+                                    format: '.00',
+                                    locale: 'pt_BR',
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -470,9 +471,10 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                   formatNumber(
                                     functions.finalPrice(
                                         widget.valor!, FFAppState().quantity),
-                                    formatType: FormatType.decimal,
-                                    decimalType: DecimalType.commaDecimal,
+                                    formatType: FormatType.custom,
                                     currency: 'R\$',
+                                    format: '.00',
+                                    locale: 'pt_BR',
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium

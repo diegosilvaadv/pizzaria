@@ -218,12 +218,11 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                                         formatNumber(
                                                           listViewPreferenciasRecord
                                                               .valormassa,
-                                                          formatType: FormatType
-                                                              .decimal,
-                                                          decimalType:
-                                                              DecimalType
-                                                                  .periodDecimal,
+                                                          formatType:
+                                                              FormatType.custom,
                                                           currency: 'R\$',
+                                                          format: '.00',
+                                                          locale: 'pt_BR',
                                                         ),
                                                         style: FlutterFlowTheme
                                                                 .of(context)
@@ -438,10 +437,10 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                         Text(
                                           formatNumber(
                                             FFAppState().total,
-                                            formatType: FormatType.decimal,
-                                            decimalType:
-                                                DecimalType.commaDecimal,
+                                            formatType: FormatType.custom,
                                             currency: 'R\$',
+                                            format: '.00',
+                                            locale: 'pt_BR',
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium

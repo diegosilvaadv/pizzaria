@@ -212,11 +212,10 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                               pedidosItem.valor,
                                                               formatType:
                                                                   FormatType
-                                                                      .decimal,
-                                                              decimalType:
-                                                                  DecimalType
-                                                                      .commaDecimal,
+                                                                      .custom,
                                                               currency: 'R\$',
+                                                              format: '.00',
+                                                              locale: 'pt_BR',
                                                             )} X ${formatNumber(
                                                               pedidosItem
                                                                   .quantity,
@@ -375,9 +374,10 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                 Text(
                                   formatNumber(
                                     FFAppState().totalprice,
-                                    formatType: FormatType.decimal,
-                                    decimalType: DecimalType.commaDecimal,
+                                    formatType: FormatType.custom,
                                     currency: 'R\$',
+                                    format: '.00',
+                                    locale: 'pt_BR',
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
