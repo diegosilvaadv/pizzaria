@@ -108,7 +108,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Preferecia',
           path: '/preferecia',
-          builder: (context, params) => const PrefereciaWidget(),
+          builder: (context, params) => PrefereciaWidget(
+            titulo: params.getParam('titulo', ParamType.String),
+            valor: params.getParam('valor', ParamType.double),
+            quanty: params.getParam('quanty', ParamType.int),
+            img: params.getParam('img', ParamType.String),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

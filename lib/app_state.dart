@@ -128,35 +128,6 @@ class FFAppState extends ChangeNotifier {
     _total = value;
   }
 
-  List<bool> _prefere = [];
-  List<bool> get prefere => _prefere;
-  set prefere(List<bool> value) {
-    _prefere = value;
-  }
-
-  void addToPrefere(bool value) {
-    _prefere.add(value);
-  }
-
-  void removeFromPrefere(bool value) {
-    _prefere.remove(value);
-  }
-
-  void removeAtIndexFromPrefere(int index) {
-    _prefere.removeAt(index);
-  }
-
-  void updatePrefereAtIndex(
-    int index,
-    bool Function(bool) updateFn,
-  ) {
-    _prefere[index] = updateFn(_prefere[index]);
-  }
-
-  void insertAtIndexInPrefere(int index, bool value) {
-    _prefere.insert(index, value);
-  }
-
   List<PreferenciasStruct> _prefereciasApp = [];
   List<PreferenciasStruct> get prefereciasApp => _prefereciasApp;
   set prefereciasApp(List<PreferenciasStruct> value) {

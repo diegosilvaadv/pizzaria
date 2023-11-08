@@ -427,7 +427,27 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         widget.valor!, FFAppState().quantity);
                               });
 
-                              context.pushNamed('Preferecia');
+                              context.pushNamed(
+                                'Preferecia',
+                                queryParameters: {
+                                  'titulo': serializeParam(
+                                    widget.titulo,
+                                    ParamType.String,
+                                  ),
+                                  'valor': serializeParam(
+                                    widget.valor,
+                                    ParamType.double,
+                                  ),
+                                  'quanty': serializeParam(
+                                    FFAppState().quantity,
+                                    ParamType.int,
+                                  ),
+                                  'img': serializeParam(
+                                    widget.img,
+                                    ParamType.String,
+                                  ),
+                                }.withoutNulls,
+                              );
                             },
                             child: Row(
                               mainAxisSize: MainAxisSize.max,

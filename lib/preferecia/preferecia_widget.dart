@@ -12,7 +12,18 @@ import 'preferecia_model.dart';
 export 'preferecia_model.dart';
 
 class PrefereciaWidget extends StatefulWidget {
-  const PrefereciaWidget({super.key});
+  const PrefereciaWidget({
+    super.key,
+    required this.titulo,
+    required this.valor,
+    required this.quanty,
+    required this.img,
+  });
+
+  final String? titulo;
+  final double? valor;
+  final int? quanty;
+  final String? img;
 
   @override
   _PrefereciaWidgetState createState() => _PrefereciaWidgetState();
@@ -92,6 +103,8 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             appBar: AppBar(
               backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+              iconTheme: IconThemeData(
+                  color: FlutterFlowTheme.of(context).primaryText),
               automaticallyImplyLeading: true,
               title: Text(
                 'Escolha sua Preferencia',
@@ -141,15 +154,11 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                   setState(() {
                                     FFAppState().condicao =
                                         FFAppState().condicao + 1;
-                                    FFAppState().total = FFAppState().total +
-                                        prefereciaPreferenciasRecordList[
-                                                FFAppState().contador]
-                                            .valormassa;
                                   });
                                 },
                                 controller:
                                     _model.radioButtonValueController ??=
-                                        FormFieldController<String>('1'),
+                                        FormFieldController<String>(null),
                                 optionHeight: 28.0,
                                 textStyle:
                                     FlutterFlowTheme.of(context).labelMedium,
@@ -328,6 +337,14 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                               onPressed: () async {
                                 setState(() {
                                   FFAppState().condicao = 0;
+                                  FFAppState().addToProdutosDoCarrinho(
+                                      ProdutosCarrinhoStruct(
+                                    nomeProduto: widget.titulo,
+                                    img: widget.img,
+                                    quantity: widget.quanty,
+                                    valor: widget.valor,
+                                    valorpreferecias: 1.0,
+                                  ));
                                 });
 
                                 context.goNamed('carrinho');
