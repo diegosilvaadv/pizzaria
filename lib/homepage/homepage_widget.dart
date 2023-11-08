@@ -376,7 +376,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                       'APP PIZZARIA',
                       style: FlutterFlowTheme.of(context).titleLarge.override(
                             fontFamily: 'Outfit',
-                            fontSize: 26.0,
+                            fontSize: 25.0,
                             fontWeight: FontWeight.bold,
                           ),
                     ),
@@ -663,6 +663,8 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                       formatType:
                                                                           FormatType
                                                                               .custom,
+                                                                      currency:
+                                                                          'R\$',
                                                                       format:
                                                                           '.00',
                                                                       locale:
