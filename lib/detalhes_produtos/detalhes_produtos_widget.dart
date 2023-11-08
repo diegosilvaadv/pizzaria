@@ -36,6 +36,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         FFAppState().total = 0;
+        FFAppState().preferec = 0;
       });
     });
 
@@ -181,7 +182,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
-                                                          fontSize: 20.0,
+                                                          fontSize: 21.0,
                                                         ),
                                               ),
                                             ),
@@ -303,8 +304,9 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                       StreamBuilder<List<PreferenciasRecord>>(
                                         stream: queryPreferenciasRecord(
                                           queryBuilder: (preferenciasRecord) =>
-                                              preferenciasRecord
-                                                  .orderBy('valormassa'),
+                                              preferenciasRecord.orderBy(
+                                                  'Massas',
+                                                  descending: true),
                                         ),
                                         builder: (context, snapshot) {
                                           // Customize what your widget looks like when it's loading.
