@@ -1,13 +1,12 @@
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
 import 'detalhes_produtos_model.dart';
 export 'detalhes_produtos_model.dart';
@@ -299,102 +298,139 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                   ),
-                                  child:
-                                      StreamBuilder<List<PreferenciasRecord>>(
-                                    stream: queryPreferenciasRecord(),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50.0,
-                                            height: 50.0,
-                                            child: CircularProgressIndicator(
-                                              valueColor:
-                                                  AlwaysStoppedAnimation<Color>(
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      PagedListView<DocumentSnapshot<Object?>?,
+                                          PreferenciasRecord>(
+                                        pagingController:
+                                            _model.setListViewController(
+                                          PreferenciasRecord.collection
+                                              .orderBy('valormassa'),
+                                        ),
+                                        padding: EdgeInsets.zero,
+                                        shrinkWrap: true,
+                                        reverse: false,
+                                        scrollDirection: Axis.vertical,
+                                        builderDelegate:
+                                            PagedChildBuilderDelegate<
+                                                PreferenciasRecord>(
+                                          // Customize what your widget looks like when it's loading the first page.
+                                          firstPageProgressIndicatorBuilder:
+                                              (_) => Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        );
-                                      }
-                                      List<PreferenciasRecord>
-                                          choiceChipsPreferenciasRecordList =
-                                          snapshot.data!;
-                                      return FlutterFlowChoiceChips(
-                                        options:
-                                            choiceChipsPreferenciasRecordList
-                                                .map((e) => e.massas)
-                                                .toList()
-                                                .map((label) => ChipData(label))
-                                                .toList(),
-                                        onChanged: (val) async {
-                                          setState(() => _model
-                                              .choiceChipsValue = val?.first);
-                                          setState(() {
-                                            FFAppState().preferec = FFAppState()
-                                                    .preferec +
-                                                choiceChipsPreferenciasRecordList
-                                                    .first.valormassa;
-                                          });
-                                        },
-                                        selectedChipStyle: ChipStyle(
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                          textStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
+                                          // Customize what your widget looks like when it's loading another page.
+                                          newPageProgressIndicatorBuilder:
+                                              (_) => Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                                ),
                                               ),
-                                          iconColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          iconSize: 18.0,
-                                          elevation: 4.0,
-                                          borderRadius:
-                                              BorderRadius.circular(16.0),
-                                        ),
-                                        unselectedChipStyle: ChipStyle(
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .alternate,
-                                          textStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
+                                            ),
+                                          ),
+
+                                          itemBuilder:
+                                              (context, _, listViewIndex) {
+                                            final listViewPreferenciasRecord =
+                                                _model.listViewPagingController!
+                                                    .itemList![listViewIndex];
+                                            return InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                setState(() {
+                                                  FFAppState()
+                                                      .preferec = FFAppState()
+                                                          .preferec +
+                                                      listViewPreferenciasRecord
+                                                          .valormassa;
+                                                });
+                                              },
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Icon(
+                                                    Icons.check_box_sharp,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .secondaryText,
+                                                    size: 24.0,
+                                                  ),
+                                                  Icon(
+                                                    Icons
+                                                        .check_box_outline_blank,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 24.0,
+                                                  ),
+                                                  Text(
+                                                    listViewPreferenciasRecord
+                                                        .massas,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          fontSize: 18.0,
+                                                        ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(10.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      formatNumber(
+                                                        listViewPreferenciasRecord
+                                                            .valormassa,
+                                                        formatType:
+                                                            FormatType.custom,
+                                                        currency: 'R\$',
+                                                        format: '.00',
+                                                        locale: 'pt_BR',
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                fontSize: 20.0,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                          iconColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryText,
-                                          iconSize: 18.0,
-                                          elevation: 0.0,
-                                          borderRadius:
-                                              BorderRadius.circular(16.0),
+                                            );
+                                          },
                                         ),
-                                        chipSpacing: 12.0,
-                                        rowSpacing: 12.0,
-                                        multiselect: false,
-                                        initialized:
-                                            _model.choiceChipsValue != null,
-                                        alignment: WrapAlignment.center,
-                                        controller: _model
-                                                .choiceChipsValueController ??=
-                                            FormFieldController<List<String>>(
-                                          ['Massa Fina'],
-                                        ),
-                                        wrapped: true,
-                                      );
-                                    },
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
