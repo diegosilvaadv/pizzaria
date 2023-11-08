@@ -28,6 +28,30 @@ class _HomepageWidgetState extends State<HomepageWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = {
+    'columnOnPageLoadAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.linear,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+      ],
+    ),
+    'columnOnPageLoadAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+      ],
+    ),
     'containerOnActionTriggerAnimation': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       applyInitialState: true,
@@ -470,7 +494,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                   ),
                 ),
               ],
-            ),
+            ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation1']!),
             actions: const [],
             centerTitle: false,
             toolbarHeight: 210.0,
@@ -678,7 +702,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                 ),
               ],
             ),
-          ),
+          ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation2']!),
         ),
       ),
     );
