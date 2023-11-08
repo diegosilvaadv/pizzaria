@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -96,11 +97,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'detalhes_produtos',
           path: '/detalhesProdutos',
+          asyncParams: {
+            'produtoRef': getDoc(['produtos'], ProdutosRecord.fromSnapshot),
+          },
           builder: (context, params) => DetalhesProdutosWidget(
-            titulo: params.getParam('titulo', ParamType.String),
-            descricao: params.getParam('descricao', ParamType.String),
-            img: params.getParam('img', ParamType.String),
-            valor: params.getParam('valor', ParamType.double),
+            produtoRef: params.getParam('produtoRef', ParamType.Document),
           ),
         ),
         FFRoute(
@@ -113,11 +114,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Preferecia',
           path: '/preferecia',
+          asyncParams: {
+            'produtoRef': getDoc(['produtos'], ProdutosRecord.fromSnapshot),
+          },
           builder: (context, params) => PrefereciaWidget(
-            titulo: params.getParam('titulo', ParamType.String),
-            valor: params.getParam('valor', ParamType.double),
-            quanty: params.getParam('quanty', ParamType.int),
-            img: params.getParam('img', ParamType.String),
+            produtoRef: params.getParam('produtoRef', ParamType.Document),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),

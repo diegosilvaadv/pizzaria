@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -12,16 +13,10 @@ export 'detalhes_produtos_model.dart';
 class DetalhesProdutosWidget extends StatefulWidget {
   const DetalhesProdutosWidget({
     super.key,
-    required this.titulo,
-    required this.descricao,
-    required this.img,
-    required this.valor,
+    required this.produtoRef,
   });
 
-  final String? titulo;
-  final String? descricao;
-  final String? img;
-  final double? valor;
+  final ProdutosRecord? produtoRef;
 
   @override
   _DetalhesProdutosWidgetState createState() => _DetalhesProdutosWidgetState();
@@ -99,10 +94,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                               Align(
                                 alignment: const AlignmentDirectional(0.00, 0.00),
                                 child: Hero(
-                                  tag: valueOrDefault<String>(
-                                    widget.img,
-                                    'https://forbes.com.br/wp-content/uploads/2021/07/Life_Dia-da-Pizza-Veridiana-Margherita_8julho2021_Divulgacao.jpg',
-                                  ),
+                                  tag: widget.produtoRef!.img,
                                   transitionOnUserGestures: true,
                                   child: ClipRRect(
                                     borderRadius: const BorderRadius.only(
@@ -112,10 +104,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                       topRight: Radius.circular(0.0),
                                     ),
                                     child: Image.network(
-                                      valueOrDefault<String>(
-                                        widget.img,
-                                        'https://forbes.com.br/wp-content/uploads/2021/07/Life_Dia-da-Pizza-Veridiana-Margherita_8julho2021_Divulgacao.jpg',
-                                      ),
+                                      widget.produtoRef!.img,
                                       width: MediaQuery.sizeOf(context).width *
                                           1.0,
                                       height: 300.0,
@@ -176,7 +165,10 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Text(
-                                              widget.titulo!,
+                                              valueOrDefault<String>(
+                                                widget.produtoRef?.nomeProduto,
+                                                'Nome',
+                                              ),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .titleLarge
@@ -232,7 +224,10 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                               children: [
                                 Expanded(
                                   child: Text(
-                                    widget.descricao!,
+                                    valueOrDefault<String>(
+                                      widget.produtoRef?.descricao,
+                                      'descricao',
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -265,7 +260,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                 ),
                                 Text(
                                   formatNumber(
-                                    widget.valor,
+                                    widget.produtoRef!.valorPizza,
                                     formatType: FormatType.custom,
                                     currency: 'R\$',
                                     format: '.00',
@@ -432,29 +427,21 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                               setState(() {
                                 FFAppState().total = FFAppState().total +
                                     functions.finalPrice(
-                                        widget.valor!, FFAppState().quantity);
+                                        widget.produtoRef!.valorPizza,
+                                        FFAppState().quantity);
                               });
 
                               context.pushNamed(
                                 'Preferecia',
                                 queryParameters: {
-                                  'titulo': serializeParam(
-                                    widget.titulo,
-                                    ParamType.String,
-                                  ),
-                                  'valor': serializeParam(
-                                    widget.valor,
-                                    ParamType.double,
-                                  ),
-                                  'quanty': serializeParam(
-                                    FFAppState().quantity,
-                                    ParamType.int,
-                                  ),
-                                  'img': serializeParam(
-                                    widget.img,
-                                    ParamType.String,
+                                  'produtoRef': serializeParam(
+                                    widget.produtoRef,
+                                    ParamType.Document,
                                   ),
                                 }.withoutNulls,
+                                extra: <String, dynamic>{
+                                  'produtoRef': widget.produtoRef,
+                                },
                               );
                             },
                             child: Row(
@@ -473,7 +460,8 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                 Text(
                                   formatNumber(
                                     functions.finalPrice(
-                                        widget.valor!, FFAppState().quantity),
+                                        widget.produtoRef!.valorPizza,
+                                        FFAppState().quantity),
                                     formatType: FormatType.custom,
                                     currency: 'R\$',
                                     format: '.00',

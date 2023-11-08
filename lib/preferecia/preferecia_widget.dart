@@ -14,16 +14,10 @@ export 'preferecia_model.dart';
 class PrefereciaWidget extends StatefulWidget {
   const PrefereciaWidget({
     super.key,
-    required this.titulo,
-    required this.valor,
-    required this.quanty,
-    required this.img,
+    required this.produtoRef,
   });
 
-  final String? titulo;
-  final double? valor;
-  final int? quanty;
-  final String? img;
+  final ProdutosRecord? produtoRef;
 
   @override
   _PrefereciaWidgetState createState() => _PrefereciaWidgetState();
@@ -111,7 +105,7 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: Colors.white,
-                      fontSize: 24.0,
+                      fontSize: 25.0,
                       fontWeight: FontWeight.w500,
                     ),
               ),
@@ -283,10 +277,10 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                 setState(() {
                                   FFAppState().addToProdutosDoCarrinho(
                                       ProdutosCarrinhoStruct(
-                                    nomeProduto: widget.titulo,
-                                    img: widget.img,
-                                    quantity: widget.quanty,
-                                    valor: widget.valor,
+                                    nomeProduto: widget.produtoRef?.nomeProduto,
+                                    img: widget.produtoRef?.img,
+                                    quantity: FFAppState().quantity,
+                                    valor: widget.produtoRef?.valorPizza,
                                     valorpreferecias:
                                         prefereciaPreferenciasRecordList
                                             .where((e) => e.hasValormassa())

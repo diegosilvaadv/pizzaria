@@ -604,29 +604,16 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                     context.pushNamed(
                                                       'detalhes_produtos',
                                                       queryParameters: {
-                                                        'titulo':
+                                                        'produtoRef':
                                                             serializeParam(
-                                                          listViewProdutosRecord
-                                                              .nomeProduto,
-                                                          ParamType.String,
-                                                        ),
-                                                        'descricao':
-                                                            serializeParam(
-                                                          listViewProdutosRecord
-                                                              .descricao,
-                                                          ParamType.String,
-                                                        ),
-                                                        'img': serializeParam(
-                                                          listViewProdutosRecord
-                                                              .img,
-                                                          ParamType.String,
-                                                        ),
-                                                        'valor': serializeParam(
-                                                          listViewProdutosRecord
-                                                              .valorPizza,
-                                                          ParamType.double,
+                                                          listViewProdutosRecord,
+                                                          ParamType.Document,
                                                         ),
                                                       }.withoutNulls,
+                                                      extra: <String, dynamic>{
+                                                        'produtoRef':
+                                                            listViewProdutosRecord,
+                                                      },
                                                     );
                                                   },
                                                   child: Row(
