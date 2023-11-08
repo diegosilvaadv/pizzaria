@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -154,6 +155,10 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                   setState(() {
                                     FFAppState().condicao =
                                         FFAppState().condicao + 1;
+                                    FFAppState().total = FFAppState().total +
+                                        prefereciaPreferenciasRecordList
+                                            .first.valormassa +
+                                        FFAppState().total;
                                   });
                                 },
                                 controller:
@@ -345,6 +350,10 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                     valor: widget.valor,
                                     valorpreferecias: 1.0,
                                   ));
+                                  FFAppState().totalprice =
+                                      FFAppState().totalprice +
+                                          functions.finalPrice(
+                                              widget.valor!, widget.quanty!);
                                 });
 
                                 context.goNamed('carrinho');
