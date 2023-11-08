@@ -166,22 +166,26 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Text(
-                                              valueOrDefault<String>(
-                                                widget.produtoRef?.nomeProduto,
-                                                'Nome',
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(3.0, 3.0, 3.0, 3.0),
+                                              child: Text(
+                                                valueOrDefault<String>(
+                                                  widget
+                                                      .produtoRef?.nomeProduto,
+                                                  'Nome',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleLarge
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          fontSize: 20.0,
+                                                        ),
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleLarge
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        fontSize: 20.0,
-                                                      ),
                                             ),
                                           ],
                                         ),
@@ -534,10 +538,6 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               setState(() {
-                                FFAppState().total = FFAppState().total +
-                                    functions.finalPrice(
-                                        widget.produtoRef!.valorPizza,
-                                        FFAppState().quantity);
                                 FFAppState().addToProdutosDoCarrinho(
                                     ProdutosCarrinhoStruct(
                                   nomeProduto: widget.produtoRef?.nomeProduto,
@@ -547,6 +547,11 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                   valorpreferecias: 10.0,
                                   massaNome: 'teste',
                                 ));
+                                FFAppState().totalprice =
+                                    FFAppState().totalprice +
+                                        functions.finalPrice(
+                                            widget.produtoRef!.valorPizza,
+                                            FFAppState().quantity);
                               });
 
                               context.pushNamed('carrinho');
