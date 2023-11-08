@@ -1,6 +1,8 @@
-import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_checkbox_group.dart';
+import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -74,136 +76,60 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 25.0),
-                child: StreamBuilder<List<PreferenciasRecord>>(
-                  stream: queryPreferenciasRecord(),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              FlutterFlowTheme.of(context).primary,
-                            ),
-                          ),
-                        ),
-                      );
-                    }
-                    List<PreferenciasRecord> columnPreferenciasRecordList =
-                        snapshot.data!;
-                    return Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: List.generate(
-                          columnPreferenciasRecordList.length, (columnIndex) {
-                        final columnPreferenciasRecord =
-                            columnPreferenciasRecordList[columnIndex];
-                        return Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 15.0, 0.0, 0.0),
-                          child: Container(
-                            width: double.infinity,
-                            height: 70.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              borderRadius: BorderRadius.circular(12.0),
-                              border: Border.all(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                width: 1.0,
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 0.0, 15.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      columnPreferenciasRecord.massas,
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                          ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      formatNumber(
-                                        columnPreferenciasRecord.valormassa,
-                                        formatType: FormatType.custom,
-                                        currency: 'R\$',
-                                        format: '.00',
-                                        locale: 'pt_BR',
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            color: const Color(0xFF26CB3A),
-                                          ),
-                                    ),
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          await columnPreferenciasRecord
-                                              .reference
-                                              .update(
-                                                  createPreferenciasRecordData());
-                                        },
-                                        child: Icon(
-                                          Icons.radio_button_off,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                          size: 24.0,
-                                        ),
-                                      ),
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          await columnPreferenciasRecord
-                                              .reference
-                                              .update(
-                                                  createPreferenciasRecordData());
-                                        },
-                                        child: Icon(
-                                          Icons.radio_button_checked,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                          size: 24.0,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      }),
-                    );
-                  },
+              FlutterFlowChoiceChips(
+                options: const [
+                  ChipData('SDFGDSFDSF'),
+                  ChipData('DSFSDFSD'),
+                  ChipData('FSDFSDFDS')
+                ],
+                onChanged: (val) =>
+                    setState(() => _model.choiceChipsValue = val?.first),
+                selectedChipStyle: ChipStyle(
+                  backgroundColor: FlutterFlowTheme.of(context).secondary,
+                  textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Readex Pro',
+                        color: FlutterFlowTheme.of(context).primaryText,
+                      ),
+                  iconColor: FlutterFlowTheme.of(context).primaryText,
+                  iconSize: 18.0,
+                  elevation: 4.0,
+                  borderRadius: BorderRadius.circular(16.0),
                 ),
+                unselectedChipStyle: ChipStyle(
+                  backgroundColor: FlutterFlowTheme.of(context).alternate,
+                  textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Readex Pro',
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                      ),
+                  iconColor: FlutterFlowTheme.of(context).secondaryText,
+                  iconSize: 18.0,
+                  elevation: 0.0,
+                  borderRadius: BorderRadius.circular(16.0),
+                ),
+                chipSpacing: 12.0,
+                rowSpacing: 12.0,
+                multiselect: false,
+                alignment: WrapAlignment.start,
+                controller: _model.choiceChipsValueController ??=
+                    FormFieldController<List<String>>(
+                  [],
+                ),
+                wrapped: true,
+              ),
+              FlutterFlowCheckboxGroup(
+                options: const ['RFGFGF', 'GFGFGF', 'GFGFG'],
+                onChanged: (val) =>
+                    setState(() => _model.checkboxGroupValues = val),
+                controller: _model.checkboxGroupValueController ??=
+                    FormFieldController<List<String>>(
+                  [],
+                ),
+                activeColor: FlutterFlowTheme.of(context).primary,
+                checkColor: FlutterFlowTheme.of(context).info,
+                checkboxBorderColor: FlutterFlowTheme.of(context).secondaryText,
+                textStyle: FlutterFlowTheme.of(context).bodyMedium,
+                checkboxBorderRadius: BorderRadius.circular(4.0),
+                initialized: _model.checkboxGroupValues != null,
               ),
             ],
           ),
