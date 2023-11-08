@@ -128,9 +128,11 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                     .toList()
                                     .toList(),
                                 onChanged: (val) => setState(() {}),
-                                controller:
-                                    _model.radioButtonValueController ??=
-                                        FormFieldController<String>(null),
+                                controller: _model
+                                        .radioButtonValueController ??=
+                                    FormFieldController<String>(
+                                        prefereciaPreferenciasRecordList.length
+                                            .toString()),
                                 optionHeight: 28.0,
                                 textStyle:
                                     FlutterFlowTheme.of(context).labelMedium,
@@ -231,7 +233,7 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                         children: [
                           FFButtonWidget(
                             onPressed: () async {
-                              if (_model.radioButtonValue == '1') {
+                              if (_model.radioButtonValue != '0') {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
