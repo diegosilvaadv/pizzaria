@@ -354,8 +354,9 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                     quantity: widget.quanty,
                                     valor: widget.valor,
                                     valorpreferecias:
-                                        prefereciaPreferenciasRecordList
-                                            .first.valormassa,
+                                        prefereciaPreferenciasRecordList[
+                                                FFAppState().contador]
+                                            .valormassa,
                                     massaNome: prefereciaPreferenciasRecordList
                                         .first.massas,
                                   ));
