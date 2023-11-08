@@ -358,8 +358,9 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                             .where((e) => e.hasValormassa())
                                             .toList()[1]
                                             .valormassa,
-                                    massaNome: prefereciaPreferenciasRecordList
-                                        .first.massas,
+                                    massaNome:
+                                        prefereciaPreferenciasRecordList[0]
+                                            .massas,
                                   ));
                                   FFAppState().totalprice =
                                       FFAppState().totalprice +
@@ -368,7 +369,15 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                   FFAppState().total = 0;
                                 });
 
-                                context.goNamed('carrinho');
+                                context.goNamed(
+                                  'carrinho',
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: const TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType: PageTransitionType.fade,
+                                    ),
+                                  },
+                                );
                               },
                               text: 'Ir Para o Carrinho',
                               options: FFButtonOptions(
