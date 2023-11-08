@@ -1,6 +1,8 @@
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -278,6 +280,113 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                               ],
                             ),
                           ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 10.0, 10.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width:
+                                      MediaQuery.sizeOf(context).width * 0.919,
+                                  height: 94.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                  child:
+                                      StreamBuilder<List<PreferenciasRecord>>(
+                                    stream: queryPreferenciasRecord(),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      List<PreferenciasRecord>
+                                          choiceChipsPreferenciasRecordList =
+                                          snapshot.data!;
+                                      return FlutterFlowChoiceChips(
+                                        options:
+                                            choiceChipsPreferenciasRecordList
+                                                .map((e) => e.massas)
+                                                .toList()
+                                                .map((label) => ChipData(label))
+                                                .toList(),
+                                        onChanged: (val) => setState(() =>
+                                            _model.choiceChipsValue =
+                                                val?.first),
+                                        selectedChipStyle: ChipStyle(
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondary,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                          iconColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                          iconSize: 18.0,
+                                          elevation: 4.0,
+                                          borderRadius:
+                                              BorderRadius.circular(16.0),
+                                        ),
+                                        unselectedChipStyle: ChipStyle(
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .alternate,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                              ),
+                                          iconColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryText,
+                                          iconSize: 18.0,
+                                          elevation: 0.0,
+                                          borderRadius:
+                                              BorderRadius.circular(16.0),
+                                        ),
+                                        chipSpacing: 12.0,
+                                        rowSpacing: 12.0,
+                                        multiselect: false,
+                                        alignment: WrapAlignment.center,
+                                        controller: _model
+                                                .choiceChipsValueController ??=
+                                            FormFieldController<List<String>>(
+                                          [],
+                                        ),
+                                        wrapped: true,
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -429,20 +538,18 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                     functions.finalPrice(
                                         widget.produtoRef!.valorPizza,
                                         FFAppState().quantity);
+                                FFAppState().addToProdutosDoCarrinho(
+                                    ProdutosCarrinhoStruct(
+                                  nomeProduto: widget.produtoRef?.nomeProduto,
+                                  img: widget.produtoRef?.img,
+                                  quantity: FFAppState().quantity,
+                                  valor: widget.produtoRef?.valorPizza,
+                                  valorpreferecias: 10.0,
+                                  massaNome: 'teste',
+                                ));
                               });
 
-                              context.pushNamed(
-                                'Preferecia',
-                                queryParameters: {
-                                  'produtoRef': serializeParam(
-                                    widget.produtoRef,
-                                    ParamType.Document,
-                                  ),
-                                }.withoutNulls,
-                                extra: <String, dynamic>{
-                                  'produtoRef': widget.produtoRef,
-                                },
-                              );
+                              context.pushNamed('carrinho');
                             },
                             child: Row(
                               mainAxisSize: MainAxisSize.max,

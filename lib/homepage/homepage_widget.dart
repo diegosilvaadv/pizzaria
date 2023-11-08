@@ -291,7 +291,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
               ),
             ),
             appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(200.0),
+              preferredSize: const Size.fromHeight(210.0),
               child: AppBar(
                 backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
                 automaticallyImplyLeading: false,
@@ -509,7 +509,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                 ),
                 actions: const [],
                 centerTitle: false,
-                toolbarHeight: 200.0,
+                toolbarHeight: 210.0,
                 elevation: 0.0,
               ),
             ),

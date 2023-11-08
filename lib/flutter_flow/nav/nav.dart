@@ -110,16 +110,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'carrinho')
               : const CarrinhoWidget(),
-        ),
-        FFRoute(
-          name: 'Preferecia',
-          path: '/preferecia',
-          asyncParams: {
-            'produtoRef': getDoc(['produtos'], ProdutosRecord.fromSnapshot),
-          },
-          builder: (context, params) => PrefereciaWidget(
-            produtoRef: params.getParam('produtoRef', ParamType.Document),
-          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
