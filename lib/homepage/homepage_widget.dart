@@ -863,12 +863,13 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                         .valorPizza,
                                                                     formatType:
                                                                         FormatType
-                                                                            .decimal,
-                                                                    decimalType:
-                                                                        DecimalType
-                                                                            .commaDecimal,
+                                                                            .custom,
                                                                     currency:
                                                                         'R\$',
+                                                                    format:
+                                                                        '.00',
+                                                                    locale:
+                                                                        'pt_BR',
                                                                   ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
@@ -1061,12 +1062,13 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                         .valorPizza,
                                                                     formatType:
                                                                         FormatType
-                                                                            .decimal,
-                                                                    decimalType:
-                                                                        DecimalType
-                                                                            .commaDecimal,
+                                                                            .custom,
                                                                     currency:
                                                                         'R\$',
+                                                                    format:
+                                                                        '.00',
+                                                                    locale:
+                                                                        'pt_BR',
                                                                   ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)

@@ -1,5 +1,6 @@
-import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
@@ -91,6 +92,7 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                           setState(() {
                             FFAppState().total = 0;
                             FFAppState().quantity = 1;
+                            FFAppState().preferec = [];
                           });
                           Navigator.pop(context);
                         },
@@ -140,39 +142,20 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                             Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                StreamBuilder<List<PreferenciasRecord>>(
-                                  stream: queryPreferenciasRecord(),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: CircularProgressIndicator(
-                                            valueColor:
-                                                AlwaysStoppedAnimation<Color>(
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    List<PreferenciasRecord>
-                                        listViewPreferenciasRecordList =
-                                        snapshot.data!;
+                                Builder(
+                                  builder: (context) {
+                                    final preferencias =
+                                        FFAppState().preferec.toList();
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,
                                       primary: false,
                                       shrinkWrap: true,
                                       scrollDirection: Axis.vertical,
-                                      itemCount:
-                                          listViewPreferenciasRecordList.length,
-                                      itemBuilder: (context, listViewIndex) {
-                                        final listViewPreferenciasRecord =
-                                            listViewPreferenciasRecordList[
-                                                listViewIndex];
+                                      itemCount: preferencias.length,
+                                      itemBuilder:
+                                          (context, preferenciasIndex) {
+                                        final preferenciasItem =
+                                            preferencias[preferenciasIndex];
                                         return Padding(
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(
@@ -193,9 +176,61 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   children: [
+                                                    ToggleIcon(
+                                                      onPressed: () async {
+                                                        setState(
+                                                          () => FFAppState()
+                                                                  .prefere
+                                                                  .where(
+                                                                      (e) => e)
+                                                                  .toList()
+                                                                  .contains(
+                                                                      preferenciasItem
+                                                                          .select)
+                                                              ? FFAppState()
+                                                                  .prefere
+                                                                  .where(
+                                                                      (e) => e)
+                                                                  .toList()
+                                                                  .remove(
+                                                                      preferenciasItem
+                                                                          .select)
+                                                              : FFAppState()
+                                                                  .prefere
+                                                                  .where(
+                                                                      (e) => e)
+                                                                  .toList()
+                                                                  .add(preferenciasItem
+                                                                      .select),
+                                                        );
+                                                      },
+                                                      value: FFAppState()
+                                                          .prefere
+                                                          .where((e) => e)
+                                                          .toList()
+                                                          .contains(
+                                                              preferenciasItem
+                                                                  .select),
+                                                      onIcon: Icon(
+                                                        Icons.check_box,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        size: 25.0,
+                                                      ),
+                                                      offIcon: Icon(
+                                                        Icons
+                                                            .check_box_outline_blank,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 25.0,
+                                                      ),
+                                                    ),
                                                     Text(
-                                                      listViewPreferenciasRecord
-                                                          .massas,
+                                                      preferenciasItem.massa,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -216,8 +251,8 @@ class _PreferenciasWidgetState extends State<PreferenciasWidget> {
                                                                   0.0),
                                                       child: Text(
                                                         formatNumber(
-                                                          listViewPreferenciasRecord
-                                                              .valormassa,
+                                                          preferenciasItem
+                                                              .valor,
                                                           formatType:
                                                               FormatType.custom,
                                                           currency: 'R\$',
