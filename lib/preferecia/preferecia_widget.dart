@@ -126,137 +126,133 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    if (FFAppState().condicao == 0)
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            10.0, 10.0, 10.0, 10.0),
-                        child: Container(
-                          width: double.infinity,
-                          height: 201.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            borderRadius: BorderRadius.circular(16.0),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                6.0, 6.0, 6.0, 6.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                FlutterFlowRadioButton(
-                                  options: prefereciaPreferenciasRecordList
-                                      .map((e) => e.massas)
-                                      .toList()
-                                      .toList(),
-                                  onChanged: (val) async {
-                                    setState(() {});
-                                    setState(() {
-                                      FFAppState().condicao =
-                                          FFAppState().condicao + 1;
-                                      FFAppState().total = FFAppState().total +
-                                          functions.soma(
-                                              prefereciaPreferenciasRecordList
-                                                  .first.valormassa,
-                                              FFAppState().totalprice);
-                                    });
-                                  },
-                                  controller:
-                                      _model.radioButtonValueController ??=
-                                          FormFieldController<String>(null),
-                                  optionHeight: 28.0,
-                                  textStyle:
-                                      FlutterFlowTheme.of(context).labelMedium,
-                                  selectedTextStyle:
-                                      FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Roboto',
-                                            fontSize: 18.0,
-                                          ),
-                                  buttonPosition: RadioButtonPosition.left,
-                                  direction: Axis.vertical,
-                                  radioButtonColor: const Color(0xFF26CB3A),
-                                  inactiveRadioButtonColor: const Color(0xFFCBCECF),
-                                  toggleable: false,
-                                  horizontalAlignment: WrapAlignment.start,
-                                  verticalAlignment: WrapCrossAlignment.start,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      4.0, 3.0, 0.0, 0.0),
-                                  child:
-                                      StreamBuilder<List<PreferenciasRecord>>(
-                                    stream: queryPreferenciasRecord(
-                                      queryBuilder: (preferenciasRecord) =>
-                                          preferenciasRecord.orderBy('Massas'),
+                    Padding(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          10.0, 10.0, 10.0, 10.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 201.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              6.0, 6.0, 6.0, 6.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              FlutterFlowRadioButton(
+                                options: prefereciaPreferenciasRecordList
+                                    .map((e) => e.massas)
+                                    .toList()
+                                    .toList(),
+                                onChanged: (val) async {
+                                  setState(() {});
+                                  setState(() {
+                                    FFAppState().condicao =
+                                        FFAppState().condicao + 1;
+                                    FFAppState().total = FFAppState().total +
+                                        functions.soma(
+                                            prefereciaPreferenciasRecordList
+                                                .first.valormassa,
+                                            FFAppState().totalprice);
+                                  });
+                                },
+                                controller:
+                                    _model.radioButtonValueController ??=
+                                        FormFieldController<String>(null),
+                                optionHeight: 28.0,
+                                textStyle:
+                                    FlutterFlowTheme.of(context).labelMedium,
+                                selectedTextStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      fontSize: 18.0,
                                     ),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50.0,
-                                            height: 50.0,
-                                            child: CircularProgressIndicator(
-                                              valueColor:
-                                                  AlwaysStoppedAnimation<Color>(
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
-                                              ),
+                                buttonPosition: RadioButtonPosition.left,
+                                direction: Axis.vertical,
+                                radioButtonColor: const Color(0xFF26CB3A),
+                                inactiveRadioButtonColor: const Color(0xFFCBCECF),
+                                toggleable: false,
+                                horizontalAlignment: WrapAlignment.start,
+                                verticalAlignment: WrapCrossAlignment.start,
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    4.0, 3.0, 0.0, 0.0),
+                                child: StreamBuilder<List<PreferenciasRecord>>(
+                                  stream: queryPreferenciasRecord(
+                                    queryBuilder: (preferenciasRecord) =>
+                                        preferenciasRecord.orderBy('Massas'),
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
                                             ),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<PreferenciasRecord>
+                                        columnPreferenciasRecordList =
+                                        snapshot.data!;
+                                    return Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: List.generate(
+                                          columnPreferenciasRecordList.length,
+                                          (columnIndex) {
+                                        final columnPreferenciasRecord =
+                                            columnPreferenciasRecordList[
+                                                columnIndex];
+                                        return Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 7.0),
+                                          child: Text(
+                                            formatNumber(
+                                              columnPreferenciasRecord
+                                                  .valormassa,
+                                              formatType: FormatType.custom,
+                                              currency: '+ R\$',
+                                              format: '.00',
+                                              locale: 'pt_BR',
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                  fontSize: 18.0,
+                                                ),
                                           ),
                                         );
-                                      }
-                                      List<PreferenciasRecord>
-                                          columnPreferenciasRecordList =
-                                          snapshot.data!;
-                                      return Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: List.generate(
-                                            columnPreferenciasRecordList.length,
-                                            (columnIndex) {
-                                          final columnPreferenciasRecord =
-                                              columnPreferenciasRecordList[
-                                                  columnIndex];
-                                          return Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 7.0),
-                                            child: Text(
-                                              formatNumber(
-                                                columnPreferenciasRecord
-                                                    .valormassa,
-                                                formatType: FormatType.custom,
-                                                currency: '+ R\$',
-                                                format: '.00',
-                                                locale: 'pt_BR',
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        fontSize: 18.0,
-                                                      ),
-                                            ),
-                                          );
-                                        }),
-                                      );
-                                    },
-                                  ),
+                                      }),
+                                    );
+                                  },
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
+                    ),
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
