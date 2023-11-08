@@ -158,8 +158,7 @@ class _PrefereciaWidgetState extends State<PrefereciaWidget> {
                                 child: StreamBuilder<List<PreferenciasRecord>>(
                                   stream: queryPreferenciasRecord(
                                     queryBuilder: (preferenciasRecord) =>
-                                        preferenciasRecord
-                                            .orderBy('valormassa'),
+                                        preferenciasRecord.orderBy('Massas'),
                                   ),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
