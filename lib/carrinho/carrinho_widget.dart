@@ -418,12 +418,15 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                       ),
                                 ),
                                 Text(
-                                  formatNumber(
-                                    FFAppState().totalprice,
-                                    formatType: FormatType.custom,
-                                    currency: 'R\$',
-                                    format: '.00',
-                                    locale: 'pt_BR',
+                                  valueOrDefault<String>(
+                                    formatNumber(
+                                      FFAppState().totalprice,
+                                      formatType: FormatType.custom,
+                                      currency: 'R\$',
+                                      format: '.00',
+                                      locale: 'pt_BR',
+                                    ),
+                                    '00.00',
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium

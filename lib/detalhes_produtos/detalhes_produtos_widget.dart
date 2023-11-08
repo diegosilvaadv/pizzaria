@@ -290,7 +290,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                 Container(
                                   width:
                                       MediaQuery.sizeOf(context).width * 0.919,
-                                  height: 94.0,
+                                  height: 168.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
@@ -565,14 +565,16 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                       ),
                                 ),
                                 Text(
-                                  formatNumber(
-                                    functions.finalPrice(
-                                        widget.produtoRef!.valorPizza,
-                                        FFAppState().quantity),
-                                    formatType: FormatType.custom,
-                                    currency: 'R\$',
-                                    format: '.00',
-                                    locale: 'pt_BR',
+                                  valueOrDefault<String>(
+                                    formatNumber(
+                                      widget.produtoRef!.valorPizza *
+                                          FFAppState().quantity,
+                                      formatType: FormatType.custom,
+                                      currency: 'R\$',
+                                      format: '.00',
+                                      locale: 'pt_BR',
+                                    ),
+                                    '00.00',
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
