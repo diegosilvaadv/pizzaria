@@ -366,8 +366,9 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                                     pedidosItem
                                                                         .valorSabor2,
                                                                     pedidosItem
-                                                                        .quantity
-                                                                        .toDouble()));
+                                                                        .quantity,
+                                                                    pedidosItem
+                                                                        .valorpreferecias));
                                                         FFAppState()
                                                                 .numberCarrinho =
                                                             FFAppState()

@@ -17,16 +17,14 @@ double finalPrice(
   double pizzavalor,
   double valorSabor1,
   double valorSabor2,
-  double quanty,
+  int quanty,
+  double valormassa,
 ) {
-  return pizzavalor * valorSabor1 * valorSabor2 * quanty.toDouble();
-}
-
-double soma(
-  double num1,
-  double num2,
-) {
-  return num1 + num2;
+  return pizzavalor *
+      valorSabor1 *
+      valorSabor2 *
+      valormassa *
+      quanty.toDouble();
 }
 
 double subtracao(double valor1) {
