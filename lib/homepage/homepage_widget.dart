@@ -462,7 +462,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                         child: Card(
                           clipBehavior: Clip.antiAliasWithSaveLayer,
                           color: const Color(0xFF1A9E8F),
-                          elevation: 4.0,
+                          elevation: 10.0,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0),
                           ),
