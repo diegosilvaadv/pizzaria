@@ -116,7 +116,7 @@ class FFAppState extends ChangeNotifier {
     _condicao = value;
   }
 
-  double _preferec = -1;
+  double _preferec = 0;
   double get preferec => _preferec;
   set preferec(double value) {
     _preferec = value;
@@ -162,6 +162,12 @@ class FFAppState extends ChangeNotifier {
   double get precoSabor2 => _precoSabor2;
   set precoSabor2(double value) {
     _precoSabor2 = value;
+  }
+
+  int _massaCondicao = 0;
+  int get massaCondicao => _massaCondicao;
+  set massaCondicao(int value) {
+    _massaCondicao = value;
   }
 }
 

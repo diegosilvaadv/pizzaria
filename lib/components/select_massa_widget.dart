@@ -185,6 +185,8 @@ class _SelectMassaWidgetState extends State<SelectMassaWidget>
                                   );
                                   FFAppState().condicao =
                                       FFAppState().condicao + 1;
+                                  FFAppState().massaCondicao =
+                                      FFAppState().massaCondicao + 1;
                                 });
                                 Navigator.pop(context);
                               },

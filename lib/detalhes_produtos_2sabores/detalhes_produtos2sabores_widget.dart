@@ -41,7 +41,7 @@ class _DetalhesProdutos2saboresWidgetState
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
-        FFAppState().preferec = -1;
+        FFAppState().preferec = 0;
         FFAppState().condicao = 0;
         FFAppState().PrefReferencia = PrefenciasAppSStruct.fromSerializableMap(
             jsonDecode('{"nome_massa":"Nenhuma","valor_massa":"0"}'));
@@ -1239,8 +1239,8 @@ class _DetalhesProdutos2saboresWidgetState
                                                                     .start,
                                                             children: [
                                                               if (FFAppState()
-                                                                      .preferec ==
-                                                                  -1.0)
+                                                                      .massaCondicao ==
+                                                                  0)
                                                                 Builder(
                                                                   builder:
                                                                       (context) =>
@@ -1248,12 +1248,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                                     onPressed:
                                                                         () async {
                                                                       setState(
-                                                                          () {
-                                                                        FFAppState()
-                                                                            .preferec = FFAppState()
-                                                                                .preferec +
-                                                                            1.0;
-                                                                      });
+                                                                          () {});
                                                                       showAlignedDialog(
                                                                         barrierDismissible:
                                                                             false,
@@ -1334,8 +1329,8 @@ class _DetalhesProdutos2saboresWidgetState
                                                                   ),
                                                                 ),
                                                               if (FFAppState()
-                                                                      .preferec >=
-                                                                  0.0)
+                                                                      .massaCondicao ==
+                                                                  1)
                                                                 InkWell(
                                                                   splashColor:
                                                                       Colors
@@ -1366,6 +1361,10 @@ class _DetalhesProdutos2saboresWidgetState
                                                                       FFAppState()
                                                                               .precoSabor2 =
                                                                           0.0;
+                                                                      FFAppState()
+                                                                              .massaCondicao =
+                                                                          FFAppState().massaCondicao +
+                                                                              -1;
                                                                     });
                                                                   },
                                                                   child: Icon(
@@ -1584,7 +1583,7 @@ class _DetalhesProdutos2saboresWidgetState
                                           '{"sabor1":"Nenhum","sabor2":"Nenhum","preco_sabor1":"0","preco_sabor2":"0"}'));
                                   FFAppState().precoSabor1 = 0.0;
                                   FFAppState().precoSabor2 = 0.0;
-                                  FFAppState().preferec = -1;
+                                  FFAppState().preferec = 0;
                                   FFAppState().PrefReferencia =
                                       PrefenciasAppSStruct.fromSerializableMap(
                                           jsonDecode(
