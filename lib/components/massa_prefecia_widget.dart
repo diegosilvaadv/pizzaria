@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -107,7 +108,7 @@ class _MassaPrefeciaWidgetState extends State<MassaPrefeciaWidget> {
                                     0.0, 0.0, 0.0, 10.0),
                                 child: Container(
                                   width: double.infinity,
-                                  height: 72.0,
+                                  height: 45.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
@@ -158,6 +159,35 @@ class _MassaPrefeciaWidgetState extends State<MassaPrefeciaWidget> {
                                                           context)
                                                       .secondary,
                                                 ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  20.0, 0.0, 0.0, 0.0),
+                                          child: FlutterFlowIconButton(
+                                            borderColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            borderRadius: 20.0,
+                                            borderWidth: 1.0,
+                                            buttonSize: 30.0,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .accent1,
+                                            hoverColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .tertiary,
+                                            icon: Icon(
+                                              Icons.add,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 15.0,
+                                            ),
+                                            onPressed: () {
+                                              print('IconButton pressed ...');
+                                            },
                                           ),
                                         ),
                                       ],
