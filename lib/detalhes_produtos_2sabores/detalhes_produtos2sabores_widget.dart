@@ -1247,7 +1247,12 @@ class _DetalhesProdutos2saboresWidgetState
                                                                     onPressed:
                                                                         () async {
                                                                       setState(
-                                                                          () {});
+                                                                          () {
+                                                                        FFAppState()
+                                                                            .preferec = FFAppState()
+                                                                                .preferec +
+                                                                            1.0;
+                                                                      });
                                                                       await showAlignedDialog(
                                                                         context:
                                                                             context,
