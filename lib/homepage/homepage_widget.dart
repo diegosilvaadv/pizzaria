@@ -77,7 +77,6 @@ class _HomepageWidgetState extends State<HomepageWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         FFAppState().quantity = 1;
-        FFAppState().condicao = 0;
       });
     });
 

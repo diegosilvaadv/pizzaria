@@ -36,12 +36,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().preferec = 0;
-        FFAppState().condicao = 0;
-        FFAppState().PrefReferencia = PrefenciasAppSStruct.fromSerializableMap(
-            jsonDecode('{"nome_massa":"Nenhuma","valor_massa":"0"}'));
-      });
+      setState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
