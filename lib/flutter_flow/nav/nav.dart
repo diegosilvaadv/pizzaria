@@ -114,12 +114,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'detalhes_produtos_2sabores',
           path: '/detalhesProdutos2sabores',
-          asyncParams: {
-            'produtoRef': getDoc(['produtos'], ProdutosRecord.fromSnapshot),
-          },
-          builder: (context, params) => DetalhesProdutos2saboresWidget(
-            produtoRef: params.getParam('produtoRef', ParamType.Document),
-          ),
+          builder: (context, params) => const DetalhesProdutos2saboresWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

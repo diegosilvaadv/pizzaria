@@ -1,4 +1,4 @@
-import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/select_massa_widget.dart';
 import '/components/select_sabor1_widget.dart';
 import '/components/select_sabor2_widget.dart';
@@ -15,12 +15,7 @@ import 'detalhes_produtos2sabores_model.dart';
 export 'detalhes_produtos2sabores_model.dart';
 
 class DetalhesProdutos2saboresWidget extends StatefulWidget {
-  const DetalhesProdutos2saboresWidget({
-    super.key,
-    required this.produtoRef,
-  });
-
-  final ProdutosRecord? produtoRef;
+  const DetalhesProdutos2saboresWidget({super.key});
 
   @override
   _DetalhesProdutos2saboresWidgetState createState() =>

@@ -414,6 +414,67 @@ class _HomepageWidgetState extends State<HomepageWidget>
                     ],
                   ),
                 ),
+              ],
+            ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation1']!),
+            actions: const [],
+            centerTitle: false,
+            toolbarHeight: 210.0,
+            elevation: 0.0,
+          ),
+        ),
+        body: SafeArea(
+          top: true,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 10.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed(
+                            'detalhes_produtos_2sabores',
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: const TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.fade,
+                              ),
+                            },
+                          );
+                        },
+                        child: Card(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          color: const Color(0xFF1A9E8F),
+                          elevation: 4.0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                10.0, 10.0, 10.0, 10.0),
+                            child: Text(
+                              'Pizza Grande 2 Sabores',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    fontSize: 18.0,
+                                  ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 Padding(
                   padding:
                       const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 10.0),
@@ -506,20 +567,6 @@ class _HomepageWidgetState extends State<HomepageWidget>
                     ),
                   ),
                 ),
-              ],
-            ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation1']!),
-            actions: const [],
-            centerTitle: false,
-            toolbarHeight: 210.0,
-            elevation: 0.0,
-          ),
-        ),
-        body: SafeArea(
-          top: true,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
                 StreamBuilder<List<ProdutosRecord>>(
                   stream: queryProdutosRecord(
                     queryBuilder: (produtosRecord) => produtosRecord.where(
@@ -577,7 +624,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
                                       context.pushNamed(
-                                        'detalhes_produtos_2sabores',
+                                        'detalhes_produtos',
                                         queryParameters: {
                                           'produtoRef': serializeParam(
                                             listViewProdutosRecord,
@@ -586,6 +633,11 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                         }.withoutNulls,
                                         extra: <String, dynamic>{
                                           'produtoRef': listViewProdutosRecord,
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                          ),
                                         },
                                       );
                                     },
