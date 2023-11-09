@@ -269,7 +269,7 @@ class _DetalhesProdutos2saboresWidgetState
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Text(
-                                  'Preço Total desa Pizza: ',
+                                  'Preço Total dessa Pizza: ',
                                   style: FlutterFlowTheme.of(context)
                                       .titleLarge
                                       .override(
@@ -634,6 +634,15 @@ class _DetalhesProdutos2saboresWidgetState
                                                                             .condicao = FFAppState()
                                                                                 .condicao +
                                                                             -1;
+                                                                        FFAppState()
+                                                                            .updateSaboresAppStruct(
+                                                                          (e) => e
+                                                                            ..sabor1 =
+                                                                                FFAppState().SaboresApp.sabor1
+                                                                            ..precoSabor1 = FFAppState().SaboresApp.precoSabor1,
+                                                                        );
+                                                                        FFAppState().precoSabor1 =
+                                                                            0.0;
                                                                       });
                                                                     },
                                                                     child: Icon(
