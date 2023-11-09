@@ -424,10 +424,28 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         fontSize: 18.0,
+                                        fontWeight: FontWeight.w500,
                                       ),
                                 ),
                                 Text(
-                                  'R\$ 0,00',
+                                  valueOrDefault<String>(
+                                    formatNumber(
+                                      (FFAppState()
+                                                  .ProdutosDoCarrinho[0]
+                                                  .valor *
+                                              FFAppState()
+                                                  .ProdutosDoCarrinho[0]
+                                                  .quantity) +
+                                          FFAppState()
+                                              .ProdutosDoCarrinho[0]
+                                              .valorpreferecias,
+                                      formatType: FormatType.custom,
+                                      currency: 'R\$',
+                                      format: '.00',
+                                      locale: 'pt_BR',
+                                    ),
+                                    '00.00',
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
