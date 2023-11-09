@@ -58,7 +58,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
           iconTheme:
               IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
           automaticallyImplyLeading: false,
-          leading: Align(
+          title: Align(
             alignment: const AlignmentDirectional(0.00, 0.00),
             child: InkWell(
               splashColor: Colors.transparent,
@@ -74,11 +74,11 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                 });
               },
               child: Text(
-                'Carrinho',
+                'Meu Carrinho',
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 30.0,
+                      fontSize: 25.0,
                     ),
               ),
             ),
@@ -359,15 +359,16 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                         FFAppState()
                                                             .totalprice = FFAppState()
                                                                 .totalprice +
-                                                            -pedidosItem
-                                                                .valorSabor1 -
-                                                            pedidosItem
-                                                                .valorSabor2 -
-                                                            pedidosItem.valor -
-                                                            pedidosItem
-                                                                .valorpreferecias -
-                                                            pedidosItem
-                                                                .quantity;
+                                                            (-pedidosItem
+                                                                        .valorSabor1 -
+                                                                    pedidosItem
+                                                                        .valorSabor2 -
+                                                                    pedidosItem
+                                                                        .valor -
+                                                                    pedidosItem
+                                                                        .valorpreferecias) *
+                                                                -pedidosItem
+                                                                    .quantity;
                                                         FFAppState()
                                                                 .numberCarrinho =
                                                             FFAppState()
