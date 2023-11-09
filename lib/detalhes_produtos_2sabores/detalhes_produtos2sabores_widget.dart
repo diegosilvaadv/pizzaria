@@ -1585,6 +1585,7 @@ class _DetalhesProdutos2saboresWidgetState
                                       PrefenciasAppSStruct.fromSerializableMap(
                                           jsonDecode(
                                               '{"nome_massa":"Nenhuma","valor_massa":"0"}'));
+                                  FFAppState().massaCondicao = 0;
                                 });
 
                                 context.pushNamed(
