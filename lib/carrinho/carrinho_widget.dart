@@ -64,7 +64,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
                   color: FlutterFlowTheme.of(context).primaryText,
-                  fontSize: 24.0,
+                  fontSize: 25.0,
                 ),
           ),
           actions: const [],
@@ -431,14 +431,23 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                   valueOrDefault<String>(
                                     formatNumber(
                                       (FFAppState()
-                                                  .ProdutosDoCarrinho[0]
-                                                  .valor *
+                                                  .ProdutosDoCarrinho
+                                                  .where((e) => e.hasValor())
+                                                  .toList()
+                                                  .length
+                                                  .toDouble() *
                                               FFAppState()
-                                                  .ProdutosDoCarrinho[0]
-                                                  .quantity) +
+                                                  .ProdutosDoCarrinho
+                                                  .where((e) => e.hasQuantity())
+                                                  .toList()
+                                                  .length) +
                                           FFAppState()
-                                              .ProdutosDoCarrinho[0]
-                                              .valorpreferecias,
+                                              .ProdutosDoCarrinho
+                                              .where((e) =>
+                                                  e.hasValorpreferecias())
+                                              .toList()
+                                              .length
+                                              .toDouble(),
                                       formatType: FormatType.custom,
                                       currency: 'R\$',
                                       format: '.00',
