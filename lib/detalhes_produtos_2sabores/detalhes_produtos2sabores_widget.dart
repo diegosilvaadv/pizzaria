@@ -1509,15 +1509,27 @@ class _DetalhesProdutos2saboresWidgetState
                                   },
                                   child: FaIcon(
                                     FontAwesomeIcons.minus,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
+                                    color: () {
+                                      if (FFAppState().quantity >= 2) {
+                                        return FlutterFlowTheme.of(context)
+                                            .secondary;
+                                      } else if (FFAppState().quantity == 1) {
+                                        return FlutterFlowTheme.of(context)
+                                            .secondaryText;
+                                      } else {
+                                        return FlutterFlowTheme.of(context)
+                                            .secondaryText;
+                                      }
+                                    }(),
                                     size: 24.0,
                                   ),
                                 ),
                                 Text(
-                                  valueOrDefault<String>(
-                                    FFAppState().quantity.toString(),
-                                    '1',
+                                  formatNumber(
+                                    FFAppState().quantity,
+                                    formatType: FormatType.custom,
+                                    format: '',
+                                    locale: '',
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -1544,8 +1556,17 @@ class _DetalhesProdutos2saboresWidgetState
                                   },
                                   child: FaIcon(
                                     FontAwesomeIcons.plus,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
+                                    color: () {
+                                      if (FFAppState().quantity >= 1) {
+                                        return const Color(0xFF10DA26);
+                                      } else if (FFAppState().quantity == 10) {
+                                        return FlutterFlowTheme.of(context)
+                                            .secondaryText;
+                                      } else {
+                                        return FlutterFlowTheme.of(context)
+                                            .secondaryText;
+                                      }
+                                    }(),
                                     size: 24.0,
                                   ),
                                 ),
