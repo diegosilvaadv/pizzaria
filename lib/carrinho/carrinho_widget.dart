@@ -634,23 +634,18 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                 status: 'Pendente',
                                                 userRef: currentUserReference,
                                               ));
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'Pedido Enviado!',
-                                                style: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
+
+                                          context.pushNamed(
+                                            'pedidos_cliente',
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .bottomToTop,
                                               ),
-                                              duration:
-                                                  const Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
-                                            ),
+                                            },
                                           );
                                         }
                                       } else {
