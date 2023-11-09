@@ -1,8 +1,8 @@
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_radio_button.dart';
+import '/components/massa_prefecia_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -311,75 +311,74 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        StreamBuilder<List<PreferenciasRecord>>(
-                                          stream: queryPreferenciasRecord(),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    valueColor:
-                                                        AlwaysStoppedAnimation<
-                                                            Color>(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                    ),
+                                        Text(
+                                          'Massa Escolhida',
+                                          style: FlutterFlowTheme.of(context)
+                                              .titleLarge,
+                                        ),
+                                        Text(
+                                          'Massa Escolhida',
+                                          style: FlutterFlowTheme.of(context)
+                                              .titleLarge,
+                                        ),
+                                        FFButtonWidget(
+                                          onPressed: () async {
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  const Color(0x77000000),
+                                              barrierColor: const Color(0x66000000),
+                                              enableDrag: false,
+                                              useSafeArea: true,
+                                              context: context,
+                                              builder: (context) {
+                                                return GestureDetector(
+                                                  onTap: () => _model
+                                                          .unfocusNode
+                                                          .canRequestFocus
+                                                      ? FocusScope.of(context)
+                                                          .requestFocus(_model
+                                                              .unfocusNode)
+                                                      : FocusScope.of(context)
+                                                          .unfocus(),
+                                                  child: Padding(
+                                                    padding:
+                                                        MediaQuery.viewInsetsOf(
+                                                            context),
+                                                    child:
+                                                        const MassaPrefeciaWidget(),
                                                   ),
-                                                ),
-                                              );
-                                            }
-                                            List<PreferenciasRecord>
-                                                radioButtonPreferenciasRecordList =
-                                                snapshot.data!;
-                                            return FlutterFlowRadioButton(
-                                              options:
-                                                  radioButtonPreferenciasRecordList
-                                                      .map((e) => e.massas)
-                                                      .toList()
-                                                      .toList(),
-                                              onChanged: (val) async {
-                                                setState(() {});
-                                                setState(() {
-                                                  FFAppState()
-                                                      .preferec = FFAppState()
-                                                          .preferec +
-                                                      radioButtonPreferenciasRecordList[
-                                                              0]
-                                                          .valormassa;
-                                                });
+                                                );
                                               },
-                                              controller: _model
-                                                      .radioButtonValueController ??=
-                                                  FormFieldController<String>(
-                                                      'Massa Fina'),
-                                              optionHeight: 32.0,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium,
-                                              selectedTextStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                              buttonPosition:
-                                                  RadioButtonPosition.left,
-                                              direction: Axis.vertical,
-                                              radioButtonColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              inactiveRadioButtonColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              toggleable: false,
-                                              horizontalAlignment:
-                                                  WrapAlignment.start,
-                                              verticalAlignment:
-                                                  WrapCrossAlignment.start,
-                                            );
+                                            ).then(
+                                                (value) => safeSetState(() {}));
                                           },
+                                          text: 'Escolher o Tipo de Masa',
+                                          options: FFButtonOptions(
+                                            height: 40.0,
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      color: Colors.white,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: const BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
                                         ),
                                       ],
                                     ),
