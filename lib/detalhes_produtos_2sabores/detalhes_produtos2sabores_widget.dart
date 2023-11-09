@@ -1527,7 +1527,7 @@ class _DetalhesProdutos2saboresWidgetState
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              if (FFAppState().condicao != 3) {
+                              if (FFAppState().condicao == 3) {
                                 setState(() {
                                   FFAppState().addToProdutosDoCarrinho(
                                       ProdutosCarrinhoStruct(
