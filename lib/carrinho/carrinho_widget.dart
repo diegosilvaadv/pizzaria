@@ -366,7 +366,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                                       'pt_BR',
                                                                 ),
                                                                 '00',
-                                                              )}',
+                                                              )} X ${pedidosItem.quantity.toString()}',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
