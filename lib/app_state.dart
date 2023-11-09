@@ -140,6 +140,29 @@ class FFAppState extends ChangeNotifier {
     _numberCarrinho = value;
     prefs.setInt('ff_numberCarrinho', value);
   }
+
+  SaboresStruct _SaboresApp = SaboresStruct.fromSerializableMap(jsonDecode(
+      '{"sabor1":"Nenhum","sabor2":"Nenhum","preco_sabor1":"0","preco_sabor2":"0"}'));
+  SaboresStruct get SaboresApp => _SaboresApp;
+  set SaboresApp(SaboresStruct value) {
+    _SaboresApp = value;
+  }
+
+  void updateSaboresAppStruct(Function(SaboresStruct) updateFn) {
+    updateFn(_SaboresApp);
+  }
+
+  double _precoSabor1 = 0.0;
+  double get precoSabor1 => _precoSabor1;
+  set precoSabor1(double value) {
+    _precoSabor1 = value;
+  }
+
+  double _precoSabor2 = 0.0;
+  double get precoSabor2 => _precoSabor2;
+  set precoSabor2(double value) {
+    _precoSabor2 = value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

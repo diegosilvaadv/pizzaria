@@ -110,6 +110,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'carrinho')
               : const CarrinhoWidget(),
+        ),
+        FFRoute(
+          name: 'detalhes_produtos_2sabores',
+          path: '/detalhesProdutos2sabores',
+          asyncParams: {
+            'produtoRef': getDoc(['produtos'], ProdutosRecord.fromSnapshot),
+          },
+          builder: (context, params) => DetalhesProdutos2saboresWidget(
+            produtoRef: params.getParam('produtoRef', ParamType.Document),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
