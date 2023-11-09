@@ -524,9 +524,9 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                       snapshot.data!;
                                   return FlutterFlowChoiceChips(
                                     options: const [
-                                      ChipData('pizza salgada'),
-                                      ChipData('pizza broto'),
-                                      ChipData('pizza doce')
+                                      ChipData('Pizza Salgada'),
+                                      ChipData('Pizza Broto'),
+                                      ChipData('Pizza Doce')
                                     ],
                                     onChanged: (val) => setState(() =>
                                         _model.choiceChipsValue = val?.first),
@@ -563,7 +563,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                     controller:
                                         _model.choiceChipsValueController ??=
                                             FormFieldController<List<String>>(
-                                      ['pizza salgada'],
+                                      ['Pizza Salgada'],
                                     ),
                                     wrapped: false,
                                   );
