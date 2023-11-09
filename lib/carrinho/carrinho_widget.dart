@@ -76,7 +76,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                     fontFamily: 'Outfit',
                     color: FlutterFlowTheme.of(context).primaryText,
-                    fontSize: 30.0,
+                    fontSize: 25.0,
                   ),
             ),
           ),
@@ -358,7 +358,9 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                             FFAppState()
                                                                     .totalprice +
                                                                 -pedidosItem
-                                                                    .valorSabor1;
+                                                                    .valorSabor1 -
+                                                                pedidosItem
+                                                                    .valorSabor2;
                                                         FFAppState()
                                                                 .numberCarrinho =
                                                             FFAppState()
