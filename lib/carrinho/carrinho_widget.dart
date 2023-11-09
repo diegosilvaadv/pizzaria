@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -523,148 +524,170 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               6.0, 6.0, 6.0, 6.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              if (FFAppState().ProdutosDoCarrinho.isNotEmpty) {
-                                setState(() {
-                                  FFAppState().contador = -1;
-                                });
-                                while (FFAppState().contador <=
-                                    FFAppState().ProdutosDoCarrinho.length) {
-                                  setState(() {
-                                    FFAppState().contador =
-                                        FFAppState().contador + 1;
-                                  });
+                          child: Container(
+                            width: MediaQuery.sizeOf(context).width * 0.9,
+                            height: 100.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  8.0, 0.0, 8.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    valueOrDefault<String>(
+                                      formatNumber(
+                                        FFAppState().totalprice,
+                                        formatType: FormatType.custom,
+                                        currency: 'R\$',
+                                        format: '.00',
+                                        locale: 'pt_BR',
+                                      ),
+                                      '0',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: const Color(0xFF26CB3A),
+                                          fontSize: 20.0,
+                                        ),
+                                  ),
+                                  FFButtonWidget(
+                                    onPressed: () async {
+                                      if (FFAppState()
+                                              .ProdutosDoCarrinho.isNotEmpty) {
+                                        setState(() {
+                                          FFAppState().contador = -1;
+                                        });
+                                        while (FFAppState().contador <=
+                                            FFAppState()
+                                                .ProdutosDoCarrinho
+                                                .length) {
+                                          setState(() {
+                                            FFAppState().contador =
+                                                FFAppState().contador + 1;
+                                          });
 
-                                  await ListaCarrinhoPedidosRecord.collection
-                                      .doc()
-                                      .set(createListaCarrinhoPedidosRecordData(
-                                        nomeProduto: FFAppState()
-                                            .ProdutosDoCarrinho[
-                                                FFAppState().contador]
-                                            .nomeProduto,
-                                        img: FFAppState()
-                                            .ProdutosDoCarrinho[
-                                                FFAppState().contador]
-                                            .img,
-                                        valorPizzaInteira: FFAppState()
-                                            .ProdutosDoCarrinho[
-                                                FFAppState().contador]
-                                            .valor,
-                                        quantyPizzaInteira: FFAppState()
-                                            .ProdutosDoCarrinho[
-                                                FFAppState().contador]
-                                            .quantity,
-                                        nomeMassaPizzaInteira: FFAppState()
-                                            .ProdutosDoCarrinho[
-                                                FFAppState().contador]
-                                            .massaNome,
-                                        valorMassaPizzaInteira: FFAppState()
-                                            .ProdutosDoCarrinho[
-                                                FFAppState().contador]
-                                            .valorpreferecias,
-                                        nomeSabor1: FFAppState()
-                                            .ProdutosDoCarrinho[
-                                                FFAppState().contador]
-                                            .nomeProduto,
-                                        valorSabor1: FFAppState()
-                                            .ProdutosDoCarrinho[
-                                                FFAppState().contador]
-                                            .valorSabor1,
-                                        nomeSabor2: FFAppState()
-                                            .ProdutosDoCarrinho[
-                                                FFAppState().contador]
-                                            .nomeProduto,
-                                        valorSabor2: FFAppState()
-                                            .ProdutosDoCarrinho[
-                                                FFAppState().contador]
-                                            .valorSabor2,
-                                        quantyPizza2sabores: FFAppState()
-                                            .ProdutosDoCarrinho[
-                                                FFAppState().contador]
-                                            .quantity,
-                                        userRef: currentUserReference,
-                                        data: getCurrentTimestamp,
-                                        status: 'Pendente',
-                                      ));
-                                  await Future.delayed(
-                                      const Duration(milliseconds: 5000));
-                                  setState(() {
-                                    FFAppState().ProdutosDoCarrinho = [];
-                                    FFAppState().totalprice = 0;
-                                    FFAppState().numberCarrinho = 0;
-                                  });
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'Pedido Enviado!',
-                                        style: TextStyle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                        ),
-                                      ),
-                                      duration: const Duration(milliseconds: 4000),
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondary,
-                                    ),
-                                  );
-                                }
-                              } else {
-                                return;
-                              }
-                            },
-                            child: Container(
-                              width: MediaQuery.sizeOf(context).width * 0.9,
-                              height: 100.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 0.0, 8.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Ir para Pagamento',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          await ListaCarrinhoPedidosRecord
+                                              .collection
+                                              .doc()
+                                              .set(
+                                                  createListaCarrinhoPedidosRecordData(
+                                                nomeProduto: FFAppState()
+                                                    .ProdutosDoCarrinho[
+                                                        FFAppState().contador]
+                                                    .nomeProduto,
+                                                img: FFAppState()
+                                                    .ProdutosDoCarrinho[
+                                                        FFAppState().contador]
+                                                    .img,
+                                                valorPizzaInteira: FFAppState()
+                                                    .ProdutosDoCarrinho[
+                                                        FFAppState().contador]
+                                                    .valor,
+                                                quantyPizzaInteira: FFAppState()
+                                                    .ProdutosDoCarrinho[
+                                                        FFAppState().contador]
+                                                    .quantity,
+                                                nomeMassaPizzaInteira:
+                                                    FFAppState()
+                                                        .ProdutosDoCarrinho[
+                                                            FFAppState()
+                                                                .contador]
+                                                        .massaNome,
+                                                valorMassaPizzaInteira:
+                                                    FFAppState()
+                                                        .ProdutosDoCarrinho[
+                                                            FFAppState()
+                                                                .contador]
+                                                        .valorpreferecias,
+                                                nomeSabor1: FFAppState()
+                                                    .ProdutosDoCarrinho[
+                                                        FFAppState().contador]
+                                                    .nomeProduto,
+                                                valorSabor1: FFAppState()
+                                                    .ProdutosDoCarrinho[
+                                                        FFAppState().contador]
+                                                    .valorSabor1,
+                                                nomeSabor2: FFAppState()
+                                                    .ProdutosDoCarrinho[
+                                                        FFAppState().contador]
+                                                    .nomeProduto,
+                                                valorSabor2: FFAppState()
+                                                    .ProdutosDoCarrinho[
+                                                        FFAppState().contador]
+                                                    .valorSabor2,
+                                                quantyPizza2sabores:
+                                                    FFAppState()
+                                                        .ProdutosDoCarrinho[
+                                                            FFAppState()
+                                                                .contador]
+                                                        .quantity,
+                                                userRef: currentUserReference,
+                                                data: getCurrentTimestamp,
+                                                status: 'Pendente',
+                                              ));
+                                          break;
+                                        }
+                                        setState(() {
+                                          FFAppState().ProdutosDoCarrinho = [];
+                                          FFAppState().totalprice = 0;
+                                          FFAppState().numberCarrinho = 0;
+                                        });
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'Pedido Enviado!',
+                                              style: TextStyle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                            ),
+                                            duration:
+                                                const Duration(milliseconds: 4000),
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondary,
+                                          ),
+                                        );
+                                      } else {
+                                        return;
+                                      }
+                                    },
+                                    text: 'Ir Para Pagamento',
+                                    options: FFButtonOptions(
+                                      height: 40.0,
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
                                           .override(
                                             fontFamily: 'Readex Pro',
-                                            fontSize: 18.0,
-                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
                                           ),
-                                    ),
-                                    Text(
-                                      valueOrDefault<String>(
-                                        formatNumber(
-                                          FFAppState().totalprice,
-                                          formatType: FormatType.custom,
-                                          currency: 'R\$',
-                                          format: '.00',
-                                          locale: 'pt_BR',
-                                        ),
-                                        '0',
+                                      elevation: 3.0,
+                                      borderSide: const BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
                                       ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            color: const Color(0xFF26CB3A),
-                                            fontSize: 20.0,
-                                          ),
+                                      borderRadius: BorderRadius.circular(8.0),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
