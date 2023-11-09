@@ -651,7 +651,15 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                       FFAppState().numberCarrinho + 1;
                                 });
 
-                                context.pushNamed('carrinho');
+                                context.pushNamed(
+                                  'homepage',
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: const TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType: PageTransitionType.fade,
+                                    ),
+                                  },
+                                );
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
