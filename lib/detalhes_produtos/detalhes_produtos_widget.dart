@@ -1,6 +1,8 @@
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -187,7 +189,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
-                                                          fontSize: 21.0,
+                                                          fontSize: 20.0,
                                                         ),
                                                   ),
                                                 ),
@@ -310,13 +312,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         StreamBuilder<List<PreferenciasRecord>>(
-                                          stream: queryPreferenciasRecord(
-                                            queryBuilder:
-                                                (preferenciasRecord) =>
-                                                    preferenciasRecord.orderBy(
-                                                        'Massas',
-                                                        descending: true),
-                                          ),
+                                          stream: queryPreferenciasRecord(),
                                           builder: (context, snapshot) {
                                             // Customize what your widget looks like when it's loading.
                                             if (!snapshot.hasData) {
@@ -338,146 +334,74 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                               );
                                             }
                                             List<PreferenciasRecord>
-                                                listViewPreferenciasRecordList =
+                                                radioButtonPreferenciasRecordList =
                                                 snapshot.data!;
-                                            return ListView.builder(
-                                              padding: EdgeInsets.zero,
-                                              shrinkWrap: true,
-                                              scrollDirection: Axis.vertical,
-                                              itemCount:
-                                                  listViewPreferenciasRecordList
-                                                      .length,
-                                              itemBuilder:
-                                                  (context, listViewIndex) {
-                                                final listViewPreferenciasRecord =
-                                                    listViewPreferenciasRecordList[
-                                                        listViewIndex];
-                                                return Card(
-                                                  clipBehavior: Clip
-                                                      .antiAliasWithSaveLayer,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryBackground,
-                                                  elevation: 4.0,
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                10.0,
-                                                                10.0,
-                                                                10.0,
-                                                                10.0),
-                                                    child: InkWell(
-                                                      splashColor:
-                                                          Colors.transparent,
-                                                      focusColor:
-                                                          Colors.transparent,
-                                                      hoverColor:
-                                                          Colors.transparent,
-                                                      highlightColor:
-                                                          Colors.transparent,
-                                                      onTap: () async {
-                                                        setState(() {
-                                                          FFAppState()
-                                                              .preferec = FFAppState()
-                                                                  .preferec +
-                                                              listViewPreferenciasRecord
-                                                                  .valormassa;
-                                                        });
-
-                                                        await listViewPreferenciasRecord
-                                                            .reference
-                                                            .update(
-                                                                createPreferenciasRecordData(
-                                                          select: true,
-                                                        ));
-                                                      },
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          if (listViewPreferenciasRecord
-                                                                  .select ==
-                                                              true)
-                                                            Icon(
-                                                              Icons
-                                                                  .check_box_sharp,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              size: 24.0,
-                                                            ),
-                                                          if (listViewPreferenciasRecord
-                                                                  .select ==
-                                                              false)
-                                                            Icon(
-                                                              Icons
-                                                                  .check_box_outline_blank,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              size: 24.0,
-                                                            ),
-                                                          Text(
-                                                            listViewPreferenciasRecord
-                                                                .massas,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  fontSize:
-                                                                      18.0,
-                                                                ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Text(
-                                                              valueOrDefault<
-                                                                  String>(
-                                                                formatNumber(
-                                                                  listViewPreferenciasRecord
-                                                                      .valormassa,
-                                                                  formatType:
-                                                                      FormatType
-                                                                          .custom,
-                                                                  currency:
-                                                                      'R\$',
-                                                                  format: '.00',
-                                                                  locale:
-                                                                      'pt_BR',
-                                                                ),
-                                                                '00.00',
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
-                                                                    fontSize:
-                                                                        20.0,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                        ],
+                                            return FlutterFlowRadioButton(
+                                              options:
+                                                  radioButtonPreferenciasRecordList
+                                                      .map((e) => e.massas)
+                                                      .toList()
+                                                      .toList(),
+                                              onChanged: (val) async {
+                                                setState(() {});
+                                                if (_model.radioButtonValue !=
+                                                        null &&
+                                                    _model.radioButtonValue !=
+                                                        '') {
+                                                  setState(() {
+                                                    FFAppState()
+                                                        .preferec = FFAppState()
+                                                            .preferec +
+                                                        radioButtonPreferenciasRecordList
+                                                            .first.valormassa;
+                                                  });
+                                                } else {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        'false',
+                                                        style: TextStyle(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
                                                       ),
+                                                      duration: const Duration(
+                                                          milliseconds: 4000),
+                                                      backgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondary,
                                                     ),
-                                                  ),
-                                                );
+                                                  );
+                                                }
                                               },
+                                              controller: _model
+                                                      .radioButtonValueController ??=
+                                                  FormFieldController<String>(
+                                                      'Massa Fina'),
+                                              optionHeight: 32.0,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium,
+                                              selectedTextStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                              buttonPosition:
+                                                  RadioButtonPosition.left,
+                                              direction: Axis.vertical,
+                                              radioButtonColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              inactiveRadioButtonColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              toggleable: false,
+                                              horizontalAlignment:
+                                                  WrapAlignment.start,
+                                              verticalAlignment:
+                                                  WrapCrossAlignment.start,
                                             );
                                           },
                                         ),
