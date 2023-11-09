@@ -125,34 +125,33 @@ class FFAppState extends ChangeNotifier {
     _preferec = value;
   }
 
-  List<PrefenciasAppSStruct> _preferenciadatatype = [];
-  List<PrefenciasAppSStruct> get preferenciadatatype => _preferenciadatatype;
-  set preferenciadatatype(List<PrefenciasAppSStruct> value) {
-    _preferenciadatatype = value;
+  List<PrefenciasAppSStruct> _ListPref = [];
+  List<PrefenciasAppSStruct> get ListPref => _ListPref;
+  set ListPref(List<PrefenciasAppSStruct> value) {
+    _ListPref = value;
   }
 
-  void addToPreferenciadatatype(PrefenciasAppSStruct value) {
-    _preferenciadatatype.add(value);
+  void addToListPref(PrefenciasAppSStruct value) {
+    _ListPref.add(value);
   }
 
-  void removeFromPreferenciadatatype(PrefenciasAppSStruct value) {
-    _preferenciadatatype.remove(value);
+  void removeFromListPref(PrefenciasAppSStruct value) {
+    _ListPref.remove(value);
   }
 
-  void removeAtIndexFromPreferenciadatatype(int index) {
-    _preferenciadatatype.removeAt(index);
+  void removeAtIndexFromListPref(int index) {
+    _ListPref.removeAt(index);
   }
 
-  void updatePreferenciadatatypeAtIndex(
+  void updateListPrefAtIndex(
     int index,
     PrefenciasAppSStruct Function(PrefenciasAppSStruct) updateFn,
   ) {
-    _preferenciadatatype[index] = updateFn(_preferenciadatatype[index]);
+    _ListPref[index] = updateFn(_ListPref[index]);
   }
 
-  void insertAtIndexInPreferenciadatatype(
-      int index, PrefenciasAppSStruct value) {
-    _preferenciadatatype.insert(index, value);
+  void insertAtIndexInListPref(int index, PrefenciasAppSStruct value) {
+    _ListPref.insert(index, value);
   }
 }
 

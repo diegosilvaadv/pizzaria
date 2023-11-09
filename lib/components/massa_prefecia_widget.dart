@@ -33,6 +33,7 @@ class _MassaPrefeciaWidgetState extends State<MassaPrefeciaWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         FFAppState().preferec = 0;
+        FFAppState().ListPref = [];
       });
     });
 
@@ -148,6 +149,15 @@ class _MassaPrefeciaWidgetState extends State<MassaPrefeciaWidget> {
                                               FFAppState().preferec +
                                                   listViewPreferenciasRecord
                                                       .valormassa;
+                                          FFAppState().addToListPref(
+                                              PrefenciasAppSStruct(
+                                            nomeMassa:
+                                                listViewPreferenciasRecord
+                                                    .massas,
+                                            valorMassa:
+                                                listViewPreferenciasRecord
+                                                    .valormassa,
+                                          ));
                                         });
                                         Navigator.pop(context);
                                       },

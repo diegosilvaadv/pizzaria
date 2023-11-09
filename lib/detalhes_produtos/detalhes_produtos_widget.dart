@@ -311,73 +311,111 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Text(
-                                          'Massa Escolhida',
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleLarge,
-                                        ),
-                                        Text(
-                                          'Massa Escolhida',
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleLarge,
-                                        ),
-                                        FFButtonWidget(
-                                          onPressed: () async {
-                                            await showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              backgroundColor:
-                                                  const Color(0x77000000),
-                                              barrierColor: const Color(0x66000000),
-                                              enableDrag: false,
-                                              useSafeArea: true,
-                                              context: context,
-                                              builder: (context) {
-                                                return GestureDetector(
-                                                  onTap: () => _model
-                                                          .unfocusNode
-                                                          .canRequestFocus
-                                                      ? FocusScope.of(context)
-                                                          .requestFocus(_model
-                                                              .unfocusNode)
-                                                      : FocusScope.of(context)
-                                                          .unfocus(),
-                                                  child: Padding(
-                                                    padding:
-                                                        MediaQuery.viewInsetsOf(
-                                                            context),
-                                                    child:
-                                                        const MassaPrefeciaWidget(),
-                                                  ),
-                                                );
-                                              },
-                                            ).then(
-                                                (value) => safeSetState(() {}));
-                                          },
-                                          text: 'Escolher o Tipo de Masa',
-                                          options: FFButtonOptions(
-                                            height: 40.0,
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    24.0, 0.0, 24.0, 0.0),
-                                            iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Readex Pro',
-                                                      color: Colors.white,
-                                                    ),
-                                            elevation: 3.0,
-                                            borderSide: const BorderSide(
-                                              color: Colors.transparent,
-                                              width: 1.0,
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              'Massa Escolhida: ',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLarge
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
+                                            Text(
+                                              FFAppState()
+                                                  .ListPref[0]
+                                                  .nomeMassa,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLarge
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        fontSize: 20.0,
+                                                      ),
+                                            ),
+                                          ],
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 10.0, 0.0, 0.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              FFButtonWidget(
+                                                onPressed: () async {
+                                                  await showModalBottomSheet(
+                                                    isScrollControlled: true,
+                                                    backgroundColor:
+                                                        const Color(0x77000000),
+                                                    barrierColor:
+                                                        const Color(0x66000000),
+                                                    enableDrag: false,
+                                                    useSafeArea: true,
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return GestureDetector(
+                                                        onTap: () => _model
+                                                                .unfocusNode
+                                                                .canRequestFocus
+                                                            ? FocusScope.of(
+                                                                    context)
+                                                                .requestFocus(_model
+                                                                    .unfocusNode)
+                                                            : FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child: Padding(
+                                                          padding: MediaQuery
+                                                              .viewInsetsOf(
+                                                                  context),
+                                                          child:
+                                                              const MassaPrefeciaWidget(),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      safeSetState(() {}));
+                                                },
+                                                text: 'Escolher o Tipo de Masa',
+                                                options: FFButtonOptions(
+                                                  height: 40.0,
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          24.0, 0.0, 24.0, 0.0),
+                                                  iconPadding:
+                                                      const EdgeInsetsDirectional
+                                                          .fromSTEB(0.0, 0.0,
+                                                              0.0, 0.0),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            color: Colors.white,
+                                                          ),
+                                                  elevation: 3.0,
+                                                  borderSide: const BorderSide(
+                                                    color: Colors.transparent,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ],

@@ -12,11 +12,9 @@ class PrefenciasAppSStruct extends FFFirebaseStruct {
   PrefenciasAppSStruct({
     String? nomeMassa,
     double? valorMassa,
-    bool? select,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _nomeMassa = nomeMassa,
         _valorMassa = valorMassa,
-        _select = select,
         super(firestoreUtilData);
 
   // "nome_massa" field.
@@ -32,17 +30,10 @@ class PrefenciasAppSStruct extends FFFirebaseStruct {
   void incrementValorMassa(double amount) => _valorMassa = valorMassa + amount;
   bool hasValorMassa() => _valorMassa != null;
 
-  // "select" field.
-  bool? _select;
-  bool get select => _select ?? false;
-  set select(bool? val) => _select = val;
-  bool hasSelect() => _select != null;
-
   static PrefenciasAppSStruct fromMap(Map<String, dynamic> data) =>
       PrefenciasAppSStruct(
         nomeMassa: data['nome_massa'] as String?,
         valorMassa: castToType<double>(data['valor_massa']),
-        select: data['select'] as bool?,
       );
 
   static PrefenciasAppSStruct? maybeFromMap(dynamic data) =>
@@ -51,7 +42,6 @@ class PrefenciasAppSStruct extends FFFirebaseStruct {
   Map<String, dynamic> toMap() => {
         'nome_massa': _nomeMassa,
         'valor_massa': _valorMassa,
-        'select': _select,
       }.withoutNulls;
 
   @override
@@ -63,10 +53,6 @@ class PrefenciasAppSStruct extends FFFirebaseStruct {
         'valor_massa': serializeParam(
           _valorMassa,
           ParamType.double,
-        ),
-        'select': serializeParam(
-          _select,
-          ParamType.bool,
         ),
       }.withoutNulls;
 
@@ -82,11 +68,6 @@ class PrefenciasAppSStruct extends FFFirebaseStruct {
           ParamType.double,
           false,
         ),
-        select: deserializeParam(
-          data['select'],
-          ParamType.bool,
-          false,
-        ),
       );
 
   @override
@@ -96,19 +77,16 @@ class PrefenciasAppSStruct extends FFFirebaseStruct {
   bool operator ==(Object other) {
     return other is PrefenciasAppSStruct &&
         nomeMassa == other.nomeMassa &&
-        valorMassa == other.valorMassa &&
-        select == other.select;
+        valorMassa == other.valorMassa;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([nomeMassa, valorMassa, select]);
+  int get hashCode => const ListEquality().hash([nomeMassa, valorMassa]);
 }
 
 PrefenciasAppSStruct createPrefenciasAppSStruct({
   String? nomeMassa,
   double? valorMassa,
-  bool? select,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -117,7 +95,6 @@ PrefenciasAppSStruct createPrefenciasAppSStruct({
     PrefenciasAppSStruct(
       nomeMassa: nomeMassa,
       valorMassa: valorMassa,
-      select: select,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

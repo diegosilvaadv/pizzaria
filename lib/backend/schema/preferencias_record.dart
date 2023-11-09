@@ -24,21 +24,9 @@ class PreferenciasRecord extends FirestoreRecord {
   double get valormassa => _valormassa ?? 0.0;
   bool hasValormassa() => _valormassa != null;
 
-  // "user_prefere" field.
-  DocumentReference? _userPrefere;
-  DocumentReference? get userPrefere => _userPrefere;
-  bool hasUserPrefere() => _userPrefere != null;
-
-  // "select" field.
-  bool? _select;
-  bool get select => _select ?? false;
-  bool hasSelect() => _select != null;
-
   void _initializeFields() {
     _massas = snapshotData['Massas'] as String?;
     _valormassa = castToType<double>(snapshotData['valormassa']);
-    _userPrefere = snapshotData['user_prefere'] as DocumentReference?;
-    _select = snapshotData['select'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -78,15 +66,11 @@ class PreferenciasRecord extends FirestoreRecord {
 Map<String, dynamic> createPreferenciasRecordData({
   String? massas,
   double? valormassa,
-  DocumentReference? userPrefere,
-  bool? select,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'Massas': massas,
       'valormassa': valormassa,
-      'user_prefere': userPrefere,
-      'select': select,
     }.withoutNulls,
   );
 
@@ -99,15 +83,12 @@ class PreferenciasRecordDocumentEquality
 
   @override
   bool equals(PreferenciasRecord? e1, PreferenciasRecord? e2) {
-    return e1?.massas == e2?.massas &&
-        e1?.valormassa == e2?.valormassa &&
-        e1?.userPrefere == e2?.userPrefere &&
-        e1?.select == e2?.select;
+    return e1?.massas == e2?.massas && e1?.valormassa == e2?.valormassa;
   }
 
   @override
-  int hash(PreferenciasRecord? e) => const ListEquality()
-      .hash([e?.massas, e?.valormassa, e?.userPrefere, e?.select]);
+  int hash(PreferenciasRecord? e) =>
+      const ListEquality().hash([e?.massas, e?.valormassa]);
 
   @override
   bool isValidKey(Object? o) => o is PreferenciasRecord;
