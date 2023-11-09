@@ -40,9 +40,6 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
         FFAppState().total = 0;
         FFAppState().preferec = 0;
         FFAppState().condicao = 0;
-        FFAppState().quantity = 1;
-        FFAppState().PrefReferencia = PrefenciasAppSStruct.fromSerializableMap(
-            jsonDecode('{"nome_massa":"Nenhuma","valor_massa":"0"}'));
       });
     });
 
