@@ -1,6 +1,7 @@
 import '/backend/backend.dart';
 import '/components/select_massa_widget.dart';
-import '/components/select_sabor_widget.dart';
+import '/components/select_sabor1_widget.dart';
+import '/components/select_sabor2_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -553,7 +554,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                                             child:
                                                                                 GestureDetector(
                                                                               onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                              child: const SelectSaborWidget(),
+                                                                              child: const SelectSabor1Widget(),
                                                                             ),
                                                                           );
                                                                         },
@@ -913,7 +914,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                                             child:
                                                                                 GestureDetector(
                                                                               onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                              child: const SelectSaborWidget(),
+                                                                              child: const SelectSabor2Widget(),
                                                                             ),
                                                                           );
                                                                         },
@@ -1253,13 +1254,15 @@ class _DetalhesProdutos2saboresWidgetState
                                                                                 .preferec +
                                                                             1.0;
                                                                       });
-                                                                      await showAlignedDialog(
+                                                                      showAlignedDialog(
+                                                                        barrierDismissible:
+                                                                            false,
                                                                         context:
                                                                             context,
                                                                         isGlobal:
                                                                             false,
                                                                         avoidOverflow:
-                                                                            false,
+                                                                            true,
                                                                         targetAnchor:
                                                                             const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                         followerAnchor:

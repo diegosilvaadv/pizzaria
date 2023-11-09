@@ -6,19 +6,19 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
-import 'select_sabor_model.dart';
-export 'select_sabor_model.dart';
+import 'select_sabor2_model.dart';
+export 'select_sabor2_model.dart';
 
-class SelectSaborWidget extends StatefulWidget {
-  const SelectSaborWidget({super.key});
+class SelectSabor2Widget extends StatefulWidget {
+  const SelectSabor2Widget({super.key});
 
   @override
-  _SelectSaborWidgetState createState() => _SelectSaborWidgetState();
+  _SelectSabor2WidgetState createState() => _SelectSabor2WidgetState();
 }
 
-class _SelectSaborWidgetState extends State<SelectSaborWidget>
+class _SelectSabor2WidgetState extends State<SelectSabor2Widget>
     with TickerProviderStateMixin {
-  late SelectSaborModel _model;
+  late SelectSabor2Model _model;
 
   final animationsMap = {
     'containerOnPageLoadAnimation': AnimationInfo(
@@ -59,7 +59,7 @@ class _SelectSaborWidgetState extends State<SelectSaborWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SelectSaborModel());
+    _model = createModel(context, () => SelectSabor2Model());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -105,7 +105,7 @@ class _SelectSaborWidgetState extends State<SelectSaborWidget>
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Escolha o Primeiro Sabor',
+                          'Escolha o Segundo Sabor',
                           style: FlutterFlowTheme.of(context).titleLarge,
                         ),
                         FlutterFlowIconButton(
@@ -134,7 +134,7 @@ class _SelectSaborWidgetState extends State<SelectSaborWidget>
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 12.0),
                       child: Text(
-                        'Obrigatório escolher um sabor.',
+                        'Obrigatório escolher para continuar.',
                         style: FlutterFlowTheme.of(context).labelMedium,
                       ),
                     ),
@@ -179,41 +179,22 @@ class _SelectSaborWidgetState extends State<SelectSaborWidget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  if (FFAppState().condicao == 0) {
-                                    setState(() {
-                                      FFAppState().updateSaboresAppStruct(
-                                        (e) => e
-                                          ..sabor1 =
-                                              listViewProdutosRecord.nomeProduto
-                                          ..precoSabor1 = listViewProdutosRecord
-                                                  .valorPizza /
-                                              2,
-                                      );
-                                      FFAppState().precoSabor1 = FFAppState()
-                                              .precoSabor1 +
-                                          listViewProdutosRecord.valorPizza / 2;
-                                      FFAppState().condicao =
-                                          FFAppState().condicao + 1;
-                                    });
-                                    Navigator.pop(context);
-                                  } else {
-                                    setState(() {
-                                      FFAppState().updateSaboresAppStruct(
-                                        (e) => e
-                                          ..sabor2 =
-                                              listViewProdutosRecord.nomeProduto
-                                          ..precoSabor2 = listViewProdutosRecord
-                                                  .valorPizza /
-                                              2,
-                                      );
-                                      FFAppState().condicao =
-                                          FFAppState().condicao + 1;
-                                      FFAppState().precoSabor2 = FFAppState()
-                                              .precoSabor2 +
-                                          listViewProdutosRecord.valorPizza / 2;
-                                    });
-                                    Navigator.pop(context);
-                                  }
+                                  setState(() {
+                                    FFAppState().updateSaboresAppStruct(
+                                      (e) => e
+                                        ..sabor2 =
+                                            listViewProdutosRecord.nomeProduto
+                                        ..precoSabor2 =
+                                            listViewProdutosRecord.valorPizza /
+                                                2,
+                                    );
+                                    FFAppState().condicao =
+                                        FFAppState().condicao + 1;
+                                    FFAppState().precoSabor2 = FFAppState()
+                                            .precoSabor2 +
+                                        listViewProdutosRecord.valorPizza / 2;
+                                  });
+                                  Navigator.pop(context);
                                 },
                                 child: Container(
                                   width: MediaQuery.sizeOf(context).width * 1.0,
