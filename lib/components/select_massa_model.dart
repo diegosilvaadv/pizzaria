@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'massa_prefecia_widget.dart' show MassaPrefeciaWidget;
+import 'select_massa_widget.dart' show SelectMassaWidget;
 import 'package:flutter/material.dart';
 
-class MassaPrefeciaModel extends FlutterFlowModel<MassaPrefeciaWidget> {
+class SelectMassaModel extends FlutterFlowModel<SelectMassaWidget> {
   /// Initialization and disposal methods.
 
   @override
