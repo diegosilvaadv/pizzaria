@@ -181,11 +181,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                       .fromSTEB(
                                                           3.0, 3.0, 3.0, 3.0),
                                                   child: Text(
-                                                    valueOrDefault<String>(
-                                                      widget.produtoRef
-                                                          ?.nomeProduto,
-                                                      'Nome',
-                                                    ),
+                                                    'Pizza Grande 2 Sabores',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleLarge
@@ -194,7 +190,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
-                                                          fontSize: 20.0,
+                                                          fontSize: 21.0,
                                                         ),
                                                   ),
                                                 ),
@@ -891,7 +887,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                               children: [
                                                                 if (FFAppState()
                                                                         .condicao ==
-                                                                    2)
+                                                                    1)
                                                                   Builder(
                                                                     builder:
                                                                         (context) =>
