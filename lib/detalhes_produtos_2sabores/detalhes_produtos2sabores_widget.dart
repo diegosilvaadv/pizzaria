@@ -1355,20 +1355,13 @@ class _DetalhesProdutos2saboresWidgetState
                                                                           FFAppState().condicao +
                                                                               -1;
                                                                       FFAppState()
-                                                                          .updateSaboresAppStruct(
-                                                                        (e) => e
-                                                                          ..sabor2 =
-                                                                              'Nenhum'
-                                                                          ..precoSabor2 =
-                                                                              0.00,
-                                                                      );
-                                                                      FFAppState()
-                                                                              .precoSabor2 =
-                                                                          0.0;
-                                                                      FFAppState()
                                                                               .massaCondicao =
                                                                           FFAppState().massaCondicao +
                                                                               -1;
+                                                                      FFAppState()
+                                                                              .PrefReferencia =
+                                                                          PrefenciasAppSStruct.fromSerializableMap(
+                                                                              jsonDecode('{"nome_massa":"Nenhuma","valor_massa":"0"}'));
                                                                     });
                                                                   },
                                                                   child: Icon(
