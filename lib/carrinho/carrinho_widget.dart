@@ -588,6 +588,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                 FFAppState().contador]
                                             .quantity,
                                         userRef: currentUserReference,
+                                        data: getCurrentTimestamp,
                                       ));
                                   setState(() {
                                     FFAppState().ProdutosDoCarrinho = [];

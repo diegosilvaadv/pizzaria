@@ -134,6 +134,7 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'homepage': const HomepageWidget(),
       'carrinho': const CarrinhoWidget(),
+      'pedidos_cliente': const PedidosClienteWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -166,6 +167,14 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: 'Carrinho',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.history_rounded,
+              size: 24.0,
+            ),
+            label: '__',
             tooltip: '',
           )
         ],

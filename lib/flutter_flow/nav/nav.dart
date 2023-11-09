@@ -115,6 +115,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'detalhes_produtos_2sabores',
           path: '/detalhesProdutos2sabores',
           builder: (context, params) => const DetalhesProdutos2saboresWidget(),
+        ),
+        FFRoute(
+          name: 'pedidos_cliente',
+          path: '/pedidosCliente',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'pedidos_cliente')
+              : const PedidosClienteWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
