@@ -137,10 +137,15 @@ class _SelectSabor1WidgetState extends State<SelectSabor1Widget>
                     ),
                     StreamBuilder<List<ProdutosRecord>>(
                       stream: queryProdutosRecord(
-                        queryBuilder: (produtosRecord) => produtosRecord.where(
-                          'tag',
-                          isEqualTo: 'pizza salgada',
-                        ),
+                        queryBuilder: (produtosRecord) => produtosRecord
+                            .where(
+                              'tags',
+                              isEqualTo: 'Pizza Salgada',
+                            )
+                            .where(
+                              'tags',
+                              isEqualTo: 'Pizza Doce',
+                            ),
                       ),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.

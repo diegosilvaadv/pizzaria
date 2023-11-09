@@ -235,7 +235,7 @@ class _SelectMassaWidgetState extends State<SelectMassaWidget>
                                                       formatType:
                                                           FormatType.custom,
                                                       currency: 'R\$',
-                                                      format: '00.00',
+                                                      format: '0.00',
                                                       locale: 'pt_BR',
                                                     ),
                                                     textAlign: TextAlign.end,

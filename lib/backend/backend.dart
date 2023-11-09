@@ -9,6 +9,7 @@ import 'schema/users_record.dart';
 import 'schema/produtos_record.dart';
 import 'schema/preferencias_record.dart';
 import 'schema/lista_carrinho_pedidos_record.dart';
+import 'schema/tags_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -20,6 +21,7 @@ export 'schema/users_record.dart';
 export 'schema/produtos_record.dart';
 export 'schema/preferencias_record.dart';
 export 'schema/lista_carrinho_pedidos_record.dart';
+export 'schema/tags_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -164,6 +166,43 @@ Future<List<ListaCarrinhoPedidosRecord>> queryListaCarrinhoPedidosRecordOnce({
     queryCollectionOnce(
       ListaCarrinhoPedidosRecord.collection,
       ListaCarrinhoPedidosRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query TagsRecords (as a Stream and as a Future).
+Future<int> queryTagsRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      TagsRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<TagsRecord>> queryTagsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      TagsRecord.collection,
+      TagsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<TagsRecord>> queryTagsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      TagsRecord.collection,
+      TagsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
