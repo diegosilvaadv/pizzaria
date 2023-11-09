@@ -1,9 +1,7 @@
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'carrinho_model.dart';
 export 'carrinho_model.dart';
@@ -15,39 +13,15 @@ class CarrinhoWidget extends StatefulWidget {
   _CarrinhoWidgetState createState() => _CarrinhoWidgetState();
 }
 
-class _CarrinhoWidgetState extends State<CarrinhoWidget>
-    with TickerProviderStateMixin {
+class _CarrinhoWidgetState extends State<CarrinhoWidget> {
   late CarrinhoModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  final animationsMap = {
-    'containerOnActionTriggerAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 0.0),
-          end: const Offset(-1000.0, 0.0),
-        ),
-      ],
-    ),
-  };
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => CarrinhoModel());
-
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -84,13 +58,26 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
           iconTheme:
               IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
           automaticallyImplyLeading: false,
-          title: Text(
-            'Carrinho',
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Outfit',
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  fontSize: 25.0,
-                ),
+          title: InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              setState(() {
+                FFAppState().totalprice = 0;
+                FFAppState().ProdutosDoCarrinho = [];
+                FFAppState().quantity = 1;
+              });
+            },
+            child: Text(
+              'Carrinho',
+              style: FlutterFlowTheme.of(context).headlineMedium.override(
+                    fontFamily: 'Outfit',
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    fontSize: 25.0,
+                  ),
+            ),
           ),
           actions: const [],
           centerTitle: false,
@@ -368,22 +355,6 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                     .numberCarrinho +
                                                                 -1;
                                                       });
-                                                      if (animationsMap[
-                                                              'containerOnActionTriggerAnimation'] !=
-                                                          null) {
-                                                        await animationsMap[
-                                                                'containerOnActionTriggerAnimation']!
-                                                            .controller
-                                                            .repeat();
-                                                      }
-                                                      if (animationsMap[
-                                                              'containerOnActionTriggerAnimation'] !=
-                                                          null) {
-                                                        await animationsMap[
-                                                                'containerOnActionTriggerAnimation']!
-                                                            .controller
-                                                            .reverse();
-                                                      }
                                                     },
                                                     child: Icon(
                                                       Icons.delete_forever,
@@ -400,9 +371,6 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                           ],
                                         ),
                                       ),
-                                    ).animateOnActionTrigger(
-                                      animationsMap[
-                                          'containerOnActionTriggerAnimation']!,
                                     ),
                                   );
                                 },
