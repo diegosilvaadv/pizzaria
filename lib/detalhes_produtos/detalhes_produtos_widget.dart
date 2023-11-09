@@ -326,7 +326,12 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                       ),
                                             ),
                                             Text(
-                                              'Massa Escolhida',
+                                              valueOrDefault<String>(
+                                                FFAppState()
+                                                    .PrefReferencia
+                                                    .nomeMassa,
+                                                'Nenhuma',
+                                              ),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .titleLarge
@@ -336,6 +341,35 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                       ),
                                             ),
                                           ],
+                                        ),
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(1.00, 0.00),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 10.0, 0.0),
+                                            child: Text(
+                                              formatNumber(
+                                                FFAppState()
+                                                    .PrefReferencia
+                                                    .valorMassa,
+                                                formatType: FormatType.custom,
+                                                currency: 'R\$',
+                                                format: '.00',
+                                                locale: 'pt_BR',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLarge
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        fontSize: 20.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                            ),
+                                          ),
                                         ),
                                         Padding(
                                           padding:
