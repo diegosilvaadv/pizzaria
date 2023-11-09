@@ -101,23 +101,19 @@ class _DetalhesProdutos2saboresWidgetState
                             children: [
                               Align(
                                 alignment: const AlignmentDirectional(0.00, 0.00),
-                                child: Hero(
-                                  tag: widget.produtoRef!.img,
-                                  transitionOnUserGestures: true,
-                                  child: ClipRRect(
-                                    borderRadius: const BorderRadius.only(
-                                      bottomLeft: Radius.circular(16.0),
-                                      bottomRight: Radius.circular(16.0),
-                                      topLeft: Radius.circular(0.0),
-                                      topRight: Radius.circular(0.0),
-                                    ),
-                                    child: Image.network(
-                                      widget.produtoRef!.img,
-                                      width: MediaQuery.sizeOf(context).width *
-                                          1.0,
-                                      height: 300.0,
-                                      fit: BoxFit.cover,
-                                    ),
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                    bottomLeft: Radius.circular(16.0),
+                                    bottomRight: Radius.circular(16.0),
+                                    topLeft: Radius.circular(0.0),
+                                    topRight: Radius.circular(0.0),
+                                  ),
+                                  child: Image.network(
+                                    'https://images.unsplash.com/photo-1513104890138-7c749659a591?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxfHxwaXp6YXxlbnwwfHx8fDE2OTkzNjYxMjN8MA&ixlib=rb-4.0.3&q=80&w=1080',
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    height: 300.0,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
@@ -239,10 +235,7 @@ class _DetalhesProdutos2saboresWidgetState
                               children: [
                                 Expanded(
                                   child: Text(
-                                    valueOrDefault<String>(
-                                      widget.produtoRef?.descricao,
-                                      'descricao',
-                                    ),
+                                    'Escolha as opções abaixo para continuar.',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -257,41 +250,6 @@ class _DetalhesProdutos2saboresWidgetState
                           Divider(
                             thickness: 1.0,
                             color: FlutterFlowTheme.of(context).secondaryText,
-                          ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                10.0, 0.0, 10.0, 10.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Text(
-                                  'Preço Total dessa Pizza: ',
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleLarge
-                                      .override(
-                                        fontFamily: 'Outfit',
-                                        fontSize: 20.0,
-                                      ),
-                                ),
-                                Text(
-                                  formatNumber(
-                                    widget.produtoRef!.valorPizza,
-                                    formatType: FormatType.custom,
-                                    currency: 'R\$',
-                                    format: '.00',
-                                    locale: 'pt_BR',
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        color: const Color(0xFF26CB3A),
-                                        fontSize: 20.0,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                ),
-                              ],
-                            ),
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
