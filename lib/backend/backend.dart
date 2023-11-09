@@ -8,6 +8,7 @@ import 'schema/util/firestore_util.dart';
 import 'schema/users_record.dart';
 import 'schema/produtos_record.dart';
 import 'schema/preferencias_record.dart';
+import 'schema/lista_carrinho_pedidos_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,6 +19,7 @@ export 'schema/util/schema_util.dart';
 export 'schema/users_record.dart';
 export 'schema/produtos_record.dart';
 export 'schema/preferencias_record.dart';
+export 'schema/lista_carrinho_pedidos_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -125,6 +127,43 @@ Future<List<PreferenciasRecord>> queryPreferenciasRecordOnce({
     queryCollectionOnce(
       PreferenciasRecord.collection,
       PreferenciasRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query ListaCarrinhoPedidosRecords (as a Stream and as a Future).
+Future<int> queryListaCarrinhoPedidosRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ListaCarrinhoPedidosRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ListaCarrinhoPedidosRecord>> queryListaCarrinhoPedidosRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ListaCarrinhoPedidosRecord.collection,
+      ListaCarrinhoPedidosRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ListaCarrinhoPedidosRecord>> queryListaCarrinhoPedidosRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ListaCarrinhoPedidosRecord.collection,
+      ListaCarrinhoPedidosRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

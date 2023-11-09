@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -521,52 +523,139 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               6.0, 6.0, 6.0, 6.0),
-                          child: Container(
-                            width: MediaQuery.sizeOf(context).width * 0.9,
-                            height: 100.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 0.0, 8.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Ir para Pagamento',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          fontSize: 18.0,
-                                          fontWeight: FontWeight.w500,
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              if (FFAppState().ProdutosDoCarrinho.isNotEmpty) {
+                                setState(() {
+                                  FFAppState().contador = -1;
+                                });
+                                while (FFAppState().contador <=
+                                    FFAppState().ProdutosDoCarrinho.length) {
+                                  setState(() {
+                                    FFAppState().contador =
+                                        FFAppState().contador + 1;
+                                  });
+
+                                  await ListaCarrinhoPedidosRecord.collection
+                                      .doc()
+                                      .set(createListaCarrinhoPedidosRecordData(
+                                        nomeProduto: FFAppState()
+                                            .ProdutosDoCarrinho[
+                                                FFAppState().contador]
+                                            .nomeProduto,
+                                        img: FFAppState()
+                                            .ProdutosDoCarrinho[
+                                                FFAppState().contador]
+                                            .img,
+                                        valorPizzaInteira: FFAppState()
+                                            .ProdutosDoCarrinho[
+                                                FFAppState().contador]
+                                            .valor,
+                                        quantyPizzaInteira: FFAppState()
+                                            .ProdutosDoCarrinho[
+                                                FFAppState().contador]
+                                            .quantity,
+                                        nomeMassaPizzaInteira: FFAppState()
+                                            .ProdutosDoCarrinho[
+                                                FFAppState().contador]
+                                            .massaNome,
+                                        valorMassaPizzaInteira: FFAppState()
+                                            .ProdutosDoCarrinho[
+                                                FFAppState().contador]
+                                            .valorpreferecias,
+                                        nomeSabor1: FFAppState()
+                                            .ProdutosDoCarrinho[
+                                                FFAppState().contador]
+                                            .nomeProduto,
+                                        valorSabor1: FFAppState()
+                                            .ProdutosDoCarrinho[
+                                                FFAppState().contador]
+                                            .valorSabor1,
+                                        nomeSabor2: FFAppState()
+                                            .ProdutosDoCarrinho[
+                                                FFAppState().contador]
+                                            .nomeProduto,
+                                        valorSabor2: FFAppState()
+                                            .ProdutosDoCarrinho[
+                                                FFAppState().contador]
+                                            .valorSabor2,
+                                        quantyPizza2sabores: FFAppState()
+                                            .ProdutosDoCarrinho[
+                                                FFAppState().contador]
+                                            .quantity,
+                                        userRef: currentUserReference,
+                                      ));
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Pedido Enviado!',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                         ),
-                                  ),
-                                  Text(
-                                    valueOrDefault<String>(
-                                      formatNumber(
-                                        FFAppState().totalprice,
-                                        formatType: FormatType.custom,
-                                        currency: 'R\$',
-                                        format: '.00',
-                                        locale: 'pt_BR',
                                       ),
-                                      '0',
+                                      duration: const Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: const Color(0xFF26CB3A),
-                                          fontSize: 20.0,
+                                  );
+                                }
+                              } else {
+                                return;
+                              }
+                            },
+                            child: Container(
+                              width: MediaQuery.sizeOf(context).width * 0.9,
+                              height: 100.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    8.0, 0.0, 8.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Ir para Pagamento',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            fontSize: 18.0,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                    ),
+                                    Text(
+                                      valueOrDefault<String>(
+                                        formatNumber(
+                                          FFAppState().totalprice,
+                                          formatType: FormatType.custom,
+                                          currency: 'R\$',
+                                          format: '.00',
+                                          locale: 'pt_BR',
                                         ),
-                                  ),
-                                ],
+                                        '0',
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: const Color(0xFF26CB3A),
+                                            fontSize: 20.0,
+                                          ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
