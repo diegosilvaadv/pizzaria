@@ -580,8 +580,8 @@ class _HomepageWidgetState extends State<HomepageWidget>
                 StreamBuilder<List<ProdutosRecord>>(
                   stream: queryProdutosRecord(
                     queryBuilder: (produtosRecord) => produtosRecord.where(
-                      'tags',
-                      isEqualTo: 'Pizza Salgada',
+                      'tag',
+                      isEqualTo: _model.choiceChipsValue,
                     ),
                   ),
                   builder: (context, snapshot) {
