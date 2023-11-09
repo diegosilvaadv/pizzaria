@@ -351,7 +351,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                                 pedidosItem
                                                                     .massaNome,
                                                                 'Sem Nome',
-                                                              )} : ${valueOrDefault<String>(
+                                                              )}: ${valueOrDefault<String>(
                                                                 formatNumber(
                                                                   pedidosItem
                                                                       .valorpreferecias,
@@ -377,7 +377,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                                             context)
                                                                         .secondaryText,
                                                                     fontSize:
-                                                                        15.0,
+                                                                        14.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,

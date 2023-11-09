@@ -685,9 +685,29 @@ class _DetalhesProdutos2saboresWidgetState
                                                             8.0),
                                                     border: Border.all(
                                                       color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate,
+                                                          valueOrDefault<Color>(
+                                                        () {
+                                                          if (FFAppState()
+                                                                  .precoSabor2 ==
+                                                              0.0) {
+                                                            return FlutterFlowTheme
+                                                                    .of(context)
+                                                                .accent4;
+                                                          } else if (FFAppState()
+                                                                  .precoSabor2 !=
+                                                              0.0) {
+                                                            return FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondary;
+                                                          } else {
+                                                            return const Color(
+                                                                0x00000000);
+                                                          }
+                                                        }(),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .accent4,
+                                                      ),
                                                       width: 2.0,
                                                     ),
                                                   ),
@@ -1047,9 +1067,29 @@ class _DetalhesProdutos2saboresWidgetState
                                                             8.0),
                                                     border: Border.all(
                                                       color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate,
+                                                          valueOrDefault<Color>(
+                                                        () {
+                                                          if (FFAppState()
+                                                                  .preferec ==
+                                                              0.0) {
+                                                            return FlutterFlowTheme
+                                                                    .of(context)
+                                                                .accent4;
+                                                          } else if (FFAppState()
+                                                                  .preferec !=
+                                                              0.0) {
+                                                            return FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondary;
+                                                          } else {
+                                                            return const Color(
+                                                                0x00000000);
+                                                          }
+                                                        }(),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .accent4,
+                                                      ),
                                                       width: 2.0,
                                                     ),
                                                   ),

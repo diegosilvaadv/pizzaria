@@ -805,11 +805,11 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                     massaNome:
                                         FFAppState().PrefReferencia.nomeMassa,
                                   ));
-                                  FFAppState().totalprice = FFAppState()
-                                          .totalprice +
-                                      (widget.produtoRef!.valorPizza *
-                                          FFAppState().quantity.toDouble()) +
-                                      FFAppState().preferec;
+                                  FFAppState().totalprice =
+                                      FFAppState().totalprice +
+                                          (widget.produtoRef!.valorPizza +
+                                                  FFAppState().preferec) *
+                                              FFAppState().quantity;
                                   FFAppState().condicao = 0;
                                   FFAppState().quantity = 1;
                                   FFAppState().numberCarrinho =
