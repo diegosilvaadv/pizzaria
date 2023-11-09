@@ -139,7 +139,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                         ),
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 10.0, 0.0, 0.0),
+                              0.0, 6.0, 0.0, 0.0),
                           child: Builder(
                             builder: (context) {
                               final pedidos =
@@ -228,59 +228,14 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
-                                                          Expanded(
-                                                            child: Text(
-                                                              '${formatNumber(
-                                                                pedidosItem
-                                                                    .valor,
-                                                                formatType:
-                                                                    FormatType
-                                                                        .custom,
-                                                                currency: 'R\$',
-                                                                format: '0.00',
-                                                                locale: 'pt_BR',
-                                                              )} X ${pedidosItem.quantity.toString()}',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
-                                                                    color: const Color(
-                                                                        0xFF26CB3A),
-                                                                    fontSize:
-                                                                        18.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  6.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Expanded(
-                                                            child: Text(
-                                                              '${valueOrDefault<String>(
-                                                                pedidosItem
-                                                                    .massaNome,
-                                                                'Sem Nome',
-                                                              )} : ${valueOrDefault<String>(
-                                                                formatNumber(
+                                                          if (pedidosItem
+                                                                  .valorSabor1 ==
+                                                              0.0)
+                                                            Expanded(
+                                                              child: Text(
+                                                                '${formatNumber(
                                                                   pedidosItem
-                                                                      .valorpreferecias,
+                                                                      .valor,
                                                                   formatType:
                                                                       FormatType
                                                                           .custom,
@@ -290,236 +245,94 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                                       '0.00',
                                                                   locale:
                                                                       'pt_BR',
-                                                                ),
-                                                                '00',
-                                                              )}',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryText,
-                                                                    fontSize:
-                                                                        15.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                  ),
+                                                                )} X ${pedidosItem.quantity.toString()}',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      color: const Color(
+                                                                          0xFF26CB3A),
+                                                                      fontSize:
+                                                                          18.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                    ),
+                                                              ),
                                                             ),
-                                                          ),
                                                         ],
                                                       ),
                                                     ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                            Align(
-                                              alignment: const AlignmentDirectional(
-                                                  0.00, 0.00),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      setState(() {
-                                                        FFAppState()
-                                                            .removeAtIndexFromProdutosDoCarrinho(
-                                                                pedidosIndex);
-                                                        FFAppState()
-                                                            .totalprice = FFAppState()
-                                                                .totalprice +
-                                                            (-pedidosItem
-                                                                        .valorSabor1 -
-                                                                    pedidosItem
-                                                                        .valorSabor2 -
-                                                                    pedidosItem
-                                                                        .valor -
-                                                                    pedidosItem
-                                                                        .valorpreferecias) *
-                                                                (pedidosItem
-                                                                    .quantity);
-                                                        FFAppState()
-                                                                .numberCarrinho =
-                                                            FFAppState()
-                                                                    .numberCarrinho +
-                                                                -1;
-                                                      });
-                                                    },
-                                                    child: Icon(
-                                                      Icons.delete_forever,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      size: 24.0,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              );
-                            },
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 4.0, 0.0, 0.0),
-                          child: Builder(
-                            builder: (context) {
-                              final pedidos =
-                                  FFAppState().ProdutosDoCarrinho.toList();
-                              return ListView.builder(
-                                padding: EdgeInsets.zero,
-                                shrinkWrap: true,
-                                scrollDirection: Axis.vertical,
-                                itemCount: pedidos.length,
-                                itemBuilder: (context, pedidosIndex) {
-                                  final pedidosItem = pedidos[pedidosIndex];
-                                  return Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        8.0, 0.0, 8.0, 8.0),
-                                    child: Container(
-                                      width: 100.0,
-                                      height: 158.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
-                                        borderRadius:
-                                            BorderRadius.circular(16.0),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 10.0, 10.0, 10.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: Image.network(
-                                                pedidosItem.img,
-                                                width: 90.0,
-                                                height: 100.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        6.0, 6.0, 6.0, 6.0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Expanded(
-                                                          child: Text(
-                                                            pedidosItem
-                                                                .nomeProduto,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  fontSize:
-                                                                      17.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                ),
-                                                          ),
+                                                    if (pedidosItem.valor ==
+                                                        0.0)
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    6.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Expanded(
+                                                              child: Text(
+                                                                '${formatNumber(
+                                                                  pedidosItem
+                                                                      .valorSabor1,
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .custom,
+                                                                  currency:
+                                                                      'R\$',
+                                                                  format:
+                                                                      '0.00',
+                                                                  locale:
+                                                                      'pt_BR',
+                                                                )} + ${formatNumber(
+                                                                  pedidosItem
+                                                                      .valorSabor2,
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .custom,
+                                                                  currency:
+                                                                      'R\$',
+                                                                  format:
+                                                                      '0.00',
+                                                                  locale:
+                                                                      'pt_BR',
+                                                                )} X ${formatNumber(
+                                                                  pedidosItem
+                                                                      .quantity,
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .custom,
+                                                                  format: '',
+                                                                  locale: '',
+                                                                )}',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      color: const Color(
+                                                                          0xFF26CB3A),
+                                                                      fontSize:
+                                                                          18.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
-                                                      ],
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  6.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Expanded(
-                                                            child: Text(
-                                                              '${formatNumber(
-                                                                pedidosItem
-                                                                    .valorSabor1,
-                                                                formatType:
-                                                                    FormatType
-                                                                        .custom,
-                                                                currency: 'R\$',
-                                                                format: '0.00',
-                                                                locale: 'pt_BR',
-                                                              )} + ${formatNumber(
-                                                                pedidosItem
-                                                                    .valorSabor2,
-                                                                formatType:
-                                                                    FormatType
-                                                                        .custom,
-                                                                currency: 'R\$',
-                                                                format: '0.00',
-                                                                locale: 'pt_BR',
-                                                              )} X ${formatNumber(
-                                                                pedidosItem
-                                                                    .quantity,
-                                                                formatType:
-                                                                    FormatType
-                                                                        .custom,
-                                                                format: '',
-                                                                locale: '',
-                                                              )}',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
-                                                                    color: const Color(
-                                                                        0xFF26CB3A),
-                                                                    fontSize:
-                                                                        18.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                        ],
                                                       ),
-                                                    ),
                                                     Padding(
                                                       padding:
                                                           const EdgeInsetsDirectional
