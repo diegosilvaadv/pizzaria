@@ -1582,10 +1582,11 @@ class _DetalhesProdutos2saboresWidgetState
                                   },
                                 );
                               } else {
+                                ScaffoldMessenger.of(context).clearSnackBars();
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                      'Escholha sua Prefrencia de Massa',
+                                      'Escholha As opções acima para continuar.',
                                       style: TextStyle(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
