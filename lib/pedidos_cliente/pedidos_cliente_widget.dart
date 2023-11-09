@@ -611,7 +611,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                                   0.0),
                                                       child: Text(
                                                         dateTimeFormat(
-                                                          'yMMMd',
+                                                          'dd/MM/yyyy | kk:mm',
                                                           listViewListaCarrinhoPedidosRecord
                                                               .data!,
                                                           locale:

@@ -215,6 +215,31 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                               ],
                             ),
                           ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                10.0, 10.0, 10.0, 10.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    valueOrDefault<String>(
+                                      widget.produtoRef?.tag,
+                                      'Pizza',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondary,
+                                          fontSize: 16.0,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                           Divider(
                             thickness: 1.0,
                             color: FlutterFlowTheme.of(context).secondaryText,
