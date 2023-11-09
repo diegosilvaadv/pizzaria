@@ -634,12 +634,11 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                 data: getCurrentTimestamp,
                                                 status: 'Pendente',
                                               ));
+                                          setState(() {
+                                            FFAppState().contador =
+                                                FFAppState().contador + -1;
+                                          });
                                         }
-                                        setState(() {
-                                          FFAppState().ProdutosDoCarrinho = [];
-                                          FFAppState().totalprice = 0;
-                                          FFAppState().numberCarrinho = 0;
-                                        });
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(

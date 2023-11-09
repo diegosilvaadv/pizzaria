@@ -342,9 +342,10 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                               .secondaryText,
                                                       size: 24.0,
                                                     ),
-                                                    onPressed: () {
-                                                      print(
-                                                          'IconButton pressed ...');
+                                                    onPressed: () async {
+                                                      await listViewListaCarrinhoPedidosRecord
+                                                          .reference
+                                                          .delete();
                                                     },
                                                   ),
                                                 ),
