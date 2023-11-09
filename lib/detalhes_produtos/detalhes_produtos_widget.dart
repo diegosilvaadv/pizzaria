@@ -529,7 +529,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                                     setState(
                                                                         () {
                                                                       FFAppState()
-                                                                          .preferec = 0;
+                                                                          .preferec = -1;
                                                                       FFAppState()
                                                                           .condicao = 0;
                                                                       FFAppState()
