@@ -58,26 +58,29 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
           iconTheme:
               IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
           automaticallyImplyLeading: false,
-          title: InkWell(
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () async {
-              setState(() {
-                FFAppState().totalprice = 0;
-                FFAppState().ProdutosDoCarrinho = [];
-                FFAppState().quantity = 1;
-                FFAppState().numberCarrinho = 0;
-              });
-            },
-            child: Text(
-              'Carrinho',
-              style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Outfit',
-                    color: FlutterFlowTheme.of(context).primaryText,
-                    fontSize: 28.0,
-                  ),
+          leading: Align(
+            alignment: const AlignmentDirectional(0.00, 0.00),
+            child: InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () async {
+                setState(() {
+                  FFAppState().totalprice = 0;
+                  FFAppState().ProdutosDoCarrinho = [];
+                  FFAppState().quantity = 1;
+                  FFAppState().numberCarrinho = 0;
+                });
+              },
+              child: Text(
+                'Carrinho',
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      fontFamily: 'Outfit',
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      fontSize: 30.0,
+                    ),
+              ),
             ),
           ),
           actions: const [],
@@ -354,13 +357,17 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                             .removeAtIndexFromProdutosDoCarrinho(
                                                                 pedidosIndex);
                                                         FFAppState()
-                                                                .totalprice =
-                                                            FFAppState()
-                                                                    .totalprice +
-                                                                -pedidosItem
-                                                                    .valorSabor1 -
-                                                                pedidosItem
-                                                                    .valorSabor2;
+                                                            .totalprice = FFAppState()
+                                                                .totalprice +
+                                                            -pedidosItem
+                                                                .valorSabor1 -
+                                                            pedidosItem
+                                                                .valorSabor2 -
+                                                            pedidosItem.valor -
+                                                            pedidosItem
+                                                                .valorpreferecias -
+                                                            pedidosItem
+                                                                .quantity;
                                                         FFAppState()
                                                                 .numberCarrinho =
                                                             FFAppState()
