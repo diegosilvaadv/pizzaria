@@ -1579,6 +1579,16 @@ class _DetalhesProdutos2saboresWidgetState
                                   FFAppState().quantity = 1;
                                   FFAppState().numberCarrinho =
                                       FFAppState().numberCarrinho + 1;
+                                  FFAppState().SaboresApp = SaboresStruct
+                                      .fromSerializableMap(jsonDecode(
+                                          '{"sabor1":"Nenhum","sabor2":"Nenhum","preco_sabor1":"0","preco_sabor2":"0"}'));
+                                  FFAppState().precoSabor1 = 0.0;
+                                  FFAppState().precoSabor2 = 0.0;
+                                  FFAppState().preferec = -1;
+                                  FFAppState().PrefReferencia =
+                                      PrefenciasAppSStruct.fromSerializableMap(
+                                          jsonDecode(
+                                              '{"nome_massa":"Nenhuma","valor_massa":"0"}'));
                                 });
 
                                 context.pushNamed(
