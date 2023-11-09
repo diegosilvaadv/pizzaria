@@ -153,7 +153,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                         8.0, 0.0, 8.0, 8.0),
                                     child: Container(
                                       width: 100.0,
-                                      height: 128.0,
+                                      height: 158.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBackground,
@@ -225,38 +225,50 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
-                                                          Text(
-                                                            '${formatNumber(
-                                                              pedidosItem.valor,
-                                                              formatType:
-                                                                  FormatType
-                                                                      .custom,
-                                                              currency: 'R\$',
-                                                              format: '.00',
-                                                              locale: 'pt_BR',
-                                                            )} X ${formatNumber(
-                                                              pedidosItem
-                                                                  .quantity,
-                                                              formatType:
-                                                                  FormatType
-                                                                      .custom,
-                                                              format: '',
-                                                              locale: '',
-                                                            )}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  color: const Color(
-                                                                      0xFF26CB3A),
-                                                                  fontSize:
-                                                                      20.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
+                                                          Expanded(
+                                                            child: Text(
+                                                              '${formatNumber(
+                                                                pedidosItem
+                                                                    .valorSabor1,
+                                                                formatType:
+                                                                    FormatType
+                                                                        .custom,
+                                                                currency: 'R\$',
+                                                                format: '0.00',
+                                                                locale: 'pt_BR',
+                                                              )} + ${formatNumber(
+                                                                pedidosItem
+                                                                    .valorSabor2,
+                                                                formatType:
+                                                                    FormatType
+                                                                        .custom,
+                                                                currency: 'R\$',
+                                                                format: '0.00',
+                                                                locale: 'pt_BR',
+                                                              )} X ${formatNumber(
+                                                                pedidosItem
+                                                                    .quantity,
+                                                                formatType:
+                                                                    FormatType
+                                                                        .custom,
+                                                                format: '',
+                                                                locale: '',
+                                                              )}',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Readex Pro',
+                                                                    color: const Color(
+                                                                        0xFF26CB3A),
+                                                                    fontSize:
+                                                                        18.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                  ),
+                                                            ),
                                                           ),
                                                         ],
                                                       ),
