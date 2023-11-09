@@ -16,6 +16,8 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
     double? valor,
     double? valorpreferecias,
     String? massaNome,
+    double? valorSabor1,
+    double? valorSabor2,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _nomeProduto = nomeProduto,
         _img = img,
@@ -23,6 +25,8 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
         _valor = valor,
         _valorpreferecias = valorpreferecias,
         _massaNome = massaNome,
+        _valorSabor1 = valorSabor1,
+        _valorSabor2 = valorSabor2,
         super(firestoreUtilData);
 
   // "NomeProduto" field.
@@ -65,6 +69,22 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
   set massaNome(String? val) => _massaNome = val;
   bool hasMassaNome() => _massaNome != null;
 
+  // "valor_sabor1" field.
+  double? _valorSabor1;
+  double get valorSabor1 => _valorSabor1 ?? 0.0;
+  set valorSabor1(double? val) => _valorSabor1 = val;
+  void incrementValorSabor1(double amount) =>
+      _valorSabor1 = valorSabor1 + amount;
+  bool hasValorSabor1() => _valorSabor1 != null;
+
+  // "valor_sabor2" field.
+  double? _valorSabor2;
+  double get valorSabor2 => _valorSabor2 ?? 0.0;
+  set valorSabor2(double? val) => _valorSabor2 = val;
+  void incrementValorSabor2(double amount) =>
+      _valorSabor2 = valorSabor2 + amount;
+  bool hasValorSabor2() => _valorSabor2 != null;
+
   static ProdutosCarrinhoStruct fromMap(Map<String, dynamic> data) =>
       ProdutosCarrinhoStruct(
         nomeProduto: data['NomeProduto'] as String?,
@@ -73,6 +93,8 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
         valor: castToType<double>(data['valor']),
         valorpreferecias: castToType<double>(data['valorpreferecias']),
         massaNome: data['massa_nome'] as String?,
+        valorSabor1: castToType<double>(data['valor_sabor1']),
+        valorSabor2: castToType<double>(data['valor_sabor2']),
       );
 
   static ProdutosCarrinhoStruct? maybeFromMap(dynamic data) =>
@@ -87,6 +109,8 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
         'valor': _valor,
         'valorpreferecias': _valorpreferecias,
         'massa_nome': _massaNome,
+        'valor_sabor1': _valorSabor1,
+        'valor_sabor2': _valorSabor2,
       }.withoutNulls;
 
   @override
@@ -114,6 +138,14 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
         'massa_nome': serializeParam(
           _massaNome,
           ParamType.String,
+        ),
+        'valor_sabor1': serializeParam(
+          _valorSabor1,
+          ParamType.double,
+        ),
+        'valor_sabor2': serializeParam(
+          _valorSabor2,
+          ParamType.double,
         ),
       }.withoutNulls;
 
@@ -150,6 +182,16 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        valorSabor1: deserializeParam(
+          data['valor_sabor1'],
+          ParamType.double,
+          false,
+        ),
+        valorSabor2: deserializeParam(
+          data['valor_sabor2'],
+          ParamType.double,
+          false,
+        ),
       );
 
   @override
@@ -163,12 +205,22 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
         quantity == other.quantity &&
         valor == other.valor &&
         valorpreferecias == other.valorpreferecias &&
-        massaNome == other.massaNome;
+        massaNome == other.massaNome &&
+        valorSabor1 == other.valorSabor1 &&
+        valorSabor2 == other.valorSabor2;
   }
 
   @override
-  int get hashCode => const ListEquality()
-      .hash([nomeProduto, img, quantity, valor, valorpreferecias, massaNome]);
+  int get hashCode => const ListEquality().hash([
+        nomeProduto,
+        img,
+        quantity,
+        valor,
+        valorpreferecias,
+        massaNome,
+        valorSabor1,
+        valorSabor2
+      ]);
 }
 
 ProdutosCarrinhoStruct createProdutosCarrinhoStruct({
@@ -178,6 +230,8 @@ ProdutosCarrinhoStruct createProdutosCarrinhoStruct({
   double? valor,
   double? valorpreferecias,
   String? massaNome,
+  double? valorSabor1,
+  double? valorSabor2,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -190,6 +244,8 @@ ProdutosCarrinhoStruct createProdutosCarrinhoStruct({
       valor: valor,
       valorpreferecias: valorpreferecias,
       massaNome: massaNome,
+      valorSabor1: valorSabor1,
+      valorSabor2: valorSabor2,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

@@ -1545,20 +1545,27 @@ class _DetalhesProdutos2saboresWidgetState
                                 setState(() {
                                   FFAppState().addToProdutosDoCarrinho(
                                       ProdutosCarrinhoStruct(
-                                    nomeProduto: widget.produtoRef?.nomeProduto,
-                                    img: widget.produtoRef?.img,
+                                    nomeProduto:
+                                        '${FFAppState().SaboresApp.sabor1} e ${FFAppState().SaboresApp.sabor2}',
+                                    img:
+                                        'https://www.designi.com.br/images/preview/10244680.jpg',
                                     quantity: FFAppState().quantity,
-                                    valor: widget.produtoRef?.valorPizza,
+                                    valorSabor1: FFAppState().precoSabor1,
                                     valorpreferecias:
                                         FFAppState().PrefReferencia.valorMassa,
                                     massaNome:
                                         FFAppState().PrefReferencia.nomeMassa,
+                                    valorSabor2: FFAppState().precoSabor2,
                                   ));
-                                  FFAppState().totalprice = FFAppState()
-                                          .totalprice +
-                                      (widget.produtoRef!.valorPizza *
-                                          FFAppState().quantity.toDouble()) +
-                                      FFAppState().preferec;
+                                  FFAppState().totalprice =
+                                      FFAppState().totalprice +
+                                          valueOrDefault<double>(
+                                            (FFAppState().precoSabor1 +
+                                                    FFAppState().precoSabor2 +
+                                                    FFAppState().preferec) *
+                                                FFAppState().quantity,
+                                            00.00,
+                                          );
                                   FFAppState().condicao = 0;
                                   FFAppState().quantity = 1;
                                   FFAppState().numberCarrinho =
@@ -1608,9 +1615,9 @@ class _DetalhesProdutos2saboresWidgetState
                                   valueOrDefault<String>(
                                     formatNumber(
                                       (FFAppState().precoSabor1 +
-                                              FFAppState().precoSabor2 *
-                                                  FFAppState().quantity) +
-                                          FFAppState().preferec,
+                                              FFAppState().precoSabor2 +
+                                              FFAppState().preferec) *
+                                          FFAppState().quantity,
                                       formatType: FormatType.custom,
                                       currency: 'R\$',
                                       format: '0.00',
