@@ -317,10 +317,25 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                         BorderRadius.circular(
                                                             8.0),
                                                     border: Border.all(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate,
+                                                      color: () {
+                                                        if (FFAppState()
+                                                                .preferec !=
+                                                            0.0) {
+                                                          return FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondary;
+                                                        } else if (FFAppState()
+                                                                .preferec ==
+                                                            0.0) {
+                                                          return FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText;
+                                                        } else {
+                                                          return FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText;
+                                                        }
+                                                      }(),
                                                       width: 2.0,
                                                     ),
                                                   ),
@@ -723,9 +738,11 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                   ),
                                 ),
                                 Text(
-                                  valueOrDefault<String>(
-                                    FFAppState().quantity.toString(),
-                                    '1',
+                                  formatNumber(
+                                    FFAppState().quantity,
+                                    formatType: FormatType.custom,
+                                    format: '',
+                                    locale: '',
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium

@@ -1070,20 +1070,21 @@ class _DetalhesProdutos2saboresWidgetState
                                                           valueOrDefault<Color>(
                                                         () {
                                                           if (FFAppState()
-                                                                  .preferec ==
-                                                              0.0) {
+                                                                  .massaCondicao ==
+                                                              0) {
                                                             return FlutterFlowTheme
                                                                     .of(context)
-                                                                .accent4;
+                                                                .secondaryText;
                                                           } else if (FFAppState()
-                                                                  .preferec !=
-                                                              0.0) {
+                                                                  .massaCondicao !=
+                                                              0) {
                                                             return FlutterFlowTheme
                                                                     .of(context)
                                                                 .secondary;
                                                           } else {
-                                                            return const Color(
-                                                                0x00000000);
+                                                            return FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryText;
                                                           }
                                                         }(),
                                                         FlutterFlowTheme.of(
@@ -1559,7 +1560,7 @@ class _DetalhesProdutos2saboresWidgetState
                                     color: () {
                                       if (FFAppState().quantity >= 1) {
                                         return const Color(0xFF10DA26);
-                                      } else if (FFAppState().quantity == 10) {
+                                      } else if (FFAppState().quantity == 9) {
                                         return FlutterFlowTheme.of(context)
                                             .secondaryText;
                                       } else {
