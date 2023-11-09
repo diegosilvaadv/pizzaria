@@ -76,6 +76,7 @@ class _SelectSabor2WidgetState extends State<SelectSabor2Widget>
     context.watch<FFAppState>();
 
     return SingleChildScrollView(
+      primary: false,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
