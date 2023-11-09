@@ -195,32 +195,6 @@ class _DetalhesProdutos2saboresWidgetState
                                         ),
                                       ),
                                     ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Card(
-                                          clipBehavior:
-                                              Clip.antiAliasWithSaveLayer,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          elevation: 4.0,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          child: const Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    6.0, 6.0, 6.0, 6.0),
-                                            child: Icon(
-                                              Icons.local_grocery_store,
-                                              color: Colors.white,
-                                              size: 24.0,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
                                   ],
                                 ),
                               ),
@@ -310,7 +284,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                               0.0) {
                                                             return FlutterFlowTheme
                                                                     .of(context)
-                                                                .accent4;
+                                                                .secondaryText;
                                                           } else if (FFAppState()
                                                                   .precoSabor1 !=
                                                               0.0) {
@@ -324,7 +298,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                         }(),
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .accent4,
+                                                            .secondaryText,
                                                       ),
                                                       width: 2.0,
                                                     ),
@@ -692,7 +666,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                               0.0) {
                                                             return FlutterFlowTheme
                                                                     .of(context)
-                                                                .accent4;
+                                                                .secondaryText;
                                                           } else if (FFAppState()
                                                                   .precoSabor2 !=
                                                               0.0) {
@@ -706,7 +680,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                         }(),
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .accent4,
+                                                            .secondaryText,
                                                       ),
                                                       width: 2.0,
                                                     ),
@@ -1089,7 +1063,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                         }(),
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .accent4,
+                                                            .secondaryText,
                                                       ),
                                                       width: 2.0,
                                                     ),
