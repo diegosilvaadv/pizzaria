@@ -589,6 +589,11 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                             .quantity,
                                         userRef: currentUserReference,
                                       ));
+                                  setState(() {
+                                    FFAppState().ProdutosDoCarrinho = [];
+                                    FFAppState().totalprice = 0;
+                                    FFAppState().numberCarrinho = 0;
+                                  });
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
