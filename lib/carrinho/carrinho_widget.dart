@@ -428,32 +428,12 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                       ),
                                 ),
                                 Text(
-                                  valueOrDefault<String>(
-                                    formatNumber(
-                                      (FFAppState()
-                                                  .ProdutosDoCarrinho
-                                                  .where((e) => e.hasValor())
-                                                  .toList()
-                                                  .length
-                                                  .toDouble() *
-                                              FFAppState()
-                                                  .ProdutosDoCarrinho
-                                                  .where((e) => e.hasQuantity())
-                                                  .toList()
-                                                  .length) +
-                                          FFAppState()
-                                              .ProdutosDoCarrinho
-                                              .where((e) =>
-                                                  e.hasValorpreferecias())
-                                              .toList()
-                                              .length
-                                              .toDouble(),
-                                      formatType: FormatType.custom,
-                                      currency: 'R\$',
-                                      format: '.00',
-                                      locale: 'pt_BR',
-                                    ),
-                                    '00.00',
+                                  formatNumber(
+                                    FFAppState().totalprice,
+                                    formatType: FormatType.custom,
+                                    currency: 'R\$',
+                                    format: '.00',
+                                    locale: 'pt_BR',
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium

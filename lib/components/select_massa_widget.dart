@@ -186,6 +186,7 @@ class _SelectMassaWidgetState extends State<SelectMassaWidget>
                                   FFAppState().condicao =
                                       FFAppState().condicao + 1;
                                 });
+                                Navigator.pop(context);
                               },
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
