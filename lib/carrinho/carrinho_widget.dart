@@ -361,10 +361,9 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                                 pedidosItem
                                                                     .valorSabor2 -
                                                                 pedidosItem
-                                                                    .valorpreferecias -
-                                                                pedidosItem
-                                                                    .quantity) -
-                                                            1;
+                                                                    .valorpreferecias) -
+                                                            pedidosItem
+                                                                .quantity;
                                                         FFAppState()
                                                                 .numberCarrinho =
                                                             FFAppState()

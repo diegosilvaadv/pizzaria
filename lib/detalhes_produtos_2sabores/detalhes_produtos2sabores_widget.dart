@@ -257,7 +257,7 @@ class _DetalhesProdutos2saboresWidgetState
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         fontSize: 16.0,
-                                        fontWeight: FontWeight.w600,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                 ),
                               ],
