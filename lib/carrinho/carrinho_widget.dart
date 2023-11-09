@@ -634,7 +634,6 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                 data: getCurrentTimestamp,
                                                 status: 'Pendente',
                                               ));
-                                          break;
                                         }
                                         setState(() {
                                           FFAppState().ProdutosDoCarrinho = [];
