@@ -197,17 +197,18 @@ class _SelectSaborWidgetState extends State<SelectSaborWidget>
                                       FFAppState().updateSaboresAppStruct(
                                         (e) => e
                                           ..sabor2 =
-                                              FFAppState().SaboresApp.sabor2
+                                              listViewProdutosRecord.nomeProduto
                                           ..precoSabor2 = listViewProdutosRecord
                                                   .valorPizza /
                                               2,
                                       );
-                                      FFAppState().precoSabor1 = FFAppState()
-                                              .precoSabor1 +
-                                          listViewProdutosRecord.valorPizza / 2;
                                       FFAppState().condicao =
                                           FFAppState().condicao + 1;
+                                      FFAppState().precoSabor2 = FFAppState()
+                                              .precoSabor2 +
+                                          listViewProdutosRecord.valorPizza / 2;
                                     });
+                                    Navigator.pop(context);
                                   }
                                 },
                                 child: Container(
