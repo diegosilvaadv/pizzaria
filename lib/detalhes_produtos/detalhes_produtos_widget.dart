@@ -386,6 +386,9 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                 builder: (context) =>
                                                     FFButtonWidget(
                                                   onPressed: () async {
+                                                    setState(() {
+                                                      FFAppState().preferec = 0;
+                                                    });
                                                     showAlignedDialog(
                                                       context: context,
                                                       isGlobal: false,
