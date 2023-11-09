@@ -444,8 +444,11 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                                           child:
                                                                               Text(
                                                                             FFAppState().PrefReferencia.nomeMassa,
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).labelMedium,
+                                                                            style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                  fontFamily: 'Readex Pro',
+                                                                                  color: FlutterFlowTheme.of(context).secondary,
+                                                                                  fontSize: 16.0,
+                                                                                ),
                                                                           ),
                                                                         ),
                                                                       ],
@@ -485,8 +488,8 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                                             formatNumber(
                                                                               FFAppState().PrefReferencia.valorMassa,
                                                                               formatType: FormatType.custom,
-                                                                              currency: 'R\$',
-                                                                              format: '.00',
+                                                                              currency: '+ R\$',
+                                                                              format: '0.00',
                                                                               locale: 'pt_BR',
                                                                             ),
                                                                             '0.00',
