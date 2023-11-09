@@ -843,7 +843,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                               obscureText:
                                                   !_model.senhaconfVisibility,
                                               decoration: InputDecoration(
-                                                labelText: 'Senha',
+                                                labelText: 'Confirmar Senha',
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium,
@@ -1022,95 +1022,114 @@ class _LoginWidgetState extends State<LoginWidget>
                                           Align(
                                             alignment: const AlignmentDirectional(
                                                 0.00, 0.00),
-                                            child: SizedBox(
-                                              width: 230.0,
-                                              height: 44.0,
-                                              child: Stack(
-                                                children: [
-                                                  Align(
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                            0.00, 0.00),
-                                                    child: FFButtonWidget(
-                                                      onPressed: () async {
-                                                        GoRouter.of(context)
-                                                            .prepareAuthEvent();
-                                                        final user =
-                                                            await authManager
-                                                                .signInWithGoogle(
-                                                                    context);
-                                                        if (user == null) {
-                                                          return;
-                                                        }
+                                            child: Container(
+                                              width: 231.0,
+                                              height: 41.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              child: SizedBox(
+                                                width: 230.0,
+                                                height: 44.0,
+                                                child: Stack(
+                                                  children: [
+                                                    Align(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              0.00, 0.00),
+                                                      child: FFButtonWidget(
+                                                        onPressed: () async {
+                                                          GoRouter.of(context)
+                                                              .prepareAuthEvent();
+                                                          final user =
+                                                              await authManager
+                                                                  .signInWithGoogle(
+                                                                      context);
+                                                          if (user == null) {
+                                                            return;
+                                                          }
 
-                                                        context.goNamedAuth(
-                                                            'homepage',
-                                                            context.mounted);
-                                                      },
-                                                      text: 'Entrar com Google',
-                                                      icon: const Icon(
-                                                        Icons.add,
-                                                        color:
-                                                            Colors.transparent,
-                                                        size: 20.0,
-                                                      ),
-                                                      options: FFButtonOptions(
-                                                        width:
-                                                            MediaQuery.sizeOf(
-                                                                        context)
-                                                                    .width *
-                                                                1.748,
-                                                        height: 97.0,
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        iconPadding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    8.0,
-                                                                    0.0),
-                                                        color: Colors.white,
-                                                        textStyle:
-                                                            GoogleFonts.getFont(
-                                                          'Roboto',
-                                                          color:
-                                                              const Color(0xFF606060),
-                                                          fontSize: 30.0,
-                                                        ),
-                                                        elevation: 4.0,
-                                                        borderSide: const BorderSide(
+                                                          context.goNamedAuth(
+                                                              'homepage',
+                                                              context.mounted);
+                                                        },
+                                                        text:
+                                                            'Entrar com Google',
+                                                        icon: const Icon(
+                                                          Icons.add,
                                                           color: Colors
                                                               .transparent,
-                                                          width: 0.0,
+                                                          size: 20.0,
+                                                        ),
+                                                        options:
+                                                            FFButtonOptions(
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  1.7,
+                                                          height: 97.0,
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          iconPadding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      8.0,
+                                                                      0.0),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          textStyle: GoogleFonts
+                                                              .getFont(
+                                                            'Roboto',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryText,
+                                                            fontSize: 20.0,
+                                                          ),
+                                                          elevation: 4.0,
+                                                          borderSide:
+                                                              const BorderSide(
+                                                            color: Colors
+                                                                .transparent,
+                                                            width: 0.0,
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
-                                                  ),
-                                                  Align(
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                            -0.83, 0.00),
-                                                    child: Container(
-                                                      width: 22.0,
-                                                      height: 22.0,
-                                                      clipBehavior:
-                                                          Clip.antiAlias,
-                                                      decoration: const BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                      ),
-                                                      child: Image.network(
-                                                        'https://i0.wp.com/nanophorm.com/wp-content/uploads/2018/04/google-logo-icon-PNG-Transparent-Background.png?w=1000&ssl=1',
-                                                        fit: BoxFit.contain,
+                                                    Align(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              -0.91, -0.01),
+                                                      child: Container(
+                                                        width: 22.0,
+                                                        height: 22.0,
+                                                        clipBehavior:
+                                                            Clip.antiAlias,
+                                                        decoration:
+                                                            const BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                        ),
+                                                        child: Image.network(
+                                                          'https://i0.wp.com/nanophorm.com/wp-content/uploads/2018/04/google-logo-icon-PNG-Transparent-Background.png?w=1000&ssl=1',
+                                                          fit: BoxFit.contain,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
