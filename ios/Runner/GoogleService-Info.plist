@@ -2,18 +2,24 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CLIENT_ID</key>
+	<string>465205902284-r9q2bljcdrq7mpuupv4c0js226b1d5pa.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.465205902284-r9q2bljcdrq7mpuupv4c0js226b1d5pa</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>465205902284-e8qmftbvctg0riuqjsqn40sful7t3afd.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAoBxz4r76A772iltwyifkziUdfrzDitAc</string>
+	<string>AIzaSyDC80xuvrBwtRe2oCVot5WysOROrg48wSs</string>
 	<key>GCM_SENDER_ID</key>
-	<string>565373204452</string>
+	<string>465205902284</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.adv7dev.pizzaria</string>
 	<key>PROJECT_ID</key>
-	<string>pizzaria-db473</string>
+	<string>apppizzaria-4afc0</string>
 	<key>STORAGE_BUCKET</key>
-	<string>pizzaria-db473.appspot.com</string>
+	<string>apppizzaria-4afc0.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +31,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:565373204452:ios:69149c20e10a4050bfb9f1</string>
+	<string>1:465205902284:ios:2e7f4a0fc166f8af233b69</string>
+	<key>DATABASE_URL</key>
+	<string>https://apppizzaria-4afc0-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>
