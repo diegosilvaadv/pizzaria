@@ -871,7 +871,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                     .showSnackBar(
                                                   const SnackBar(
                                                     content: Text(
-                                                      'Passwords don\'t match!',
+                                                      'As senha não corresponde',
                                                     ),
                                                   ),
                                                 );

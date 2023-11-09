@@ -355,7 +355,14 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 8.0),
                                               child: Text(
-                                                'Pedido Criado em: ${dateTimeFormat('M/d h:mm a', listViewListaCarrinhoPedidosRecord.data)}',
+                                                'Pedido Criado em: ${dateTimeFormat(
+                                                  'M/d h:mm a',
+                                                  listViewListaCarrinhoPedidosRecord
+                                                      .data,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                )}',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium,
@@ -609,9 +616,14 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                                   0.0),
                                                       child: Text(
                                                         dateTimeFormat(
-                                                            'yMMMd',
-                                                            listViewListaCarrinhoPedidosRecord
-                                                                .data!),
+                                                          'yMMMd',
+                                                          listViewListaCarrinhoPedidosRecord
+                                                              .data!,
+                                                          locale:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode,
+                                                        ),
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
