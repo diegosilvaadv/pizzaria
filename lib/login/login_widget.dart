@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'login_model.dart';
 export 'login_model.dart';
@@ -921,6 +922,124 @@ class _LoginWidgetState extends State<LoginWidget>
                                               ),
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 16.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Align(
+                                            alignment: const AlignmentDirectional(
+                                                0.00, 0.00),
+                                            child: SizedBox(
+                                              width: 230.0,
+                                              height: 44.0,
+                                              child: Stack(
+                                                children: [
+                                                  Align(
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            0.00, 0.00),
+                                                    child: FFButtonWidget(
+                                                      onPressed: () async {
+                                                        GoRouter.of(context)
+                                                            .prepareAuthEvent();
+                                                        final user =
+                                                            await authManager
+                                                                .signInWithGoogle(
+                                                                    context);
+                                                        if (user == null) {
+                                                          return;
+                                                        }
+
+                                                        context.pushNamedAuth(
+                                                          'homepage',
+                                                          context.mounted,
+                                                          extra: <String,
+                                                              dynamic>{
+                                                            kTransitionInfoKey:
+                                                                const TransitionInfo(
+                                                              hasTransition:
+                                                                  true,
+                                                              transitionType:
+                                                                  PageTransitionType
+                                                                      .fade,
+                                                            ),
+                                                          },
+                                                        );
+                                                      },
+                                                      text: 'Entrar com Google',
+                                                      icon: const Icon(
+                                                        Icons.add,
+                                                        color:
+                                                            Colors.transparent,
+                                                        size: 20.0,
+                                                      ),
+                                                      options: FFButtonOptions(
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                1.748,
+                                                        height: 97.0,
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        iconPadding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    8.0,
+                                                                    0.0),
+                                                        color: Colors.white,
+                                                        textStyle:
+                                                            GoogleFonts.getFont(
+                                                          'Roboto',
+                                                          color:
+                                                              const Color(0xFF606060),
+                                                          fontSize: 30.0,
+                                                        ),
+                                                        elevation: 4.0,
+                                                        borderSide: const BorderSide(
+                                                          color: Colors
+                                                              .transparent,
+                                                          width: 0.0,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Align(
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            -0.83, 0.00),
+                                                    child: Container(
+                                                      width: 22.0,
+                                                      height: 22.0,
+                                                      clipBehavior:
+                                                          Clip.antiAlias,
+                                                      decoration: const BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                      ),
+                                                      child: Image.network(
+                                                        'https://i0.wp.com/nanophorm.com/wp-content/uploads/2018/04/google-logo-icon-PNG-Transparent-Background.png?w=1000&ssl=1',
+                                                        fit: BoxFit.contain,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ],
