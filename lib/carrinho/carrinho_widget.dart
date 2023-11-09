@@ -63,7 +63,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
                   color: FlutterFlowTheme.of(context).primaryText,
-                  fontSize: 24.0,
+                  fontSize: 25.0,
                 ),
           ),
           actions: const [],
@@ -274,7 +274,8 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                                           .custom,
                                                                   currency:
                                                                       'R\$',
-                                                                  format: '.00',
+                                                                  format:
+                                                                      '0.00',
                                                                   locale:
                                                                       'pt_BR',
                                                                 ),
@@ -364,22 +365,23 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                             },
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 50.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.local_grocery_store_outlined,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 150.0,
-                              ),
-                            ],
+                        if (FFAppState().numberCarrinho == 0)
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 50.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.local_grocery_store_outlined,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 150.0,
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
                       ],
                     ),
                   ),
