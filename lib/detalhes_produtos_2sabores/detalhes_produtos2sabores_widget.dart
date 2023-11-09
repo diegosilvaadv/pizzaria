@@ -1331,7 +1331,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                                   ),
                                                                 ),
                                                               if (FFAppState()
-                                                                      .preferec !=
+                                                                      .preferec >=
                                                                   0.0)
                                                                 InkWell(
                                                                   splashColor:
