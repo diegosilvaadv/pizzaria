@@ -543,6 +543,8 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                                               jsonDecode('{"nome_massa":"Nenhuma","valor_massa":"0"}'));
                                                                     });
                                                                     showAlignedDialog(
+                                                                      barrierDismissible:
+                                                                          false,
                                                                       context:
                                                                           context,
                                                                       isGlobal:
