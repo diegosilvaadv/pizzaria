@@ -37,6 +37,9 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _totalprice = prefs.getDouble('ff_totalprice') ?? _totalprice;
     });
+    _safeInit(() {
+      _numberCarrinho = prefs.getInt('ff_numberCarrinho') ?? _numberCarrinho;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -129,6 +132,13 @@ class FFAppState extends ChangeNotifier {
 
   void updatePrefReferenciaStruct(Function(PrefenciasAppSStruct) updateFn) {
     updateFn(_PrefReferencia);
+  }
+
+  int _numberCarrinho = 0;
+  int get numberCarrinho => _numberCarrinho;
+  set numberCarrinho(int value) {
+    _numberCarrinho = value;
+    prefs.setInt('ff_numberCarrinho', value);
   }
 }
 

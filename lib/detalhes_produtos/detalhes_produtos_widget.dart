@@ -647,6 +647,8 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                       FFAppState().preferec;
                                   FFAppState().condicao = 0;
                                   FFAppState().quantity = 1;
+                                  FFAppState().numberCarrinho =
+                                      FFAppState().numberCarrinho + 1;
                                 });
 
                                 context.pushNamed('carrinho');

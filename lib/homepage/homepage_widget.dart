@@ -146,7 +146,12 @@ class _HomepageWidgetState extends State<HomepageWidget>
                   alignment: const AlignmentDirectional(1.00, -1.00),
                   child: badges.Badge(
                     badgeContent: Text(
-                      '1',
+                      formatNumber(
+                        FFAppState().numberCarrinho,
+                        formatType: FormatType.custom,
+                        format: '',
+                        locale: '',
+                      ),
                       style: FlutterFlowTheme.of(context).titleSmall.override(
                             fontFamily: 'Readex Pro',
                             color: Colors.white,

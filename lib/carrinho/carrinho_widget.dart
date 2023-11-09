@@ -90,31 +90,34 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               10.0, 20.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  setState(() {
-                                    FFAppState().ProdutosDoCarrinho = [];
-                                    FFAppState().totalprice = 0;
-                                  });
-                                },
-                                child: Text(
-                                  'Finalizar Pedido!',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        fontSize: 20.0,
-                                      ),
-                                ),
-                              ),
-                            ],
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                if (FFAppState().numberCarrinho != 0)
+                                  Text(
+                                    'Finalizar Pedido!',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 20.0,
+                                        ),
+                                  ),
+                                if (FFAppState().numberCarrinho == 0)
+                                  Text(
+                                    'Carrinho Vazio!',
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 20.0,
+                                        ),
+                                  ),
+                              ],
+                            ),
                           ),
                         ),
                         Padding(
@@ -136,7 +139,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                         8.0, 0.0, 8.0, 8.0),
                                     child: Container(
                                       width: 100.0,
-                                      height: 137.0,
+                                      height: 128.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBackground,
@@ -154,8 +157,8 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                   BorderRadius.circular(8.0),
                                               child: Image.network(
                                                 pedidosItem.img,
-                                                width: 80.0,
-                                                height: 80.0,
+                                                width: 90.0,
+                                                height: 100.0,
                                                 fit: BoxFit.cover,
                                               ),
                                             ),
@@ -195,6 +198,54 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                           ),
                                                         ),
                                                       ],
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  6.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Text(
+                                                            '${formatNumber(
+                                                              pedidosItem.valor,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .custom,
+                                                              currency: 'R\$',
+                                                              format: '.00',
+                                                              locale: 'pt_BR',
+                                                            )} X ${formatNumber(
+                                                              pedidosItem
+                                                                  .quantity,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .custom,
+                                                              format: '',
+                                                              locale: '',
+                                                            )}',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  color: const Color(
+                                                                      0xFF26CB3A),
+                                                                  fontSize:
+                                                                      20.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                     Padding(
                                                       padding:
@@ -249,54 +300,6 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                         ],
                                                       ),
                                                     ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  6.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Text(
-                                                            '${formatNumber(
-                                                              pedidosItem.valor,
-                                                              formatType:
-                                                                  FormatType
-                                                                      .custom,
-                                                              currency: 'R\$',
-                                                              format: '.00',
-                                                              locale: 'pt_BR',
-                                                            )} X ${formatNumber(
-                                                              pedidosItem
-                                                                  .quantity,
-                                                              formatType:
-                                                                  FormatType
-                                                                      .custom,
-                                                              format: '',
-                                                              locale: '',
-                                                            )}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  color: const Color(
-                                                                      0xFF26CB3A),
-                                                                  fontSize:
-                                                                      20.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
                                                   ],
                                                 ),
                                               ),
@@ -332,6 +335,11 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                                     .quantity) -
                                                             pedidosItem
                                                                 .valorpreferecias;
+                                                        FFAppState()
+                                                                .numberCarrinho =
+                                                            FFAppState()
+                                                                    .numberCarrinho +
+                                                                -1;
                                                       });
                                                     },
                                                     child: Icon(
@@ -356,104 +364,122 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                             },
                           ),
                         ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 50.0, 0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.local_grocery_store_outlined,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 150.0,
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
                 ),
               ),
-              Material(
-                color: Colors.transparent,
-                elevation: 10.0,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(0.0),
-                    bottomRight: Radius.circular(0.0),
-                    topLeft: Radius.circular(8.0),
-                    topRight: Radius.circular(8.0),
-                  ),
-                ),
-                child: Container(
-                  width: double.infinity,
-                  height: 80.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: const [
-                      BoxShadow(
-                        blurRadius: 5.0,
-                        color: Color(0x411D2429),
-                        offset: Offset(0.0, -2.0),
-                      )
-                    ],
-                    borderRadius: const BorderRadius.only(
+              if (FFAppState().numberCarrinho != 0)
+                Material(
+                  color: Colors.transparent,
+                  elevation: 10.0,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(0.0),
                       bottomRight: Radius.circular(0.0),
                       topLeft: Radius.circular(8.0),
                       topRight: Radius.circular(8.0),
                     ),
-                    border: Border.all(
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                    ),
                   ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
-                        child: Container(
-                          width: MediaQuery.sizeOf(context).width * 0.9,
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                8.0, 0.0, 8.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Ir para Pagamento',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                ),
-                                Text(
-                                  valueOrDefault<String>(
-                                    formatNumber(
-                                      FFAppState().totalprice,
-                                      formatType: FormatType.custom,
-                                      currency: 'R\$',
-                                      format: '.00',
-                                      locale: 'pt_BR',
-                                    ),
-                                    '0',
+                  child: Container(
+                    width: double.infinity,
+                    height: 80.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      boxShadow: const [
+                        BoxShadow(
+                          blurRadius: 5.0,
+                          color: Color(0x411D2429),
+                          offset: Offset(0.0, -2.0),
+                        )
+                      ],
+                      borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(0.0),
+                        bottomRight: Radius.circular(0.0),
+                        topLeft: Radius.circular(8.0),
+                        topRight: Radius.circular(8.0),
+                      ),
+                      border: Border.all(
+                        color: FlutterFlowTheme.of(context).primaryBackground,
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              6.0, 6.0, 6.0, 6.0),
+                          child: Container(
+                            width: MediaQuery.sizeOf(context).width * 0.9,
+                            height: 100.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  8.0, 0.0, 8.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Ir para Pagamento',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                   ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        color: const Color(0xFF26CB3A),
-                                        fontSize: 20.0,
+                                  Text(
+                                    valueOrDefault<String>(
+                                      formatNumber(
+                                        FFAppState().totalprice,
+                                        formatType: FormatType.custom,
+                                        currency: 'R\$',
+                                        format: '.00',
+                                        locale: 'pt_BR',
                                       ),
-                                ),
-                              ],
+                                      '0',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: const Color(0xFF26CB3A),
+                                          fontSize: 20.0,
+                                        ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
             ],
           ),
         ),
