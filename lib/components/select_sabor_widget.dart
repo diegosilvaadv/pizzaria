@@ -188,6 +188,8 @@ class _SelectSaborWidgetState extends State<SelectSaborWidget>
                                       FFAppState().precoSabor1 = FFAppState()
                                               .precoSabor1 +
                                           listViewProdutosRecord.valorPizza / 2;
+                                      FFAppState().condicao =
+                                          FFAppState().condicao + 1;
                                     });
                                     Navigator.pop(context);
                                   } else {
@@ -203,6 +205,8 @@ class _SelectSaborWidgetState extends State<SelectSaborWidget>
                                       FFAppState().precoSabor1 = FFAppState()
                                               .precoSabor1 +
                                           listViewProdutosRecord.valorPizza / 2;
+                                      FFAppState().condicao =
+                                          FFAppState().condicao + 1;
                                     });
                                     Navigator.pop(context);
                                   }

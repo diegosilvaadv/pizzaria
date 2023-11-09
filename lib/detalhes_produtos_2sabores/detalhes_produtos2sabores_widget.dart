@@ -527,99 +527,125 @@ class _DetalhesProdutos2saboresWidgetState
                                                                   MainAxisAlignment
                                                                       .center,
                                                               children: [
-                                                                Builder(
-                                                                  builder:
-                                                                      (context) =>
-                                                                          FFButtonWidget(
-                                                                    onPressed:
+                                                                if (FFAppState()
+                                                                        .condicao ==
+                                                                    0)
+                                                                  Builder(
+                                                                    builder:
+                                                                        (context) =>
+                                                                            FFButtonWidget(
+                                                                      onPressed:
+                                                                          () async {
+                                                                        setState(
+                                                                            () {});
+                                                                        showAlignedDialog(
+                                                                          barrierDismissible:
+                                                                              false,
+                                                                          context:
+                                                                              context,
+                                                                          isGlobal:
+                                                                              false,
+                                                                          avoidOverflow:
+                                                                              true,
+                                                                          targetAnchor:
+                                                                              const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                          followerAnchor:
+                                                                              const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                          builder:
+                                                                              (dialogContext) {
+                                                                            return Material(
+                                                                              color: Colors.transparent,
+                                                                              child: GestureDetector(
+                                                                                onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                                child: const SelectSaborWidget(),
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                        ).then((value) =>
+                                                                            setState(() {}));
+                                                                      },
+                                                                      text:
+                                                                          'Escolha o Tipo de Massa',
+                                                                      icon:
+                                                                          const Icon(
+                                                                        Icons
+                                                                            .local_pizza,
+                                                                        size:
+                                                                            15.0,
+                                                                      ),
+                                                                      options:
+                                                                          FFButtonOptions(
+                                                                        height:
+                                                                            40.0,
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            16.0,
+                                                                            0.0,
+                                                                            16.0,
+                                                                            0.0),
+                                                                        iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondary,
+                                                                        textStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .override(
+                                                                              fontFamily: 'Readex Pro',
+                                                                              color: Colors.white,
+                                                                              fontSize: 18.0,
+                                                                            ),
+                                                                        elevation:
+                                                                            3.0,
+                                                                        borderSide:
+                                                                            const BorderSide(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          width:
+                                                                              1.0,
+                                                                        ),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(8.0),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                if (FFAppState()
+                                                                        .condicao !=
+                                                                    0)
+                                                                  InkWell(
+                                                                    splashColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    focusColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    hoverColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    highlightColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    onTap:
                                                                         () async {
                                                                       setState(
                                                                           () {
                                                                         FFAppState()
                                                                             .condicao = FFAppState()
                                                                                 .condicao +
-                                                                            1;
+                                                                            -1;
                                                                       });
-                                                                      showAlignedDialog(
-                                                                        barrierDismissible:
-                                                                            false,
-                                                                        context:
-                                                                            context,
-                                                                        isGlobal:
-                                                                            false,
-                                                                        avoidOverflow:
-                                                                            true,
-                                                                        targetAnchor:
-                                                                            const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                        followerAnchor:
-                                                                            const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                        builder:
-                                                                            (dialogContext) {
-                                                                          return Material(
-                                                                            color:
-                                                                                Colors.transparent,
-                                                                            child:
-                                                                                GestureDetector(
-                                                                              onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                              child: const SelectSaborWidget(),
-                                                                            ),
-                                                                          );
-                                                                        },
-                                                                      ).then((value) =>
-                                                                          setState(
-                                                                              () {}));
                                                                     },
-                                                                    text:
-                                                                        'Escolha o Tipo de Massa',
-                                                                    icon: const Icon(
+                                                                    child: Icon(
                                                                       Icons
-                                                                          .local_pizza,
-                                                                      size:
-                                                                          15.0,
-                                                                    ),
-                                                                    options:
-                                                                        FFButtonOptions(
-                                                                      height:
-                                                                          40.0,
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                          16.0,
-                                                                          0.0,
-                                                                          16.0,
-                                                                          0.0),
-                                                                      iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
+                                                                          .close,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondary,
-                                                                      textStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .titleSmall
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Readex Pro',
-                                                                            color:
-                                                                                Colors.white,
-                                                                            fontSize:
-                                                                                18.0,
-                                                                          ),
-                                                                      elevation:
-                                                                          3.0,
-                                                                      borderSide:
-                                                                          const BorderSide(
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        width:
-                                                                            1.0,
-                                                                      ),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              8.0),
+                                                                          .error,
+                                                                      size:
+                                                                          30.0,
                                                                     ),
                                                                   ),
-                                                                ),
                                                               ],
                                                             ),
                                                           ),
