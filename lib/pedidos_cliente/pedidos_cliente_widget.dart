@@ -202,10 +202,15 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                           StreamBuilder<List<ListaCarrinhoPedidosRecord>>(
                             stream: queryListaCarrinhoPedidosRecord(
                               queryBuilder: (listaCarrinhoPedidosRecord) =>
-                                  listaCarrinhoPedidosRecord.where(
-                                'user_ref',
-                                isEqualTo: currentUserReference,
-                              ),
+                                  listaCarrinhoPedidosRecord
+                                      .where(
+                                        'user_ref',
+                                        isEqualTo: currentUserReference,
+                                      )
+                                      .where(
+                                        'status',
+                                        isEqualTo: 'Pendente',
+                                      ),
                             ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
@@ -372,7 +377,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                       .fromSTEB(
                                                           0.0, 4.0, 0.0, 8.0),
                                                   child: Text(
-                                                    'Number of Items: ${listViewIndex.toString()}',
+                                                    'Numero do Pedido: ${listViewIndex.toString()}',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelMedium,
