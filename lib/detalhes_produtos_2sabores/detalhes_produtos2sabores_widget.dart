@@ -678,7 +678,7 @@ class _DetalhesProdutos2saboresWidgetState
                                             ),
                                           ],
                                         ),
-                                        if (FFAppState().condicao == 1)
+                                        if (FFAppState().condicao >= 1)
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
@@ -889,6 +889,354 @@ class _DetalhesProdutos2saboresWidgetState
                                                                   MainAxisAlignment
                                                                       .center,
                                                               children: [
+                                                                if (FFAppState()
+                                                                        .condicao ==
+                                                                    2)
+                                                                  Builder(
+                                                                    builder:
+                                                                        (context) =>
+                                                                            FFButtonWidget(
+                                                                      onPressed:
+                                                                          () async {
+                                                                        setState(
+                                                                            () {});
+                                                                        showAlignedDialog(
+                                                                          barrierDismissible:
+                                                                              false,
+                                                                          context:
+                                                                              context,
+                                                                          isGlobal:
+                                                                              false,
+                                                                          avoidOverflow:
+                                                                              true,
+                                                                          targetAnchor:
+                                                                              const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                          followerAnchor:
+                                                                              const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                          builder:
+                                                                              (dialogContext) {
+                                                                            return Material(
+                                                                              color: Colors.transparent,
+                                                                              child: GestureDetector(
+                                                                                onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                                child: const SelectSaborWidget(),
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                        ).then((value) =>
+                                                                            setState(() {}));
+                                                                      },
+                                                                      text:
+                                                                          'Escolha o Segundo Sabor',
+                                                                      icon:
+                                                                          const Icon(
+                                                                        Icons
+                                                                            .local_pizza,
+                                                                        size:
+                                                                            15.0,
+                                                                      ),
+                                                                      options:
+                                                                          FFButtonOptions(
+                                                                        height:
+                                                                            40.0,
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            16.0,
+                                                                            0.0,
+                                                                            16.0,
+                                                                            0.0),
+                                                                        iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        color: const Color(
+                                                                            0xFF1A9E8F),
+                                                                        textStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .override(
+                                                                              fontFamily: 'Readex Pro',
+                                                                              color: Colors.white,
+                                                                              fontSize: 18.0,
+                                                                            ),
+                                                                        elevation:
+                                                                            3.0,
+                                                                        borderSide:
+                                                                            const BorderSide(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          width:
+                                                                              1.0,
+                                                                        ),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(8.0),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                if (FFAppState()
+                                                                        .condicao >=
+                                                                    2)
+                                                                  InkWell(
+                                                                    splashColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    focusColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    hoverColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    highlightColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    onTap:
+                                                                        () async {
+                                                                      setState(
+                                                                          () {
+                                                                        FFAppState()
+                                                                            .condicao = FFAppState()
+                                                                                .condicao +
+                                                                            -1;
+                                                                        FFAppState()
+                                                                            .updateSaboresAppStruct(
+                                                                          (e) => e
+                                                                            ..sabor2 =
+                                                                                'Nenhum'
+                                                                            ..precoSabor2 = 0.00,
+                                                                        );
+                                                                        FFAppState().precoSabor2 =
+                                                                            0.0;
+                                                                      });
+                                                                    },
+                                                                    child: Icon(
+                                                                      Icons
+                                                                          .close,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .error,
+                                                                      size:
+                                                                          30.0,
+                                                                    ),
+                                                                  ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        if (FFAppState().condicao >= 2)
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 12.0),
+                                                  child: Container(
+                                                    width: double.infinity,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                      border: Border.all(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        width: 2.0,
+                                                      ),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  2.0,
+                                                                  4.0,
+                                                                  4.0,
+                                                                  12.0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        12.0,
+                                                                        8.0,
+                                                                        12.0,
+                                                                        8.0),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .center,
+                                                              children: [
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          2.0,
+                                                                          2.0,
+                                                                          2.0,
+                                                                          2.0),
+                                                                      child:
+                                                                          Container(
+                                                                        width:
+                                                                            44.0,
+                                                                        height:
+                                                                            44.0,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryBackground,
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(10.0),
+                                                                          shape:
+                                                                              BoxShape.rectangle,
+                                                                          border:
+                                                                              Border.all(
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryBackground,
+                                                                            width:
+                                                                                2.0,
+                                                                          ),
+                                                                        ),
+                                                                        child:
+                                                                            Icon(
+                                                                          Icons
+                                                                              .local_pizza,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryText,
+                                                                          size:
+                                                                              24.0,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Padding(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          12.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Text(
+                                                                            'Preferência de Massa',
+                                                                            style:
+                                                                                FlutterFlowTheme.of(context).bodyLarge,
+                                                                          ),
+                                                                          Padding(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                4.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                            child:
+                                                                                Text(
+                                                                              FFAppState().PrefReferencia.nomeMassa,
+                                                                              style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                    fontFamily: 'Readex Pro',
+                                                                                    color: FlutterFlowTheme.of(context).secondary,
+                                                                                    fontSize: 15.0,
+                                                                                  ),
+                                                                            ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .end,
+                                                                  children: [
+                                                                    Text(
+                                                                      'Preço',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelSmall,
+                                                                    ),
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        Padding(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                              0.0,
+                                                                              0.0,
+                                                                              4.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              Text(
+                                                                            valueOrDefault<String>(
+                                                                              formatNumber(
+                                                                                FFAppState().PrefReferencia.valorMassa,
+                                                                                formatType: FormatType.custom,
+                                                                                currency: '+R\$',
+                                                                                format: '0.00',
+                                                                                locale: 'pt_BR',
+                                                                              ),
+                                                                              '0.00',
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                                                                                  fontFamily: 'Outfit',
+                                                                                  fontSize: 20.0,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        10.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .center,
+                                                              children: [
                                                                 Builder(
                                                                   builder:
                                                                       (context) =>
@@ -896,7 +1244,14 @@ class _DetalhesProdutos2saboresWidgetState
                                                                     onPressed:
                                                                         () async {
                                                                       setState(
-                                                                          () {});
+                                                                          () {
+                                                                        FFAppState()
+                                                                            .preferec = 0;
+                                                                        FFAppState()
+                                                                            .condicao = 0;
+                                                                        FFAppState().PrefReferencia =
+                                                                            PrefenciasAppSStruct.fromSerializableMap(jsonDecode('{"nome_massa":"Nenhuma","valor_massa":"0"}'));
+                                                                      });
                                                                       showAlignedDialog(
                                                                         barrierDismissible:
                                                                             false,
@@ -918,7 +1273,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                                             child:
                                                                                 GestureDetector(
                                                                               onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                              child: const SelectSaborWidget(),
+                                                                              child: const SelectMassaWidget(),
                                                                             ),
                                                                           );
                                                                         },
@@ -927,7 +1282,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                                               () {}));
                                                                     },
                                                                     text:
-                                                                        'Escolha o Segundo Sabor',
+                                                                        'Escolha o Tipo de Massa',
                                                                     icon: const Icon(
                                                                       Icons
                                                                           .local_pizza,
@@ -976,51 +1331,6 @@ class _DetalhesProdutos2saboresWidgetState
                                                                     ),
                                                                   ),
                                                                 ),
-                                                                if (FFAppState()
-                                                                        .condicao ==
-                                                                    2)
-                                                                  InkWell(
-                                                                    splashColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    focusColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    hoverColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    highlightColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    onTap:
-                                                                        () async {
-                                                                      setState(
-                                                                          () {
-                                                                        FFAppState()
-                                                                            .condicao = FFAppState()
-                                                                                .condicao +
-                                                                            -1;
-                                                                        FFAppState()
-                                                                            .updateSaboresAppStruct(
-                                                                          (e) => e
-                                                                            ..sabor1 =
-                                                                                'Nenhum'
-                                                                            ..precoSabor1 = 0.00,
-                                                                        );
-                                                                        FFAppState().precoSabor1 =
-                                                                            0.0;
-                                                                      });
-                                                                    },
-                                                                    child: Icon(
-                                                                      Icons
-                                                                          .close,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .error,
-                                                                      size:
-                                                                          30.0,
-                                                                    ),
-                                                                  ),
                                                               ],
                                                             ),
                                                           ),
@@ -1032,335 +1342,6 @@ class _DetalhesProdutos2saboresWidgetState
                                               ),
                                             ],
                                           ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Expanded(
-                                              child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 12.0),
-                                                child: Container(
-                                                  width: double.infinity,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    border: Border.all(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate,
-                                                      width: 2.0,
-                                                    ),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(2.0, 4.0,
-                                                                4.0, 12.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      12.0,
-                                                                      8.0,
-                                                                      12.0,
-                                                                      8.0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceBetween,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .center,
-                                                            children: [
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            2.0,
-                                                                            2.0,
-                                                                            2.0,
-                                                                            2.0),
-                                                                    child:
-                                                                        Container(
-                                                                      width:
-                                                                          44.0,
-                                                                      height:
-                                                                          44.0,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryBackground,
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(10.0),
-                                                                        shape: BoxShape
-                                                                            .rectangle,
-                                                                        border:
-                                                                            Border.all(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryBackground,
-                                                                          width:
-                                                                              2.0,
-                                                                        ),
-                                                                      ),
-                                                                      child:
-                                                                          Icon(
-                                                                        Icons
-                                                                            .local_pizza,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryText,
-                                                                        size:
-                                                                            24.0,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            12.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
-                                                                      children: [
-                                                                        Text(
-                                                                          'Preferência de Massa',
-                                                                          style:
-                                                                              FlutterFlowTheme.of(context).bodyLarge,
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              4.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Text(
-                                                                            FFAppState().PrefReferencia.nomeMassa,
-                                                                            style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                  fontFamily: 'Readex Pro',
-                                                                                  color: FlutterFlowTheme.of(context).secondary,
-                                                                                  fontSize: 15.0,
-                                                                                ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .end,
-                                                                children: [
-                                                                  Text(
-                                                                    'Preço',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelSmall,
-                                                                  ),
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            4.0,
-                                                                            0.0),
-                                                                        child:
-                                                                            Text(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            formatNumber(
-                                                                              FFAppState().PrefReferencia.valorMassa,
-                                                                              formatType: FormatType.custom,
-                                                                              currency: '+R\$',
-                                                                              format: '0.00',
-                                                                              locale: 'pt_BR',
-                                                                            ),
-                                                                            '0.00',
-                                                                          ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .headlineMedium
-                                                                              .override(
-                                                                                fontFamily: 'Outfit',
-                                                                                fontSize: 20.0,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      10.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            children: [
-                                                              Builder(
-                                                                builder:
-                                                                    (context) =>
-                                                                        FFButtonWidget(
-                                                                  onPressed:
-                                                                      () async {
-                                                                    setState(
-                                                                        () {
-                                                                      FFAppState()
-                                                                          .preferec = 0;
-                                                                      FFAppState()
-                                                                          .condicao = 0;
-                                                                      FFAppState()
-                                                                              .PrefReferencia =
-                                                                          PrefenciasAppSStruct.fromSerializableMap(
-                                                                              jsonDecode('{"nome_massa":"Nenhuma","valor_massa":"0"}'));
-                                                                    });
-                                                                    showAlignedDialog(
-                                                                      barrierDismissible:
-                                                                          false,
-                                                                      context:
-                                                                          context,
-                                                                      isGlobal:
-                                                                          false,
-                                                                      avoidOverflow:
-                                                                          true,
-                                                                      targetAnchor: const AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0)
-                                                                          .resolve(
-                                                                              Directionality.of(context)),
-                                                                      followerAnchor: const AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0)
-                                                                          .resolve(
-                                                                              Directionality.of(context)),
-                                                                      builder:
-                                                                          (dialogContext) {
-                                                                        return Material(
-                                                                          color:
-                                                                              Colors.transparent,
-                                                                          child:
-                                                                              GestureDetector(
-                                                                            onTap: () => _model.unfocusNode.canRequestFocus
-                                                                                ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                                                                                : FocusScope.of(context).unfocus(),
-                                                                            child:
-                                                                                const SelectMassaWidget(),
-                                                                          ),
-                                                                        );
-                                                                      },
-                                                                    ).then((value) =>
-                                                                        setState(
-                                                                            () {}));
-                                                                  },
-                                                                  text:
-                                                                      'Escolha o Tipo de Massa',
-                                                                  icon: const Icon(
-                                                                    Icons
-                                                                        .local_pizza,
-                                                                    size: 15.0,
-                                                                  ),
-                                                                  options:
-                                                                      FFButtonOptions(
-                                                                    height:
-                                                                        40.0,
-                                                                    padding: const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            16.0,
-                                                                            0.0,
-                                                                            16.0,
-                                                                            0.0),
-                                                                    iconPadding:
-                                                                        const EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    color: const Color(
-                                                                        0xFF1A9E8F),
-                                                                    textStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
-                                                                          color:
-                                                                              Colors.white,
-                                                                          fontSize:
-                                                                              18.0,
-                                                                        ),
-                                                                    elevation:
-                                                                        3.0,
-                                                                    borderSide:
-                                                                        const BorderSide(
-                                                                      color: Colors
-                                                                          .transparent,
-                                                                      width:
-                                                                          1.0,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
                                       ],
                                     ),
                                   ),
@@ -1506,7 +1487,7 @@ class _DetalhesProdutos2saboresWidgetState
                             if (FFAppState().condicao == 0) {
                               return FlutterFlowTheme.of(context)
                                   .primaryBackground;
-                            } else if (FFAppState().condicao != 0) {
+                            } else if (FFAppState().condicao == 3) {
                               return const Color(0xFF10DA26);
                             } else {
                               return FlutterFlowTheme.of(context)
@@ -1524,7 +1505,7 @@ class _DetalhesProdutos2saboresWidgetState
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              if (FFAppState().condicao != 0) {
+                              if (FFAppState().condicao != 3) {
                                 setState(() {
                                   FFAppState().addToProdutosDoCarrinho(
                                       ProdutosCarrinhoStruct(
