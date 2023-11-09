@@ -591,6 +591,8 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                         data: getCurrentTimestamp,
                                         status: 'Pendente',
                                       ));
+                                  await Future.delayed(
+                                      const Duration(milliseconds: 5000));
                                   setState(() {
                                     FFAppState().ProdutosDoCarrinho = [];
                                     FFAppState().totalprice = 0;
