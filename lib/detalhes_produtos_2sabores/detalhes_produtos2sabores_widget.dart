@@ -535,13 +535,15 @@ class _DetalhesProdutos2saboresWidgetState
                                                                         () async {
                                                                       setState(
                                                                           () {});
-                                                                      await showAlignedDialog(
+                                                                      showAlignedDialog(
+                                                                        barrierDismissible:
+                                                                            false,
                                                                         context:
                                                                             context,
                                                                         isGlobal:
                                                                             false,
                                                                         avoidOverflow:
-                                                                            false,
+                                                                            true,
                                                                         targetAnchor:
                                                                             const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                         followerAnchor:
@@ -895,13 +897,15 @@ class _DetalhesProdutos2saboresWidgetState
                                                                         () async {
                                                                       setState(
                                                                           () {});
-                                                                      await showAlignedDialog(
+                                                                      showAlignedDialog(
+                                                                        barrierDismissible:
+                                                                            false,
                                                                         context:
                                                                             context,
                                                                         isGlobal:
                                                                             false,
                                                                         avoidOverflow:
-                                                                            false,
+                                                                            true,
                                                                         targetAnchor:
                                                                             const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                         followerAnchor:
