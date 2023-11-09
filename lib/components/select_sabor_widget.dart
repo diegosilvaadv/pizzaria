@@ -208,7 +208,6 @@ class _SelectSaborWidgetState extends State<SelectSaborWidget>
                                       FFAppState().condicao =
                                           FFAppState().condicao + 1;
                                     });
-                                    Navigator.pop(context);
                                   }
                                 },
                                 child: Container(
