@@ -56,6 +56,26 @@ class _MassaPrefeciaWidgetState extends State<MassaPrefeciaWidget> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  Navigator.pop(context);
+                },
+                child: Icon(
+                  Icons.close_sharp,
+                  color: FlutterFlowTheme.of(context).error,
+                  size: 50.0,
+                ),
+              ),
+            ],
+          ),
           Flexible(
             child: Align(
               alignment: const AlignmentDirectional(0.00, 0.00),
@@ -114,83 +134,89 @@ class _MassaPrefeciaWidgetState extends State<MassaPrefeciaWidget> {
                                         .primaryBackground,
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      setState(() {
-                                        FFAppState().preferec =
-                                            FFAppState().preferec +
-                                                listViewPreferenciasRecord
-                                                    .valormassa;
-                                      });
-                                      Navigator.pop(context);
-                                    },
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          listViewPreferenciasRecord.massas,
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleLarge,
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 0.0, 0.0),
-                                          child: Text(
-                                            formatNumber(
-                                              listViewPreferenciasRecord
-                                                  .valormassa,
-                                              formatType: FormatType.decimal,
-                                              decimalType:
-                                                  DecimalType.commaDecimal,
-                                              currency: 'R\$',
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .titleLarge
-                                                .override(
-                                                  fontFamily: 'Outfit',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondary,
-                                                ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  20.0, 0.0, 0.0, 0.0),
-                                          child: FlutterFlowIconButton(
-                                            borderColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
-                                            borderRadius: 20.0,
-                                            borderWidth: 1.0,
-                                            buttonSize: 30.0,
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .accent1,
-                                            hoverColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .tertiary,
-                                            icon: Icon(
-                                              Icons.add,
-                                              color:
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        20.0, 0.0, 20.0, 0.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        setState(() {
+                                          FFAppState().preferec =
+                                              FFAppState().preferec +
+                                                  listViewPreferenciasRecord
+                                                      .valormassa;
+                                        });
+                                        Navigator.pop(context);
+                                      },
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 10.0, 0.0),
+                                            child: FlutterFlowIconButton(
+                                              borderColor:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
-                                              size: 15.0,
+                                              borderRadius: 20.0,
+                                              borderWidth: 1.0,
+                                              buttonSize: 30.0,
+                                              fillColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                              hoverColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                              icon: Icon(
+                                                Icons.add,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 15.0,
+                                              ),
+                                              onPressed: () {
+                                                print('IconButton pressed ...');
+                                              },
                                             ),
-                                            onPressed: () {
-                                              print('IconButton pressed ...');
-                                            },
                                           ),
-                                        ),
-                                      ],
+                                          Text(
+                                            listViewPreferenciasRecord.massas,
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleLarge,
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 0.0, 0.0),
+                                            child: Text(
+                                              formatNumber(
+                                                listViewPreferenciasRecord
+                                                    .valormassa,
+                                                formatType: FormatType.decimal,
+                                                decimalType:
+                                                    DecimalType.commaDecimal,
+                                                currency: 'R\$',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLarge
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondary,
+                                                      ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
