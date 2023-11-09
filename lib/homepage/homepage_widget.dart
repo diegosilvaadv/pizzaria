@@ -578,7 +578,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
                                       context.pushNamed(
-                                        'detalhes_produtos',
+                                        'detalhes_produtos_2sabores',
                                         queryParameters: {
                                           'produtoRef': serializeParam(
                                             listViewProdutosRecord,
