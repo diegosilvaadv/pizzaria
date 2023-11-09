@@ -55,94 +55,122 @@ class _MassaPrefeciaWidgetState extends State<MassaPrefeciaWidget> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Align(
-            alignment: const AlignmentDirectional(0.00, 0.00),
-            child: Container(
-              width: double.infinity,
-              height: 264.0,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-              ),
+          Flexible(
+            child: Align(
+              alignment: const AlignmentDirectional(0.00, 0.00),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
-                child: StreamBuilder<List<PreferenciasRecord>>(
-                  stream: queryPreferenciasRecord(
-                    queryBuilder: (preferenciasRecord) =>
-                        preferenciasRecord.orderBy('Massas', descending: true),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+                child: Container(
+                  width: double.infinity,
+                  height: 375.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    borderRadius: BorderRadius.circular(16.0),
                   ),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              FlutterFlowTheme.of(context).primary,
-                            ),
-                          ),
-                        ),
-                      );
-                    }
-                    List<PreferenciasRecord> listViewPreferenciasRecordList =
-                        snapshot.data!;
-                    return ListView.builder(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: listViewPreferenciasRecordList.length,
-                      itemBuilder: (context, listViewIndex) {
-                        final listViewPreferenciasRecord =
-                            listViewPreferenciasRecordList[listViewIndex];
-                        return Align(
-                          alignment: const AlignmentDirectional(0.00, 0.00),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              setState(() {
-                                FFAppState().preferec = FFAppState().preferec +
-                                    listViewPreferenciasRecord.valormassa;
-                              });
-                            },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  listViewPreferenciasRecord.massas,
-                                  style:
-                                      FlutterFlowTheme.of(context).titleLarge,
+                  child: Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+                    child: StreamBuilder<List<PreferenciasRecord>>(
+                      stream: queryPreferenciasRecord(
+                        queryBuilder: (preferenciasRecord) => preferenciasRecord
+                            .orderBy('Massas', descending: true),
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  FlutterFlowTheme.of(context).primary,
                                 ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 0.0, 0.0),
-                                  child: Text(
-                                    formatNumber(
-                                      listViewPreferenciasRecord.valormassa,
-                                      formatType: FormatType.decimal,
-                                      decimalType: DecimalType.commaDecimal,
-                                      currency: 'R\$',
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleLarge
-                                        .override(
-                                          fontFamily: 'Outfit',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
+                              ),
+                            ),
+                          );
+                        }
+                        List<PreferenciasRecord>
+                            listViewPreferenciasRecordList = snapshot.data!;
+                        return ListView.builder(
+                          padding: EdgeInsets.zero,
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          itemCount: listViewPreferenciasRecordList.length,
+                          itemBuilder: (context, listViewIndex) {
+                            final listViewPreferenciasRecord =
+                                listViewPreferenciasRecordList[listViewIndex];
+                            return Align(
+                              alignment: const AlignmentDirectional(0.00, 0.00),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 10.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 72.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      setState(() {
+                                        FFAppState().preferec =
+                                            FFAppState().preferec +
+                                                listViewPreferenciasRecord
+                                                    .valormassa;
+                                      });
+                                      Navigator.pop(context);
+                                    },
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          listViewPreferenciasRecord.massas,
+                                          style: FlutterFlowTheme.of(context)
+                                              .titleLarge,
                                         ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            formatNumber(
+                                              listViewPreferenciasRecord
+                                                  .valormassa,
+                                              formatType: FormatType.decimal,
+                                              decimalType:
+                                                  DecimalType.commaDecimal,
+                                              currency: 'R\$',
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleLarge
+                                                .override(
+                                                  fontFamily: 'Outfit',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondary,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
+                              ),
+                            );
+                          },
                         );
                       },
-                    );
-                  },
+                    ),
+                  ),
                 ),
               ),
             ),
