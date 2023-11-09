@@ -121,6 +121,10 @@ class _SelectSaborWidgetState extends State<SelectSaborWidget>
                             size: 24.0,
                           ),
                           onPressed: () async {
+                            setState(() {
+                              FFAppState().preferec =
+                                  FFAppState().preferec + -1.0;
+                            });
                             Navigator.pop(context);
                           },
                         ),
