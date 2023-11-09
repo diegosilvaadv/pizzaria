@@ -1375,6 +1375,8 @@ class _DetalhesProdutos2saboresWidgetState
                                                                               .PrefReferencia =
                                                                           PrefenciasAppSStruct.fromSerializableMap(
                                                                               jsonDecode('{"nome_massa":"Nenhuma","valor_massa":"0"}'));
+                                                                      FFAppState()
+                                                                          .preferec = 0;
                                                                     });
                                                                   },
                                                                   child: Icon(
