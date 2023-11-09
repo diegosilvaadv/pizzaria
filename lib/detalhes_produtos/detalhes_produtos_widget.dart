@@ -447,7 +447,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                                             style: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                   fontFamily: 'Readex Pro',
                                                                                   color: FlutterFlowTheme.of(context).secondary,
-                                                                                  fontSize: 16.0,
+                                                                                  fontSize: 15.0,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -488,14 +488,18 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                                             formatNumber(
                                                                               FFAppState().PrefReferencia.valorMassa,
                                                                               formatType: FormatType.custom,
-                                                                              currency: '+ R\$',
+                                                                              currency: '+R\$',
                                                                               format: '0.00',
                                                                               locale: 'pt_BR',
                                                                             ),
                                                                             '0.00',
                                                                           ),
-                                                                          style:
-                                                                              FlutterFlowTheme.of(context).headlineMedium,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .headlineMedium
+                                                                              .override(
+                                                                                fontFamily: 'Outfit',
+                                                                                fontSize: 20.0,
+                                                                              ),
                                                                         ),
                                                                       ),
                                                                     ],
