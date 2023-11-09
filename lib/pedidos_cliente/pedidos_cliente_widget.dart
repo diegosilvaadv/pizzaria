@@ -198,19 +198,14 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                           ).animateOnPageLoad(
                               animationsMap['textOnPageLoadAnimation1']!),
                         ),
-                        if (currentUserReference != null)
+                        if (currentUserUid != '')
                           StreamBuilder<List<ListaCarrinhoPedidosRecord>>(
                             stream: queryListaCarrinhoPedidosRecord(
                               queryBuilder: (listaCarrinhoPedidosRecord) =>
-                                  listaCarrinhoPedidosRecord
-                                      .where(
-                                        'user_ref',
-                                        isEqualTo: currentUserReference,
-                                      )
-                                      .where(
-                                        'status',
-                                        isEqualTo: 'Pendente',
-                                      ),
+                                  listaCarrinhoPedidosRecord.where(
+                                'status',
+                                isEqualTo: 'Pendente',
+                              ),
                             ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.

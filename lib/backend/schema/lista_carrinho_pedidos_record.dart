@@ -69,11 +69,6 @@ class ListaCarrinhoPedidosRecord extends FirestoreRecord {
   int get quantyPizza2sabores => _quantyPizza2sabores ?? 0;
   bool hasQuantyPizza2sabores() => _quantyPizza2sabores != null;
 
-  // "user_ref" field.
-  DocumentReference? _userRef;
-  DocumentReference? get userRef => _userRef;
-  bool hasUserRef() => _userRef != null;
-
   // "data" field.
   DateTime? _data;
   DateTime? get data => _data;
@@ -83,6 +78,11 @@ class ListaCarrinhoPedidosRecord extends FirestoreRecord {
   String? _status;
   String get status => _status ?? '';
   bool hasStatus() => _status != null;
+
+  // "userRef" field.
+  DocumentReference? _userRef;
+  DocumentReference? get userRef => _userRef;
+  bool hasUserRef() => _userRef != null;
 
   void _initializeFields() {
     _nomeProduto = snapshotData['nome_produto'] as String?;
@@ -100,9 +100,9 @@ class ListaCarrinhoPedidosRecord extends FirestoreRecord {
     _valorSabor2 = castToType<double>(snapshotData['valor_sabor2']);
     _quantyPizza2sabores =
         castToType<int>(snapshotData['quanty_pizza_2sabores']);
-    _userRef = snapshotData['user_ref'] as DocumentReference?;
     _data = snapshotData['data'] as DateTime?;
     _status = snapshotData['status'] as String?;
+    _userRef = snapshotData['userRef'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -153,9 +153,9 @@ Map<String, dynamic> createListaCarrinhoPedidosRecordData({
   String? nomeSabor2,
   double? valorSabor2,
   int? quantyPizza2sabores,
-  DocumentReference? userRef,
   DateTime? data,
   String? status,
+  DocumentReference? userRef,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -170,9 +170,9 @@ Map<String, dynamic> createListaCarrinhoPedidosRecordData({
       'nome_sabor2': nomeSabor2,
       'valor_sabor2': valorSabor2,
       'quanty_pizza_2sabores': quantyPizza2sabores,
-      'user_ref': userRef,
       'data': data,
       'status': status,
+      'userRef': userRef,
     }.withoutNulls,
   );
 
@@ -196,9 +196,9 @@ class ListaCarrinhoPedidosRecordDocumentEquality
         e1?.nomeSabor2 == e2?.nomeSabor2 &&
         e1?.valorSabor2 == e2?.valorSabor2 &&
         e1?.quantyPizza2sabores == e2?.quantyPizza2sabores &&
-        e1?.userRef == e2?.userRef &&
         e1?.data == e2?.data &&
-        e1?.status == e2?.status;
+        e1?.status == e2?.status &&
+        e1?.userRef == e2?.userRef;
   }
 
   @override
@@ -214,9 +214,9 @@ class ListaCarrinhoPedidosRecordDocumentEquality
         e?.nomeSabor2,
         e?.valorSabor2,
         e?.quantyPizza2sabores,
-        e?.userRef,
         e?.data,
-        e?.status
+        e?.status,
+        e?.userRef
       ]);
 
   @override
