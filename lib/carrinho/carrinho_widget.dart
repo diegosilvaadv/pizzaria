@@ -211,15 +211,24 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                         children: [
                                                           Expanded(
                                                             child: Text(
-                                                              '${pedidosItem.massaNome}: ${formatNumber(
+                                                              '${valueOrDefault<String>(
                                                                 pedidosItem
-                                                                    .valorpreferecias,
-                                                                formatType:
-                                                                    FormatType
-                                                                        .custom,
-                                                                currency: 'R\$',
-                                                                format: '.00',
-                                                                locale: 'pt_BR',
+                                                                    .massaNome,
+                                                                'Sem Nome',
+                                                              )} : ${valueOrDefault<String>(
+                                                                formatNumber(
+                                                                  pedidosItem
+                                                                      .valorpreferecias,
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .custom,
+                                                                  currency:
+                                                                      'R\$',
+                                                                  format: '.00',
+                                                                  locale:
+                                                                      'pt_BR',
+                                                                ),
+                                                                '00',
                                                               )}',
                                                               style: FlutterFlowTheme
                                                                       .of(context)

@@ -39,6 +39,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
       setState(() {
         FFAppState().total = 0;
         FFAppState().preferec = 0;
+        FFAppState().condicao = 0;
       });
     });
 
@@ -611,14 +612,17 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                     img: widget.produtoRef?.img,
                                     quantity: FFAppState().quantity,
                                     valor: widget.produtoRef?.valorPizza,
-                                    valorpreferecias: 10.0,
-                                    massaNome: 'teste',
+                                    valorpreferecias:
+                                        FFAppState().PrefReferencia.valorMassa,
+                                    massaNome:
+                                        FFAppState().PrefReferencia.nomeMassa,
                                   ));
                                   FFAppState().totalprice =
                                       FFAppState().totalprice +
                                           functions.finalPrice(
                                               widget.produtoRef!.valorPizza,
                                               FFAppState().quantity);
+                                  FFAppState().condicao = 0;
                                 });
 
                                 context.pushNamed('carrinho');
