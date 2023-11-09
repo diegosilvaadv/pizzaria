@@ -269,12 +269,12 @@ class _DetalhesProdutos2saboresWidgetState
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Text(
-                                  'Preço: ',
+                                  'Preço Total desa Pizza: ',
                                   style: FlutterFlowTheme.of(context)
                                       .titleLarge
                                       .override(
                                         fontFamily: 'Outfit',
-                                        fontSize: 25.0,
+                                        fontSize: 20.0,
                                       ),
                                 ),
                                 Text(
@@ -290,7 +290,7 @@ class _DetalhesProdutos2saboresWidgetState
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         color: const Color(0xFF26CB3A),
-                                        fontSize: 25.0,
+                                        fontSize: 20.0,
                                         fontWeight: FontWeight.w600,
                                       ),
                                 ),
@@ -534,7 +534,12 @@ class _DetalhesProdutos2saboresWidgetState
                                                                     onPressed:
                                                                         () async {
                                                                       setState(
-                                                                          () {});
+                                                                          () {
+                                                                        FFAppState()
+                                                                            .condicao = FFAppState()
+                                                                                .condicao +
+                                                                            1;
+                                                                      });
                                                                       showAlignedDialog(
                                                                         barrierDismissible:
                                                                             false,
@@ -748,7 +753,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                                             CrossAxisAlignment.start,
                                                                         children: [
                                                                           Text(
-                                                                            'Primeiro Sabor',
+                                                                            'Segundo Sabor',
                                                                             style:
                                                                                 FlutterFlowTheme.of(context).bodyLarge,
                                                                           ),

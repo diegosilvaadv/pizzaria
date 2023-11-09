@@ -175,20 +175,37 @@ class _SelectSaborWidgetState extends State<SelectSaborWidget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  setState(() {
-                                    FFAppState().updateSaboresAppStruct(
-                                      (e) => e
-                                        ..sabor1 =
-                                            listViewProdutosRecord.nomeProduto
-                                        ..precoSabor1 =
-                                            listViewProdutosRecord.valorPizza /
-                                                2,
-                                    );
-                                    FFAppState().precoSabor1 = FFAppState()
-                                            .precoSabor1 +
-                                        listViewProdutosRecord.valorPizza / 2;
-                                  });
-                                  Navigator.pop(context);
+                                  if (FFAppState().condicao == 0) {
+                                    setState(() {
+                                      FFAppState().updateSaboresAppStruct(
+                                        (e) => e
+                                          ..sabor1 =
+                                              listViewProdutosRecord.nomeProduto
+                                          ..precoSabor1 = listViewProdutosRecord
+                                                  .valorPizza /
+                                              2,
+                                      );
+                                      FFAppState().precoSabor1 = FFAppState()
+                                              .precoSabor1 +
+                                          listViewProdutosRecord.valorPizza / 2;
+                                    });
+                                    Navigator.pop(context);
+                                  } else {
+                                    setState(() {
+                                      FFAppState().updateSaboresAppStruct(
+                                        (e) => e
+                                          ..sabor2 =
+                                              FFAppState().SaboresApp.sabor2
+                                          ..precoSabor2 = listViewProdutosRecord
+                                                  .valorPizza /
+                                              2,
+                                      );
+                                      FFAppState().precoSabor1 = FFAppState()
+                                              .precoSabor1 +
+                                          listViewProdutosRecord.valorPizza / 2;
+                                    });
+                                    Navigator.pop(context);
+                                  }
                                 },
                                 child: Container(
                                   width: MediaQuery.sizeOf(context).width * 1.0,
