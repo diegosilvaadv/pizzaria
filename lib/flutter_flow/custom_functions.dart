@@ -30,3 +30,14 @@ double finalPrice(
 double subtracao(double valor1) {
   return valor1 * -1.toDouble();
 }
+
+String temposaudacao() {
+  var hour = DateTime.now().hour;
+  if (hour < 12) {
+    return 'Bom dia! ';
+  }
+  if (hour < 17) {
+    return 'Boa Tarde! ';
+  }
+  return 'Boa Noite! ';
+}
