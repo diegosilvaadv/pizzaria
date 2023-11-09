@@ -344,38 +344,14 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                       .toList(),
                                               onChanged: (val) async {
                                                 setState(() {});
-                                                if (_model.radioButtonValue !=
-                                                        null &&
-                                                    _model.radioButtonValue !=
-                                                        '') {
-                                                  setState(() {
-                                                    FFAppState()
-                                                        .preferec = FFAppState()
-                                                            .preferec +
-                                                        radioButtonPreferenciasRecordList
-                                                            .first.valormassa;
-                                                  });
-                                                } else {
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    SnackBar(
-                                                      content: Text(
-                                                        'false',
-                                                        style: TextStyle(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                        ),
-                                                      ),
-                                                      duration: const Duration(
-                                                          milliseconds: 4000),
-                                                      backgroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondary,
-                                                    ),
-                                                  );
-                                                }
+                                                setState(() {
+                                                  FFAppState()
+                                                      .preferec = FFAppState()
+                                                          .preferec +
+                                                      radioButtonPreferenciasRecordList[
+                                                              0]
+                                                          .valormassa;
+                                                });
                                               },
                                               controller: _model
                                                       .radioButtonValueController ??=
