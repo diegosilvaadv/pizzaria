@@ -287,7 +287,7 @@ class FirebaseAuthManager extends AuthManager
       }
       return userCredential == null
           ? null
-          : PizzariaFirebaseUser.fromUserCredential(userCredential);
+          : AppPizzariaFirebaseUser.fromUserCredential(userCredential);
     } on FirebaseAuthException {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(

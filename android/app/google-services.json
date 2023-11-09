@@ -8,6 +8,50 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:465205902284:android:ba9a02103c74fe6d233b69",
+        "android_client_info": {
+          "package_name": "com.adv7dev.Apppizzaria"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "465205902284-s9iht0rcpka9d1igqmbmee908p96el73.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.adv7dev.Apppizzaria",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "465205902284-f3so8hk8ardthm9ldimspjg9btnlk8he.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFnxYWIDwbkzkfhPX6VLsaoMWISWFQKSk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "465205902284-f3so8hk8ardthm9ldimspjg9btnlk8he.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "465205902284-ajio5495kav96i6vu849kfaemvc212t4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.adv7dev.Apppizzaria"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:465205902284:android:bf4a8459b538d52d233b69",
         "android_client_info": {
           "package_name": "com.adv7dev.pizzaria"
@@ -40,10 +84,10 @@
               "client_type": 3
             },
             {
-              "client_id": "465205902284-r9q2bljcdrq7mpuupv4c0js226b1d5pa.apps.googleusercontent.com",
+              "client_id": "465205902284-ajio5495kav96i6vu849kfaemvc212t4.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.adv7dev.pizzaria"
+                "bundle_id": "com.adv7dev.Apppizzaria"
               }
             }
           ]

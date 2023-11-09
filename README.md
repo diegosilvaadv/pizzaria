@@ -1,4 +1,4 @@
-# Pizzaria
+# AppPizzaria
 
 A new Flutter project.
 

@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "Pizzaria" "\0"
+            VALUE "CompanyName", "AppPizzaria" "\0"
             VALUE "FileDescription", "A new Flutter project." "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "Pizzaria" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2022 Pizzaria. All rights reserved." "\0"
-            VALUE "OriginalFilename", "pizzaria.exe" "\0"
-            VALUE "ProductName", "Pizzaria" "\0"
+            VALUE "InternalName", "AppPizzaria" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2022 AppPizzaria. All rights reserved." "\0"
+            VALUE "OriginalFilename", "app_pizzaria.exe" "\0"
+            VALUE "ProductName", "AppPizzaria" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
