@@ -68,6 +68,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                 FFAppState().totalprice = 0;
                 FFAppState().ProdutosDoCarrinho = [];
                 FFAppState().quantity = 1;
+                FFAppState().numberCarrinho = 0;
               });
             },
             child: Text(
