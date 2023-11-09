@@ -374,7 +374,15 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                         await animationsMap[
                                                                 'containerOnActionTriggerAnimation']!
                                                             .controller
-                                                            .forward(from: 0.0);
+                                                            .repeat();
+                                                      }
+                                                      if (animationsMap[
+                                                              'containerOnActionTriggerAnimation'] !=
+                                                          null) {
+                                                        await animationsMap[
+                                                                'containerOnActionTriggerAnimation']!
+                                                            .controller
+                                                            .reverse();
                                                       }
                                                     },
                                                     child: Icon(
