@@ -125,33 +125,16 @@ class FFAppState extends ChangeNotifier {
     _preferec = value;
   }
 
-  List<PrefenciasAppSStruct> _ListPref = [];
-  List<PrefenciasAppSStruct> get ListPref => _ListPref;
-  set ListPref(List<PrefenciasAppSStruct> value) {
-    _ListPref = value;
+  PrefenciasAppSStruct _PrefReferencia =
+      PrefenciasAppSStruct.fromSerializableMap(
+          jsonDecode('{"nome_massa":"Nenhuma","valor_massa":"0"}'));
+  PrefenciasAppSStruct get PrefReferencia => _PrefReferencia;
+  set PrefReferencia(PrefenciasAppSStruct value) {
+    _PrefReferencia = value;
   }
 
-  void addToListPref(PrefenciasAppSStruct value) {
-    _ListPref.add(value);
-  }
-
-  void removeFromListPref(PrefenciasAppSStruct value) {
-    _ListPref.remove(value);
-  }
-
-  void removeAtIndexFromListPref(int index) {
-    _ListPref.removeAt(index);
-  }
-
-  void updateListPrefAtIndex(
-    int index,
-    PrefenciasAppSStruct Function(PrefenciasAppSStruct) updateFn,
-  ) {
-    _ListPref[index] = updateFn(_ListPref[index]);
-  }
-
-  void insertAtIndexInListPref(int index, PrefenciasAppSStruct value) {
-    _ListPref.insert(index, value);
+  void updatePrefReferenciaStruct(Function(PrefenciasAppSStruct) updateFn) {
+    updateFn(_PrefReferencia);
   }
 }
 

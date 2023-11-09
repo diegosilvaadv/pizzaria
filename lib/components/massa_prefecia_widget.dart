@@ -33,7 +33,8 @@ class _MassaPrefeciaWidgetState extends State<MassaPrefeciaWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         FFAppState().preferec = 0;
-        FFAppState().ListPref = [];
+        FFAppState().PrefReferencia = PrefenciasAppSStruct.fromSerializableMap(
+            jsonDecode('{"nome_massa":"Nenhuma","valor_massa":"0"}'));
       });
     });
 
@@ -149,15 +150,16 @@ class _MassaPrefeciaWidgetState extends State<MassaPrefeciaWidget> {
                                               FFAppState().preferec +
                                                   listViewPreferenciasRecord
                                                       .valormassa;
-                                          FFAppState().addToListPref(
-                                              PrefenciasAppSStruct(
-                                            nomeMassa:
-                                                listViewPreferenciasRecord
-                                                    .massas,
-                                            valorMassa:
-                                                listViewPreferenciasRecord
-                                                    .valormassa,
-                                          ));
+                                          FFAppState()
+                                              .updatePrefReferenciaStruct(
+                                            (e) => e
+                                              ..nomeMassa =
+                                                  listViewPreferenciasRecord
+                                                      .massas
+                                              ..valorMassa =
+                                                  listViewPreferenciasRecord
+                                                      .valormassa,
+                                          );
                                         });
                                         Navigator.pop(context);
                                       },

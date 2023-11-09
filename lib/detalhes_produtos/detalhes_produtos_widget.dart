@@ -326,9 +326,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                       ),
                                             ),
                                             Text(
-                                              FFAppState()
-                                                  .ListPref[0]
-                                                  .nomeMassa,
+                                              'Massa Escolhida',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .titleLarge
