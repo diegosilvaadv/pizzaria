@@ -356,12 +356,15 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                         FFAppState()
                                                             .totalprice = FFAppState()
                                                                 .totalprice +
-                                                            -(pedidosItem
-                                                                    .valor *
+                                                            (pedidosItem
+                                                                    .valorSabor1 -
+                                                                pedidosItem
+                                                                    .valorSabor2 -
+                                                                pedidosItem
+                                                                    .valorpreferecias -
                                                                 pedidosItem
                                                                     .quantity) -
-                                                            pedidosItem
-                                                                .valorpreferecias;
+                                                            1;
                                                         FFAppState()
                                                                 .numberCarrinho =
                                                             FFAppState()
