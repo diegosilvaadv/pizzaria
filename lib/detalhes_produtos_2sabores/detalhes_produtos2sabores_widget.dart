@@ -1238,7 +1238,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                             children: [
                                                               if (FFAppState()
                                                                       .preferec ==
-                                                                  0.0)
+                                                                  0.00)
                                                                 Builder(
                                                                   builder:
                                                                       (context) =>
