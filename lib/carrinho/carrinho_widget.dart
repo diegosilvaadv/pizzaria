@@ -77,7 +77,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                     fontFamily: 'Outfit',
                     color: FlutterFlowTheme.of(context).primaryText,
-                    fontSize: 25.0,
+                    fontSize: 30.0,
                   ),
             ),
           ),
@@ -406,11 +406,14 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(
-                                  Icons.local_grocery_store_outlined,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  size: 150.0,
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: Image.asset(
+                                    'assets/images/carrinho-vazio.png',
+                                    width: 300.0,
+                                    height: 200.0,
+                                    fit: BoxFit.contain,
+                                  ),
                                 ),
                               ],
                             ),
