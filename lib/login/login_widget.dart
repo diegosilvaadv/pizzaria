@@ -48,6 +48,10 @@ class _LoginWidgetState extends State<LoginWidget>
     _model.senhaController ??= TextEditingController();
     _model.senhaFocusNode ??= FocusNode();
 
+    _model.senhaconfController ??=
+        TextEditingController(text: _model.senhaController.text);
+    _model.senhaconfFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -159,7 +163,6 @@ class _LoginWidgetState extends State<LoginWidget>
                                                     _model.emailloginController,
                                                 focusNode:
                                                     _model.emailloginFocusNode,
-                                                autofocus: true,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelText: 'E-mail',
@@ -256,7 +259,6 @@ class _LoginWidgetState extends State<LoginWidget>
                                                   _model.senhaloginController,
                                               focusNode:
                                                   _model.senhaloginFocusNode,
-                                              autofocus: true,
                                               obscureText:
                                                   !_model.senhaloginVisibility,
                                               decoration: InputDecoration(
@@ -541,7 +543,6 @@ class _LoginWidgetState extends State<LoginWidget>
                                                 controller:
                                                     _model.nomeController,
                                                 focusNode: _model.nomeFocusNode,
-                                                autofocus: true,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelText: 'Nome',
@@ -638,7 +639,6 @@ class _LoginWidgetState extends State<LoginWidget>
                                                     _model.emailController,
                                                 focusNode:
                                                     _model.emailFocusNode,
-                                                autofocus: true,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelText: 'E-mail',
@@ -732,7 +732,6 @@ class _LoginWidgetState extends State<LoginWidget>
                                               controller:
                                                   _model.senhaController,
                                               focusNode: _model.senhaFocusNode,
-                                              autofocus: true,
                                               obscureText:
                                                   !_model.senhaVisibility,
                                               decoration: InputDecoration(
@@ -828,6 +827,115 @@ class _LoginWidgetState extends State<LoginWidget>
                                         ),
                                       ],
                                     ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    8.0, 0.0, 8.0, 10.0),
+                                            child: TextFormField(
+                                              controller:
+                                                  _model.senhaconfController,
+                                              focusNode:
+                                                  _model.senhaconfFocusNode,
+                                              obscureText:
+                                                  !_model.senhaconfVisibility,
+                                              decoration: InputDecoration(
+                                                labelText: 'Senha',
+                                                labelStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium,
+                                                hintStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium,
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .alternate,
+                                                    width: 2.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    width: 2.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                errorBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                    width: 2.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                focusedErrorBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                    width: 2.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                filled: true,
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBackground,
+                                                suffixIcon: InkWell(
+                                                  onTap: () => setState(
+                                                    () => _model
+                                                            .senhaconfVisibility =
+                                                        !_model
+                                                            .senhaconfVisibility,
+                                                  ),
+                                                  focusNode: FocusNode(
+                                                      skipTraversal: true),
+                                                  child: Icon(
+                                                    _model.senhaconfVisibility
+                                                        ? Icons
+                                                            .visibility_outlined
+                                                        : Icons
+                                                            .visibility_off_outlined,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 20.0,
+                                                  ),
+                                                ),
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                              keyboardType:
+                                                  TextInputType.visiblePassword,
+                                              validator: _model
+                                                  .senhaconfControllerValidator
+                                                  .asValidator(context),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 16.0, 0.0, 0.0),
@@ -840,6 +948,19 @@ class _LoginWidgetState extends State<LoginWidget>
                                             onPressed: () async {
                                               GoRouter.of(context)
                                                   .prepareAuthEvent();
+                                              if (_model.senhaController.text !=
+                                                  _model.senhaconfController
+                                                      .text) {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  const SnackBar(
+                                                    content: Text(
+                                                      'As senha não corresponde',
+                                                    ),
+                                                  ),
+                                                );
+                                                return;
+                                              }
 
                                               final user = await authManager
                                                   .createAccountWithEmail(

@@ -33,6 +33,11 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   TextEditingController? senhaController;
   late bool senhaVisibility;
   String? Function(BuildContext, String?)? senhaControllerValidator;
+  // State field(s) for senhaconf widget.
+  FocusNode? senhaconfFocusNode;
+  TextEditingController? senhaconfController;
+  late bool senhaconfVisibility;
+  String? Function(BuildContext, String?)? senhaconfControllerValidator;
 
   /// Initialization and disposal methods.
 
@@ -40,6 +45,7 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   void initState(BuildContext context) {
     senhaloginVisibility = false;
     senhaVisibility = false;
+    senhaconfVisibility = false;
   }
 
   @override
@@ -60,6 +66,9 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
 
     senhaFocusNode?.dispose();
     senhaController?.dispose();
+
+    senhaconfFocusNode?.dispose();
+    senhaconfController?.dispose();
   }
 
   /// Action blocks are added here.
