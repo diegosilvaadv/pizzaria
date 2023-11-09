@@ -603,24 +603,41 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              setState(() {
-                                FFAppState().addToProdutosDoCarrinho(
-                                    ProdutosCarrinhoStruct(
-                                  nomeProduto: widget.produtoRef?.nomeProduto,
-                                  img: widget.produtoRef?.img,
-                                  quantity: FFAppState().quantity,
-                                  valor: widget.produtoRef?.valorPizza,
-                                  valorpreferecias: 10.0,
-                                  massaNome: 'teste',
-                                ));
-                                FFAppState().totalprice =
-                                    FFAppState().totalprice +
-                                        functions.finalPrice(
-                                            widget.produtoRef!.valorPizza,
-                                            FFAppState().quantity);
-                              });
+                              if (FFAppState().condicao != 0) {
+                                setState(() {
+                                  FFAppState().addToProdutosDoCarrinho(
+                                      ProdutosCarrinhoStruct(
+                                    nomeProduto: widget.produtoRef?.nomeProduto,
+                                    img: widget.produtoRef?.img,
+                                    quantity: FFAppState().quantity,
+                                    valor: widget.produtoRef?.valorPizza,
+                                    valorpreferecias: 10.0,
+                                    massaNome: 'teste',
+                                  ));
+                                  FFAppState().totalprice =
+                                      FFAppState().totalprice +
+                                          functions.finalPrice(
+                                              widget.produtoRef!.valorPizza,
+                                              FFAppState().quantity);
+                                });
 
-                              context.pushNamed('carrinho');
+                                context.pushNamed('carrinho');
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Escholha sua Prefrencia de Massa',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: const Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                  ),
+                                );
+                              }
                             },
                             child: Row(
                               mainAxisSize: MainAxisSize.max,

@@ -160,6 +160,8 @@ class _MassaPrefeciaWidgetState extends State<MassaPrefeciaWidget> {
                                                   listViewPreferenciasRecord
                                                       .valormassa,
                                           );
+                                          FFAppState().condicao =
+                                              FFAppState().condicao + 1;
                                         });
                                         Navigator.pop(context);
                                       },
