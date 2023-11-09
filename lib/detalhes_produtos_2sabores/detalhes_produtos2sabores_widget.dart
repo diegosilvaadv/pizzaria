@@ -331,9 +331,29 @@ class _DetalhesProdutos2saboresWidgetState
                                                             8.0),
                                                     border: Border.all(
                                                       color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate,
+                                                          valueOrDefault<Color>(
+                                                        () {
+                                                          if (FFAppState()
+                                                                  .precoSabor1 ==
+                                                              0.0) {
+                                                            return FlutterFlowTheme
+                                                                    .of(context)
+                                                                .accent4;
+                                                          } else if (FFAppState()
+                                                                  .precoSabor1 !=
+                                                              0.0) {
+                                                            return FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondary;
+                                                          } else {
+                                                            return const Color(
+                                                                0x00000000);
+                                                          }
+                                                        }(),
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .accent4,
+                                                      ),
                                                       width: 2.0,
                                                     ),
                                                   ),
