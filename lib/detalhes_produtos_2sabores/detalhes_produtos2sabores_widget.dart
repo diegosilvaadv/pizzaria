@@ -244,6 +244,20 @@ class _DetalhesProdutos2saboresWidgetState
                                         ),
                                   ),
                                 ),
+                                Text(
+                                  '${formatNumber(
+                                    FFAppState().condicao,
+                                    formatType: FormatType.custom,
+                                    format: '',
+                                    locale: '',
+                                  )}/3',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        fontSize: 16.0,
+                                      ),
+                                ),
                               ],
                             ),
                           ),
