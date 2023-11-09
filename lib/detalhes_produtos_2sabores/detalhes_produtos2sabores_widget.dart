@@ -40,6 +40,12 @@ class _DetalhesProdutos2saboresWidgetState
         FFAppState().condicao = 0;
         FFAppState().PrefReferencia = PrefenciasAppSStruct.fromSerializableMap(
             jsonDecode('{"nome_massa":"Nenhuma","valor_massa":"0"}'));
+        FFAppState().quantity = 1;
+        FFAppState().SaboresApp = SaboresStruct.fromSerializableMap(jsonDecode(
+            '{"sabor1":"Nenhum","sabor2":"Nenhum","preco_sabor1":"0","preco_sabor2":"0"}'));
+        FFAppState().precoSabor1 = 0.0;
+        FFAppState().precoSabor2 = 0.0;
+        FFAppState().massaCondicao = 0;
       });
     });
 
@@ -136,9 +142,6 @@ class _DetalhesProdutos2saboresWidgetState
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          setState(() {
-                                            FFAppState().quantity = 1;
-                                          });
                                           context.safePop();
                                         },
                                         child: Icon(
