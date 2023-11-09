@@ -308,7 +308,7 @@ class _DetalhesProdutos2saboresWidgetState
                                   child: Container(
                                     width: MediaQuery.sizeOf(context).width *
                                         0.919,
-                                    height: 425.0,
+                                    height: 469.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
@@ -596,9 +596,8 @@ class _DetalhesProdutos2saboresWidgetState
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondary,
+                                                                      color: const Color(
+                                                                          0xFF1A9E8F),
                                                                       textStyle: FlutterFlowTheme.of(
                                                                               context)
                                                                           .titleSmall
@@ -650,12 +649,10 @@ class _DetalhesProdutos2saboresWidgetState
                                                                       FFAppState()
                                                                           .updateSaboresAppStruct(
                                                                         (e) => e
-                                                                          ..sabor1 = FFAppState()
-                                                                              .SaboresApp
-                                                                              .sabor1
-                                                                          ..precoSabor1 = FFAppState()
-                                                                              .SaboresApp
-                                                                              .precoSabor1,
+                                                                          ..sabor1 =
+                                                                              'Nenhum'
+                                                                          ..precoSabor1 =
+                                                                              0.00,
                                                                       );
                                                                       FFAppState()
                                                                               .precoSabor1 =
@@ -977,9 +974,8 @@ class _DetalhesProdutos2saboresWidgetState
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondary,
+                                                                    color: const Color(
+                                                                        0xFF1A9E8F),
                                                                     textStyle: FlutterFlowTheme.of(
                                                                             context)
                                                                         .titleSmall
@@ -1307,9 +1303,8 @@ class _DetalhesProdutos2saboresWidgetState
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondary,
+                                                                    color: const Color(
+                                                                        0xFF1A9E8F),
                                                                     textStyle: FlutterFlowTheme.of(
                                                                             context)
                                                                         .titleSmall
@@ -1581,7 +1576,7 @@ class _DetalhesProdutos2saboresWidgetState
                                           FFAppState().preferec,
                                       formatType: FormatType.custom,
                                       currency: 'R\$',
-                                      format: '.00',
+                                      format: '0.00',
                                       locale: 'pt_BR',
                                     ),
                                     '00.00',
