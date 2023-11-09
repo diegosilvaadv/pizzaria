@@ -31,7 +31,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
           delay: 0.ms,
           duration: 600.ms,
           begin: const Offset(0.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          end: const Offset(-1000.0, 0.0),
         ),
       ],
     ),
