@@ -14,10 +14,12 @@ import '/backend/schema/structs/index.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
 double finalPrice(
-  double num1,
-  int num2,
+  double pizzavalor,
+  double valorSabor1,
+  double valorSabor2,
+  double quanty,
 ) {
-  return num1 * num2.toDouble();
+  return pizzavalor * valorSabor1 * valorSabor2 * quanty.toDouble();
 }
 
 double soma(
