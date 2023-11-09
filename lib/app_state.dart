@@ -107,12 +107,6 @@ class FFAppState extends ChangeNotifier {
     _quantity = value;
   }
 
-  double _total = 0;
-  double get total => _total;
-  set total(double value) {
-    _total = value;
-  }
-
   int _condicao = 0;
   int get condicao => _condicao;
   set condicao(int value) {

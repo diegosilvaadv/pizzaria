@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
@@ -71,6 +72,14 @@ class _HomepageWidgetState extends State<HomepageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => HomepageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        FFAppState().quantity = 1;
+        FFAppState().condicao = 0;
+      });
+    });
 
     setupAnimations(
       animationsMap.values.where((anim) =>

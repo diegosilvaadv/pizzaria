@@ -37,9 +37,10 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
-        FFAppState().total = 0;
         FFAppState().preferec = 0;
         FFAppState().condicao = 0;
+        FFAppState().PrefReferencia = PrefenciasAppSStruct.fromSerializableMap(
+            jsonDecode('{"nome_massa":"Nenhuma","valor_massa":"0"}'));
       });
     });
 
@@ -597,6 +598,110 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                         ),
                       ),
                     ),
+                    if (FFAppState().condicao == 0)
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 6.0, 6.0),
+                        child: Container(
+                          width: 230.0,
+                          height: 100.0,
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                8.0, 0.0, 8.0, 0.0),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                if (FFAppState().condicao != 0) {
+                                  setState(() {
+                                    FFAppState().addToProdutosDoCarrinho(
+                                        ProdutosCarrinhoStruct(
+                                      nomeProduto:
+                                          widget.produtoRef?.nomeProduto,
+                                      img: widget.produtoRef?.img,
+                                      quantity: FFAppState().quantity,
+                                      valor: widget.produtoRef?.valorPizza,
+                                      valorpreferecias: FFAppState()
+                                          .PrefReferencia
+                                          .valorMassa,
+                                      massaNome:
+                                          FFAppState().PrefReferencia.nomeMassa,
+                                    ));
+                                    FFAppState().totalprice = FFAppState()
+                                            .totalprice +
+                                        (widget.produtoRef!.valorPizza *
+                                            FFAppState().quantity.toDouble()) +
+                                        FFAppState().preferec;
+                                    FFAppState().condicao = 0;
+                                    FFAppState().quantity = 1;
+                                  });
+
+                                  context.pushNamed('carrinho');
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Escholha sua Prefrencia de Massa',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: const Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
+                                    ),
+                                  );
+                                }
+                              },
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Adicionar',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 18.0,
+                                        ),
+                                  ),
+                                  Text(
+                                    valueOrDefault<String>(
+                                      formatNumber(
+                                        (widget.produtoRef!.valorPizza *
+                                                FFAppState().quantity) +
+                                            FFAppState().preferec,
+                                        formatType: FormatType.custom,
+                                        currency: 'R\$',
+                                        format: '.00',
+                                        locale: 'pt_BR',
+                                      ),
+                                      '00.00',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 20.0,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 6.0, 6.0),
@@ -635,6 +740,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                           FFAppState().quantity.toDouble()) +
                                       FFAppState().preferec;
                                   FFAppState().condicao = 0;
+                                  FFAppState().quantity = 1;
                                 });
 
                                 context.pushNamed('carrinho');
