@@ -351,7 +351,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                   .fromSTEB(0.0, 4.0, 0.0, 8.0),
                                               child: Text(
                                                 'Pedido Criado em: ${dateTimeFormat(
-                                                  'M/d h:mm a',
+                                                  'dd/MM/yyyy | kk:mm',
                                                   listViewListaCarrinhoPedidosRecord
                                                       .data,
                                                   locale: FFLocalizations.of(
