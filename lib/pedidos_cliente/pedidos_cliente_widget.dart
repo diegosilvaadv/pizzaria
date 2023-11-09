@@ -354,7 +354,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 8.0),
                                               child: Text(
-                                                'Pedido Criado em: ${dateTimeFormat('MMMMEEEEd', listViewListaCarrinhoPedidosRecord.data)}',
+                                                'Pedido Criado em: ${dateTimeFormat('M/d h:mm a', listViewListaCarrinhoPedidosRecord.data)}',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium,
