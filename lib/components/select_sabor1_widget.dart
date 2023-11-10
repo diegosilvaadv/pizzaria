@@ -83,7 +83,6 @@ class _SelectSabor1WidgetState extends State<SelectSabor1Widget>
             padding: const EdgeInsetsDirectional.fromSTEB(16.0, 90.0, 16.0, 32.0),
             child: Container(
               width: 370.0,
-              height: MediaQuery.sizeOf(context).height * 0.85,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
                 boxShadow: const [

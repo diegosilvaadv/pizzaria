@@ -689,6 +689,8 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                             ),
                                             Column(
                                               mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
                                               children: [
                                                 Text(
                                                   formatNumber(

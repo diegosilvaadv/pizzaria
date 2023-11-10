@@ -82,7 +82,6 @@ class _SelectSabor2WidgetState extends State<SelectSabor2Widget>
           padding: const EdgeInsetsDirectional.fromSTEB(16.0, 90.0, 16.0, 32.0),
           child: Container(
             width: 370.0,
-            height: MediaQuery.sizeOf(context).height * 0.906,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
               boxShadow: const [
@@ -225,13 +224,15 @@ class _SelectSabor2WidgetState extends State<SelectSabor2Widget>
                                                       MainAxisAlignment
                                                           .spaceBetween,
                                                   children: [
-                                                    Text(
-                                                      listViewProdutosRecord
-                                                          .nomeProduto,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyLarge,
+                                                    Expanded(
+                                                      child: Text(
+                                                        listViewProdutosRecord
+                                                            .nomeProduto,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge,
+                                                      ),
                                                     ),
                                                     Text(
                                                       formatNumber(
@@ -248,7 +249,12 @@ class _SelectSabor2WidgetState extends State<SelectSabor2Widget>
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .titleLarge,
+                                                              .titleLarge
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                fontSize: 18.0,
+                                                              ),
                                                     ),
                                                   ],
                                                 ),
