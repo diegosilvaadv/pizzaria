@@ -1517,7 +1517,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
-                                                          .secondaryBackground,
+                                                          .primaryBackground,
                                                       boxShadow: const [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
@@ -1835,7 +1835,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
-                                                          .secondaryBackground,
+                                                          .primaryBackground,
                                                       boxShadow: const [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
@@ -2153,7 +2153,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
-                                                          .secondaryBackground,
+                                                          .primaryBackground,
                                                       boxShadow: const [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
@@ -2471,7 +2471,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
-                                                          .secondaryBackground,
+                                                          .primaryBackground,
                                                       boxShadow: const [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
@@ -2789,7 +2789,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
-                                                          .secondaryBackground,
+                                                          .primaryBackground,
                                                       boxShadow: const [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
