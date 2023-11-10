@@ -388,7 +388,7 @@ class _DetalhesProdutosBebidasWidgetState
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    if (FFAppState().quantity != 10) {
+                                    if (FFAppState().quantity != 100) {
                                       FFAppState().update(() {
                                         FFAppState().quantity =
                                             FFAppState().quantity + 1;
@@ -417,17 +417,7 @@ class _DetalhesProdutosBebidasWidgetState
                         width: MediaQuery.sizeOf(context).width * 0.6,
                         height: 100.0,
                         decoration: BoxDecoration(
-                          color: () {
-                            if (FFAppState().condicao == 0) {
-                              return FlutterFlowTheme.of(context)
-                                  .primaryBackground;
-                            } else if (FFAppState().condicao != 0) {
-                              return const Color(0xFF10DA26);
-                            } else {
-                              return FlutterFlowTheme.of(context)
-                                  .primaryBackground;
-                            }
-                          }(),
+                          color: const Color(0xFF10DA26),
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: Padding(
@@ -439,55 +429,38 @@ class _DetalhesProdutosBebidasWidgetState
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              if (FFAppState().condicao != 0) {
-                                setState(() {
-                                  FFAppState().addToProdutosDoCarrinho(
-                                      ProdutosCarrinhoStruct(
-                                    nomeProduto: widget.produtoRef?.nomeProduto,
-                                    img: widget.produtoRef?.img,
-                                    quantity: FFAppState().quantity,
-                                    valor: widget.produtoRef?.valorPizza,
-                                    valorpreferecias:
-                                        FFAppState().PrefReferencia.valorMassa,
-                                    massaNome:
-                                        FFAppState().PrefReferencia.nomeMassa,
-                                  ));
-                                  FFAppState().totalprice =
-                                      FFAppState().totalprice +
-                                          (widget.produtoRef!.valorPizza +
-                                                  FFAppState().preferec) *
-                                              FFAppState().quantity;
-                                  FFAppState().condicao = 0;
-                                  FFAppState().quantity = 1;
-                                  FFAppState().numberCarrinho =
-                                      FFAppState().numberCarrinho + 1;
-                                });
+                              setState(() {
+                                FFAppState().addToProdutosDoCarrinho(
+                                    ProdutosCarrinhoStruct(
+                                  nomeProduto: widget.produtoRef?.nomeProduto,
+                                  img: widget.produtoRef?.img,
+                                  quantity: FFAppState().quantity,
+                                  valor: widget.produtoRef?.valorPizza,
+                                  valorpreferecias:
+                                      FFAppState().PrefReferencia.valorMassa,
+                                  massaNome:
+                                      FFAppState().PrefReferencia.nomeMassa,
+                                ));
+                                FFAppState().totalprice =
+                                    FFAppState().totalprice +
+                                        (widget.produtoRef!.valorPizza +
+                                                FFAppState().preferec) *
+                                            FFAppState().quantity;
+                                FFAppState().condicao = 0;
+                                FFAppState().quantity = 1;
+                                FFAppState().numberCarrinho =
+                                    FFAppState().numberCarrinho + 1;
+                              });
 
-                                context.pushNamed(
-                                  'homepage',
-                                  extra: <String, dynamic>{
-                                    kTransitionInfoKey: const TransitionInfo(
-                                      hasTransition: true,
-                                      transitionType: PageTransitionType.fade,
-                                    ),
-                                  },
-                                );
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Escholha sua Prefrencia de Massa',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
-                                    ),
-                                    duration: const Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).secondary,
+                              context.pushNamed(
+                                'homepage',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: const TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
                                   ),
-                                );
-                              }
+                                },
+                              );
                             },
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
