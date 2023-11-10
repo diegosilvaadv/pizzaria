@@ -132,7 +132,7 @@ class _SelectSabor1WidgetState extends State<SelectSabor1Widget>
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 12.0),
                         child: Text(
-                          'Obrigatório escolher um sabor.',
+                          'Obrigatório escolher esse sabor.',
                           style: FlutterFlowTheme.of(context).labelMedium,
                         ),
                       ),
@@ -183,11 +183,11 @@ class _SelectSabor1WidgetState extends State<SelectSabor1Widget>
                                               listViewProdutosRecord.nomeProduto
                                           ..precoSabor1 = listViewProdutosRecord
                                                   .valorPizza /
-                                              2,
+                                              4,
                                       );
                                       FFAppState().precoSabor1 = FFAppState()
                                               .precoSabor1 +
-                                          listViewProdutosRecord.valorPizza / 2;
+                                          listViewProdutosRecord.valorPizza / 4;
                                       FFAppState().condicao =
                                           FFAppState().condicao + 1;
                                     });
@@ -238,7 +238,7 @@ class _SelectSabor1WidgetState extends State<SelectSabor1Widget>
                                                         formatNumber(
                                                           listViewProdutosRecord
                                                                   .valorPizza /
-                                                              2,
+                                                              4,
                                                           formatType:
                                                               FormatType.custom,
                                                           currency: '+R\$',
@@ -247,10 +247,14 @@ class _SelectSabor1WidgetState extends State<SelectSabor1Widget>
                                                         ),
                                                         textAlign:
                                                             TextAlign.end,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleLarge,
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .titleLarge
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Outfit',
+                                                              fontSize: 20.0,
+                                                            ),
                                                       ),
                                                     ],
                                                   ),

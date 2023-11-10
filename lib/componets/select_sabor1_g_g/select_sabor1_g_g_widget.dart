@@ -6,19 +6,19 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
-import 'select_sabor2_model.dart';
-export 'select_sabor2_model.dart';
+import 'select_sabor1_g_g_model.dart';
+export 'select_sabor1_g_g_model.dart';
 
-class SelectSabor2Widget extends StatefulWidget {
-  const SelectSabor2Widget({super.key});
+class SelectSabor1GGWidget extends StatefulWidget {
+  const SelectSabor1GGWidget({super.key});
 
   @override
-  _SelectSabor2WidgetState createState() => _SelectSabor2WidgetState();
+  _SelectSabor1GGWidgetState createState() => _SelectSabor1GGWidgetState();
 }
 
-class _SelectSabor2WidgetState extends State<SelectSabor2Widget>
+class _SelectSabor1GGWidgetState extends State<SelectSabor1GGWidget>
     with TickerProviderStateMixin {
-  late SelectSabor2Model _model;
+  late SelectSabor1GGModel _model;
 
   final animationsMap = {
     'containerOnPageLoadAnimation': AnimationInfo(
@@ -59,7 +59,7 @@ class _SelectSabor2WidgetState extends State<SelectSabor2Widget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SelectSabor2Model());
+    _model = createModel(context, () => SelectSabor1GGModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -106,7 +106,7 @@ class _SelectSabor2WidgetState extends State<SelectSabor2Widget>
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Escolha o Segundo Sabor',
+                            'Escolha o Primeiro Sabor',
                             style: FlutterFlowTheme.of(context).titleLarge,
                           ),
                           FlutterFlowIconButton(
@@ -179,17 +179,17 @@ class _SelectSabor2WidgetState extends State<SelectSabor2Widget>
                                     setState(() {
                                       FFAppState().updateSaboresAppStruct(
                                         (e) => e
-                                          ..sabor2 =
+                                          ..sabor1GG =
                                               listViewProdutosRecord.nomeProduto
-                                          ..precoSabor2 = listViewProdutosRecord
+                                          ..precoSab1GG = listViewProdutosRecord
                                                   .valorPizza /
-                                              4,
+                                              2,
                                       );
+                                      FFAppState().precoSabor1 = FFAppState()
+                                              .precoSabor1 +
+                                          listViewProdutosRecord.valorPizza / 2;
                                       FFAppState().condicao =
                                           FFAppState().condicao + 1;
-                                      FFAppState().precoSabor2 = FFAppState()
-                                              .precoSabor2 +
-                                          listViewProdutosRecord.valorPizza / 4;
                                     });
                                     Navigator.pop(context);
                                   },
@@ -238,7 +238,7 @@ class _SelectSabor2WidgetState extends State<SelectSabor2Widget>
                                                         formatNumber(
                                                           listViewProdutosRecord
                                                                   .valorPizza /
-                                                              4,
+                                                              2,
                                                           formatType:
                                                               FormatType.custom,
                                                           currency: '+R\$',
@@ -247,14 +247,10 @@ class _SelectSabor2WidgetState extends State<SelectSabor2Widget>
                                                         ),
                                                         textAlign:
                                                             TextAlign.end,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .titleLarge
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Outfit',
-                                                              fontSize: 18.0,
-                                                            ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleLarge,
                                                       ),
                                                     ],
                                                   ),
