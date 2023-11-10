@@ -390,7 +390,14 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                       .fromSTEB(
                                                           0.0, 4.0, 0.0, 8.0),
                                                   child: Text(
-                                                    'Numero do Pedido: ${listViewIndex.toString()}',
+                                                    'Numero do Pedido: ${formatNumber(
+                                                      listViewListaCarrinhoPedidosRecord
+                                                          .nPedido,
+                                                      formatType:
+                                                          FormatType.custom,
+                                                      format: '.000',
+                                                      locale: '',
+                                                    )}',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelMedium,
@@ -557,7 +564,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                         16.0, 0.0, 16.0, 8.0),
                                     child: Container(
                                       width: double.infinity,
-                                      height: 80.0,
+                                      height: 104.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -633,6 +640,47 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .labelMedium,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  4.0,
+                                                                  0.0,
+                                                                  4.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        4.0,
+                                                                        0.0,
+                                                                        8.0),
+                                                            child: Text(
+                                                              'Numero do Pedido: ${formatNumber(
+                                                                listViewListaCarrinhoPedidosRecord
+                                                                    .nPedido,
+                                                                formatType:
+                                                                    FormatType
+                                                                        .custom,
+                                                                format: '.000',
+                                                                locale: '',
+                                                              )}',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelMedium,
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
                                                   ],
