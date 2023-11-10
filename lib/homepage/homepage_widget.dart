@@ -467,7 +467,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                             },
                             child: Card(
                               clipBehavior: Clip.antiAliasWithSaveLayer,
-                              color: const Color(0xFF1A9E8F),
+                              color: const Color(0xFFE13C27),
                               elevation: 10.0,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0),
@@ -481,8 +481,8 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                         6.0, 6.0, 6.0, 6.0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
-                                      child: Image.network(
-                                        'https://images.unsplash.com/photo-1513104890138-7c749659a591?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxfHxwaXp6YXxlbnwwfHx8fDE2OTk1NzI5MzV8MA&ixlib=rb-4.0.3&q=80&w=1080',
+                                      child: Image.asset(
+                                        'assets/images/10244680.jpg',
                                         width: 50.0,
                                         height: 50.0,
                                         fit: BoxFit.cover,
@@ -498,6 +498,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Readex Pro',
+                                            color: const Color(0xFFEBEBEB),
                                             fontSize: 18.0,
                                           ),
                                     ),

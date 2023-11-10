@@ -658,7 +658,11 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .titleLarge,
+                                                      .titleLarge
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        fontSize: 18.0,
+                                                      ),
                                                 ),
                                                 Text(
                                                   ' X ${listViewListaCarrinhoPedidosRecord.quantyPizzaInteira.toString()}',
