@@ -692,7 +692,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                                 .quantity,
                                                         data:
                                                             getCurrentTimestamp,
-                                                        status: 'Pendente',
+                                                        status: 'Não Paga',
                                                         userRef:
                                                             currentUserReference,
                                                         nPedido:
