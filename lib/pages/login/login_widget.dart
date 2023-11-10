@@ -36,7 +36,7 @@ class _LoginWidgetState extends State<LoginWidget>
     )..addListener(() => setState(() {}));
     _model.emailloginController ??= TextEditingController();
     _model.emailloginFocusNode ??= FocusNode();
-
+    _model.emailloginFocusNode!.addListener(() => setState(() {}));
     _model.senhaloginController ??= TextEditingController();
     _model.senhaloginFocusNode ??= FocusNode();
 

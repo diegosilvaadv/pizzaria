@@ -448,19 +448,29 @@ class _HomepageWidgetState extends State<HomepageWidget>
                           fit: BoxFit.cover,
                         ),
                       ),
-                      GradientText(
-                        'APP PIZZARIA',
-                        style: FlutterFlowTheme.of(context).titleLarge.override(
-                              fontFamily: 'Outfit',
-                              fontSize: 25.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                        colors: [
-                          const Color(0xFFE46D1F),
-                          FlutterFlowTheme.of(context).secondary
-                        ],
-                        gradientDirection: GradientDirection.ltr,
-                        gradientType: GradientType.linear,
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed('teste');
+                        },
+                        child: GradientText(
+                          'APP PIZZARIA',
+                          style:
+                              FlutterFlowTheme.of(context).titleLarge.override(
+                                    fontFamily: 'Outfit',
+                                    fontSize: 25.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                          colors: [
+                            const Color(0xFFE46D1F),
+                            FlutterFlowTheme.of(context).secondary
+                          ],
+                          gradientDirection: GradientDirection.ltr,
+                          gradientType: GradientType.linear,
+                        ),
                       ),
                     ],
                   ),
