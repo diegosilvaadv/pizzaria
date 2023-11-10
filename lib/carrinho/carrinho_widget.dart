@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -633,6 +634,9 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                 data: getCurrentTimestamp,
                                                 status: 'Pendente',
                                                 userRef: currentUserReference,
+                                                nPedido: random_data
+                                                    .randomInteger(1, 1000)
+                                                    .toDouble(),
                                               ));
 
                                           context.pushNamed(
