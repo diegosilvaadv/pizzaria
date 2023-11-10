@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -87,13 +88,13 @@ class _LoginWidgetState extends State<LoginWidget>
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(50.0, 50.0, 50.0, 50.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(50.0, 50.0, 50.0, 20.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(100.0),
+                      borderRadius: BorderRadius.circular(0.0),
                       child: Image.asset(
                         'assets/images/pizzaria.png',
                         width: 150.0,
@@ -112,17 +113,28 @@ class _LoginWidgetState extends State<LoginWidget>
                     children: [
                       Align(
                         alignment: const Alignment(0.0, 0),
-                        child: TabBar(
-                          labelColor: FlutterFlowTheme.of(context).primaryText,
-                          unselectedLabelColor:
-                              FlutterFlowTheme.of(context).secondaryText,
+                        child: FlutterFlowButtonTabBar(
+                          useToggleButtonStyle: true,
                           labelStyle:
                               FlutterFlowTheme.of(context).titleMedium.override(
                                     fontFamily: 'Readex Pro',
                                     fontWeight: FontWeight.bold,
                                   ),
                           unselectedLabelStyle: const TextStyle(),
-                          indicatorColor: const Color(0xFFFD6907),
+                          labelColor: const Color(0xFFFAFAFA),
+                          unselectedLabelColor:
+                              FlutterFlowTheme.of(context).secondaryText,
+                          backgroundColor: const Color(0xFFE46D1F),
+                          unselectedBackgroundColor:
+                              FlutterFlowTheme.of(context).alternate,
+                          borderColor: FlutterFlowTheme.of(context).alternate,
+                          unselectedBorderColor:
+                              FlutterFlowTheme.of(context).alternate,
+                          borderWidth: 2.0,
+                          borderRadius: 8.0,
+                          elevation: 0.0,
+                          buttonMargin: const EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 0.0),
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               4.0, 4.0, 4.0, 4.0),
                           tabs: const [
@@ -399,7 +411,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                             'Readex Pro',
                                                         color: Colors.white,
                                                       ),
-                                              elevation: 3.0,
+                                              elevation: 10.0,
                                               borderSide: const BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
@@ -422,95 +434,114 @@ class _LoginWidgetState extends State<LoginWidget>
                                           Align(
                                             alignment: const AlignmentDirectional(
                                                 0.00, 0.00),
-                                            child: SizedBox(
-                                              width: 230.0,
-                                              height: 44.0,
-                                              child: Stack(
-                                                children: [
-                                                  Align(
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                            0.00, 0.00),
-                                                    child: FFButtonWidget(
-                                                      onPressed: () async {
-                                                        GoRouter.of(context)
-                                                            .prepareAuthEvent();
-                                                        final user =
-                                                            await authManager
-                                                                .signInWithGoogle(
-                                                                    context);
-                                                        if (user == null) {
-                                                          return;
-                                                        }
+                                            child: Container(
+                                              width: 231.0,
+                                              height: 41.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              child: SizedBox(
+                                                width: 230.0,
+                                                height: 44.0,
+                                                child: Stack(
+                                                  children: [
+                                                    Align(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              0.00, 0.00),
+                                                      child: FFButtonWidget(
+                                                        onPressed: () async {
+                                                          GoRouter.of(context)
+                                                              .prepareAuthEvent();
+                                                          final user =
+                                                              await authManager
+                                                                  .signInWithGoogle(
+                                                                      context);
+                                                          if (user == null) {
+                                                            return;
+                                                          }
 
-                                                        context.goNamedAuth(
-                                                            'homepage',
-                                                            context.mounted);
-                                                      },
-                                                      text: 'Entrar com Google',
-                                                      icon: const Icon(
-                                                        Icons.add,
-                                                        color:
-                                                            Colors.transparent,
-                                                        size: 20.0,
-                                                      ),
-                                                      options: FFButtonOptions(
-                                                        width:
-                                                            MediaQuery.sizeOf(
-                                                                        context)
-                                                                    .width *
-                                                                1.748,
-                                                        height: 97.0,
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        iconPadding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    8.0,
-                                                                    0.0),
-                                                        color: Colors.white,
-                                                        textStyle:
-                                                            GoogleFonts.getFont(
-                                                          'Roboto',
-                                                          color:
-                                                              const Color(0xFF606060),
-                                                          fontSize: 30.0,
-                                                        ),
-                                                        elevation: 4.0,
-                                                        borderSide: const BorderSide(
+                                                          context.goNamedAuth(
+                                                              'homepage',
+                                                              context.mounted);
+                                                        },
+                                                        text:
+                                                            'Entrar com Google',
+                                                        icon: const Icon(
+                                                          Icons.add,
                                                           color: Colors
                                                               .transparent,
-                                                          width: 0.0,
+                                                          size: 20.0,
+                                                        ),
+                                                        options:
+                                                            FFButtonOptions(
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  1.7,
+                                                          height: 97.0,
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          iconPadding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      8.0,
+                                                                      0.0),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBackground,
+                                                          textStyle: GoogleFonts
+                                                              .getFont(
+                                                            'Roboto',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryText,
+                                                            fontSize: 20.0,
+                                                          ),
+                                                          elevation: 10.0,
+                                                          borderSide:
+                                                              const BorderSide(
+                                                            color: Colors
+                                                                .transparent,
+                                                            width: 0.0,
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
-                                                  ),
-                                                  Align(
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                            -0.83, 0.00),
-                                                    child: Container(
-                                                      width: 22.0,
-                                                      height: 22.0,
-                                                      clipBehavior:
-                                                          Clip.antiAlias,
-                                                      decoration: const BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                      ),
-                                                      child: Image.network(
-                                                        'https://i0.wp.com/nanophorm.com/wp-content/uploads/2018/04/google-logo-icon-PNG-Transparent-Background.png?w=1000&ssl=1',
-                                                        fit: BoxFit.contain,
+                                                    Align(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              -0.91, -0.01),
+                                                      child: Container(
+                                                        width: 22.0,
+                                                        height: 22.0,
+                                                        clipBehavior:
+                                                            Clip.antiAlias,
+                                                        decoration:
+                                                            const BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                        ),
+                                                        child: Image.network(
+                                                          'https://i0.wp.com/nanophorm.com/wp-content/uploads/2018/04/google-logo-icon-PNG-Transparent-Background.png?w=1000&ssl=1',
+                                                          fit: BoxFit.contain,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -826,115 +857,131 @@ class _LoginWidgetState extends State<LoginWidget>
                                         ),
                                       ],
                                     ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Expanded(
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    8.0, 0.0, 8.0, 10.0),
-                                            child: TextFormField(
-                                              controller:
-                                                  _model.senhaconfController,
-                                              focusNode:
-                                                  _model.senhaconfFocusNode,
-                                              obscureText:
-                                                  !_model.senhaconfVisibility,
-                                              decoration: InputDecoration(
-                                                labelText: 'Confirmar Senha',
-                                                labelStyle:
+                                    if (responsiveVisibility(
+                                      context: context,
+                                      phone: false,
+                                      tablet: false,
+                                      tabletLandscape: false,
+                                      desktop: false,
+                                    ))
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Expanded(
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      8.0, 0.0, 8.0, 10.0),
+                                              child: TextFormField(
+                                                controller:
+                                                    _model.senhaconfController,
+                                                focusNode:
+                                                    _model.senhaconfFocusNode,
+                                                obscureText:
+                                                    !_model.senhaconfVisibility,
+                                                decoration: InputDecoration(
+                                                  labelText: 'Confirmar Senha',
+                                                  labelStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium,
+                                                  hintStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium,
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  filled: true,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryBackground,
+                                                  suffixIcon: InkWell(
+                                                    onTap: () => setState(
+                                                      () => _model
+                                                              .senhaconfVisibility =
+                                                          !_model
+                                                              .senhaconfVisibility,
+                                                    ),
+                                                    focusNode: FocusNode(
+                                                        skipTraversal: true),
+                                                    child: Icon(
+                                                      _model.senhaconfVisibility
+                                                          ? Icons
+                                                              .visibility_outlined
+                                                          : Icons
+                                                              .visibility_off_outlined,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 20.0,
+                                                    ),
+                                                  ),
+                                                ),
+                                                style:
                                                     FlutterFlowTheme.of(context)
-                                                        .labelMedium,
-                                                hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .alternate,
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                errorBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .error,
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                focusedErrorBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .error,
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                filled: true,
-                                                fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                                suffixIcon: InkWell(
-                                                  onTap: () => setState(
-                                                    () => _model
-                                                            .senhaconfVisibility =
-                                                        !_model
-                                                            .senhaconfVisibility,
-                                                  ),
-                                                  focusNode: FocusNode(
-                                                      skipTraversal: true),
-                                                  child: Icon(
-                                                    _model.senhaconfVisibility
-                                                        ? Icons
-                                                            .visibility_outlined
-                                                        : Icons
-                                                            .visibility_off_outlined,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    size: 20.0,
-                                                  ),
-                                                ),
+                                                        .bodyMedium,
+                                                keyboardType: TextInputType
+                                                    .visiblePassword,
+                                                validator: _model
+                                                    .senhaconfControllerValidator
+                                                    .asValidator(context),
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                              keyboardType:
-                                                  TextInputType.visiblePassword,
-                                              validator: _model
-                                                  .senhaconfControllerValidator
-                                                  .asValidator(context),
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
+                                        ],
+                                      ),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 16.0, 0.0, 0.0),
@@ -948,8 +995,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                               GoRouter.of(context)
                                                   .prepareAuthEvent();
                                               if (_model.senhaController.text !=
-                                                  _model.senhaconfController
-                                                      .text) {
+                                                  _model.senhaController.text) {
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(
                                                   const SnackBar(

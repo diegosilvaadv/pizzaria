@@ -225,13 +225,14 @@ class _SelectSabor1WidgetState extends State<SelectSabor1Widget>
                                                         MainAxisAlignment
                                                             .spaceBetween,
                                                     children: [
-                                                      Text(
-                                                        listViewProdutosRecord
-                                                            .nomeProduto,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyLarge,
+                                                      Expanded(
+                                                        child: Text(
+                                                          listViewProdutosRecord
+                                                              .nomeProduto,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyLarge,
+                                                        ),
                                                       ),
                                                       Text(
                                                         formatNumber(
