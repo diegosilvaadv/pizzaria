@@ -47,6 +47,19 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
         ),
       ],
     ),
+    'buttonOnActionTriggerAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: true,
+      effects: [
+        RotateEffect(
+          curve: Curves.elasticOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+      ],
+    ),
     'containerOnPageLoadAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
@@ -91,6 +104,13 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => CarrinhoModel());
+
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -180,6 +200,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                             scrollDirection: Axis.horizontal,
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 if (FFAppState().numberCarrinho != 0)
                                   Text(
@@ -201,6 +222,38 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                           fontFamily: 'Readex Pro',
                                           fontSize: 20.0,
                                         ),
+                                  ),
+                                if (FFAppState().numberCarrinho == 0)
+                                  FFButtonWidget(
+                                    onPressed: () async {
+                                      setState(() {
+                                        FFAppState().totalprice = 0;
+                                        FFAppState().ProdutosDoCarrinho = [];
+                                        FFAppState().numberCarrinho = 0;
+                                      });
+                                    },
+                                    text: 'Limpar',
+                                    options: FFButtonOptions(
+                                      height: 48.0,
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 0.0),
+                                      iconPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .bodyLarge,
+                                      elevation: 0.0,
+                                      borderSide: const BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(50.0),
+                                    ),
+                                  ).animateOnActionTrigger(
+                                    animationsMap[
+                                        'buttonOnActionTriggerAnimation']!,
                                   ),
                               ],
                             ),

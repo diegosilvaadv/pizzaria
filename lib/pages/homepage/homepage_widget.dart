@@ -583,7 +583,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                   alignment: const AlignmentDirectional(0.00, 0.00),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 6.0),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
@@ -606,15 +606,31 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                     10.0, 0.0, 10.0, 0.0),
                                 iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: const Color(0xFFE46D1F),
+                                color: valueOrDefault<Color>(
+                                  () {
+                                    if (FFAppState().MenuCondicao ==
+                                        'Monte Sua Pizza') {
+                                      return const Color(0xFFE46D1F);
+                                    } else if (FFAppState().MenuCondicao !=
+                                        'Monte Sua Pizza') {
+                                      return FlutterFlowTheme.of(context)
+                                          .secondaryBackground;
+                                    } else {
+                                      return FlutterFlowTheme.of(context)
+                                          .secondaryBackground;
+                                    }
+                                  }(),
+                                  const Color(0xFFE46D1F),
+                                ),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
                                       fontFamily: 'Readex Pro',
-                                      color: Colors.white,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                       fontSize: 18.0,
                                     ),
-                                elevation: 10.0,
+                                elevation: 3.0,
                                 borderSide: const BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
@@ -639,15 +655,31 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                     10.0, 0.0, 10.0, 0.0),
                                 iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: const Color(0xFFE46D1F),
+                                color: valueOrDefault<Color>(
+                                  () {
+                                    if (FFAppState().MenuCondicao == 'Pizza') {
+                                      return const Color(0xFFE46D1F);
+                                    } else if (FFAppState().MenuCondicao !=
+                                        'Pizza') {
+                                      return FlutterFlowTheme.of(context)
+                                          .secondaryBackground;
+                                    } else {
+                                      return FlutterFlowTheme.of(context)
+                                          .secondaryBackground;
+                                    }
+                                  }(),
+                                  FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
                                       fontFamily: 'Readex Pro',
-                                      color: Colors.white,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                       fontSize: 18.0,
                                     ),
-                                elevation: 10.0,
+                                elevation: 3.0,
                                 borderSide: const BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
@@ -672,15 +704,32 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                     10.0, 0.0, 10.0, 0.0),
                                 iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: const Color(0xFFE46D1F),
+                                color: valueOrDefault<Color>(
+                                  () {
+                                    if (FFAppState().MenuCondicao ==
+                                        'Bebidas') {
+                                      return const Color(0xFFE46D1F);
+                                    } else if (FFAppState().MenuCondicao !=
+                                        'Bebidas') {
+                                      return FlutterFlowTheme.of(context)
+                                          .secondaryBackground;
+                                    } else {
+                                      return FlutterFlowTheme.of(context)
+                                          .secondaryBackground;
+                                    }
+                                  }(),
+                                  FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
                                       fontFamily: 'Readex Pro',
-                                      color: Colors.white,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                       fontSize: 18.0,
                                     ),
-                                elevation: 10.0,
+                                elevation: 3.0,
                                 borderSide: const BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
@@ -830,7 +879,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                         .titleLarge
                                                         .override(
                                                           fontFamily: 'Outfit',
-                                                          fontSize: 25.0,
+                                                          fontSize: 22.0,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -1054,7 +1103,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                       fontFamily:
                                                                           'Outfit',
                                                                       fontSize:
-                                                                          25.0,
+                                                                          22.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
@@ -1209,7 +1258,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                     fontFamily:
                                                                         'Outfit',
                                                                     fontSize:
-                                                                        25.0,
+                                                                        22.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold,
