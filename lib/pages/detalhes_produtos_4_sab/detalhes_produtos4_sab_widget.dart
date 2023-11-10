@@ -418,7 +418,7 @@ class _DetalhesProdutos4SabWidgetState
                                                                               0.0),
                                                                           child:
                                                                               Text(
-                                                                            FFAppState().SaboresApp.sabor1,
+                                                                            FFAppState().SaboresApp.sabor1GG,
                                                                             style: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                   fontFamily: 'Readex Pro',
                                                                                   color: FlutterFlowTheme.of(context).secondary,
@@ -459,7 +459,7 @@ class _DetalhesProdutos4SabWidgetState
                                                                         child:
                                                                             Text(
                                                                           formatNumber(
-                                                                            FFAppState().SaboresApp.precoSabor1,
+                                                                            FFAppState().SaboresApp.precoSab1GG,
                                                                             formatType:
                                                                                 FormatType.custom,
                                                                             currency:
@@ -802,7 +802,7 @@ class _DetalhesProdutos4SabWidgetState
                                                                               0.0),
                                                                           child:
                                                                               Text(
-                                                                            FFAppState().SaboresApp.sabor2,
+                                                                            FFAppState().SaboresApp.sabor2GG,
                                                                             style: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                   fontFamily: 'Readex Pro',
                                                                                   color: FlutterFlowTheme.of(context).secondary,
@@ -843,7 +843,7 @@ class _DetalhesProdutos4SabWidgetState
                                                                         child:
                                                                             Text(
                                                                           formatNumber(
-                                                                            FFAppState().SaboresApp.precoSabor2,
+                                                                            FFAppState().SaboresApp.precoSab2GG,
                                                                             formatType:
                                                                                 FormatType.custom,
                                                                             currency:
@@ -1186,7 +1186,7 @@ class _DetalhesProdutos4SabWidgetState
                                                                               0.0),
                                                                           child:
                                                                               Text(
-                                                                            FFAppState().SaboresApp.sabor2,
+                                                                            FFAppState().SaboresApp.sabor3GG,
                                                                             style: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                   fontFamily: 'Readex Pro',
                                                                                   color: FlutterFlowTheme.of(context).secondary,
@@ -1227,7 +1227,7 @@ class _DetalhesProdutos4SabWidgetState
                                                                         child:
                                                                             Text(
                                                                           formatNumber(
-                                                                            FFAppState().SaboresApp.precoSabor2,
+                                                                            FFAppState().SaboresApp.precoSab3GG,
                                                                             formatType:
                                                                                 FormatType.custom,
                                                                             currency:
@@ -1570,7 +1570,7 @@ class _DetalhesProdutos4SabWidgetState
                                                                               0.0),
                                                                           child:
                                                                               Text(
-                                                                            FFAppState().SaboresApp.sabor2,
+                                                                            FFAppState().SaboresApp.sabor4GG,
                                                                             style: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                   fontFamily: 'Readex Pro',
                                                                                   color: FlutterFlowTheme.of(context).secondary,
@@ -1611,7 +1611,7 @@ class _DetalhesProdutos4SabWidgetState
                                                                         child:
                                                                             Text(
                                                                           formatNumber(
-                                                                            FFAppState().SaboresApp.precoSabor2,
+                                                                            FFAppState().SaboresApp.precoSab4GG,
                                                                             formatType:
                                                                                 FormatType.custom,
                                                                             currency:

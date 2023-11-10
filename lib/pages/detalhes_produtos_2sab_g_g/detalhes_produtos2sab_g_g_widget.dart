@@ -176,7 +176,7 @@ class _DetalhesProdutos2sabGGWidgetState
                                                       .fromSTEB(
                                                           3.0, 3.0, 3.0, 3.0),
                                                   child: Text(
-                                                    'Pizza Extrar Grande 2 Sabores',
+                                                    'Pizza Extra Grande 2 Sabores',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleLarge
@@ -416,7 +416,7 @@ class _DetalhesProdutos2sabGGWidgetState
                                                                               0.0),
                                                                           child:
                                                                               Text(
-                                                                            FFAppState().SaboresApp.sabor1,
+                                                                            FFAppState().SaboresApp.sabor1GG,
                                                                             style: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                   fontFamily: 'Readex Pro',
                                                                                   color: FlutterFlowTheme.of(context).secondary,
@@ -457,7 +457,7 @@ class _DetalhesProdutos2sabGGWidgetState
                                                                         child:
                                                                             Text(
                                                                           formatNumber(
-                                                                            FFAppState().SaboresApp.precoSabor1,
+                                                                            FFAppState().SaboresApp.precoSab1GG,
                                                                             formatType:
                                                                                 FormatType.custom,
                                                                             currency:
@@ -800,7 +800,7 @@ class _DetalhesProdutos2sabGGWidgetState
                                                                               0.0),
                                                                           child:
                                                                               Text(
-                                                                            FFAppState().SaboresApp.sabor2,
+                                                                            FFAppState().SaboresApp.sabor2GG,
                                                                             style: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                   fontFamily: 'Readex Pro',
                                                                                   color: FlutterFlowTheme.of(context).secondary,
@@ -841,7 +841,7 @@ class _DetalhesProdutos2sabGGWidgetState
                                                                         child:
                                                                             Text(
                                                                           formatNumber(
-                                                                            FFAppState().SaboresApp.precoSabor2,
+                                                                            FFAppState().SaboresApp.precoSab2GG,
                                                                             formatType:
                                                                                 FormatType.custom,
                                                                             currency:
