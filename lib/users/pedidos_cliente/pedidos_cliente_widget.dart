@@ -522,7 +522,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                           ),
                         Container(
                           width: double.infinity,
-                          color: Colors.white,
+                          color: FlutterFlowTheme.of(context).primaryBackground,
                           child: ExpandableNotifier(
                             controller: _model.expandableController,
                             child: ExpandablePanel(
@@ -532,7 +532,8 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                     .displaySmall
                                     .override(
                                       fontFamily: 'Outfit',
-                                      color: Colors.black,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                       fontSize: 25.0,
                                     ),
                               ),
@@ -1010,13 +1011,15 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                   },
                                 ),
                               ),
-                              theme: const ExpandableThemeData(
+                              theme: ExpandableThemeData(
                                 tapHeaderToExpand: true,
                                 tapBodyToExpand: false,
                                 tapBodyToCollapse: false,
                                 headerAlignment:
                                     ExpandablePanelHeaderAlignment.center,
                                 hasIcon: true,
+                                iconColor:
+                                    FlutterFlowTheme.of(context).secondaryText,
                               ),
                             ),
                           ),
