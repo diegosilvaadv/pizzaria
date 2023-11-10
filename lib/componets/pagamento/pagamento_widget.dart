@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'pagamento_model.dart';
@@ -250,6 +251,9 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                         child: Column(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
                                                           children: [
                                                             if (produtosCardItem
                                                                     .valor !=
@@ -343,6 +347,28 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                         }),
                                       );
                                     },
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 4.0, 12.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 6.0, 0.0, 6.0),
+                                            child: MarkdownBody(
+                                              data: '''---''',
+                                              selectable: false,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
