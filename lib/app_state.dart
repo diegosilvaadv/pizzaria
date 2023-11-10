@@ -179,6 +179,18 @@ class FFAppState extends ChangeNotifier {
     _MenuCondicao = value;
     prefs.setString('ff_MenuCondicao', value);
   }
+
+  double _precoSabor3 = 0.0;
+  double get precoSabor3 => _precoSabor3;
+  set precoSabor3(double value) {
+    _precoSabor3 = value;
+  }
+
+  double _precoSabor4 = 0.0;
+  double get precoSabor4 => _precoSabor4;
+  set precoSabor4(double value) {
+    _precoSabor4 = value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

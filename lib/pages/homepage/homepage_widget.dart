@@ -910,7 +910,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                               child: FFButtonWidget(
                                                 onPressed: () async {
                                                   context.pushNamed(
-                                                      'detalhes_produtos_2sabores');
+                                                      'detalhes_produtos_2sab');
                                                 },
                                                 text: 'Montar',
                                                 options: FFButtonOptions(
@@ -2715,7 +2715,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                           queryBuilder: (produtosRecord) =>
                                               produtosRecord.where(
                                             'tag',
-                                            isEqualTo: 'Pizza Broto',
+                                            isEqualTo: 'Refrigerantes',
                                           ),
                                           limit: 50,
                                         ),

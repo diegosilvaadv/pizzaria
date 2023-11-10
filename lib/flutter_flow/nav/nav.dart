@@ -112,9 +112,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : const CarrinhoWidget(),
         ),
         FFRoute(
-          name: 'detalhes_produtos_2sabores',
-          path: '/detalhesProdutos2sabores',
-          builder: (context, params) => const DetalhesProdutos2saboresWidget(),
+          name: 'detalhes_produtos_2sab',
+          path: '/detalhesProdutos2sab',
+          builder: (context, params) => const DetalhesProdutos2sabWidget(),
         ),
         FFRoute(
           name: 'pedidos_cliente',
@@ -122,6 +122,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'pedidos_cliente')
               : const PedidosClienteWidget(),
+        ),
+        FFRoute(
+          name: 'detalhes_produtos_4Sab',
+          path: '/detalhesProdutos4Sab',
+          builder: (context, params) => const DetalhesProdutos4SabWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
