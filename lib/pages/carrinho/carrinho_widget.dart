@@ -149,6 +149,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                   FFAppState().ProdutosDoCarrinho.toList();
                               return ListView.builder(
                                 padding: EdgeInsets.zero,
+                                primary: false,
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
                                 itemCount: pedidos.length,
@@ -672,19 +673,6 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                                                 .last.nPedido +
                                                             1,
                                                   ));
-
-                                              context.pushNamed(
-                                                'pedidos_cliente',
-                                                extra: <String, dynamic>{
-                                                  kTransitionInfoKey:
-                                                      const TransitionInfo(
-                                                    hasTransition: true,
-                                                    transitionType:
-                                                        PageTransitionType
-                                                            .bottomToTop,
-                                                  ),
-                                                },
-                                              );
                                             }
                                           } else {
                                             return;

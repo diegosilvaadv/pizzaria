@@ -695,7 +695,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
                         child: Container(
-                          width: 136.0,
+                          width: 116.0,
                           height: 100.0,
                           decoration: BoxDecoration(
                             color:
@@ -778,7 +778,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 6.0, 6.0),
                       child: Container(
-                        width: 230.0,
+                        width: MediaQuery.sizeOf(context).width * 0.6,
                         height: 100.0,
                         decoration: BoxDecoration(
                           color: () {
@@ -857,21 +857,22 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
-                                  'Adicionar',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        fontSize: 18.0,
-                                      ),
-                                ),
+                                if (FFAppState().condicao != 0)
+                                  Text(
+                                    'Adicionar',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 18.0,
+                                        ),
+                                  ),
                                 Text(
                                   valueOrDefault<String>(
                                     formatNumber(
-                                      (widget.produtoRef!.valorPizza *
-                                              FFAppState().quantity) +
-                                          FFAppState().preferec,
+                                      (widget.produtoRef!.valorPizza +
+                                              FFAppState().preferec) *
+                                          FFAppState().quantity,
                                       formatType: FormatType.custom,
                                       currency: 'R\$',
                                       format: '.00',
