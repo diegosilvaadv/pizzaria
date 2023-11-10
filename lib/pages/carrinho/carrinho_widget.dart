@@ -196,35 +196,36 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               10.0, 20.0, 0.0, 0.0),
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                if (FFAppState().numberCarrinho != 0)
-                                  Text(
-                                    'Finalizar Pedido!',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          fontSize: 20.0,
-                                        ),
-                                  ),
-                                if (FFAppState().numberCarrinho == 0)
-                                  Text(
-                                    'Carrinho Vazio!',
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          fontSize: 20.0,
-                                        ),
-                                  ),
-                                if (FFAppState().numberCarrinho != 0)
-                                  FFButtonWidget(
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              if (FFAppState().numberCarrinho != 0)
+                                Text(
+                                  'Finalizar Pedido!',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        fontSize: 20.0,
+                                      ),
+                                ),
+                              if (FFAppState().numberCarrinho == 0)
+                                Text(
+                                  'Carrinho Vazio!',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        fontSize: 20.0,
+                                      ),
+                                ),
+                              if (FFAppState().numberCarrinho != 0)
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 0.0, 0.0, 0.0),
+                                  child: FFButtonWidget(
                                     onPressed: () async {
                                       setState(() {
                                         FFAppState().totalprice = 0;
@@ -255,8 +256,8 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                     animationsMap[
                                         'buttonOnActionTriggerAnimation']!,
                                   ),
-                              ],
-                            ),
+                                ),
+                            ],
                           ).animateOnPageLoad(
                               animationsMap['rowOnPageLoadAnimation']!),
                         ),
