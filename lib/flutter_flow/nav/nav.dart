@@ -122,6 +122,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'pedidos_cliente')
               : const PedidosClienteWidget(),
+        ),
+        FFRoute(
+          name: 'teste',
+          path: '/teste',
+          builder: (context, params) => const TesteWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

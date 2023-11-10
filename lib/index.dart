@@ -8,3 +8,4 @@ export '/pages/detalhes_produtos_2sabores/detalhes_produtos2sabores_widget.dart'
     show DetalhesProdutos2saboresWidget;
 export '/users/pedidos_cliente/pedidos_cliente_widget.dart'
     show PedidosClienteWidget;
+export '/teste/teste_widget.dart' show TesteWidget;
