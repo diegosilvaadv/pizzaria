@@ -1,7 +1,7 @@
 import '/backend/schema/structs/index.dart';
 import '/componets/select_massa/select_massa_widget.dart';
-import '/componets/select_sabor1_g_g/select_sabor1_g_g_widget.dart';
-import '/componets/select_sabor2_g_g/select_sabor2_g_g_widget.dart';
+import '/componets/select_sabor1_g_g16_f/select_sabor1_g_g16_f_widget.dart';
+import '/componets/select_sabor2_g_g16_f/select_sabor2_g_g16_f_widget.dart';
 import '/componets/select_sabor3_g_g/select_sabor3_g_g_widget.dart';
 import '/componets/select_sabor4_g_g/select_sabor4_g_g_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -532,7 +532,7 @@ class _DetalhesProdutos4SabWidgetState
                                                                             child:
                                                                                 GestureDetector(
                                                                               onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                              child: const SelectSabor1GGWidget(),
+                                                                              child: const SelectSabor1GG16FWidget(),
                                                                             ),
                                                                           );
                                                                         },
@@ -916,7 +916,7 @@ class _DetalhesProdutos4SabWidgetState
                                                                             child:
                                                                                 GestureDetector(
                                                                               onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                              child: const SelectSabor2GGWidget(),
+                                                                              child: const SelectSabor2GG16FWidget(),
                                                                             ),
                                                                           );
                                                                         },

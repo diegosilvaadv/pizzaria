@@ -6,19 +6,20 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
-import 'select_sabor1_g_g_model.dart';
-export 'select_sabor1_g_g_model.dart';
+import 'select_sabor1_g_g16_f_model.dart';
+export 'select_sabor1_g_g16_f_model.dart';
 
-class SelectSabor1GGWidget extends StatefulWidget {
-  const SelectSabor1GGWidget({super.key});
+class SelectSabor1GG16FWidget extends StatefulWidget {
+  const SelectSabor1GG16FWidget({super.key});
 
   @override
-  _SelectSabor1GGWidgetState createState() => _SelectSabor1GGWidgetState();
+  _SelectSabor1GG16FWidgetState createState() =>
+      _SelectSabor1GG16FWidgetState();
 }
 
-class _SelectSabor1GGWidgetState extends State<SelectSabor1GGWidget>
+class _SelectSabor1GG16FWidgetState extends State<SelectSabor1GG16FWidget>
     with TickerProviderStateMixin {
-  late SelectSabor1GGModel _model;
+  late SelectSabor1GG16FModel _model;
 
   final animationsMap = {
     'containerOnPageLoadAnimation': AnimationInfo(
@@ -59,7 +60,7 @@ class _SelectSabor1GGWidgetState extends State<SelectSabor1GGWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SelectSabor1GGModel());
+    _model = createModel(context, () => SelectSabor1GG16FModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -238,7 +239,7 @@ class _SelectSabor1GGWidgetState extends State<SelectSabor1GGWidget>
                                                         formatNumber(
                                                           listViewProdutosRecord
                                                                   .valorPizza /
-                                                              2,
+                                                              4,
                                                           formatType:
                                                               FormatType.custom,
                                                           currency: '+R\$',
