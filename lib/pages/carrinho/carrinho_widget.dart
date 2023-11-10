@@ -582,199 +582,164 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                     builder: (context) => Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           6.0, 0.0, 0.0, 0.0),
-                                      child: StreamBuilder<
-                                          List<ListaCarrinhoPedidosRecord>>(
-                                        stream:
-                                            queryListaCarrinhoPedidosRecord(),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  valueColor:
-                                                      AlwaysStoppedAnimation<
-                                                          Color>(
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                  ),
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                          List<ListaCarrinhoPedidosRecord>
-                                              buttonListaCarrinhoPedidosRecordList =
-                                              snapshot.data!;
-                                          return FFButtonWidget(
-                                            onPressed: () async {
-                                              if (FFAppState()
-                                                      .ProdutosDoCarrinho.isNotEmpty) {
-                                                setState(() {
-                                                  FFAppState().contador = -1;
-                                                });
-                                                while (FFAppState().contador <=
-                                                    FFAppState()
-                                                        .ProdutosDoCarrinho
-                                                        .length) {
-                                                  setState(() {
-                                                    FFAppState().contador =
-                                                        FFAppState().contador +
-                                                            1;
-                                                  });
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          if (FFAppState()
+                                                  .ProdutosDoCarrinho.isNotEmpty) {
+                                            setState(() {
+                                              FFAppState().contador = -1;
+                                            });
+                                            while (FFAppState().contador <=
+                                                FFAppState()
+                                                    .ProdutosDoCarrinho
+                                                    .length) {
+                                              setState(() {
+                                                FFAppState().contador =
+                                                    FFAppState().contador + 1;
+                                              });
 
-                                                  await ListaCarrinhoPedidosRecord
-                                                      .collection
-                                                      .doc()
-                                                      .set(
-                                                          createListaCarrinhoPedidosRecordData(
-                                                        nomeProduto: FFAppState()
-                                                            .ProdutosDoCarrinho[
-                                                                FFAppState()
-                                                                    .contador]
-                                                            .nomeProduto,
-                                                        img: FFAppState()
-                                                            .ProdutosDoCarrinho[
-                                                                FFAppState()
-                                                                    .contador]
-                                                            .img,
-                                                        valorPizzaInteira:
+                                              await ListaCarrinhoPedidosRecord
+                                                  .collection
+                                                  .doc()
+                                                  .set(
+                                                      createListaCarrinhoPedidosRecordData(
+                                                    nomeProduto: FFAppState()
+                                                        .ProdutosDoCarrinho[
                                                             FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .valor,
-                                                        quantyPizzaInteira:
+                                                                .contador]
+                                                        .nomeProduto,
+                                                    img: FFAppState()
+                                                        .ProdutosDoCarrinho[
                                                             FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .quantity,
-                                                        nomeMassaPizzaInteira:
-                                                            FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .massaNome,
-                                                        valorMassaPizzaInteira:
-                                                            FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .valorpreferecias,
-                                                        nomeSabor1: FFAppState()
+                                                                .contador]
+                                                        .img,
+                                                    valorPizzaInteira:
+                                                        FFAppState()
                                                             .ProdutosDoCarrinho[
                                                                 FFAppState()
                                                                     .contador]
-                                                            .nomeProduto,
-                                                        valorSabor1: FFAppState()
+                                                            .valor,
+                                                    quantyPizzaInteira:
+                                                        FFAppState()
                                                             .ProdutosDoCarrinho[
                                                                 FFAppState()
                                                                     .contador]
-                                                            .valorSabor1,
-                                                        nomeSabor2: FFAppState()
+                                                            .quantity,
+                                                    nomeMassaPizzaInteira:
+                                                        FFAppState()
                                                             .ProdutosDoCarrinho[
                                                                 FFAppState()
                                                                     .contador]
-                                                            .nomeProduto,
-                                                        valorSabor2: FFAppState()
+                                                            .massaNome,
+                                                    valorMassaPizzaInteira:
+                                                        FFAppState()
                                                             .ProdutosDoCarrinho[
                                                                 FFAppState()
                                                                     .contador]
-                                                            .valorSabor2,
-                                                        quantyPizza2sabores:
+                                                            .valorpreferecias,
+                                                    nomeSabor1: FFAppState()
+                                                        .ProdutosDoCarrinho[
                                                             FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .quantity,
-                                                        data:
-                                                            getCurrentTimestamp,
-                                                        status: 'Não Paga',
-                                                        userRef:
-                                                            currentUserReference,
-                                                        nPedido:
-                                                            buttonListaCarrinhoPedidosRecordList
-                                                                    .last
-                                                                    .nPedido +
-                                                                1,
-                                                      ));
-                                                  showAlignedDialog(
-                                                    barrierDismissible: false,
-                                                    context: context,
-                                                    isGlobal: false,
-                                                    avoidOverflow: true,
-                                                    targetAnchor:
-                                                        const AlignmentDirectional(
-                                                                0.0, 0.0)
-                                                            .resolve(
-                                                                Directionality.of(
-                                                                    context)),
-                                                    followerAnchor:
-                                                        const AlignmentDirectional(
-                                                                0.0, 0.0)
-                                                            .resolve(
-                                                                Directionality.of(
-                                                                    context)),
-                                                    builder: (dialogContext) {
-                                                      return Material(
-                                                        color:
-                                                            Colors.transparent,
-                                                        child: GestureDetector(
-                                                          onTap: () => _model
-                                                                  .unfocusNode
-                                                                  .canRequestFocus
-                                                              ? FocusScope.of(
-                                                                      context)
-                                                                  .requestFocus(
-                                                                      _model
-                                                                          .unfocusNode)
-                                                              : FocusScope.of(
-                                                                      context)
-                                                                  .unfocus(),
-                                                          child:
-                                                              const PagamentoWidget(),
-                                                        ),
-                                                      );
-                                                    },
-                                                  ).then((value) =>
-                                                      setState(() {}));
-                                                }
-                                              } else {
-                                                return;
-                                              }
-                                            },
-                                            text: 'Ir Para Pagamento',
-                                            options: FFButtonOptions(
-                                              height: 40.0,
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      15.0, 0.0, 15.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        color: Colors.white,
-                                                      ),
-                                              elevation: 3.0,
-                                              borderSide: const BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                          );
+                                                                .contador]
+                                                        .nomeProduto,
+                                                    valorSabor1: FFAppState()
+                                                        .ProdutosDoCarrinho[
+                                                            FFAppState()
+                                                                .contador]
+                                                        .valorSabor1,
+                                                    nomeSabor2: FFAppState()
+                                                        .ProdutosDoCarrinho[
+                                                            FFAppState()
+                                                                .contador]
+                                                        .nomeProduto,
+                                                    valorSabor2: FFAppState()
+                                                        .ProdutosDoCarrinho[
+                                                            FFAppState()
+                                                                .contador]
+                                                        .valorSabor2,
+                                                    quantyPizza2sabores:
+                                                        FFAppState()
+                                                            .ProdutosDoCarrinho[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .quantity,
+                                                    data: getCurrentTimestamp,
+                                                    status: 'Não Paga',
+                                                    userRef:
+                                                        currentUserReference,
+                                                    nPedido: _model
+                                                            .listadepedidos!
+                                                            .nPedido +
+                                                        1,
+                                                  ));
+                                              showAlignedDialog(
+                                                barrierDismissible: false,
+                                                context: context,
+                                                isGlobal: false,
+                                                avoidOverflow: true,
+                                                targetAnchor:
+                                                    const AlignmentDirectional(
+                                                            0.0, 0.0)
+                                                        .resolve(
+                                                            Directionality.of(
+                                                                context)),
+                                                followerAnchor:
+                                                    const AlignmentDirectional(
+                                                            0.0, 0.0)
+                                                        .resolve(
+                                                            Directionality.of(
+                                                                context)),
+                                                builder: (dialogContext) {
+                                                  return Material(
+                                                    color: Colors.transparent,
+                                                    child: GestureDetector(
+                                                      onTap: () => _model
+                                                              .unfocusNode
+                                                              .canRequestFocus
+                                                          ? FocusScope.of(
+                                                                  context)
+                                                              .requestFocus(_model
+                                                                  .unfocusNode)
+                                                          : FocusScope.of(
+                                                                  context)
+                                                              .unfocus(),
+                                                      child: const PagamentoWidget(),
+                                                    ),
+                                                  );
+                                                },
+                                              ).then(
+                                                  (value) => setState(() {}));
+                                            }
+                                          } else {
+                                            return;
+                                          }
                                         },
+                                        text: 'Ir Para Pagamento',
+                                        options: FFButtonOptions(
+                                          height: 40.0,
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  15.0, 0.0, 15.0, 0.0),
+                                          iconPadding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    color: Colors.white,
+                                                  ),
+                                          elevation: 3.0,
+                                          borderSide: const BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
                                       ),
                                     ),
                                   ),
