@@ -168,6 +168,9 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                       widget.produtoRef
                                                           ?.nomeProduto,
                                                       'Nome',
+                                                    ).maybeHandleOverflow(
+                                                      maxChars: 25,
+                                                      replacement: '…',
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
