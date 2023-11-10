@@ -1586,11 +1586,13 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        Text(
-                                                                          listViewProdutosRecord
-                                                                              .nomeProduto,
-                                                                          style:
-                                                                              FlutterFlowTheme.of(context).bodyLarge,
+                                                                        Expanded(
+                                                                          child:
+                                                                              Text(
+                                                                            listViewProdutosRecord.nomeProduto,
+                                                                            style:
+                                                                                FlutterFlowTheme.of(context).bodyLarge,
+                                                                          ),
                                                                         ),
                                                                       ],
                                                                     ),
@@ -1601,17 +1603,19 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              5.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                        Expanded(
                                                                           child:
-                                                                              Text(
-                                                                            listViewProdutosRecord.descricao.maybeHandleOverflow(maxChars: 15),
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).labelMedium,
+                                                                              Padding(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                5.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                            child:
+                                                                                Text(
+                                                                              listViewProdutosRecord.descricao.maybeHandleOverflow(maxChars: 25),
+                                                                              style: FlutterFlowTheme.of(context).labelMedium,
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                       ],
@@ -1900,11 +1904,13 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        Text(
-                                                                          listViewProdutosRecord
-                                                                              .nomeProduto,
-                                                                          style:
-                                                                              FlutterFlowTheme.of(context).bodyLarge,
+                                                                        Expanded(
+                                                                          child:
+                                                                              Text(
+                                                                            listViewProdutosRecord.nomeProduto,
+                                                                            style:
+                                                                                FlutterFlowTheme.of(context).bodyLarge,
+                                                                          ),
                                                                         ),
                                                                       ],
                                                                     ),
@@ -1915,17 +1921,19 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              5.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                        Expanded(
                                                                           child:
-                                                                              Text(
-                                                                            listViewProdutosRecord.descricao.maybeHandleOverflow(maxChars: 15),
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).labelMedium,
+                                                                              Padding(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                5.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                            child:
+                                                                                Text(
+                                                                              listViewProdutosRecord.descricao.maybeHandleOverflow(maxChars: 25),
+                                                                              style: FlutterFlowTheme.of(context).labelMedium,
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                       ],
@@ -2214,11 +2222,13 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        Text(
-                                                                          listViewProdutosRecord
-                                                                              .nomeProduto,
-                                                                          style:
-                                                                              FlutterFlowTheme.of(context).bodyLarge,
+                                                                        Expanded(
+                                                                          child:
+                                                                              Text(
+                                                                            listViewProdutosRecord.nomeProduto,
+                                                                            style:
+                                                                                FlutterFlowTheme.of(context).bodyLarge,
+                                                                          ),
                                                                         ),
                                                                       ],
                                                                     ),
@@ -2229,17 +2239,19 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              5.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                        Expanded(
                                                                           child:
-                                                                              Text(
-                                                                            listViewProdutosRecord.descricao.maybeHandleOverflow(maxChars: 15),
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).labelMedium,
+                                                                              Padding(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                5.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                            child:
+                                                                                Text(
+                                                                              listViewProdutosRecord.descricao.maybeHandleOverflow(maxChars: 25),
+                                                                              style: FlutterFlowTheme.of(context).labelMedium,
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                       ],
@@ -2528,11 +2540,13 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        Text(
-                                                                          listViewProdutosRecord
-                                                                              .nomeProduto,
-                                                                          style:
-                                                                              FlutterFlowTheme.of(context).bodyLarge,
+                                                                        Expanded(
+                                                                          child:
+                                                                              Text(
+                                                                            listViewProdutosRecord.nomeProduto,
+                                                                            style:
+                                                                                FlutterFlowTheme.of(context).bodyLarge,
+                                                                          ),
                                                                         ),
                                                                       ],
                                                                     ),
@@ -2543,17 +2557,19 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              5.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                        Expanded(
                                                                           child:
-                                                                              Text(
-                                                                            listViewProdutosRecord.descricao.maybeHandleOverflow(maxChars: 15),
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).labelMedium,
+                                                                              Padding(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                5.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                            child:
+                                                                                Text(
+                                                                              listViewProdutosRecord.descricao.maybeHandleOverflow(maxChars: 25),
+                                                                              style: FlutterFlowTheme.of(context).labelMedium,
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                       ],
@@ -2842,11 +2858,13 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        Text(
-                                                                          listViewProdutosRecord
-                                                                              .nomeProduto,
-                                                                          style:
-                                                                              FlutterFlowTheme.of(context).bodyLarge,
+                                                                        Expanded(
+                                                                          child:
+                                                                              Text(
+                                                                            listViewProdutosRecord.nomeProduto,
+                                                                            style:
+                                                                                FlutterFlowTheme.of(context).bodyLarge,
+                                                                          ),
                                                                         ),
                                                                       ],
                                                                     ),
@@ -2857,17 +2875,19 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              5.0,
-                                                                              0.0,
-                                                                              0.0),
+                                                                        Expanded(
                                                                           child:
-                                                                              Text(
-                                                                            listViewProdutosRecord.descricao.maybeHandleOverflow(maxChars: 15),
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).labelMedium,
+                                                                              Padding(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                5.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                            child:
+                                                                                Text(
+                                                                              listViewProdutosRecord.descricao.maybeHandleOverflow(maxChars: 25),
+                                                                              style: FlutterFlowTheme.of(context).labelMedium,
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                       ],
