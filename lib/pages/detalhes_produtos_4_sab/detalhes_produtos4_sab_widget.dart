@@ -2396,6 +2396,9 @@ class _DetalhesProdutos4SabWidgetState
                                           jsonDecode(
                                               '{"nome_massa":"Nenhuma","valor_massa":"0"}'));
                                   FFAppState().massaCondicao = 0;
+                                  FFAppState().precoSabor3 = 0.0;
+                                  FFAppState().precoSabor4 = 0.0;
+                                  FFAppState().MenuCondicao = 'Monte Sua Pizza';
                                 });
 
                                 context.pushNamed(
