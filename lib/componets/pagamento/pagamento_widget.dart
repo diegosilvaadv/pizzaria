@@ -287,8 +287,7 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                       MainAxisSize.max,
                                                   children: [
                                                     Text(
-                                                      produtosCardItem.quantity
-                                                          .toString(),
+                                                      '${produtosCardItem.quantity.toString()} X ',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
