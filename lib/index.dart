@@ -10,3 +10,5 @@ export '/users/pedidos_cliente/pedidos_cliente_widget.dart'
     show PedidosClienteWidget;
 export '/pages/detalhes_produtos_4_sab/detalhes_produtos4_sab_widget.dart'
     show DetalhesProdutos4SabWidget;
+export '/pages/detalhes_produtos_2sab_g_g/detalhes_produtos2sab_g_g_widget.dart'
+    show DetalhesProdutos2sabGGWidget;

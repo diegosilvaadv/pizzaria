@@ -1139,9 +1139,22 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                       0.0,
                                                                       0.0),
                                                           child: FFButtonWidget(
-                                                            onPressed: () {
-                                                              print(
-                                                                  'Button pressed ...');
+                                                            onPressed:
+                                                                () async {
+                                                              context.pushNamed(
+                                                                'detalhes_produtos_2sabGG',
+                                                                extra: <String,
+                                                                    dynamic>{
+                                                                  kTransitionInfoKey:
+                                                                      const TransitionInfo(
+                                                                    hasTransition:
+                                                                        true,
+                                                                    transitionType:
+                                                                        PageTransitionType
+                                                                            .bottomToTop,
+                                                                  ),
+                                                                },
+                                                              );
                                                             },
                                                             text: 'Montar',
                                                             options:
@@ -1294,9 +1307,21 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                     0.0,
                                                                     0.0),
                                                         child: FFButtonWidget(
-                                                          onPressed: () {
-                                                            print(
-                                                                'Button pressed ...');
+                                                          onPressed: () async {
+                                                            context.pushNamed(
+                                                              'detalhes_produtos_4Sab',
+                                                              extra: <String,
+                                                                  dynamic>{
+                                                                kTransitionInfoKey:
+                                                                    const TransitionInfo(
+                                                                  hasTransition:
+                                                                      true,
+                                                                  transitionType:
+                                                                      PageTransitionType
+                                                                          .bottomToTop,
+                                                                ),
+                                                              },
+                                                            );
                                                           },
                                                           text: 'Montar',
                                                           options:
