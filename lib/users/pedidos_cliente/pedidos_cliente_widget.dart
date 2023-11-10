@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
@@ -108,15 +107,6 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => PedidosClienteModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().totalprice = 0;
-        FFAppState().ProdutosDoCarrinho = [];
-        FFAppState().numberCarrinho = 0;
-      });
-    });
 
     setupAnimations(
       animationsMap.values.where((anim) =>
