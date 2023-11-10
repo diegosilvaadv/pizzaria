@@ -40,6 +40,9 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _numberCarrinho = prefs.getInt('ff_numberCarrinho') ?? _numberCarrinho;
     });
+    _safeInit(() {
+      _MenuCondicao = prefs.getString('ff_MenuCondicao') ?? _MenuCondicao;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -168,6 +171,13 @@ class FFAppState extends ChangeNotifier {
   int get massaCondicao => _massaCondicao;
   set massaCondicao(int value) {
     _massaCondicao = value;
+  }
+
+  String _MenuCondicao = 'Monte Sua Pizza';
+  String get MenuCondicao => _MenuCondicao;
+  set MenuCondicao(String value) {
+    _MenuCondicao = value;
+    prefs.setString('ff_MenuCondicao', value);
   }
 }
 
