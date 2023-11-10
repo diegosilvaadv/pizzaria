@@ -857,16 +857,15 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                if (FFAppState().condicao != 0)
-                                  Text(
-                                    'Adicionar',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          fontSize: 18.0,
-                                        ),
-                                  ),
+                                Text(
+                                  'Adicionar',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        fontSize: 18.0,
+                                      ),
+                                ),
                                 Text(
                                   valueOrDefault<String>(
                                     formatNumber(

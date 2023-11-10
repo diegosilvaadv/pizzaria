@@ -1455,7 +1455,7 @@ class _DetalhesProdutos2saboresWidgetState
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
                         child: Container(
-                          width: 136.0,
+                          width: 116.0,
                           height: 100.0,
                           decoration: BoxDecoration(
                             color:
@@ -1557,7 +1557,7 @@ class _DetalhesProdutos2saboresWidgetState
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 6.0, 6.0),
                       child: Container(
-                        width: 230.0,
+                        width: MediaQuery.sizeOf(context).width * 0.6,
                         height: 100.0,
                         decoration: BoxDecoration(
                           color: () {
