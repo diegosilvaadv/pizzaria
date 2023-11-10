@@ -202,12 +202,8 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                           StreamBuilder<List<ListaCarrinhoPedidosRecord>>(
                             stream: queryListaCarrinhoPedidosRecord(
                               queryBuilder: (listaCarrinhoPedidosRecord) =>
-                                  listaCarrinhoPedidosRecord
-                                      .where(
-                                        'status',
-                                        isEqualTo: 'Pendente',
-                                      )
-                                      .orderBy('data'),
+                                  listaCarrinhoPedidosRecord.whereIn('status',
+                                      ['Não Paga', 'Pendente']).orderBy('data'),
                             ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
