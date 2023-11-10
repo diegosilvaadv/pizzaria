@@ -3,7 +3,6 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -560,125 +559,165 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget> {
                                           fontSize: 20.0,
                                         ),
                                   ),
-                                  FFButtonWidget(
-                                    onPressed: () async {
-                                      if (FFAppState()
-                                              .ProdutosDoCarrinho.isNotEmpty) {
-                                        setState(() {
-                                          FFAppState().contador = -1;
-                                        });
-                                        while (FFAppState().contador <=
-                                            FFAppState()
-                                                .ProdutosDoCarrinho
-                                                .length) {
-                                          setState(() {
-                                            FFAppState().contador =
-                                                FFAppState().contador + 1;
-                                          });
-
-                                          await ListaCarrinhoPedidosRecord
-                                              .collection
-                                              .doc()
-                                              .set(
-                                                  createListaCarrinhoPedidosRecordData(
-                                                nomeProduto: FFAppState()
-                                                    .ProdutosDoCarrinho[
-                                                        FFAppState().contador]
-                                                    .nomeProduto,
-                                                img: FFAppState()
-                                                    .ProdutosDoCarrinho[
-                                                        FFAppState().contador]
-                                                    .img,
-                                                valorPizzaInteira: FFAppState()
-                                                    .ProdutosDoCarrinho[
-                                                        FFAppState().contador]
-                                                    .valor,
-                                                quantyPizzaInteira: FFAppState()
-                                                    .ProdutosDoCarrinho[
-                                                        FFAppState().contador]
-                                                    .quantity,
-                                                nomeMassaPizzaInteira:
-                                                    FFAppState()
-                                                        .ProdutosDoCarrinho[
-                                                            FFAppState()
-                                                                .contador]
-                                                        .massaNome,
-                                                valorMassaPizzaInteira:
-                                                    FFAppState()
-                                                        .ProdutosDoCarrinho[
-                                                            FFAppState()
-                                                                .contador]
-                                                        .valorpreferecias,
-                                                nomeSabor1: FFAppState()
-                                                    .ProdutosDoCarrinho[
-                                                        FFAppState().contador]
-                                                    .nomeProduto,
-                                                valorSabor1: FFAppState()
-                                                    .ProdutosDoCarrinho[
-                                                        FFAppState().contador]
-                                                    .valorSabor1,
-                                                nomeSabor2: FFAppState()
-                                                    .ProdutosDoCarrinho[
-                                                        FFAppState().contador]
-                                                    .nomeProduto,
-                                                valorSabor2: FFAppState()
-                                                    .ProdutosDoCarrinho[
-                                                        FFAppState().contador]
-                                                    .valorSabor2,
-                                                quantyPizza2sabores:
-                                                    FFAppState()
-                                                        .ProdutosDoCarrinho[
-                                                            FFAppState()
-                                                                .contador]
-                                                        .quantity,
-                                                data: getCurrentTimestamp,
-                                                status: 'Pendente',
-                                                userRef: currentUserReference,
-                                                nPedido: random_data
-                                                    .randomInteger(1, 1000)
-                                                    .toDouble(),
-                                              ));
-
-                                          context.pushNamed(
-                                            'pedidos_cliente',
-                                            extra: <String, dynamic>{
-                                              kTransitionInfoKey:
-                                                  const TransitionInfo(
-                                                hasTransition: true,
-                                                transitionType:
-                                                    PageTransitionType
-                                                        .bottomToTop,
+                                  StreamBuilder<
+                                      List<ListaCarrinhoPedidosRecord>>(
+                                    stream: queryListaCarrinhoPedidosRecord(),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
                                               ),
-                                            },
-                                          );
-                                        }
-                                      } else {
-                                        return;
-                                      }
-                                    },
-                                    text: 'Ir Para Pagamento',
-                                    options: FFButtonOptions(
-                                      height: 40.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 0.0, 24.0, 0.0),
-                                      iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            color: Colors.white,
+                                            ),
                                           ),
-                                      elevation: 3.0,
-                                      borderSide: const BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
+                                        );
+                                      }
+                                      List<ListaCarrinhoPedidosRecord>
+                                          buttonListaCarrinhoPedidosRecordList =
+                                          snapshot.data!;
+                                      return FFButtonWidget(
+                                        onPressed: () async {
+                                          if (FFAppState()
+                                                  .ProdutosDoCarrinho.isNotEmpty) {
+                                            setState(() {
+                                              FFAppState().contador = -1;
+                                            });
+                                            while (FFAppState().contador <=
+                                                FFAppState()
+                                                    .ProdutosDoCarrinho
+                                                    .length) {
+                                              setState(() {
+                                                FFAppState().contador =
+                                                    FFAppState().contador + 1;
+                                              });
+
+                                              await ListaCarrinhoPedidosRecord
+                                                  .collection
+                                                  .doc()
+                                                  .set(
+                                                      createListaCarrinhoPedidosRecordData(
+                                                    nomeProduto: FFAppState()
+                                                        .ProdutosDoCarrinho[
+                                                            FFAppState()
+                                                                .contador]
+                                                        .nomeProduto,
+                                                    img: FFAppState()
+                                                        .ProdutosDoCarrinho[
+                                                            FFAppState()
+                                                                .contador]
+                                                        .img,
+                                                    valorPizzaInteira:
+                                                        FFAppState()
+                                                            .ProdutosDoCarrinho[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .valor,
+                                                    quantyPizzaInteira:
+                                                        FFAppState()
+                                                            .ProdutosDoCarrinho[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .quantity,
+                                                    nomeMassaPizzaInteira:
+                                                        FFAppState()
+                                                            .ProdutosDoCarrinho[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .massaNome,
+                                                    valorMassaPizzaInteira:
+                                                        FFAppState()
+                                                            .ProdutosDoCarrinho[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .valorpreferecias,
+                                                    nomeSabor1: FFAppState()
+                                                        .ProdutosDoCarrinho[
+                                                            FFAppState()
+                                                                .contador]
+                                                        .nomeProduto,
+                                                    valorSabor1: FFAppState()
+                                                        .ProdutosDoCarrinho[
+                                                            FFAppState()
+                                                                .contador]
+                                                        .valorSabor1,
+                                                    nomeSabor2: FFAppState()
+                                                        .ProdutosDoCarrinho[
+                                                            FFAppState()
+                                                                .contador]
+                                                        .nomeProduto,
+                                                    valorSabor2: FFAppState()
+                                                        .ProdutosDoCarrinho[
+                                                            FFAppState()
+                                                                .contador]
+                                                        .valorSabor2,
+                                                    quantyPizza2sabores:
+                                                        FFAppState()
+                                                            .ProdutosDoCarrinho[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .quantity,
+                                                    data: getCurrentTimestamp,
+                                                    status: 'Pendente',
+                                                    userRef:
+                                                        currentUserReference,
+                                                    nPedido:
+                                                        buttonListaCarrinhoPedidosRecordList
+                                                                .last.nPedido +
+                                                            1,
+                                                  ));
+
+                                              context.pushNamed(
+                                                'pedidos_cliente',
+                                                extra: <String, dynamic>{
+                                                  kTransitionInfoKey:
+                                                      const TransitionInfo(
+                                                    hasTransition: true,
+                                                    transitionType:
+                                                        PageTransitionType
+                                                            .bottomToTop,
+                                                  ),
+                                                },
+                                              );
+                                            }
+                                          } else {
+                                            return;
+                                          }
+                                        },
+                                        text: 'Ir Para Pagamento',
+                                        options: FFButtonOptions(
+                                          height: 40.0,
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  24.0, 0.0, 24.0, 0.0),
+                                          iconPadding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    color: Colors.white,
+                                                  ),
+                                          elevation: 3.0,
+                                          borderSide: const BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ],
                               ),
