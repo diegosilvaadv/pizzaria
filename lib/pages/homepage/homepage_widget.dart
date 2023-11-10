@@ -2479,7 +2479,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                       Colors.transparent,
                                                   onTap: () async {
                                                     context.pushNamed(
-                                                      'detalhes_produtos',
+                                                      'detalhes_produtosBebidas',
                                                       queryParameters: {
                                                         'produtoRef':
                                                             serializeParam(
@@ -2490,6 +2490,13 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                       extra: <String, dynamic>{
                                                         'produtoRef':
                                                             listViewProdutosRecord,
+                                                        kTransitionInfoKey:
+                                                            const TransitionInfo(
+                                                          hasTransition: true,
+                                                          transitionType:
+                                                              PageTransitionType
+                                                                  .bottomToTop,
+                                                        ),
                                                       },
                                                     );
                                                   },
@@ -2797,7 +2804,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                       Colors.transparent,
                                                   onTap: () async {
                                                     context.pushNamed(
-                                                      'detalhes_produtos',
+                                                      'detalhes_produtosBebidas',
                                                       queryParameters: {
                                                         'produtoRef':
                                                             serializeParam(
@@ -2808,6 +2815,13 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                       extra: <String, dynamic>{
                                                         'produtoRef':
                                                             listViewProdutosRecord,
+                                                        kTransitionInfoKey:
+                                                            const TransitionInfo(
+                                                          hasTransition: true,
+                                                          transitionType:
+                                                              PageTransitionType
+                                                                  .bottomToTop,
+                                                        ),
                                                       },
                                                     );
                                                   },

@@ -12,3 +12,5 @@ export '/pages/detalhes_produtos_4_sab/detalhes_produtos4_sab_widget.dart'
     show DetalhesProdutos4SabWidget;
 export '/pages/detalhes_produtos_2sab_g_g/detalhes_produtos2sab_g_g_widget.dart'
     show DetalhesProdutos2sabGGWidget;
+export '/pages/detalhes_produtos_bebidas/detalhes_produtos_bebidas_widget.dart'
+    show DetalhesProdutosBebidasWidget;
