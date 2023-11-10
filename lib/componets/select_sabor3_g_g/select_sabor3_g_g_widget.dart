@@ -183,13 +183,13 @@ class _SelectSabor3GGWidgetState extends State<SelectSabor3GGWidget>
                                               listViewProdutosRecord.nomeProduto
                                           ..precoSab3GG = listViewProdutosRecord
                                                   .valorPizza /
-                                              2,
+                                              4,
                                       );
                                       FFAppState().condicao =
                                           FFAppState().condicao + 1;
                                       FFAppState().precoSabor3 = FFAppState()
                                               .precoSabor3 +
-                                          listViewProdutosRecord.valorPizza / 2;
+                                          listViewProdutosRecord.valorPizza / 4;
                                     });
                                     Navigator.pop(context);
                                   },
