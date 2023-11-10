@@ -185,7 +185,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
-                                                          fontSize: 21.0,
+                                                          fontSize: 20.0,
                                                         ),
                                                   ),
                                                 ),
@@ -899,9 +899,9 @@ class _DetalhesProdutos2saboresWidgetState
                                                                         avoidOverflow:
                                                                             true,
                                                                         targetAnchor:
-                                                                            const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                            const AlignmentDirectional(0.0, -1.0).resolve(Directionality.of(context)),
                                                                         followerAnchor:
-                                                                            const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                            const AlignmentDirectional(0.0, -1.0).resolve(Directionality.of(context)),
                                                                         builder:
                                                                             (dialogContext) {
                                                                           return Material(
