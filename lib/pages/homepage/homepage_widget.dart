@@ -352,7 +352,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
           ),
         ),
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(210.0),
+          preferredSize: const Size.fromHeight(170.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             automaticallyImplyLeading: false,
@@ -360,7 +360,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                   child: StreamBuilder<List<UsersRecord>>(
                     stream: queryUsersRecord(
                       queryBuilder: (usersRecord) => usersRecord.where(
@@ -479,7 +479,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
             ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation1']!),
             actions: const [],
             centerTitle: false,
-            toolbarHeight: 210.0,
+            toolbarHeight: 170.0,
             elevation: 0.0,
           ),
         ),
