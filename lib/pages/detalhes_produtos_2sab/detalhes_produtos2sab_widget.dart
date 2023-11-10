@@ -374,13 +374,15 @@ class _DetalhesProdutos2sabWidgetState
                                                                             0.00,
                                                                             0.00),
                                                                         child:
-                                                                            FaIcon(
-                                                                          FontAwesomeIcons
-                                                                              .pizzaSlice,
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryText,
-                                                                          size:
-                                                                              30.0,
+                                                                            Text(
+                                                                          '1º',
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Readex Pro',
+                                                                                fontSize: 25.0,
+                                                                                fontWeight: FontWeight.bold,
+                                                                              ),
                                                                         ),
                                                                       ),
                                                                     ),
@@ -756,13 +758,15 @@ class _DetalhesProdutos2sabWidgetState
                                                                             0.00,
                                                                             0.00),
                                                                         child:
-                                                                            FaIcon(
-                                                                          FontAwesomeIcons
-                                                                              .pizzaSlice,
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryText,
-                                                                          size:
-                                                                              30.0,
+                                                                            Text(
+                                                                          '2º',
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Readex Pro',
+                                                                                fontSize: 25.0,
+                                                                                fontWeight: FontWeight.bold,
+                                                                              ),
                                                                         ),
                                                                       ),
                                                                     ),

@@ -178,7 +178,7 @@ class _DetalhesProdutos4SabWidgetState
                                                       .fromSTEB(
                                                           3.0, 3.0, 3.0, 3.0),
                                                   child: Text(
-                                                    'Pizza Grande 2 Sabores',
+                                                    'Pizza Extra Grande 4 Sabores',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleLarge
