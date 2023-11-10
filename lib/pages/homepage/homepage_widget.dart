@@ -2397,7 +2397,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                           queryBuilder: (produtosRecord) =>
                                               produtosRecord.where(
                                             'tag',
-                                            isEqualTo: 'Pizza Broto',
+                                            isEqualTo: 'Sucos',
                                           ),
                                           limit: 50,
                                         ),
