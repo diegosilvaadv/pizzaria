@@ -64,26 +64,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
         ),
       ],
     ),
-    'listViewOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 80.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'listViewOnPageLoadAnimation2': AnimationInfo(
+    'listViewOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         FadeEffect(
@@ -537,242 +518,15 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                       fontSize: 25.0,
                                     ),
                               ),
-                              collapsed: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 12.0, 0.0, 32.0),
-                                child: StreamBuilder<
-                                    List<ListaCarrinhoPedidosRecord>>(
-                                  stream: queryListaCarrinhoPedidosRecord(
-                                    queryBuilder:
-                                        (listaCarrinhoPedidosRecord) =>
-                                            listaCarrinhoPedidosRecord
-                                                .where(
-                                                  'status',
-                                                  isEqualTo: 'Entregue',
-                                                )
-                                                .orderBy('data'),
-                                    limit: 100,
+                              collapsed: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    'Hello World',
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
                                   ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: CircularProgressIndicator(
-                                            valueColor:
-                                                AlwaysStoppedAnimation<Color>(
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    List<ListaCarrinhoPedidosRecord>
-                                        listViewListaCarrinhoPedidosRecordList =
-                                        snapshot.data!;
-                                    return ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      primary: false,
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount:
-                                          listViewListaCarrinhoPedidosRecordList
-                                              .length,
-                                      itemBuilder: (context, listViewIndex) {
-                                        final listViewListaCarrinhoPedidosRecord =
-                                            listViewListaCarrinhoPedidosRecordList[
-                                                listViewIndex];
-                                        return Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 8.0),
-                                          child: Container(
-                                            width: double.infinity,
-                                            height: 104.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              boxShadow: const [
-                                                BoxShadow(
-                                                  blurRadius: 4.0,
-                                                  color: Color(0x520E151B),
-                                                  offset: Offset(0.0, 2.0),
-                                                )
-                                              ],
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            child: Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(8.0, 8.0, 8.0, 8.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            6.0),
-                                                    child: Image.network(
-                                                      listViewListaCarrinhoPedidosRecord
-                                                          .img,
-                                                      width: 80.0,
-                                                      height: 80.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  12.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            listViewListaCarrinhoPedidosRecord
-                                                                .nomeProduto,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyLarge,
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        5.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Text(
-                                                              dateTimeFormat(
-                                                                'dd/MM/yyyy | kk:mm',
-                                                                listViewListaCarrinhoPedidosRecord
-                                                                    .data!,
-                                                                locale: FFLocalizations.of(
-                                                                        context)
-                                                                    .languageCode,
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .labelMedium,
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        4.0,
-                                                                        0.0,
-                                                                        4.0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceBetween,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          4.0,
-                                                                          0.0,
-                                                                          8.0),
-                                                                  child: Text(
-                                                                    'Numero do Pedido: ${formatNumber(
-                                                                      listViewListaCarrinhoPedidosRecord
-                                                                          .nPedido,
-                                                                      formatType:
-                                                                          FormatType
-                                                                              .custom,
-                                                                      format:
-                                                                          '.000',
-                                                                      locale:
-                                                                          '',
-                                                                    )}',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium,
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        formatNumber(
-                                                          listViewListaCarrinhoPedidosRecord.valorPizzaInteira +
-                                                              listViewListaCarrinhoPedidosRecord
-                                                                  .valorSabor1 +
-                                                              listViewListaCarrinhoPedidosRecord
-                                                                  .valorSabor2,
-                                                          formatType:
-                                                              FormatType.custom,
-                                                          currency: 'R\$',
-                                                          format: '0.00',
-                                                          locale: 'pt_BR',
-                                                        ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .titleLarge
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Outfit',
-                                                              fontSize: 18.0,
-                                                            ),
-                                                      ),
-                                                      Text(
-                                                        ' X ${listViewListaCarrinhoPedidosRecord.quantyPizzaInteira.toString()}',
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Readex Pro',
-                                                              fontSize: 18.0,
-                                                            ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    ).animateOnPageLoad(animationsMap[
-                                        'listViewOnPageLoadAnimation1']!);
-                                  },
-                                ),
+                                ],
                               ),
                               expanded: Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
@@ -1007,7 +761,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                         );
                                       },
                                     ).animateOnPageLoad(animationsMap[
-                                        'listViewOnPageLoadAnimation2']!);
+                                        'listViewOnPageLoadAnimation']!);
                                   },
                                 ),
                               ),
