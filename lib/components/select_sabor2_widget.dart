@@ -82,7 +82,7 @@ class _SelectSabor2WidgetState extends State<SelectSabor2Widget>
           padding: const EdgeInsetsDirectional.fromSTEB(16.0, 90.0, 16.0, 32.0),
           child: Container(
             width: 370.0,
-            height: MediaQuery.sizeOf(context).height * 0.85,
+            height: MediaQuery.sizeOf(context).height * 0.906,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
               boxShadow: const [
@@ -95,7 +95,7 @@ class _SelectSabor2WidgetState extends State<SelectSabor2Widget>
               borderRadius: BorderRadius.circular(12.0),
             ),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 30.0),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
