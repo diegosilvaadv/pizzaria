@@ -223,7 +223,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                           fontSize: 20.0,
                                         ),
                                   ),
-                                if (FFAppState().numberCarrinho == 0)
+                                if (FFAppState().numberCarrinho != 0)
                                   FFButtonWidget(
                                     onPressed: () async {
                                       setState(() {
