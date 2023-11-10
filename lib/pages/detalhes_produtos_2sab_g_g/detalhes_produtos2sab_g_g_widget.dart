@@ -142,6 +142,25 @@ class _DetalhesProdutos2sabGGWidgetState
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          setState(() {
+                                            FFAppState().quantity = 1;
+                                            FFAppState().condicao = 0;
+                                            FFAppState().preferec = 0;
+                                            FFAppState().PrefReferencia =
+                                                PrefenciasAppSStruct
+                                                    .fromSerializableMap(jsonDecode(
+                                                        '{"nome_massa":"Nenhuma","valor_massa":"0"}'));
+                                            FFAppState().SaboresApp = SaboresStruct
+                                                .fromSerializableMap(jsonDecode(
+                                                    '{"sabor1":"Nenhum","sabor2":"Nenhum","preco_sabor1":"0","preco_sabor2":"0"}'));
+                                            FFAppState().precoSabor1 = 0.0;
+                                            FFAppState().precoSabor2 = 0.0;
+                                            FFAppState().massaCondicao = 0;
+                                            FFAppState().MenuCondicao =
+                                                'Monte Sua Pizza';
+                                            FFAppState().precoSabor3 = 0.0;
+                                            FFAppState().precoSabor4 = 0.0;
+                                          });
                                           context.safePop();
                                         },
                                         child: Icon(

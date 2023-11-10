@@ -183,6 +183,8 @@ class _HomepageWidgetState extends State<HomepageWidget>
         FFAppState().precoSabor2 = 0.0;
         FFAppState().massaCondicao = 0;
         FFAppState().MenuCondicao = 'Monte Sua Pizza';
+        FFAppState().precoSabor3 = 0.0;
+        FFAppState().precoSabor4 = 0.0;
       });
     });
 
