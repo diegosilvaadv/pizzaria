@@ -1,13 +1,8 @@
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'carrinho_widget.dart' show CarrinhoWidget;
 import 'package:flutter/material.dart';
 
 class CarrinhoModel extends FlutterFlowModel<CarrinhoWidget> {
-  ///  Local state fields for this page.
-
-  ListaCarrinhoPedidosRecord? listadepedidos;
-
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
