@@ -1,9 +1,10 @@
 // Export pages
-export '/login/login_widget.dart' show LoginWidget;
-export '/homepage/homepage_widget.dart' show HomepageWidget;
-export '/detalhes_produtos/detalhes_produtos_widget.dart'
+export '/pages/login/login_widget.dart' show LoginWidget;
+export '/pages/homepage/homepage_widget.dart' show HomepageWidget;
+export '/pages/detalhes_produtos/detalhes_produtos_widget.dart'
     show DetalhesProdutosWidget;
-export '/carrinho/carrinho_widget.dart' show CarrinhoWidget;
-export '/detalhes_produtos_2sabores/detalhes_produtos2sabores_widget.dart'
+export '/pages/carrinho/carrinho_widget.dart' show CarrinhoWidget;
+export '/pages/detalhes_produtos_2sabores/detalhes_produtos2sabores_widget.dart'
     show DetalhesProdutos2saboresWidget;
-export '/pedidos_cliente/pedidos_cliente_widget.dart' show PedidosClienteWidget;
+export '/users/pedidos_cliente/pedidos_cliente_widget.dart'
+    show PedidosClienteWidget;

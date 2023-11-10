@@ -1,7 +1,7 @@
 import '/backend/schema/structs/index.dart';
-import '/components/select_massa_widget.dart';
-import '/components/select_sabor1_widget.dart';
-import '/components/select_sabor2_widget.dart';
+import '/componets/select_massa/select_massa_widget.dart';
+import '/componets/select_sabor1/select_sabor1_widget.dart';
+import '/componets/select_sabor2/select_sabor2_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
