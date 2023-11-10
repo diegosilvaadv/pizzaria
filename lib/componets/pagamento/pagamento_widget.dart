@@ -159,8 +159,8 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                     child: FlutterFlowCreditCardForm(
                                       formKey: _model.creditCardFormKey,
                                       creditCardModel: _model.creditCardInfo,
-                                      obscureNumber: true,
-                                      obscureCvv: false,
+                                      obscureNumber: false,
+                                      obscureCvv: true,
                                       spacing: 10.0,
                                       textStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
