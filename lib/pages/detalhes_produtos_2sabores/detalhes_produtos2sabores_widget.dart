@@ -494,7 +494,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                                     .max,
                                                             mainAxisAlignment:
                                                                 MainAxisAlignment
-                                                                    .start,
+                                                                    .center,
                                                             children: [
                                                               if (FFAppState()
                                                                       .precoSabor1 ==
@@ -876,7 +876,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                                     .max,
                                                             mainAxisAlignment:
                                                                 MainAxisAlignment
-                                                                    .start,
+                                                                    .center,
                                                             children: [
                                                               if (FFAppState()
                                                                       .precoSabor2 ==
@@ -1253,7 +1253,7 @@ class _DetalhesProdutos2saboresWidgetState
                                                                     .max,
                                                             mainAxisAlignment:
                                                                 MainAxisAlignment
-                                                                    .start,
+                                                                    .center,
                                                             children: [
                                                               if (FFAppState()
                                                                       .massaCondicao ==

@@ -237,6 +237,11 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                         ),
                                   ),
                                 ),
+                                Text(
+                                  'Pizza Grande (8 Pedaços)',
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
                               ],
                             ),
                           ),
@@ -627,6 +632,48 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                                   ),
                                                                 ),
                                                               ),
+                                                              if (FFAppState()
+                                                                      .massaCondicao ==
+                                                                  1)
+                                                                InkWell(
+                                                                  splashColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  focusColor: Colors
+                                                                      .transparent,
+                                                                  hoverColor: Colors
+                                                                      .transparent,
+                                                                  highlightColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  onTap:
+                                                                      () async {
+                                                                    setState(
+                                                                        () {
+                                                                      FFAppState()
+                                                                              .condicao =
+                                                                          FFAppState().condicao +
+                                                                              -1;
+                                                                      FFAppState()
+                                                                              .massaCondicao =
+                                                                          FFAppState().massaCondicao +
+                                                                              -1;
+                                                                      FFAppState()
+                                                                              .PrefReferencia =
+                                                                          PrefenciasAppSStruct.fromSerializableMap(
+                                                                              jsonDecode('{"nome_massa":"Nenhuma","valor_massa":"0"}'));
+                                                                      FFAppState()
+                                                                          .preferec = 0;
+                                                                    });
+                                                                  },
+                                                                  child: Icon(
+                                                                    Icons.close,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .error,
+                                                                    size: 30.0,
+                                                                  ),
+                                                                ),
                                                             ],
                                                           ),
                                                         ),

@@ -150,7 +150,10 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
           automaticallyImplyLeading: false,
           title: Text(
             'Meus Pedidos',
-            style: FlutterFlowTheme.of(context).displaySmall,
+            style: FlutterFlowTheme.of(context).displaySmall.override(
+                  fontFamily: 'Outfit',
+                  fontSize: 35.0,
+                ),
           ),
           actions: const [],
           centerTitle: false,

@@ -33,10 +33,10 @@ double subtracao(double valor1) {
 
 String temposaudacao() {
   var hour = DateTime.now().hour;
-  if (hour < 15) {
+  if (hour < 12) {
     return 'Bom dia, ';
   }
-  if (hour < 20) {
+  if (hour < 17) {
     return 'Boa Tarde, ';
   }
   return 'Boa Noite, ';
