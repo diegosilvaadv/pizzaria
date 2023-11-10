@@ -6,19 +6,19 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
-import 'select_sabor3_model.dart';
-export 'select_sabor3_model.dart';
+import 'select_sabor4_g_g_model.dart';
+export 'select_sabor4_g_g_model.dart';
 
-class SelectSabor3Widget extends StatefulWidget {
-  const SelectSabor3Widget({super.key});
+class SelectSabor4GGWidget extends StatefulWidget {
+  const SelectSabor4GGWidget({super.key});
 
   @override
-  _SelectSabor3WidgetState createState() => _SelectSabor3WidgetState();
+  _SelectSabor4GGWidgetState createState() => _SelectSabor4GGWidgetState();
 }
 
-class _SelectSabor3WidgetState extends State<SelectSabor3Widget>
+class _SelectSabor4GGWidgetState extends State<SelectSabor4GGWidget>
     with TickerProviderStateMixin {
-  late SelectSabor3Model _model;
+  late SelectSabor4GGModel _model;
 
   final animationsMap = {
     'containerOnPageLoadAnimation': AnimationInfo(
@@ -59,7 +59,7 @@ class _SelectSabor3WidgetState extends State<SelectSabor3Widget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SelectSabor3Model());
+    _model = createModel(context, () => SelectSabor4GGModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -106,7 +106,7 @@ class _SelectSabor3WidgetState extends State<SelectSabor3Widget>
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Escolha o Terceiro Sabor',
+                            'Escolha o Quarto Sabor',
                             style: FlutterFlowTheme.of(context).titleLarge,
                           ),
                           FlutterFlowIconButton(
@@ -179,16 +179,16 @@ class _SelectSabor3WidgetState extends State<SelectSabor3Widget>
                                     setState(() {
                                       FFAppState().updateSaboresAppStruct(
                                         (e) => e
-                                          ..sabor3GG =
+                                          ..sabor4GG =
                                               listViewProdutosRecord.nomeProduto
-                                          ..precoSab3GG = listViewProdutosRecord
+                                          ..precoSab4GG = listViewProdutosRecord
                                                   .valorPizza /
                                               2,
                                       );
                                       FFAppState().condicao =
                                           FFAppState().condicao + 1;
-                                      FFAppState().precoSabor3 = FFAppState()
-                                              .precoSabor3 +
+                                      FFAppState().precoSabor4 = FFAppState()
+                                              .precoSabor4 +
                                           listViewProdutosRecord.valorPizza / 2;
                                     });
                                     Navigator.pop(context);

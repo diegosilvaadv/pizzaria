@@ -238,7 +238,7 @@ class _SelectSabor2GGWidgetState extends State<SelectSabor2GGWidget>
                                                         formatNumber(
                                                           listViewProdutosRecord
                                                                   .valorPizza /
-                                                              2,
+                                                              4,
                                                           formatType:
                                                               FormatType.custom,
                                                           currency: '+R\$',

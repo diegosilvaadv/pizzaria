@@ -1,9 +1,9 @@
 import '/backend/schema/structs/index.dart';
 import '/componets/select_massa/select_massa_widget.dart';
-import '/componets/select_sabor1/select_sabor1_widget.dart';
-import '/componets/select_sabor2/select_sabor2_widget.dart';
-import '/componets/select_sabor3/select_sabor3_widget.dart';
-import '/componets/select_sabor4/select_sabor4_widget.dart';
+import '/componets/select_sabor1_g_g/select_sabor1_g_g_widget.dart';
+import '/componets/select_sabor2_g_g/select_sabor2_g_g_widget.dart';
+import '/componets/select_sabor3_g_g/select_sabor3_g_g_widget.dart';
+import '/componets/select_sabor4_g_g/select_sabor4_g_g_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -532,7 +532,7 @@ class _DetalhesProdutos4SabWidgetState
                                                                             child:
                                                                                 GestureDetector(
                                                                               onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                              child: const SelectSabor1Widget(),
+                                                                              child: const SelectSabor1GGWidget(),
                                                                             ),
                                                                           );
                                                                         },
@@ -916,7 +916,7 @@ class _DetalhesProdutos4SabWidgetState
                                                                             child:
                                                                                 GestureDetector(
                                                                               onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                              child: const SelectSabor2Widget(),
+                                                                              child: const SelectSabor2GGWidget(),
                                                                             ),
                                                                           );
                                                                         },
@@ -1300,7 +1300,7 @@ class _DetalhesProdutos4SabWidgetState
                                                                             child:
                                                                                 GestureDetector(
                                                                               onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                              child: const SelectSabor3Widget(),
+                                                                              child: const SelectSabor3GGWidget(),
                                                                             ),
                                                                           );
                                                                         },
@@ -1684,7 +1684,7 @@ class _DetalhesProdutos4SabWidgetState
                                                                             child:
                                                                                 GestureDetector(
                                                                               onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                              child: const SelectSabor4Widget(),
+                                                                              child: const SelectSabor4GGWidget(),
                                                                             ),
                                                                           );
                                                                         },

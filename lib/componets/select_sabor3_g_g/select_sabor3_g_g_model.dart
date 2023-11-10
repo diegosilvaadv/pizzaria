@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'select_sabor4_widget.dart' show SelectSabor4Widget;
+import 'select_sabor3_g_g_widget.dart' show SelectSabor3GGWidget;
 import 'package:flutter/material.dart';
 
-class SelectSabor4Model extends FlutterFlowModel<SelectSabor4Widget> {
+class SelectSabor3GGModel extends FlutterFlowModel<SelectSabor3GGWidget> {
   /// Initialization and disposal methods.
 
   @override
