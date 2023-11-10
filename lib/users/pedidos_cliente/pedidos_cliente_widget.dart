@@ -695,7 +695,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                                             0.0,
                                                                             8.0),
                                                                     child: Text(
-                                                                      'Numero do Pedido: ${formatNumber(
+                                                                      'Pedido: ${formatNumber(
                                                                         listViewListaCarrinhoPedidosRecord
                                                                             .nPedido,
                                                                         formatType:
@@ -778,6 +778,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                   headerAlignment:
                                       ExpandablePanelHeaderAlignment.center,
                                   hasIcon: true,
+                                  iconSize: 30.0,
                                   iconColor: FlutterFlowTheme.of(context)
                                       .secondaryText,
                                 ),
