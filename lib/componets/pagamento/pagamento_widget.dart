@@ -241,46 +241,50 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                   MainAxisAlignment
                                                       .spaceBetween,
                                               children: [
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        if (produtosCardItem
-                                                                .valor !=
-                                                            0.0)
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        6.0,
-                                                                        0.0),
-                                                            child: Text(
-                                                              produtosCardItem
-                                                                  .nomeProduto,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .labelMedium,
-                                                            ),
-                                                          ),
-                                                        if (produtosCardItem
-                                                                .valor ==
-                                                            0.0)
-                                                          Text(
-                                                            produtosCardItem
-                                                                .nomeProduto,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelMedium,
-                                                          ),
-                                                      ],
-                                                    ),
-                                                  ],
+                                                Expanded(
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Expanded(
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            if (produtosCardItem
+                                                                    .valor !=
+                                                                0.0)
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            6.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  produtosCardItem
+                                                                      .nomeProduto,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium,
+                                                                ),
+                                                              ),
+                                                            if (produtosCardItem
+                                                                    .valor ==
+                                                                0.0)
+                                                              Text(
+                                                                produtosCardItem
+                                                                    .nomeProduto,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium,
+                                                              ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                                 Row(
                                                   mainAxisSize:
@@ -421,6 +425,19 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                         0.0, 12.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
+                                        await Future.delayed(
+                                            const Duration(milliseconds: 5000));
+
+                                        await _model.pedidosuser!.reference.update(
+                                            createListaCarrinhoPedidosRecordData(
+                                          status: 'Preparando',
+                                        ));
+                                        setState(() {
+                                          FFAppState().totalprice = 0;
+                                          FFAppState().ProdutosDoCarrinho = [];
+                                          FFAppState().numberCarrinho = 0;
+                                        });
+
                                         context.goNamed(
                                           'pedidos_cliente',
                                           extra: <String, dynamic>{
@@ -433,16 +450,6 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                             ),
                                           },
                                         );
-
-                                        await _model.pedidosuser!.reference.update(
-                                            createListaCarrinhoPedidosRecordData(
-                                          status: 'Preparando',
-                                        ));
-                                        setState(() {
-                                          FFAppState().totalprice = 0;
-                                          FFAppState().ProdutosDoCarrinho = [];
-                                          FFAppState().numberCarrinho = 0;
-                                        });
                                       },
                                       text: 'Realizar Pagamento',
                                       options: FFButtonOptions(
