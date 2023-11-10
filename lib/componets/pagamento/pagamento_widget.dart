@@ -1,4 +1,3 @@
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_credit_card_form.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -453,11 +452,6 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                       onPressed: () async {
                                         await Future.delayed(
                                             const Duration(milliseconds: 5000));
-
-                                        await _model.pedidosuser!.reference.update(
-                                            createListaCarrinhoPedidosRecordData(
-                                          status: 'Preparando',
-                                        ));
                                         setState(() {
                                           FFAppState().totalprice = 0;
                                           FFAppState().ProdutosDoCarrinho = [];
