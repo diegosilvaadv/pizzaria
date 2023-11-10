@@ -298,7 +298,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                   child: Container(
                                     width: MediaQuery.sizeOf(context).width *
                                         0.919,
-                                    height: 256.0,
+                                    height: 224.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
