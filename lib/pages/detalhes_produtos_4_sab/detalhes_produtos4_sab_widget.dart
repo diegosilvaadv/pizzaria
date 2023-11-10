@@ -2447,9 +2447,9 @@ class _DetalhesProdutos4SabWidgetState
                                         formatNumber(
                                           (FFAppState().precoSabor1 +
                                                   FFAppState().precoSabor2 +
-                                                  FFAppState().preferec +
                                                   FFAppState().precoSabor3 +
-                                                  FFAppState().precoSabor3) *
+                                                  FFAppState().precoSabor4 +
+                                                  FFAppState().preferec) *
                                               FFAppState().quantity,
                                           formatType: FormatType.custom,
                                           currency: 'R\$',
