@@ -137,7 +137,16 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                         size: 24.0,
                                       ),
                                       onPressed: () async {
-                                        Navigator.pop(context);
+                                        context.pushNamed(
+                                          'pedidos_cliente',
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: const TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType.fade,
+                                            ),
+                                          },
+                                        );
                                       },
                                     ),
                                   ),
@@ -413,19 +422,6 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                         0.0, 12.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
-                                        setState(() {
-                                          FFAppState().totalprice = 0;
-                                          FFAppState().ProdutosDoCarrinho = [];
-                                          FFAppState().numberCarrinho = 0;
-                                        });
-
-                                        await _model.pedidosuser!.reference.update(
-                                            createListaCarrinhoPedidosRecordData(
-                                          status: 'Preparando',
-                                        ));
-                                        await Future.delayed(
-                                            const Duration(milliseconds: 5000));
-
                                         context.goNamed(
                                           'pedidos_cliente',
                                           extra: <String, dynamic>{
@@ -438,6 +434,16 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                             ),
                                           },
                                         );
+
+                                        await _model.pedidosuser!.reference.update(
+                                            createListaCarrinhoPedidosRecordData(
+                                          status: 'Preparando',
+                                        ));
+                                        setState(() {
+                                          FFAppState().totalprice = 0;
+                                          FFAppState().ProdutosDoCarrinho = [];
+                                          FFAppState().numberCarrinho = 0;
+                                        });
                                       },
                                       text: 'Realizar Pagamento',
                                       options: FFButtonOptions(
