@@ -6,20 +6,19 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
-import 'select_sabor2_g_g16_f_c_model.dart';
-export 'select_sabor2_g_g16_f_c_model.dart';
+import 'select_sabor2_g_g_model.dart';
+export 'select_sabor2_g_g_model.dart';
 
-class SelectSabor2GG16FCWidget extends StatefulWidget {
-  const SelectSabor2GG16FCWidget({super.key});
+class SelectSabor2GGWidget extends StatefulWidget {
+  const SelectSabor2GGWidget({super.key});
 
   @override
-  _SelectSabor2GG16FCWidgetState createState() =>
-      _SelectSabor2GG16FCWidgetState();
+  _SelectSabor2GGWidgetState createState() => _SelectSabor2GGWidgetState();
 }
 
-class _SelectSabor2GG16FCWidgetState extends State<SelectSabor2GG16FCWidget>
+class _SelectSabor2GGWidgetState extends State<SelectSabor2GGWidget>
     with TickerProviderStateMixin {
-  late SelectSabor2GG16FCModel _model;
+  late SelectSabor2GGModel _model;
 
   final animationsMap = {
     'containerOnPageLoadAnimation': AnimationInfo(
@@ -60,7 +59,7 @@ class _SelectSabor2GG16FCWidgetState extends State<SelectSabor2GG16FCWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SelectSabor2GG16FCModel());
+    _model = createModel(context, () => SelectSabor2GGModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
