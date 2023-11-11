@@ -291,7 +291,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                     widget.produtoRef!.valorPizza / 2,
                                     formatType: FormatType.custom,
                                     currency: 'R\$',
-                                    format: '0.0',
+                                    format: '00.00',
                                     locale: 'pt_BR',
                                   ),
                                   style: FlutterFlowTheme.of(context)
