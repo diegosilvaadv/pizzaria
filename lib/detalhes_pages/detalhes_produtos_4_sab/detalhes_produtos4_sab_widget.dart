@@ -2396,9 +2396,11 @@ class _DetalhesProdutos4SabWidgetState
                                           valueOrDefault<double>(
                                             (FFAppState().precoSabor1 +
                                                     FFAppState().precoSabor2 +
+                                                    FFAppState().precoSabor3 +
+                                                    FFAppState().precoSabor4 +
                                                     FFAppState().preferec) *
                                                 FFAppState().quantity,
-                                            00.00,
+                                            0.00,
                                           );
                                   FFAppState().condicao = 0;
                                   FFAppState().quantity = 1;
