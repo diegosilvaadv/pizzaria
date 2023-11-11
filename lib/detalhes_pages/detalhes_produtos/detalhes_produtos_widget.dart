@@ -288,10 +288,10 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                 ),
                                 Text(
                                   formatNumber(
-                                    widget.produtoRef!.valorPizza,
+                                    widget.produtoRef!.valorPizza / 2,
                                     formatType: FormatType.custom,
                                     currency: 'R\$',
-                                    format: '.00',
+                                    format: '0.0',
                                     locale: 'pt_BR',
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -869,7 +869,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                   ));
                                   FFAppState().totalprice =
                                       FFAppState().totalprice +
-                                          (widget.produtoRef!.valorPizza +
+                                          (widget.produtoRef!.valorPizza / 2 +
                                                   FFAppState().preferec) *
                                               FFAppState().quantity;
                                   FFAppState().condicao = 0;
