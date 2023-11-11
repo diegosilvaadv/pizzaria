@@ -920,7 +920,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                 Text(
                                   valueOrDefault<String>(
                                     formatNumber(
-                                      (widget.produtoRef!.valorPizza +
+                                      (widget.produtoRef!.valorPizza / 2 +
                                               FFAppState().preferec) *
                                           FFAppState().quantity,
                                       formatType: FormatType.custom,
