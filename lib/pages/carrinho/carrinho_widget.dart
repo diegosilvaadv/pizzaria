@@ -834,7 +834,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                             .massaNome,
                                                         numberProdutos:
                                                             buttonListaCarrinhoPedidosRecordList
-                                                                    .last
+                                                                    .first
                                                                     .numberProdutos +
                                                                 1,
                                                       ));
