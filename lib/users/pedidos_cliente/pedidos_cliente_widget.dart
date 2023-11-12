@@ -258,129 +258,174 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Expanded(
-                                                    child: Text(
-                                                      listViewListaCarrinhoPedidosRecord
-                                                          .nomeProduto,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .headlineMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Outfit',
-                                                                fontSize: 15.0,
-                                                              ),
-                                                    ),
+                                              StreamBuilder<
+                                                  List<
+                                                      ListaCarrinhoPedidosRecord>>(
+                                                stream:
+                                                    queryListaCarrinhoPedidosRecord(
+                                                  queryBuilder:
+                                                      (listaCarrinhoPedidosRecord) =>
+                                                          listaCarrinhoPedidosRecord
+                                                              .where(
+                                                    'nPedido',
+                                                    isEqualTo:
+                                                        listViewListaCarrinhoPedidosRecord
+                                                            .nPedido,
                                                   ),
-                                                  Column(
+                                                ),
+                                                builder: (context, snapshot) {
+                                                  // Customize what your widget looks like when it's loading.
+                                                  if (!snapshot.hasData) {
+                                                    return Center(
+                                                      child: SizedBox(
+                                                        width: 50.0,
+                                                        height: 50.0,
+                                                        child:
+                                                            CircularProgressIndicator(
+                                                          valueColor:
+                                                              AlwaysStoppedAnimation<
+                                                                  Color>(
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }
+                                                  List<ListaCarrinhoPedidosRecord>
+                                                      columnListaCarrinhoPedidosRecordList =
+                                                      snapshot.data!;
+                                                  return Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment.end,
-                                                    children: [
-                                                      Text(
-                                                        formatNumber(
-                                                          listViewListaCarrinhoPedidosRecord
-                                                              .valor,
-                                                          formatType:
-                                                              FormatType.custom,
-                                                          currency: 'R\$',
-                                                          format: '0.00',
-                                                          locale: 'pt_BR',
-                                                        ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .headlineSmall
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Outfit',
-                                                              fontSize: 20.0,
+                                                    children: List.generate(
+                                                        columnListaCarrinhoPedidosRecordList
+                                                            .length,
+                                                        (columnIndex) {
+                                                      final columnListaCarrinhoPedidosRecord =
+                                                          columnListaCarrinhoPedidosRecordList[
+                                                              columnIndex];
+                                                      return Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Expanded(
+                                                            child: Text(
+                                                              listViewListaCarrinhoPedidosRecord
+                                                                  .nomeProduto,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Outfit',
+                                                                    fontSize:
+                                                                        15.0,
+                                                                  ),
                                                             ),
-                                                      ),
-                                                      Text(
-                                                        'X ${listViewListaCarrinhoPedidosRecord.quanty.toString()}',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineSmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Outfit',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  fontSize:
-                                                                      15.0,
+                                                          ),
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .end,
+                                                            children: [
+                                                              Text(
+                                                                formatNumber(
+                                                                  listViewListaCarrinhoPedidosRecord
+                                                                      .valor,
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .custom,
+                                                                  currency:
+                                                                      'R\$',
+                                                                  format:
+                                                                      '0.00',
+                                                                  locale:
+                                                                      'pt_BR',
                                                                 ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(16.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child:
-                                                        FlutterFlowIconButton(
-                                                      borderColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate,
-                                                      borderRadius: 20.0,
-                                                      borderWidth: 1.0,
-                                                      buttonSize: 40.0,
-                                                      fillColor: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      hoverColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate,
-                                                      hoverIconColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      icon: Icon(
-                                                        Icons.more_vert,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        size: 24.0,
-                                                      ),
-                                                      onPressed: () async {
-                                                        await listViewListaCarrinhoPedidosRecord
-                                                            .reference
-                                                            .delete();
-                                                      },
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 4.0, 0.0, 8.0),
-                                                child: Text(
-                                                  'Pedido Criado em: ${dateTimeFormat(
-                                                    'dd/MM/yyyy | kk:mm',
-                                                    listViewListaCarrinhoPedidosRecord
-                                                        .data,
-                                                    locale: FFLocalizations.of(
-                                                            context)
-                                                        .languageCode,
-                                                  )}',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelMedium,
-                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Outfit',
+                                                                      fontSize:
+                                                                          20.0,
+                                                                    ),
+                                                              ),
+                                                              Text(
+                                                                'X ${listViewListaCarrinhoPedidosRecord.quanty.toString()}',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Outfit',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      fontSize:
+                                                                          15.0,
+                                                                    ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child:
+                                                                FlutterFlowIconButton(
+                                                              borderColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .alternate,
+                                                              borderRadius:
+                                                                  20.0,
+                                                              borderWidth: 1.0,
+                                                              buttonSize: 40.0,
+                                                              fillColor: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                              hoverColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .alternate,
+                                                              hoverIconColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                              icon: Icon(
+                                                                Icons.more_vert,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                size: 24.0,
+                                                              ),
+                                                              onPressed:
+                                                                  () async {
+                                                                await listViewListaCarrinhoPedidosRecord
+                                                                    .reference
+                                                                    .delete();
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    }),
+                                                  );
+                                                },
                                               ),
                                               Divider(
                                                 thickness: 1.0,
@@ -388,97 +433,133 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .alternate,
                                               ),
-                                              Row(
+                                              Column(
                                                 mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
                                                 children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 4.0,
-                                                                0.0, 8.0),
-                                                    child: Text(
-                                                      'Numero do Pedido: ${formatNumber(
-                                                        listViewListaCarrinhoPedidosRecord
-                                                            .nPedido,
-                                                        formatType:
-                                                            FormatType.custom,
-                                                        format: '',
-                                                        locale: '',
-                                                      )}',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    4.0,
+                                                                    0.0,
+                                                                    2.0),
+                                                        child: Text(
+                                                          'Pedido Criado em: ${dateTimeFormat(
+                                                            'dd/MM/yyyy | kk:mm',
+                                                            listViewListaCarrinhoPedidosRecord
+                                                                .data,
+                                                            locale: FFLocalizations
+                                                                    .of(context)
+                                                                .languageCode,
+                                                          )}',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
                                                               .labelMedium,
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    height: 32.0,
-                                                    decoration: BoxDecoration(
-                                                      color: () {
-                                                        if (listViewListaCarrinhoPedidosRecord
-                                                                .status ==
-                                                            'Pending') {
-                                                          return FlutterFlowTheme
-                                                                  .of(context)
-                                                              .accent3;
-                                                        } else if (listViewListaCarrinhoPedidosRecord
-                                                                .status ==
-                                                            'Accepted') {
-                                                          return FlutterFlowTheme
-                                                                  .of(context)
-                                                              .accent2;
-                                                        } else {
-                                                          return FlutterFlowTheme
-                                                                  .of(context)
-                                                              .accent1;
-                                                        }
-                                                      }(),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                      border: Border.all(
-                                                        color: () {
-                                                          if (listViewListaCarrinhoPedidosRecord
-                                                                  .status ==
-                                                              'Pending') {
-                                                            return FlutterFlowTheme
-                                                                    .of(context)
-                                                                .tertiary;
-                                                          } else if (listViewListaCarrinhoPedidosRecord
-                                                                  .status ==
-                                                              'Accepted') {
-                                                            return FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondary;
-                                                          } else {
-                                                            return FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primary;
-                                                          }
-                                                        }(),
-                                                        width: 2.0,
+                                                        ),
                                                       ),
-                                                    ),
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                            0.00, 0.00),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  16.0,
-                                                                  0.0,
-                                                                  16.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        listViewListaCarrinhoPedidosRecord
-                                                            .status,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    2.0),
+                                                        child: Text(
+                                                          'Numero do Pedido: ${formatNumber(
+                                                            listViewListaCarrinhoPedidosRecord
+                                                                .nPedido,
+                                                            formatType:
+                                                                FormatType
+                                                                    .custom,
+                                                            format: '',
+                                                            locale: '',
+                                                          )}',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium,
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        height: 32.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: () {
+                                                            if (listViewListaCarrinhoPedidosRecord
+                                                                    .status ==
+                                                                'Pending') {
+                                                              return FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .accent3;
+                                                            } else if (listViewListaCarrinhoPedidosRecord
+                                                                    .status ==
+                                                                'Accepted') {
+                                                              return FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .accent2;
+                                                            } else {
+                                                              return FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .accent1;
+                                                            }
+                                                          }(),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          border: Border.all(
+                                                            color: () {
+                                                              if (listViewListaCarrinhoPedidosRecord
+                                                                      .status ==
+                                                                  'Pending') {
+                                                                return FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .tertiary;
+                                                              } else if (listViewListaCarrinhoPedidosRecord
+                                                                      .status ==
+                                                                  'Accepted') {
+                                                                return FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary;
+                                                              } else {
+                                                                return FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary;
+                                                              }
+                                                            }(),
+                                                            width: 2.0,
+                                                          ),
+                                                        ),
+                                                        alignment:
+                                                            const AlignmentDirectional(
+                                                                0.00, 0.00),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      16.0,
+                                                                      0.0,
+                                                                      16.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            listViewListaCarrinhoPedidosRecord
+                                                                .status,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
@@ -506,8 +587,10 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                                       FontWeight
                                                                           .w500,
                                                                 ),
+                                                          ),
+                                                        ),
                                                       ),
-                                                    ),
+                                                    ],
                                                   ),
                                                 ],
                                               ),
