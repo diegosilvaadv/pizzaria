@@ -732,21 +732,15 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                       await ListaCarrinhoPedidosRecord
                                           .collection
                                           .doc()
-                                          .set({
-                                        ...createListaCarrinhoPedidosRecordData(
-                                          status: 'Não Paga',
-                                          nPedido: random_data
-                                              .randomInteger(0, 100)
-                                              .toDouble(),
-                                          userRef: currentUserReference,
-                                        ),
-                                        ...mapToFirestore(
-                                          {
-                                            'data':
-                                                FieldValue.serverTimestamp(),
-                                          },
-                                        ),
-                                      });
+                                          .set(
+                                              createListaCarrinhoPedidosRecordData(
+                                            status: 'Não Paga',
+                                            data: getCurrentTimestamp,
+                                            nPedido: random_data
+                                                .randomInteger(0, 100)
+                                                .toDouble(),
+                                            userRef: currentUserReference,
+                                          ));
                                     },
                                     child: Text(
                                       valueOrDefault<String>(
@@ -832,6 +826,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                 FFAppState()
                                                                     .contador]
                                                             .reference,
+                                                    user: currentUserReference,
                                                   ));
                                                   showAlignedDialog(
                                                     barrierDismissible: false,

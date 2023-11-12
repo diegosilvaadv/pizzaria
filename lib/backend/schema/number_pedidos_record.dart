@@ -34,6 +34,11 @@ class NumberPedidosRecord extends FirestoreRecord {
   DocumentReference? get referenc => _referenc;
   bool hasReferenc() => _referenc != null;
 
+  // "user" field.
+  DocumentReference? _user;
+  DocumentReference? get user => _user;
+  bool hasUser() => _user != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -41,6 +46,7 @@ class NumberPedidosRecord extends FirestoreRecord {
     _valor = castToType<double>(snapshotData['valor']);
     _quanty = castToType<double>(snapshotData['quanty']);
     _referenc = snapshotData['referenc'] as DocumentReference?;
+    _user = snapshotData['user'] as DocumentReference?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -87,6 +93,7 @@ Map<String, dynamic> createNumberPedidosRecordData({
   double? valor,
   double? quanty,
   DocumentReference? referenc,
+  DocumentReference? user,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -94,6 +101,7 @@ Map<String, dynamic> createNumberPedidosRecordData({
       'valor': valor,
       'quanty': quanty,
       'referenc': referenc,
+      'user': user,
     }.withoutNulls,
   );
 
@@ -109,12 +117,13 @@ class NumberPedidosRecordDocumentEquality
     return e1?.nProduto == e2?.nProduto &&
         e1?.valor == e2?.valor &&
         e1?.quanty == e2?.quanty &&
-        e1?.referenc == e2?.referenc;
+        e1?.referenc == e2?.referenc &&
+        e1?.user == e2?.user;
   }
 
   @override
   int hash(NumberPedidosRecord? e) => const ListEquality()
-      .hash([e?.nProduto, e?.valor, e?.quanty, e?.referenc]);
+      .hash([e?.nProduto, e?.valor, e?.quanty, e?.referenc, e?.user]);
 
   @override
   bool isValidKey(Object? o) => o is NumberPedidosRecord;
