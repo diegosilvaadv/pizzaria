@@ -352,40 +352,51 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
-                                                          if (pedidosItem
-                                                                  .valorSabor1 ==
-                                                              0.0)
-                                                            Expanded(
-                                                              child: Text(
-                                                                '${formatNumber(
-                                                                  pedidosItem
-                                                                      .valor,
-                                                                  formatType:
-                                                                      FormatType
-                                                                          .custom,
-                                                                  currency:
-                                                                      'R\$',
-                                                                  format:
-                                                                      '0.00',
-                                                                  locale:
-                                                                      'pt_BR',
-                                                                )} X ${pedidosItem.quantity.toString()}',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
-                                                                      color: const Color(
-                                                                          0xFF26CB3A),
-                                                                      fontSize:
-                                                                          18.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                    ),
-                                                              ),
+                                                          Expanded(
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                if (pedidosItem
+                                                                        .valorSabor1 ==
+                                                                    0.0)
+                                                                  Text(
+                                                                    '${formatNumber(
+                                                                      pedidosItem
+                                                                              .valor +
+                                                                          pedidosItem
+                                                                              .valorBebidas,
+                                                                      formatType:
+                                                                          FormatType
+                                                                              .custom,
+                                                                      currency:
+                                                                          'R\$',
+                                                                      format:
+                                                                          '0.00',
+                                                                      locale:
+                                                                          'pt_BR',
+                                                                    )} X ${pedidosItem.quantity.toString()}',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Readex Pro',
+                                                                          color:
+                                                                              const Color(0xFF26CB3A),
+                                                                          fontSize:
+                                                                              18.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w600,
+                                                                        ),
+                                                                  ),
+                                                              ],
                                                             ),
+                                                          ),
                                                         ],
                                                       ),
                                                     ),
@@ -456,7 +467,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                             MainAxisSize.max,
                                                         children: [
                                                           if (pedidosItem
-                                                                  .valorpreferecias ==
+                                                                  .valorBebidas ==
                                                               0.0)
                                                             Expanded(
                                                               child: Text(

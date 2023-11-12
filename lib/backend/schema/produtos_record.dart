@@ -39,12 +39,18 @@ class ProdutosRecord extends FirestoreRecord {
   String get tag => _tag ?? '';
   bool hasTag() => _tag != null;
 
+  // "valor_bebidas" field.
+  double? _valorBebidas;
+  double get valorBebidas => _valorBebidas ?? 0.0;
+  bool hasValorBebidas() => _valorBebidas != null;
+
   void _initializeFields() {
     _nomeProduto = snapshotData['nome_produto'] as String?;
     _descricao = snapshotData['descricao'] as String?;
     _img = snapshotData['img'] as String?;
     _valorPizza = castToType<double>(snapshotData['valor_pizza']);
     _tag = snapshotData['tag'] as String?;
+    _valorBebidas = castToType<double>(snapshotData['valor_bebidas']);
   }
 
   static CollectionReference get collection =>
@@ -87,6 +93,7 @@ Map<String, dynamic> createProdutosRecordData({
   String? img,
   double? valorPizza,
   String? tag,
+  double? valorBebidas,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -95,6 +102,7 @@ Map<String, dynamic> createProdutosRecordData({
       'img': img,
       'valor_pizza': valorPizza,
       'tag': tag,
+      'valor_bebidas': valorBebidas,
     }.withoutNulls,
   );
 
@@ -110,12 +118,19 @@ class ProdutosRecordDocumentEquality implements Equality<ProdutosRecord> {
         e1?.descricao == e2?.descricao &&
         e1?.img == e2?.img &&
         e1?.valorPizza == e2?.valorPizza &&
-        e1?.tag == e2?.tag;
+        e1?.tag == e2?.tag &&
+        e1?.valorBebidas == e2?.valorBebidas;
   }
 
   @override
-  int hash(ProdutosRecord? e) => const ListEquality()
-      .hash([e?.nomeProduto, e?.descricao, e?.img, e?.valorPizza, e?.tag]);
+  int hash(ProdutosRecord? e) => const ListEquality().hash([
+        e?.nomeProduto,
+        e?.descricao,
+        e?.img,
+        e?.valorPizza,
+        e?.tag,
+        e?.valorBebidas
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is ProdutosRecord;

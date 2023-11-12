@@ -89,6 +89,11 @@ class ListaCarrinhoPedidosRecord extends FirestoreRecord {
   double get nPedido => _nPedido ?? 0.0;
   bool hasNPedido() => _nPedido != null;
 
+  // "NumeroP" field.
+  List<double>? _numeroP;
+  List<double> get numeroP => _numeroP ?? const [];
+  bool hasNumeroP() => _numeroP != null;
+
   void _initializeFields() {
     _nomeProduto = snapshotData['nome_produto'] as String?;
     _img = snapshotData['img'] as String?;
@@ -109,6 +114,7 @@ class ListaCarrinhoPedidosRecord extends FirestoreRecord {
     _status = snapshotData['status'] as String?;
     _userRef = snapshotData['userRef'] as DocumentReference?;
     _nPedido = castToType<double>(snapshotData['nPedido']);
+    _numeroP = getDataList(snapshotData['NumeroP']);
   }
 
   static CollectionReference get collection =>
@@ -193,6 +199,7 @@ class ListaCarrinhoPedidosRecordDocumentEquality
 
   @override
   bool equals(ListaCarrinhoPedidosRecord? e1, ListaCarrinhoPedidosRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.nomeProduto == e2?.nomeProduto &&
         e1?.img == e2?.img &&
         e1?.valorPizzaInteira == e2?.valorPizzaInteira &&
@@ -207,7 +214,8 @@ class ListaCarrinhoPedidosRecordDocumentEquality
         e1?.data == e2?.data &&
         e1?.status == e2?.status &&
         e1?.userRef == e2?.userRef &&
-        e1?.nPedido == e2?.nPedido;
+        e1?.nPedido == e2?.nPedido &&
+        listEquality.equals(e1?.numeroP, e2?.numeroP);
   }
 
   @override
@@ -226,7 +234,8 @@ class ListaCarrinhoPedidosRecordDocumentEquality
         e?.data,
         e?.status,
         e?.userRef,
-        e?.nPedido
+        e?.nPedido,
+        e?.numeroP
       ]);
 
   @override

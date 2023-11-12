@@ -451,7 +451,7 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                     child: FFButtonWidget(
                                       onPressed: () async {
                                         await Future.delayed(
-                                            const Duration(milliseconds: 5000));
+                                            const Duration(milliseconds: 1000));
                                         setState(() {
                                           FFAppState().totalprice = 0;
                                           FFAppState().ProdutosDoCarrinho = [];

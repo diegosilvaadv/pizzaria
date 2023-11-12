@@ -263,7 +263,7 @@ class _DetalhesProdutosBebidasWidgetState
                                 ),
                                 Text(
                                   formatNumber(
-                                    widget.produtoRef!.valorPizza,
+                                    widget.produtoRef!.valorBebidas,
                                     formatType: FormatType.custom,
                                     currency: 'R\$',
                                     format: '.00',
@@ -435,16 +435,11 @@ class _DetalhesProdutosBebidasWidgetState
                                   nomeProduto: widget.produtoRef?.nomeProduto,
                                   img: widget.produtoRef?.img,
                                   quantity: FFAppState().quantity,
-                                  valor: widget.produtoRef?.valorPizza,
-                                  valorpreferecias:
-                                      FFAppState().PrefReferencia.valorMassa,
-                                  massaNome:
-                                      FFAppState().PrefReferencia.nomeMassa,
+                                  valor: widget.produtoRef?.valorBebidas,
                                 ));
                                 FFAppState().totalprice =
                                     FFAppState().totalprice +
-                                        (widget.produtoRef!.valorPizza +
-                                                FFAppState().preferec) *
+                                        widget.produtoRef!.valorBebidas *
                                             FFAppState().quantity;
                                 FFAppState().condicao = 0;
                                 FFAppState().quantity = 1;
