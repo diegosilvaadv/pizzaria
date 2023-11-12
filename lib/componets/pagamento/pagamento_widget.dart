@@ -1,9 +1,11 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_credit_card_form.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -420,59 +422,177 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                       ],
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 4.0, 12.0, 16.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Text(
-                                              'Total',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .titleMedium
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                  ),
-                                            ),
-                                            FlutterFlowIconButton(
-                                              borderColor: Colors.transparent,
-                                              borderRadius: 30.0,
-                                              borderWidth: 1.0,
-                                              buttonSize: 36.0,
-                                              icon: Icon(
-                                                Icons.info_outlined,
-                                                color:
+                                  Builder(
+                                    builder: (context) => Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 4.0, 12.0, 16.0),
+                                      child: FutureBuilder<
+                                          List<ListaCarrinhoPedidosRecord>>(
+                                        future:
+                                            queryListaCarrinhoPedidosRecordOnce(
+                                          singleRecord: true,
+                                        ),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                          Color>(
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                size: 18.0,
+                                                        .primary,
+                                                  ),
+                                                ),
                                               ),
-                                              onPressed: () {
-                                                print('IconButton pressed ...');
-                                              },
+                                            );
+                                          }
+                                          List<ListaCarrinhoPedidosRecord>
+                                              propertyAddressListaCarrinhoPedidosRecordList =
+                                              snapshot.data!;
+                                          // Return an empty Container when the item does not exist.
+                                          if (snapshot.data!.isEmpty) {
+                                            return Container();
+                                          }
+                                          final propertyAddressListaCarrinhoPedidosRecord =
+                                              propertyAddressListaCarrinhoPedidosRecordList
+                                                      .isNotEmpty
+                                                  ? propertyAddressListaCarrinhoPedidosRecordList
+                                                      .first
+                                                  : null;
+                                          return InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              if (FFAppState()
+                                                      .ProdutosDoCarrinho.isNotEmpty) {
+                                                setState(() {
+                                                  FFAppState().contador = -1;
+                                                });
+                                                while (FFAppState().contador <=
+                                                    FFAppState()
+                                                        .ProdutosDoCarrinho
+                                                        .length) {
+                                                  setState(() {
+                                                    FFAppState().contador =
+                                                        FFAppState().contador +
+                                                            1;
+                                                  });
+
+                                                  await NumberPedidosRecord
+                                                          .createDoc(
+                                                              propertyAddressListaCarrinhoPedidosRecord!
+                                                                  .reference)
+                                                      .set(
+                                                          createNumberPedidosRecordData(
+                                                    nProduto: FFAppState()
+                                                        .ProdutosDoCarrinho[
+                                                            FFAppState()
+                                                                .contador]
+                                                        .nomeProduto,
+                                                  ));
+                                                  showAlignedDialog(
+                                                    barrierDismissible: false,
+                                                    context: context,
+                                                    isGlobal: false,
+                                                    avoidOverflow: true,
+                                                    targetAnchor:
+                                                        const AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    followerAnchor:
+                                                        const AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    builder: (dialogContext) {
+                                                      return const Material(
+                                                        color:
+                                                            Colors.transparent,
+                                                        child:
+                                                            PagamentoWidget(),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      setState(() {}));
+                                                }
+                                              } else {
+                                                return;
+                                              }
+                                            },
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Text(
+                                                      'Total',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                              ),
+                                                    ),
+                                                    FlutterFlowIconButton(
+                                                      borderColor:
+                                                          Colors.transparent,
+                                                      borderRadius: 30.0,
+                                                      borderWidth: 1.0,
+                                                      buttonSize: 36.0,
+                                                      icon: Icon(
+                                                        Icons.info_outlined,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 18.0,
+                                                      ),
+                                                      onPressed: () {
+                                                        print(
+                                                            'IconButton pressed ...');
+                                                      },
+                                                    ),
+                                                  ],
+                                                ),
+                                                Text(
+                                                  formatNumber(
+                                                    FFAppState().totalprice +
+                                                        10,
+                                                    formatType:
+                                                        FormatType.custom,
+                                                    currency: 'R\$',
+                                                    format: '0.00',
+                                                    locale: 'pt_BR',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .displaySmall,
+                                                ),
+                                              ],
                                             ),
-                                          ],
-                                        ),
-                                        Text(
-                                          formatNumber(
-                                            FFAppState().totalprice + 10,
-                                            formatType: FormatType.custom,
-                                            currency: 'R\$',
-                                            format: '0.00',
-                                            locale: 'pt_BR',
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .displaySmall,
-                                        ),
-                                      ],
+                                          );
+                                        },
+                                      ),
                                     ),
                                   ),
                                   Padding(
