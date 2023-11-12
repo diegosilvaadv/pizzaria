@@ -914,7 +914,8 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                   extra: <String, dynamic>{
                                     kTransitionInfoKey: const TransitionInfo(
                                       hasTransition: true,
-                                      transitionType: PageTransitionType.fade,
+                                      transitionType:
+                                          PageTransitionType.leftToRight,
                                     ),
                                   },
                                 );

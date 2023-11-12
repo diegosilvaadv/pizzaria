@@ -831,7 +831,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                             currentUserReference,
                                                         nPedido:
                                                             buttonListaCarrinhoPedidosRecordList
-                                                                    .last
+                                                                    .first
                                                                     .nPedido +
                                                                 1,
                                                       ));
