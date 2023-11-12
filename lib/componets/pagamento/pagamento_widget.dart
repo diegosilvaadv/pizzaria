@@ -529,9 +529,7 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                         0.0, 12.0, 0.0, 0.0),
                                     child: StreamBuilder<
                                         List<ListaCarrinhoPedidosRecord>>(
-                                      stream: queryListaCarrinhoPedidosRecord(
-                                        singleRecord: true,
-                                      ),
+                                      stream: queryListaCarrinhoPedidosRecord(),
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
                                         if (!snapshot.hasData) {
@@ -553,16 +551,6 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                         List<ListaCarrinhoPedidosRecord>
                                             buttonListaCarrinhoPedidosRecordList =
                                             snapshot.data!;
-                                        // Return an empty Container when the item does not exist.
-                                        if (snapshot.data!.isEmpty) {
-                                          return Container();
-                                        }
-                                        final buttonListaCarrinhoPedidosRecord =
-                                            buttonListaCarrinhoPedidosRecordList
-                                                    .isNotEmpty
-                                                ? buttonListaCarrinhoPedidosRecordList
-                                                    .first
-                                                : null;
                                         return FFButtonWidget(
                                           onPressed: () async {
                                             await SubNumeroPedidosRecord
@@ -571,18 +559,13 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                 .set(
                                                     createSubNumeroPedidosRecordData(
                                                   referecia:
-                                                      buttonListaCarrinhoPedidosRecord
-                                                          ?.reference,
-                                                  status:
-                                                      buttonListaCarrinhoPedidosRecord
-                                                          ?.status,
+                                                      buttonListaCarrinhoPedidosRecordList
+                                                          .last.reference,
+                                                  status: 'Preparando',
                                                   nPedido:
-                                                      buttonListaCarrinhoPedidosRecord!
-                                                              .nPedido +
-                                                          1,
-                                                  data:
-                                                      buttonListaCarrinhoPedidosRecord
-                                                          .data,
+                                                      buttonListaCarrinhoPedidosRecordList
+                                                          .last.nPedido,
+                                                  data: getCurrentTimestamp,
                                                 ));
                                             await Future.delayed(const Duration(
                                                 milliseconds: 1000));

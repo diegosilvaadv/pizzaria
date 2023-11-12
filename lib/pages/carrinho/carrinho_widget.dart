@@ -829,7 +829,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                             currentUserReference,
                                                         nPedido:
                                                             buttonListaCarrinhoPedidosRecordList
-                                                                    .first
+                                                                    .last
                                                                     .nPedido +
                                                                 1,
                                                         nBordas: FFAppState()
