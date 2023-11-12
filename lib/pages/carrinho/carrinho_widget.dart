@@ -167,7 +167,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 24.0,
+                      fontSize: 25.0,
                     ),
               ),
             ),
@@ -787,25 +787,6 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                         FFAppState().contador +
                                                             1;
                                                   });
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    SnackBar(
-                                                      content: Text(
-                                                        'olá',
-                                                        style: TextStyle(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                        ),
-                                                      ),
-                                                      duration: const Duration(
-                                                          milliseconds: 4000),
-                                                      backgroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondary,
-                                                    ),
-                                                  );
 
                                                   await ListaCarrinhoPedidosRecord
                                                       .collection
@@ -832,36 +813,6 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                     .first
                                                                     .nPedido +
                                                                 1,
-                                                        valor: FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .valor +
-                                                            FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .valorBebidas +
-                                                            FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .valorSabor1 +
-                                                            FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .valorSabor2 +
-                                                            FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .valorSabor3 +
-                                                            FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .valorSabor4,
                                                         quanty: FFAppState()
                                                             .ProdutosDoCarrinho[
                                                                 FFAppState()
