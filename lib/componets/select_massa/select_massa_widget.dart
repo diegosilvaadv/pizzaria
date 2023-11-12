@@ -229,20 +229,48 @@ class _SelectMassaWidgetState extends State<SelectMassaWidget>
                                                             context)
                                                         .bodyLarge,
                                                   ),
-                                                  Text(
-                                                    formatNumber(
-                                                      listViewPreferenciasRecord
-                                                          .valormassa,
-                                                      formatType:
-                                                          FormatType.custom,
-                                                      currency: 'R\$',
-                                                      format: '0.00',
-                                                      locale: 'pt_BR',
-                                                    ),
-                                                    textAlign: TextAlign.end,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .titleLarge,
+                                                  Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      if (listViewPreferenciasRecord
+                                                              .valormassa ==
+                                                          0.0)
+                                                        Text(
+                                                          'Grátis',
+                                                          textAlign:
+                                                              TextAlign.end,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .titleLarge
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                color: const Color(
+                                                                    0xFF10DA26),
+                                                              ),
+                                                        ),
+                                                      if (listViewPreferenciasRecord
+                                                              .valormassa !=
+                                                          0.0)
+                                                        Text(
+                                                          formatNumber(
+                                                            listViewPreferenciasRecord
+                                                                .valormassa,
+                                                            formatType:
+                                                                FormatType
+                                                                    .custom,
+                                                            currency: 'R\$',
+                                                            format: '0.00',
+                                                            locale: 'pt_BR',
+                                                          ),
+                                                          textAlign:
+                                                              TextAlign.end,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .titleLarge,
+                                                        ),
+                                                    ],
                                                   ),
                                                 ],
                                               ),

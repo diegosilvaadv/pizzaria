@@ -540,14 +540,14 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                                                       color: valueOrDefault<Color>(
                                                                                         () {
                                                                                           if (FFAppState().condicao == 0) {
-                                                                                            return FlutterFlowTheme.of(context).primaryBackground;
+                                                                                            return FlutterFlowTheme.of(context).secondaryBackground;
                                                                                           } else if (FFAppState().condicao != 0) {
                                                                                             return const Color(0xFF10DA26);
                                                                                           } else {
-                                                                                            return FlutterFlowTheme.of(context).primaryBackground;
+                                                                                            return FlutterFlowTheme.of(context).secondaryBackground;
                                                                                           }
                                                                                         }(),
-                                                                                        FlutterFlowTheme.of(context).primaryText,
+                                                                                        FlutterFlowTheme.of(context).secondaryBackground,
                                                                                       ),
                                                                                       fontSize: 20.0,
                                                                                     ),
