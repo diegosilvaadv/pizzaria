@@ -816,6 +816,11 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                 FFAppState()
                                                                     .contador]
                                                             .valorpreferecias,
+                                                        quanty: FFAppState()
+                                                            .ProdutosDoCarrinho[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .quantity,
                                                       ));
                                                   showAlignedDialog(
                                                     barrierDismissible: false,
