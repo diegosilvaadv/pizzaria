@@ -795,6 +795,9 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                         userRef:
                                                             currentUserReference,
                                                       ));
+                                                  await Future.delayed(
+                                                      const Duration(
+                                                          milliseconds: 2000));
                                                   setState(() {
                                                     FFAppState().contador = -1;
                                                   });
