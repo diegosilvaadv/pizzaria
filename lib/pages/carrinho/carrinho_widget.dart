@@ -813,6 +813,11 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                     .first
                                                                     .nPedido +
                                                                 1,
+                                                        valor: FFAppState()
+                                                            .ProdutosDoCarrinho[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .valorBebidas,
                                                         quanty: FFAppState()
                                                             .ProdutosDoCarrinho[
                                                                 FFAppState()
