@@ -499,46 +499,50 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                               fontWeight: FontWeight.w600,
                                                                             ),
                                                                       ),
-                                                                    if (pedidosItem
-                                                                            .valorpreferecias !=
-                                                                        0.0)
-                                                                      Text(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          formatNumber(
-                                                                            pedidosItem.valorpreferecias,
-                                                                            formatType:
-                                                                                FormatType.custom,
-                                                                            currency:
-                                                                                'R\$',
-                                                                            format:
-                                                                                '0.00',
-                                                                            locale:
-                                                                                'pt_BR',
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        if (pedidosItem.valorpreferecias !=
+                                                                            0.0)
+                                                                          Text(
+                                                                            valueOrDefault<String>(
+                                                                              formatNumber(
+                                                                                pedidosItem.valorpreferecias,
+                                                                                formatType: FormatType.custom,
+                                                                                currency: 'R\$',
+                                                                                format: '0.00',
+                                                                                locale: 'pt_BR',
+                                                                              ),
+                                                                              '00',
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Readex Pro',
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                  fontSize: 16.0,
+                                                                                  fontWeight: FontWeight.w600,
+                                                                                ),
                                                                           ),
-                                                                          '00',
-                                                                        ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Readex Pro',
-                                                                              color: FlutterFlowTheme.of(context).primaryText,
-                                                                              fontSize: 16.0,
-                                                                              fontWeight: FontWeight.w600,
+                                                                        if (pedidosItem.valorpreferecias !=
+                                                                            0.0)
+                                                                          Padding(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                                4.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                            child:
+                                                                                Text(
+                                                                              ' X ${pedidosItem.quantity.toString()}',
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                    fontFamily: 'Readex Pro',
+                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                  ),
                                                                             ),
-                                                                      ),
-                                                                    if (pedidosItem
-                                                                            .valorpreferecias !=
-                                                                        0.0)
-                                                                      Text(
-                                                                        ' X ${pedidosItem.quantity.toString()}',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Readex Pro',
-                                                                              color: FlutterFlowTheme.of(context).secondaryText,
-                                                                            ),
-                                                                      ),
+                                                                          ),
+                                                                      ],
+                                                                    ),
                                                                   ],
                                                                 ),
                                                               ),

@@ -275,7 +275,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                fontSize: 18.0,
+                                                                fontSize: 15.0,
                                                               ),
                                                     ),
                                                   ),
