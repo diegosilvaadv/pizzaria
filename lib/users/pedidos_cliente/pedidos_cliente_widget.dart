@@ -195,7 +195,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                     listaCarrinhoPedidosRecord.whereIn(
                                         'status', [
                                   'Não Paga',
-                                  'Pendente'
+                                  'Preparando'
                                 ]).orderBy('data'),
                               ),
                               builder: (context, snapshot) {

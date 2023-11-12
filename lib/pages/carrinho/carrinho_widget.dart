@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -167,7 +168,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 25.0,
+                      fontSize: 24.0,
                     ),
               ),
             ),
@@ -793,48 +794,12 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                       .doc()
                                                       .set({
                                                     ...createListaCarrinhoPedidosRecordData(
-                                                      nomeProduto: FFAppState()
-                                                          .ProdutosDoCarrinho[
-                                                              FFAppState()
-                                                                  .contador]
-                                                          .nomeProduto,
-                                                      img: valueOrDefault<
-                                                          String>(
-                                                        FFAppState()
-                                                            .ProdutosDoCarrinho[
-                                                                FFAppState()
-                                                                    .contador]
-                                                            .img,
-                                                        'https://tpaempreendimentos.com.br/blog/wp-content/uploads/2019/02/shutterstock-84904912-1024x683.jpg',
-                                                      ),
-                                                      valor: FFAppState()
-                                                          .ProdutosDoCarrinho[
-                                                              FFAppState()
-                                                                  .contador]
-                                                          .subTotal,
-                                                      valorborda: FFAppState()
-                                                          .ProdutosDoCarrinho[
-                                                              FFAppState()
-                                                                  .contador]
-                                                          .valorpreferecias,
-                                                      quanty: FFAppState()
-                                                          .ProdutosDoCarrinho[
-                                                              FFAppState()
-                                                                  .contador]
-                                                          .quantity,
                                                       status: 'Não Paga',
+                                                      nPedido: random_data
+                                                          .randomInteger(0, 100)
+                                                          .toDouble(),
                                                       userRef:
                                                           currentUserReference,
-                                                      nPedido:
-                                                          buttonListaCarrinhoPedidosRecordList
-                                                                  .first
-                                                                  .nPedido +
-                                                              1,
-                                                      nBordas: FFAppState()
-                                                          .ProdutosDoCarrinho[
-                                                              FFAppState()
-                                                                  .contador]
-                                                          .massaNome,
                                                     ),
                                                     ...mapToFirestore(
                                                       {
@@ -843,31 +808,6 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                       },
                                                     ),
                                                   });
-
-                                                  await NumberPedidosRecord.createDoc(
-                                                          buttonListaCarrinhoPedidosRecordList[
-                                                                  FFAppState()
-                                                                      .contador]
-                                                              .reference)
-                                                      .set(
-                                                          createNumberPedidosRecordData(
-                                                    nProduto:
-                                                        buttonListaCarrinhoPedidosRecordList[
-                                                                FFAppState()
-                                                                    .contador]
-                                                            .nomeProduto,
-                                                    valor:
-                                                        buttonListaCarrinhoPedidosRecordList[
-                                                                FFAppState()
-                                                                    .contador]
-                                                            .valor,
-                                                    quanty:
-                                                        buttonListaCarrinhoPedidosRecordList[
-                                                                FFAppState()
-                                                                    .contador]
-                                                            .quanty
-                                                            .toDouble(),
-                                                  ));
                                                   showAlignedDialog(
                                                     barrierDismissible: false,
                                                     context: context,
