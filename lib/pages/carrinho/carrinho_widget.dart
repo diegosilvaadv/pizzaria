@@ -787,6 +787,25 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                         FFAppState().contador +
                                                             1;
                                                   });
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        'olá',
+                                                        style: TextStyle(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                      ),
+                                                      duration: const Duration(
+                                                          milliseconds: 4000),
+                                                      backgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondary,
+                                                    ),
+                                                  );
 
                                                   await ListaCarrinhoPedidosRecord
                                                       .collection
