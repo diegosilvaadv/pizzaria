@@ -435,7 +435,7 @@ class _DetalhesProdutosBebidasWidgetState
                                   nomeProduto: widget.produtoRef?.nomeProduto,
                                   img: widget.produtoRef?.img,
                                   quantity: FFAppState().quantity,
-                                  valor: widget.produtoRef?.valorBebidas,
+                                  valorBebidas: widget.produtoRef?.valorBebidas,
                                 ));
                                 FFAppState().totalprice =
                                     FFAppState().totalprice +
