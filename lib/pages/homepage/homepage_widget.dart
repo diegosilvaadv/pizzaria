@@ -574,7 +574,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                         'APP PIZZARIA',
                         style: FlutterFlowTheme.of(context).titleLarge.override(
                               fontFamily: 'Outfit',
-                              fontSize: 25.0,
+                              fontSize: 26.0,
                               fontWeight: FontWeight.w600,
                             ),
                         colors: [

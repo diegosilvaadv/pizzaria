@@ -831,7 +831,9 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                             currentUserReference,
                                                         nPedido:
                                                             buttonListaCarrinhoPedidosRecordList
-                                                                .last.nPedido,
+                                                                    .last
+                                                                    .nPedido +
+                                                                1,
                                                       ));
                                                   showAlignedDialog(
                                                     barrierDismissible: false,
