@@ -577,11 +577,12 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                       buttonListaCarrinhoPedidosRecord
                                                           ?.status,
                                                   nPedido:
-                                                      buttonListaCarrinhoPedidosRecord
-                                                          ?.nPedido,
+                                                      buttonListaCarrinhoPedidosRecord!
+                                                              .nPedido +
+                                                          1,
                                                   data:
                                                       buttonListaCarrinhoPedidosRecord
-                                                          ?.data,
+                                                          .data,
                                                 ));
                                             await Future.delayed(const Duration(
                                                 milliseconds: 1000));

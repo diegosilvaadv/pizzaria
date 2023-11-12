@@ -192,11 +192,11 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                             child: PagedListView<DocumentSnapshot<Object?>?,
                                 SubNumeroPedidosRecord>(
                               pagingController: _model.setListViewController1(
-                                SubNumeroPedidosRecord.collection.whereIn(
-                                    'status', [
-                                  'Não Paga',
-                                  'Preparando'
-                                ]).orderBy('data', descending: true),
+                                SubNumeroPedidosRecord.collection
+                                    .whereIn(
+                                        'status', ['Não Paga', 'Preparando'])
+                                    .orderBy('data', descending: true)
+                                    .orderBy('nPedido'),
                               ),
                               padding: EdgeInsets.zero,
                               primary: false,
