@@ -281,7 +281,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                         8.0, 0.0, 8.0, 8.0),
                                     child: Container(
                                       width: 100.0,
-                                      height: 158.0,
+                                      height: 162.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBackground,
@@ -421,6 +421,30 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                 )} + ${formatNumber(
                                                                   pedidosItem
                                                                       .valorSabor2,
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .custom,
+                                                                  currency:
+                                                                      'R\$',
+                                                                  format:
+                                                                      '0.00',
+                                                                  locale:
+                                                                      'pt_BR',
+                                                                )} + ${formatNumber(
+                                                                  pedidosItem
+                                                                      .valorSabor3,
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .custom,
+                                                                  currency:
+                                                                      'R\$',
+                                                                  format:
+                                                                      '0.00',
+                                                                  locale:
+                                                                      'pt_BR',
+                                                                )} + ${formatNumber(
+                                                                  pedidosItem
+                                                                      .valorSabor4,
                                                                   formatType:
                                                                       FormatType
                                                                           .custom,

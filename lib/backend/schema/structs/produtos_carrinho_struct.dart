@@ -18,6 +18,8 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
     String? massaNome,
     double? valorSabor1,
     double? valorSabor2,
+    double? valorSabor3,
+    double? valorSabor4,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _nomeProduto = nomeProduto,
         _img = img,
@@ -27,6 +29,8 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
         _massaNome = massaNome,
         _valorSabor1 = valorSabor1,
         _valorSabor2 = valorSabor2,
+        _valorSabor3 = valorSabor3,
+        _valorSabor4 = valorSabor4,
         super(firestoreUtilData);
 
   // "NomeProduto" field.
@@ -85,6 +89,22 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
       _valorSabor2 = valorSabor2 + amount;
   bool hasValorSabor2() => _valorSabor2 != null;
 
+  // "valor_sabor3" field.
+  double? _valorSabor3;
+  double get valorSabor3 => _valorSabor3 ?? 0.0;
+  set valorSabor3(double? val) => _valorSabor3 = val;
+  void incrementValorSabor3(double amount) =>
+      _valorSabor3 = valorSabor3 + amount;
+  bool hasValorSabor3() => _valorSabor3 != null;
+
+  // "valor_sabor4" field.
+  double? _valorSabor4;
+  double get valorSabor4 => _valorSabor4 ?? 0.0;
+  set valorSabor4(double? val) => _valorSabor4 = val;
+  void incrementValorSabor4(double amount) =>
+      _valorSabor4 = valorSabor4 + amount;
+  bool hasValorSabor4() => _valorSabor4 != null;
+
   static ProdutosCarrinhoStruct fromMap(Map<String, dynamic> data) =>
       ProdutosCarrinhoStruct(
         nomeProduto: data['NomeProduto'] as String?,
@@ -95,6 +115,8 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
         massaNome: data['massa_nome'] as String?,
         valorSabor1: castToType<double>(data['valor_sabor1']),
         valorSabor2: castToType<double>(data['valor_sabor2']),
+        valorSabor3: castToType<double>(data['valor_sabor3']),
+        valorSabor4: castToType<double>(data['valor_sabor4']),
       );
 
   static ProdutosCarrinhoStruct? maybeFromMap(dynamic data) =>
@@ -111,6 +133,8 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
         'massa_nome': _massaNome,
         'valor_sabor1': _valorSabor1,
         'valor_sabor2': _valorSabor2,
+        'valor_sabor3': _valorSabor3,
+        'valor_sabor4': _valorSabor4,
       }.withoutNulls;
 
   @override
@@ -145,6 +169,14 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
         ),
         'valor_sabor2': serializeParam(
           _valorSabor2,
+          ParamType.double,
+        ),
+        'valor_sabor3': serializeParam(
+          _valorSabor3,
+          ParamType.double,
+        ),
+        'valor_sabor4': serializeParam(
+          _valorSabor4,
           ParamType.double,
         ),
       }.withoutNulls;
@@ -192,6 +224,16 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
           ParamType.double,
           false,
         ),
+        valorSabor3: deserializeParam(
+          data['valor_sabor3'],
+          ParamType.double,
+          false,
+        ),
+        valorSabor4: deserializeParam(
+          data['valor_sabor4'],
+          ParamType.double,
+          false,
+        ),
       );
 
   @override
@@ -207,7 +249,9 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
         valorpreferecias == other.valorpreferecias &&
         massaNome == other.massaNome &&
         valorSabor1 == other.valorSabor1 &&
-        valorSabor2 == other.valorSabor2;
+        valorSabor2 == other.valorSabor2 &&
+        valorSabor3 == other.valorSabor3 &&
+        valorSabor4 == other.valorSabor4;
   }
 
   @override
@@ -219,7 +263,9 @@ class ProdutosCarrinhoStruct extends FFFirebaseStruct {
         valorpreferecias,
         massaNome,
         valorSabor1,
-        valorSabor2
+        valorSabor2,
+        valorSabor3,
+        valorSabor4
       ]);
 }
 
@@ -232,6 +278,8 @@ ProdutosCarrinhoStruct createProdutosCarrinhoStruct({
   String? massaNome,
   double? valorSabor1,
   double? valorSabor2,
+  double? valorSabor3,
+  double? valorSabor4,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -246,6 +294,8 @@ ProdutosCarrinhoStruct createProdutosCarrinhoStruct({
       massaNome: massaNome,
       valorSabor1: valorSabor1,
       valorSabor2: valorSabor2,
+      valorSabor3: valorSabor3,
+      valorSabor4: valorSabor4,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

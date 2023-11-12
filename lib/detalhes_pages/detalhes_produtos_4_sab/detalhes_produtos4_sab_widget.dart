@@ -2390,6 +2390,8 @@ class _DetalhesProdutos4SabWidgetState
                                     massaNome:
                                         FFAppState().PrefReferencia.nomeMassa,
                                     valorSabor2: FFAppState().precoSabor2,
+                                    valorSabor3: FFAppState().precoSabor3,
+                                    valorSabor4: FFAppState().precoSabor4,
                                   ));
                                   FFAppState().totalprice =
                                       FFAppState().totalprice +
