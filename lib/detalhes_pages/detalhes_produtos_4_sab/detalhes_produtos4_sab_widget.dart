@@ -2380,7 +2380,7 @@ class _DetalhesProdutos4SabWidgetState
                                   FFAppState().addToProdutosDoCarrinho(
                                       ProdutosCarrinhoStruct(
                                     nomeProduto:
-                                        '${FFAppState().SaboresApp.sabor1GG} & ${FFAppState().SaboresApp.sabor2GG}',
+                                        '${FFAppState().SaboresApp.sabor1GG}, ${FFAppState().SaboresApp.sabor2GG}, ${FFAppState().SaboresApp.sabor3GG}e ${FFAppState().SaboresApp.sabor4GG}',
                                     img:
                                         'https://www.designi.com.br/images/preview/10244680.jpg',
                                     quantity: FFAppState().quantity,

@@ -216,63 +216,70 @@ class _SelectMassaWidgetState extends State<SelectMassaWidget>
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Text(
-                                                    listViewPreferenciasRecord
-                                                        .massas,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyLarge,
-                                                  ),
-                                                  Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      if (listViewPreferenciasRecord
-                                                              .valormassa ==
-                                                          0.0)
-                                                        Text(
-                                                          'Grátis',
-                                                          textAlign:
-                                                              TextAlign.end,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .titleLarge
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Outfit',
-                                                                color: const Color(
-                                                                    0xFF10DA26),
-                                                              ),
-                                                        ),
-                                                      if (listViewPreferenciasRecord
-                                                              .valormassa !=
-                                                          0.0)
-                                                        Text(
-                                                          formatNumber(
-                                                            listViewPreferenciasRecord
-                                                                .valormassa,
-                                                            formatType:
-                                                                FormatType
-                                                                    .custom,
-                                                            currency: 'R\$',
-                                                            format: '0.00',
-                                                            locale: 'pt_BR',
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        6.0, 0.0, 6.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Text(
+                                                      listViewPreferenciasRecord
+                                                          .massas,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyLarge,
+                                                    ),
+                                                    Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        if (listViewPreferenciasRecord
+                                                                .valormassa ==
+                                                            0.0)
+                                                          Text(
+                                                            'Grátis',
+                                                            textAlign:
+                                                                TextAlign.end,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .titleLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Outfit',
+                                                                  color: const Color(
+                                                                      0xFF10DA26),
+                                                                ),
                                                           ),
-                                                          textAlign:
-                                                              TextAlign.end,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .titleLarge,
-                                                        ),
-                                                    ],
-                                                  ),
-                                                ],
+                                                        if (listViewPreferenciasRecord
+                                                                .valormassa !=
+                                                            0.0)
+                                                          Text(
+                                                            formatNumber(
+                                                              listViewPreferenciasRecord
+                                                                  .valormassa,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .custom,
+                                                              currency: 'R\$',
+                                                              format: '0.00',
+                                                              locale: 'pt_BR',
+                                                            ),
+                                                            textAlign:
+                                                                TextAlign.end,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .titleLarge,
+                                                          ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ],
                                           ),
