@@ -11,7 +11,7 @@ class PedidosClienteModel extends FlutterFlowModel<PedidosClienteWidget> {
   final unfocusNode = FocusNode();
   // State field(s) for ListView widget.
 
-  PagingController<DocumentSnapshot?, ListaCarrinhoPedidosRecord>?
+  PagingController<DocumentSnapshot?, SubNumeroPedidosRecord>?
       listViewPagingController1;
   Query? listViewPagingQuery1;
   List<StreamSubscription?> listViewStreamSubscriptions1 = [];
@@ -39,7 +39,7 @@ class PedidosClienteModel extends FlutterFlowModel<PedidosClienteWidget> {
 
   /// Additional helper methods are added here.
 
-  PagingController<DocumentSnapshot?, ListaCarrinhoPedidosRecord>
+  PagingController<DocumentSnapshot?, SubNumeroPedidosRecord>
       setListViewController1(
     Query query, {
     DocumentReference<Object?>? parent,
@@ -52,17 +52,17 @@ class PedidosClienteModel extends FlutterFlowModel<PedidosClienteWidget> {
     return listViewPagingController1!;
   }
 
-  PagingController<DocumentSnapshot?, ListaCarrinhoPedidosRecord>
+  PagingController<DocumentSnapshot?, SubNumeroPedidosRecord>
       _createListViewController1(
     Query query,
     DocumentReference<Object?>? parent,
   ) {
     final controller =
-        PagingController<DocumentSnapshot?, ListaCarrinhoPedidosRecord>(
+        PagingController<DocumentSnapshot?, SubNumeroPedidosRecord>(
             firstPageKey: null);
     return controller
       ..addPageRequestListener(
-        (nextPageMarker) => queryListaCarrinhoPedidosRecordPage(
+        (nextPageMarker) => querySubNumeroPedidosRecordPage(
           queryBuilder: (_) => listViewPagingQuery1 ??= query,
           nextPageMarker: nextPageMarker,
           streamSubscriptions: listViewStreamSubscriptions1,

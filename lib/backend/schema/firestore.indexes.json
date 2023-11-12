@@ -1,13 +1,9 @@
 {
   "indexes": [
     {
-      "collectionGroup": "listaCarrinhoPedidos",
+      "collectionGroup": "SubNumeroPedidos",
       "queryScope": "COLLECTION",
       "fields": [
-        {
-          "fieldPath": "userRef",
-          "order": "ASCENDING"
-        },
         {
           "fieldPath": "status",
           "order": "ASCENDING"

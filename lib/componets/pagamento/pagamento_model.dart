@@ -1,4 +1,3 @@
-import '/componets/pagamento/pagamento_widget.dart';
 import '/flutter_flow/flutter_flow_credit_card_form.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'pagamento_widget.dart' show PagamentoWidget;

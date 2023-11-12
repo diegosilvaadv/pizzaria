@@ -10,7 +10,7 @@ import 'schema/produtos_record.dart';
 import 'schema/preferencias_record.dart';
 import 'schema/lista_carrinho_pedidos_record.dart';
 import 'schema/tags_record.dart';
-import 'schema/number_pedidos_record.dart';
+import 'schema/sub_numero_pedidos_record.dart';
 import 'dart:async';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
@@ -25,7 +25,7 @@ export 'schema/produtos_record.dart';
 export 'schema/preferencias_record.dart';
 export 'schema/lista_carrinho_pedidos_record.dart';
 export 'schema/tags_record.dart';
-export 'schema/number_pedidos_record.dart';
+export 'schema/sub_numero_pedidos_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -419,87 +419,85 @@ Future<FFFirestorePage<TagsRecord>> queryTagsRecordPage({
       return page;
     });
 
-/// Functions to query NumberPedidosRecords (as a Stream and as a Future).
-Future<int> queryNumberPedidosRecordCount({
-  DocumentReference? parent,
+/// Functions to query SubNumeroPedidosRecords (as a Stream and as a Future).
+Future<int> querySubNumeroPedidosRecordCount({
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      NumberPedidosRecord.collection(parent),
+      SubNumeroPedidosRecord.collection,
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<NumberPedidosRecord>> queryNumberPedidosRecord({
-  DocumentReference? parent,
+Stream<List<SubNumeroPedidosRecord>> querySubNumeroPedidosRecord({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      NumberPedidosRecord.collection(parent),
-      NumberPedidosRecord.fromSnapshot,
+      SubNumeroPedidosRecord.collection,
+      SubNumeroPedidosRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<NumberPedidosRecord>> queryNumberPedidosRecordOnce({
-  DocumentReference? parent,
+Future<List<SubNumeroPedidosRecord>> querySubNumeroPedidosRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      NumberPedidosRecord.collection(parent),
-      NumberPedidosRecord.fromSnapshot,
+      SubNumeroPedidosRecord.collection,
+      SubNumeroPedidosRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
-Future<FFFirestorePage<NumberPedidosRecord>> queryNumberPedidosRecordPage({
-  DocumentReference? parent,
+Future<FFFirestorePage<SubNumeroPedidosRecord>>
+    querySubNumeroPedidosRecordPage({
   Query Function(Query)? queryBuilder,
   DocumentSnapshot? nextPageMarker,
   required int pageSize,
   required bool isStream,
-  required PagingController<DocumentSnapshot?, NumberPedidosRecord> controller,
+  required PagingController<DocumentSnapshot?, SubNumeroPedidosRecord>
+      controller,
   List<StreamSubscription?>? streamSubscriptions,
 }) =>
-    queryCollectionPage(
-      NumberPedidosRecord.collection(parent),
-      NumberPedidosRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    ).then((page) {
-      controller.appendPage(
-        page.data,
-        page.nextPageMarker,
-      );
-      if (isStream) {
-        final streamSubscription =
-            (page.dataStream)?.listen((List<NumberPedidosRecord> data) {
-          for (var item in data) {
-            final itemIndexes = controller.itemList!
-                .asMap()
-                .map((k, v) => MapEntry(v.reference.id, k));
-            final index = itemIndexes[item.reference.id];
-            final items = controller.itemList!;
-            if (index != null) {
-              items.replaceRange(index, index + 1, [item]);
-              controller.itemList = {
-                for (var item in items) item.reference: item
-              }.values.toList();
-            }
+        queryCollectionPage(
+          SubNumeroPedidosRecord.collection,
+          SubNumeroPedidosRecord.fromSnapshot,
+          queryBuilder: queryBuilder,
+          nextPageMarker: nextPageMarker,
+          pageSize: pageSize,
+          isStream: isStream,
+        ).then((page) {
+          controller.appendPage(
+            page.data,
+            page.nextPageMarker,
+          );
+          if (isStream) {
+            final streamSubscription =
+                (page.dataStream)?.listen((List<SubNumeroPedidosRecord> data) {
+              for (var item in data) {
+                final itemIndexes = controller.itemList!
+                    .asMap()
+                    .map((k, v) => MapEntry(v.reference.id, k));
+                final index = itemIndexes[item.reference.id];
+                final items = controller.itemList!;
+                if (index != null) {
+                  items.replaceRange(index, index + 1, [item]);
+                  controller.itemList = {
+                    for (var item in items) item.reference: item
+                  }.values.toList();
+                }
+              }
+            });
+            streamSubscriptions?.add(streamSubscription);
           }
+          return page;
         });
-        streamSubscriptions?.add(streamSubscription);
-      }
-      return page;
-    });
 
 Future<int> queryCollectionCount(
   Query collection, {

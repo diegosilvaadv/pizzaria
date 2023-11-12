@@ -13,24 +13,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '/backend/schema/structs/index.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
-double finalPrice(
-  double pizzavalor,
-  double valorSabor1,
-  double valorSabor2,
-  int quanty,
-  double valormassa,
-) {
-  return pizzavalor *
-      valorSabor1 *
-      valorSabor2 *
-      valormassa *
-      quanty.toDouble();
-}
-
-double subtracao(double valor1) {
-  return valor1 * -1.toDouble();
-}
-
 String temposaudacao() {
   var hour = DateTime.now().hour;
   if (hour < 4) {
