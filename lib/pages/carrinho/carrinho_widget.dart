@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/componets/pagamento/pagamento_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -800,12 +799,6 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                             FFAppState()
                                                                 .contador]
                                                         .nomeProduto,
-                                                    referenc:
-                                                        buttonListaCarrinhoPedidosRecordList[
-                                                                FFAppState()
-                                                                    .contador]
-                                                            .reference,
-                                                    user: currentUserReference,
                                                   ));
                                                   showAlignedDialog(
                                                     barrierDismissible: false,
