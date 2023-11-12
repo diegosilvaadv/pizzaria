@@ -547,7 +547,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                                                             return FlutterFlowTheme.of(context).primaryBackground;
                                                                                           }
                                                                                         }(),
-                                                                                        FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                        FlutterFlowTheme.of(context).primaryText,
                                                                                       ),
                                                                                       fontSize: 20.0,
                                                                                     ),
