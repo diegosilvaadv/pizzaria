@@ -135,7 +135,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
             'Meus Pedidos',
             style: FlutterFlowTheme.of(context).displaySmall.override(
                   fontFamily: 'Outfit',
-                  fontSize: 35.0,
+                  fontSize: 34.0,
                 ),
           ),
           actions: const [],
@@ -264,10 +264,9 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                       (listaCarrinhoPedidosRecord) =>
                                                           listaCarrinhoPedidosRecord
                                                               .where(
-                                                    'referec',
-                                                    isEqualTo:
-                                                        listViewSubNumeroPedidosRecord
-                                                            .reference,
+                                                    'data',
+                                                    isGreaterThanOrEqualTo:
+                                                        getCurrentTimestamp,
                                                   ),
                                                 ),
                                                 builder: (context, snapshot) {

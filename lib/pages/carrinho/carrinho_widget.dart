@@ -832,6 +832,11 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                 FFAppState()
                                                                     .contador]
                                                             .massaNome,
+                                                        numberProdutos:
+                                                            buttonListaCarrinhoPedidosRecordList
+                                                                    .last
+                                                                    .numberProdutos +
+                                                                1,
                                                       ));
                                                   await Future.delayed(
                                                       const Duration(
