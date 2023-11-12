@@ -110,7 +110,7 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                               .headlineSmall
                                               .override(
                                                 fontFamily: 'Outfit',
-                                                fontSize: 26.0,
+                                                fontSize: 25.0,
                                               ),
                                         ),
                                         Padding(
@@ -428,100 +428,56 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 4.0, 12.0, 16.0),
-                                    child: FutureBuilder<
-                                        List<ListaCarrinhoPedidosRecord>>(
-                                      future:
-                                          queryListaCarrinhoPedidosRecordOnce(
-                                        singleRecord: true,
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<ListaCarrinhoPedidosRecord>
-                                            propertyAddressListaCarrinhoPedidosRecordList =
-                                            snapshot.data!;
-                                        // Return an empty Container when the item does not exist.
-                                        if (snapshot.data!.isEmpty) {
-                                          return Container();
-                                        }
-                                        final propertyAddressListaCarrinhoPedidosRecord =
-                                            propertyAddressListaCarrinhoPedidosRecordList
-                                                    .isNotEmpty
-                                                ? propertyAddressListaCarrinhoPedidosRecordList
-                                                    .first
-                                                : null;
-                                        return Row(
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
                                           mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Text(
-                                                  'Total',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .titleMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                      ),
-                                                ),
-                                                FlutterFlowIconButton(
-                                                  borderColor:
-                                                      Colors.transparent,
-                                                  borderRadius: 30.0,
-                                                  borderWidth: 1.0,
-                                                  buttonSize: 36.0,
-                                                  icon: Icon(
-                                                    Icons.info_outlined,
+                                            Text(
+                                              'Total',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryText,
-                                                    size: 18.0,
                                                   ),
-                                                  onPressed: () {
-                                                    print(
-                                                        'IconButton pressed ...');
-                                                  },
-                                                ),
-                                              ],
                                             ),
-                                            Text(
-                                              formatNumber(
-                                                FFAppState().totalprice + 10,
-                                                formatType: FormatType.custom,
-                                                currency: 'R\$',
-                                                format: '0.00',
-                                                locale: 'pt_BR',
+                                            FlutterFlowIconButton(
+                                              borderColor: Colors.transparent,
+                                              borderRadius: 30.0,
+                                              borderWidth: 1.0,
+                                              buttonSize: 36.0,
+                                              icon: Icon(
+                                                Icons.info_outlined,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 18.0,
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .displaySmall,
+                                              onPressed: () {
+                                                print('IconButton pressed ...');
+                                              },
                                             ),
                                           ],
-                                        );
-                                      },
+                                        ),
+                                        Text(
+                                          formatNumber(
+                                            FFAppState().totalprice + 10,
+                                            formatType: FormatType.custom,
+                                            currency: 'R\$',
+                                            format: '0.00',
+                                            locale: 'pt_BR',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .displaySmall,
+                                        ),
+                                      ],
                                     ),
                                   ),
                                   Padding(
