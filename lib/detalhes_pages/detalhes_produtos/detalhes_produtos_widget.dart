@@ -486,43 +486,63 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                                     CrossAxisAlignment
                                                                         .end,
                                                                 children: [
-                                                                  Text(
-                                                                    '${FFAppState().quantity.toString()} X ',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelSmall,
-                                                                  ),
+                                                                  if (FFAppState()
+                                                                          .preferec !=
+                                                                      0.0)
+                                                                    Text(
+                                                                      '${FFAppState().quantity.toString()} X ',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelSmall,
+                                                                    ),
                                                                   Row(
                                                                     mainAxisSize:
                                                                         MainAxisSize
                                                                             .max,
                                                                     children: [
-                                                                      Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            4.0,
-                                                                            0.0),
-                                                                        child:
-                                                                            Text(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            formatNumber(
-                                                                              FFAppState().PrefReferencia.valorMassa,
-                                                                              formatType: FormatType.custom,
-                                                                              currency: '+R\$',
-                                                                              format: '0.00',
-                                                                              locale: 'pt_BR',
-                                                                            ),
-                                                                            '0.00',
-                                                                          ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .headlineMedium
-                                                                              .override(
-                                                                                fontFamily: 'Outfit',
-                                                                                fontSize: 20.0,
+                                                                      Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.end,
+                                                                        children: [
+                                                                          Padding(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                0.0,
+                                                                                4.0,
+                                                                                0.0),
+                                                                            child:
+                                                                                Text(
+                                                                              valueOrDefault<String>(
+                                                                                formatNumber(
+                                                                                  FFAppState().PrefReferencia.valorMassa,
+                                                                                  formatType: FormatType.custom,
+                                                                                  currency: '+R\$',
+                                                                                  format: '0.00',
+                                                                                  locale: 'pt_BR',
+                                                                                ),
+                                                                                '0.00',
                                                                               ),
-                                                                        ),
+                                                                              style: FlutterFlowTheme.of(context).headlineMedium.override(
+                                                                                    fontFamily: 'Outfit',
+                                                                                    fontSize: 20.0,
+                                                                                  ),
+                                                                            ),
+                                                                          ),
+                                                                          if (FFAppState().preferec ==
+                                                                              0.0)
+                                                                            Padding(
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                                              child: Text(
+                                                                                'Grátis',
+                                                                                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                                                                                      fontFamily: 'Outfit',
+                                                                                      fontSize: 20.0,
+                                                                                    ),
+                                                                              ),
+                                                                            ),
+                                                                        ],
                                                                       ),
                                                                     ],
                                                                   ),
