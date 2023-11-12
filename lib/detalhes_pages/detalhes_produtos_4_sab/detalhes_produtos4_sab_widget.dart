@@ -38,15 +38,15 @@ class _DetalhesProdutos4SabWidgetState
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
-        FFAppState().preferec = 0.0;
+        FFAppState().preferec = 0;
         FFAppState().condicao = 0;
         FFAppState().PrefReferencia = PrefenciasAppSStruct.fromSerializableMap(
             jsonDecode('{"nome_massa":"Nenhuma","valor_massa":"0"}'));
         FFAppState().quantity = 1;
         FFAppState().SaboresApp = SaboresStruct.fromSerializableMap(jsonDecode(
             '{"sabor1":"Nenhum","sabor2":"Nenhum","preco_sabor1":"0","preco_sabor2":"0"}'));
-        FFAppState().precoSabor1 = 0.0;
-        FFAppState().precoSabor2 = 0.0;
+        FFAppState().precoSabor1 = 0;
+        FFAppState().precoSabor2 = 0;
         FFAppState().massaCondicao = 0;
       });
     });
@@ -147,7 +147,7 @@ class _DetalhesProdutos4SabWidgetState
                                           setState(() {
                                             FFAppState().quantity = 1;
                                             FFAppState().condicao = 0;
-                                            FFAppState().preferec = 0.0;
+                                            FFAppState().preferec = 0;
                                             FFAppState().PrefReferencia =
                                                 PrefenciasAppSStruct
                                                     .fromSerializableMap(jsonDecode(
@@ -155,13 +155,13 @@ class _DetalhesProdutos4SabWidgetState
                                             FFAppState().SaboresApp = SaboresStruct
                                                 .fromSerializableMap(jsonDecode(
                                                     '{"sabor1":"Nenhum","sabor2":"Nenhum","preco_sabor1":"0","preco_sabor2":"0"}'));
-                                            FFAppState().precoSabor1 = 0.0;
-                                            FFAppState().precoSabor2 = 0.0;
+                                            FFAppState().precoSabor1 = 0;
+                                            FFAppState().precoSabor2 = 0;
                                             FFAppState().massaCondicao = 0;
                                             FFAppState().MenuCondicao =
                                                 'Monte Sua Pizza';
-                                            FFAppState().precoSabor3 = 0.0;
-                                            FFAppState().precoSabor4 = 0.0;
+                                            FFAppState().precoSabor3 = 0;
+                                            FFAppState().precoSabor4 = 0;
                                           });
                                           context.safePop();
                                         },
@@ -640,8 +640,7 @@ class _DetalhesProdutos4SabWidgetState
                                                                               0.00,
                                                                       );
                                                                       FFAppState()
-                                                                              .precoSabor1 =
-                                                                          0.0;
+                                                                          .precoSabor1 = 0;
                                                                     });
                                                                   },
                                                                   child: Icon(
@@ -1024,8 +1023,7 @@ class _DetalhesProdutos4SabWidgetState
                                                                               0.00,
                                                                       );
                                                                       FFAppState()
-                                                                              .precoSabor2 =
-                                                                          0.0;
+                                                                          .precoSabor2 = 0;
                                                                     });
                                                                   },
                                                                   child: Icon(
@@ -1408,8 +1406,7 @@ class _DetalhesProdutos4SabWidgetState
                                                                               null,
                                                                       );
                                                                       FFAppState()
-                                                                              .precoSabor3 =
-                                                                          0.0;
+                                                                          .precoSabor3 = 0;
                                                                     });
                                                                   },
                                                                   child: Icon(
@@ -1792,8 +1789,7 @@ class _DetalhesProdutos4SabWidgetState
                                                                               null,
                                                                       );
                                                                       FFAppState()
-                                                                              .precoSabor4 =
-                                                                          0.0;
+                                                                          .precoSabor4 = 0;
                                                                     });
                                                                   },
                                                                   child: Icon(
@@ -2169,8 +2165,7 @@ class _DetalhesProdutos4SabWidgetState
                                                                           PrefenciasAppSStruct.fromSerializableMap(
                                                                               jsonDecode('{"nome_massa":"Nenhuma","valor_massa":"0"}'));
                                                                       FFAppState()
-                                                                              .preferec =
-                                                                          0.0;
+                                                                          .preferec = 0;
                                                                     });
                                                                   },
                                                                   child: Icon(
@@ -2412,16 +2407,16 @@ class _DetalhesProdutos4SabWidgetState
                                   FFAppState().SaboresApp = SaboresStruct
                                       .fromSerializableMap(jsonDecode(
                                           '{"sabor1":"Nenhum","sabor2":"Nenhum","preco_sabor1":"0","preco_sabor2":"0"}'));
-                                  FFAppState().precoSabor1 = 0.0;
-                                  FFAppState().precoSabor2 = 0.0;
-                                  FFAppState().preferec = 0.0;
+                                  FFAppState().precoSabor1 = 0;
+                                  FFAppState().precoSabor2 = 0;
+                                  FFAppState().preferec = 0;
                                   FFAppState().PrefReferencia =
                                       PrefenciasAppSStruct.fromSerializableMap(
                                           jsonDecode(
                                               '{"nome_massa":"Nenhuma","valor_massa":"0"}'));
                                   FFAppState().massaCondicao = 0;
-                                  FFAppState().precoSabor3 = 0.0;
-                                  FFAppState().precoSabor4 = 0.0;
+                                  FFAppState().precoSabor3 = 0;
+                                  FFAppState().precoSabor4 = 0;
                                   FFAppState().MenuCondicao = 'Monte Sua Pizza';
                                 });
 

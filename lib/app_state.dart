@@ -119,7 +119,7 @@ class FFAppState extends ChangeNotifier {
     _condicao = value;
   }
 
-  double _preferec = 0.0;
+  double _preferec = 0;
   double get preferec => _preferec;
   set preferec(double value) {
     _preferec = value;
@@ -155,13 +155,13 @@ class FFAppState extends ChangeNotifier {
     updateFn(_SaboresApp);
   }
 
-  double _precoSabor1 = 0.0;
+  double _precoSabor1 = 0;
   double get precoSabor1 => _precoSabor1;
   set precoSabor1(double value) {
     _precoSabor1 = value;
   }
 
-  double _precoSabor2 = 0.0;
+  double _precoSabor2 = 0;
   double get precoSabor2 => _precoSabor2;
   set precoSabor2(double value) {
     _precoSabor2 = value;
@@ -180,13 +180,13 @@ class FFAppState extends ChangeNotifier {
     prefs.setString('ff_MenuCondicao', value);
   }
 
-  double _precoSabor3 = 0.0;
+  double _precoSabor3 = 0;
   double get precoSabor3 => _precoSabor3;
   set precoSabor3(double value) {
     _precoSabor3 = value;
   }
 
-  double _precoSabor4 = 0.0;
+  double _precoSabor4 = 0;
   double get precoSabor4 => _precoSabor4;
   set precoSabor4(double value) {
     _precoSabor4 = value;
