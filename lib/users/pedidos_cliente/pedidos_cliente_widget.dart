@@ -405,7 +405,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                             .nPedido,
                                                         formatType:
                                                             FormatType.custom,
-                                                        format: '.000',
+                                                        format: '',
                                                         locale: '',
                                                       )}',
                                                       style:
