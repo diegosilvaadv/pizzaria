@@ -167,7 +167,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 25.0,
+                      fontSize: 24.0,
                     ),
               ),
             ),
@@ -510,19 +510,16 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                         FFAppState()
                                                             .totalprice = FFAppState()
                                                                 .totalprice +
-                                                            (pedidosItem.valorSabor1 -
+                                                            (-pedidosItem
+                                                                        .valorSabor1 -
                                                                     pedidosItem
                                                                         .valorSabor2 -
-                                                                    pedidosItem
-                                                                        .valorSabor3 -
-                                                                    pedidosItem
-                                                                        .valorSabor4 -
                                                                     pedidosItem
                                                                         .valor -
                                                                     pedidosItem
                                                                         .valorpreferecias) *
-                                                                pedidosItem
-                                                                    .quantity;
+                                                                (pedidosItem
+                                                                    .quantity);
                                                         FFAppState()
                                                                 .numberCarrinho =
                                                             FFAppState()
