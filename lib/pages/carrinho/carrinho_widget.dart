@@ -832,12 +832,15 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                 FFAppState()
                                                                     .contador]
                                                             .massaNome,
-                                                        numberProdutos: buttonListaCarrinhoPedidosRecordList[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .numberProdutos +
-                                                            1,
+                                                        numberProdutos:
+                                                            buttonListaCarrinhoPedidosRecordList
+                                                                    .last
+                                                                    .numberProdutos +
+                                                                1,
                                                       ));
+                                                  await Future.delayed(
+                                                      const Duration(
+                                                          milliseconds: 1000));
                                                   showAlignedDialog(
                                                     barrierDismissible: false,
                                                     context: context,

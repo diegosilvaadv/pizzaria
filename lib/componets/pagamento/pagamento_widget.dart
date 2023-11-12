@@ -520,10 +520,8 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                   status: 'Preparando',
                                                   data: getCurrentTimestamp,
                                                   numberProdutos:
-                                                      buttonListaCarrinhoPedidosRecordList[
-                                                              FFAppState()
-                                                                  .contador]
-                                                          .numberProdutos,
+                                                      buttonListaCarrinhoPedidosRecordList
+                                                          .last.numberProdutos,
                                                 ));
                                             await Future.delayed(const Duration(
                                                 milliseconds: 1000));
