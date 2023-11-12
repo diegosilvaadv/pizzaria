@@ -167,7 +167,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 25.0,
+                      fontSize: 24.0,
                     ),
               ),
             ),
@@ -559,8 +559,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                     pedidosItem
                                                                         .valorSabor4 -
                                                                     pedidosItem
-                                                                            .valor /
-                                                                        2 -
+                                                                        .valor -
                                                                     pedidosItem
                                                                         .valorpreferecias -
                                                                     pedidosItem

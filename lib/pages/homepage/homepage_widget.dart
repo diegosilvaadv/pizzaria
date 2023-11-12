@@ -545,8 +545,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                 },
                                 child: Icon(
                                   Icons.dehaze,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
+                                  color: FlutterFlowTheme.of(context).secondary,
                                   size: 30.0,
                                 ),
                               ),
