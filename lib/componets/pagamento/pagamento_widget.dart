@@ -276,38 +276,97 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                     ],
                                                   ),
                                                 ),
-                                                Row(
+                                                Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.end,
                                                   children: [
-                                                    Text(
-                                                      '${produtosCardItem.quantity.toString()} X ',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Text(
+                                                          '${produtosCardItem.quantity.toString()} X ',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
                                                               .labelMedium,
-                                                    ),
-                                                    Text(
-                                                      formatNumber(
-                                                        produtosCardItem.valor +
+                                                        ),
+                                                        Text(
+                                                          formatNumber(
                                                             produtosCardItem
-                                                                .valorSabor1 +
-                                                            produtosCardItem
-                                                                .valorSabor2 +
-                                                            produtosCardItem
-                                                                .valorSabor3 +
-                                                            produtosCardItem
-                                                                .valorSabor4,
-                                                        formatType:
-                                                            FormatType.custom,
-                                                        currency: 'R\$',
-                                                        format: '0.00',
-                                                        locale: 'pt_BR',
-                                                      ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                                    .valor +
+                                                                produtosCardItem
+                                                                    .valorSabor1 +
+                                                                produtosCardItem
+                                                                    .valorSabor2 +
+                                                                produtosCardItem
+                                                                    .valorSabor3 +
+                                                                produtosCardItem
+                                                                    .valorSabor4 +
+                                                                produtosCardItem
+                                                                    .valorBebidas,
+                                                            formatType:
+                                                                FormatType
+                                                                    .custom,
+                                                            currency: 'R\$',
+                                                            format: '0.00',
+                                                            locale: 'pt_BR',
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
                                                               .titleLarge,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Text(
+                                                          produtosCardItem
+                                                              .massaNome,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                fontSize: 12.0,
+                                                              ),
+                                                        ),
+                                                        Text(
+                                                          '${produtosCardItem.quantity.toString()} X ',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                fontSize: 12.0,
+                                                              ),
+                                                        ),
+                                                        Text(
+                                                          formatNumber(
+                                                            produtosCardItem
+                                                                .valorpreferecias,
+                                                            formatType:
+                                                                FormatType
+                                                                    .custom,
+                                                            currency: 'R\$',
+                                                            format: '0.00',
+                                                            locale: 'pt_BR',
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .titleLarge
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                fontSize: 18.0,
+                                                              ),
+                                                        ),
+                                                      ],
                                                     ),
                                                   ],
                                                 ),
