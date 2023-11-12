@@ -64,6 +64,11 @@ class ListaCarrinhoPedidosRecord extends FirestoreRecord {
   int get numberProdutos => _numberProdutos ?? 0;
   bool hasNumberProdutos() => _numberProdutos != null;
 
+  // "referec" field.
+  DocumentReference? _referec;
+  DocumentReference? get referec => _referec;
+  bool hasReferec() => _referec != null;
+
   void _initializeFields() {
     _nomeProduto = snapshotData['nome_produto'] as String?;
     _img = snapshotData['img'] as String?;
@@ -75,6 +80,7 @@ class ListaCarrinhoPedidosRecord extends FirestoreRecord {
     _nBordas = snapshotData['nBordas'] as String?;
     _valorborda = castToType<double>(snapshotData['valorborda']);
     _numberProdutos = castToType<int>(snapshotData['NumberProdutos']);
+    _referec = snapshotData['referec'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -124,6 +130,7 @@ Map<String, dynamic> createListaCarrinhoPedidosRecordData({
   String? nBordas,
   double? valorborda,
   int? numberProdutos,
+  DocumentReference? referec,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -137,6 +144,7 @@ Map<String, dynamic> createListaCarrinhoPedidosRecordData({
       'nBordas': nBordas,
       'valorborda': valorborda,
       'NumberProdutos': numberProdutos,
+      'referec': referec,
     }.withoutNulls,
   );
 
@@ -158,7 +166,8 @@ class ListaCarrinhoPedidosRecordDocumentEquality
         e1?.quanty == e2?.quanty &&
         e1?.nBordas == e2?.nBordas &&
         e1?.valorborda == e2?.valorborda &&
-        e1?.numberProdutos == e2?.numberProdutos;
+        e1?.numberProdutos == e2?.numberProdutos &&
+        e1?.referec == e2?.referec;
   }
 
   @override
@@ -172,7 +181,8 @@ class ListaCarrinhoPedidosRecordDocumentEquality
         e?.quanty,
         e?.nBordas,
         e?.valorborda,
-        e?.numberProdutos
+        e?.numberProdutos,
+        e?.referec
       ]);
 
   @override
