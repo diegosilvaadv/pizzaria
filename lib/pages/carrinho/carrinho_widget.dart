@@ -167,7 +167,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 25.0,
+                      fontSize: 24.0,
                     ),
               ),
             ),
@@ -823,17 +823,26 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                 FFAppState()
                                                                     .contador]
                                                             .quantity,
-                                                        nBordas: FFAppState()
-                                                            .ProdutosDoCarrinho[
-                                                                FFAppState()
-                                                                    .contador]
-                                                            .massaNome,
-                                                        valorborda: FFAppState()
-                                                            .ProdutosDoCarrinho[
-                                                                FFAppState()
-                                                                    .contador]
-                                                            .valorpreferecias,
                                                       ));
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        'teste',
+                                                        style: TextStyle(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                      ),
+                                                      duration: const Duration(
+                                                          milliseconds: 4000),
+                                                      backgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondary,
+                                                    ),
+                                                  );
                                                   showAlignedDialog(
                                                     barrierDismissible: false,
                                                     context: context,
