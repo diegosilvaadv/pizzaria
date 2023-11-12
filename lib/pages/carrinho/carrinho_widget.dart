@@ -321,21 +321,30 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                           MainAxisSize.max,
                                                       children: [
                                                         Expanded(
-                                                          child: Text(
-                                                            pedidosItem
-                                                                .nomeProduto,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  fontSize:
-                                                                      17.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                ),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        6.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              pedidosItem
+                                                                  .nomeProduto,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Readex Pro',
+                                                                    fontSize:
+                                                                        17.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                            ),
                                                           ),
                                                         ),
                                                       ],
@@ -361,62 +370,65 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                   CrossAxisAlignment
                                                                       .start,
                                                               children: [
-                                                                Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Text(
-                                                                      formatNumber(
-                                                                        pedidosItem.valor +
-                                                                            pedidosItem.valorBebidas +
-                                                                            pedidosItem.valorSabor1 +
-                                                                            pedidosItem.valorSabor2 +
-                                                                            pedidosItem.valorSabor3 +
-                                                                            pedidosItem.valorSabor4,
-                                                                        formatType:
-                                                                            FormatType.custom,
-                                                                        currency:
-                                                                            'R\$',
-                                                                        format:
-                                                                            '0.00',
-                                                                        locale:
-                                                                            'pt_BR',
-                                                                      ),
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Readex Pro',
-                                                                            color:
-                                                                                const Color(0xFF26CB3A),
-                                                                            fontSize:
-                                                                                20.0,
-                                                                            fontWeight:
-                                                                                FontWeight.w600,
-                                                                          ),
-                                                                    ),
-                                                                    Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                          4.0,
+                                                                Padding(
+                                                                  padding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          6.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                                      child:
-                                                                          Text(
-                                                                        'X ${pedidosItem.quantity.toString()}',
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      Text(
+                                                                        formatNumber(
+                                                                          pedidosItem.valor +
+                                                                              pedidosItem.valorBebidas +
+                                                                              pedidosItem.valorSabor1 +
+                                                                              pedidosItem.valorSabor2 +
+                                                                              pedidosItem.valorSabor3 +
+                                                                              pedidosItem.valorSabor4,
+                                                                          formatType:
+                                                                              FormatType.custom,
+                                                                          currency:
+                                                                              'R\$',
+                                                                          format:
+                                                                              '0.00',
+                                                                          locale:
+                                                                              'pt_BR',
+                                                                        ),
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Readex Pro',
-                                                                              color: FlutterFlowTheme.of(context).secondaryText,
-                                                                              fontSize: 14.0,
-                                                                              fontWeight: FontWeight.w500,
+                                                                              color: const Color(0xFF26CB3A),
+                                                                              fontSize: 20.0,
+                                                                              fontWeight: FontWeight.w600,
                                                                             ),
                                                                       ),
-                                                                    ),
-                                                                  ],
+                                                                      Padding(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            4.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Text(
+                                                                          'X ${pedidosItem.quantity.toString()}',
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Readex Pro',
+                                                                                color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                fontSize: 14.0,
+                                                                                fontWeight: FontWeight.w500,
+                                                                              ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
                                                                 ),
                                                               ],
                                                             ),
@@ -436,48 +448,76 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
-                                                          if (pedidosItem
-                                                                  .valorBebidas ==
-                                                              0.0)
-                                                            Expanded(
-                                                              child: Text(
-                                                                '${valueOrDefault<String>(
-                                                                  pedidosItem
-                                                                      .massaNome,
-                                                                  'Sem Nome',
-                                                                )}: ${valueOrDefault<String>(
-                                                                  formatNumber(
-                                                                    pedidosItem
-                                                                        .valorpreferecias,
-                                                                    formatType:
-                                                                        FormatType
-                                                                            .custom,
-                                                                    currency:
-                                                                        'R\$',
-                                                                    format:
-                                                                        '0.00',
-                                                                    locale:
-                                                                        'pt_BR',
-                                                                  ),
-                                                                  '00',
-                                                                )} X ${pedidosItem.quantity.toString()}',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
-                                                                      color: FlutterFlowTheme.of(
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          6.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  if (pedidosItem
+                                                                          .valorBebidas ==
+                                                                      0.0)
+                                                                    Text(
+                                                                      '${valueOrDefault<String>(
+                                                                        pedidosItem
+                                                                            .massaNome,
+                                                                        'Sem Nome',
+                                                                      )}: ${valueOrDefault<String>(
+                                                                        formatNumber(
+                                                                          pedidosItem
+                                                                              .valorpreferecias,
+                                                                          formatType:
+                                                                              FormatType.custom,
+                                                                          currency:
+                                                                              'R\$',
+                                                                          format:
+                                                                              '0.00',
+                                                                          locale:
+                                                                              'pt_BR',
+                                                                        ),
+                                                                        '00',
+                                                                      )}',
+                                                                      style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondaryText,
-                                                                      fontSize:
-                                                                          14.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Readex Pro',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryText,
+                                                                            fontSize:
+                                                                                16.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                          ),
                                                                     ),
+                                                                  Text(
+                                                                    ' X ${pedidosItem.quantity.toString()}',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Readex Pro',
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryText,
+                                                                        ),
+                                                                  ),
+                                                                ],
                                                               ),
                                                             ),
+                                                          ),
                                                         ],
                                                       ),
                                                     ),
@@ -515,14 +555,14 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                     pedidosItem
                                                                         .valorSabor2 -
                                                                     pedidosItem
+                                                                        .valorSabor3 -
+                                                                    pedidosItem
+                                                                        .valorSabor4 -
+                                                                    pedidosItem
                                                                             .valor /
                                                                         2 -
                                                                     pedidosItem
                                                                         .valorpreferecias -
-                                                                    pedidosItem
-                                                                        .valorSabor4 -
-                                                                    pedidosItem
-                                                                        .valorSabor3 -
                                                                     pedidosItem
                                                                         .valorBebidas) *
                                                                 (pedidosItem
