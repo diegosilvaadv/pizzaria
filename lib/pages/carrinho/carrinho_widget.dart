@@ -791,58 +791,53 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                   await ListaCarrinhoPedidosRecord
                                                       .collection
                                                       .doc()
-                                                      .set({
-                                                    ...createListaCarrinhoPedidosRecordData(
-                                                      nomeProduto: FFAppState()
-                                                          .ProdutosDoCarrinho[
-                                                              FFAppState()
-                                                                  .contador]
-                                                          .nomeProduto,
-                                                      img: valueOrDefault<
-                                                          String>(
-                                                        FFAppState()
+                                                      .set(
+                                                          createListaCarrinhoPedidosRecordData(
+                                                        nomeProduto: FFAppState()
                                                             .ProdutosDoCarrinho[
                                                                 FFAppState()
                                                                     .contador]
-                                                            .img,
-                                                        'https://tpaempreendimentos.com.br/blog/wp-content/uploads/2019/02/shutterstock-84904912-1024x683.jpg',
-                                                      ),
-                                                      valor: FFAppState()
-                                                          .ProdutosDoCarrinho[
-                                                              FFAppState()
-                                                                  .contador]
-                                                          .subTotal,
-                                                      valorborda: FFAppState()
-                                                          .ProdutosDoCarrinho[
-                                                              FFAppState()
-                                                                  .contador]
-                                                          .valorpreferecias,
-                                                      quanty: FFAppState()
-                                                          .ProdutosDoCarrinho[
-                                                              FFAppState()
-                                                                  .contador]
-                                                          .quantity,
-                                                      status: 'Não Paga',
-                                                      userRef:
-                                                          currentUserReference,
-                                                      nPedido:
-                                                          buttonListaCarrinhoPedidosRecordList
-                                                                  .first
-                                                                  .nPedido +
-                                                              1,
-                                                      nBordas: FFAppState()
-                                                          .ProdutosDoCarrinho[
-                                                              FFAppState()
-                                                                  .contador]
-                                                          .massaNome,
-                                                    ),
-                                                    ...mapToFirestore(
-                                                      {
-                                                        'data': FieldValue
-                                                            .serverTimestamp(),
-                                                      },
-                                                    ),
-                                                  });
+                                                            .nomeProduto,
+                                                        img: valueOrDefault<
+                                                            String>(
+                                                          FFAppState()
+                                                              .ProdutosDoCarrinho[
+                                                                  FFAppState()
+                                                                      .contador]
+                                                              .img,
+                                                          'https://tpaempreendimentos.com.br/blog/wp-content/uploads/2019/02/shutterstock-84904912-1024x683.jpg',
+                                                        ),
+                                                        valor: FFAppState()
+                                                            .ProdutosDoCarrinho[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .subTotal,
+                                                        valorborda: FFAppState()
+                                                            .ProdutosDoCarrinho[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .valorpreferecias,
+                                                        quanty: FFAppState()
+                                                            .ProdutosDoCarrinho[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .quantity,
+                                                        data:
+                                                            getCurrentTimestamp,
+                                                        status: 'Não Paga',
+                                                        userRef:
+                                                            currentUserReference,
+                                                        nPedido:
+                                                            buttonListaCarrinhoPedidosRecordList
+                                                                    .first
+                                                                    .nPedido +
+                                                                1,
+                                                        nBordas: FFAppState()
+                                                            .ProdutosDoCarrinho[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .massaNome,
+                                                      ));
                                                   showAlignedDialog(
                                                     barrierDismissible: false,
                                                     context: context,
