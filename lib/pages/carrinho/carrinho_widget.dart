@@ -167,7 +167,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 24.0,
+                      fontSize: 25.0,
                     ),
               ),
             ),
@@ -832,10 +832,15 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                 FFAppState()
                                                                     .contador]
                                                             .massaNome,
-                                                        numberProdutos: buttonListaCarrinhoPedidosRecordList[
-                                                                    buttonListaCarrinhoPedidosRecordList
-                                                                        .length]
-                                                                .numberProdutos +
+                                                        numberProdutos: (buttonListaCarrinhoPedidosRecordList[buttonListaCarrinhoPedidosRecordList
+                                                                    .where((e) =>
+                                                                        e !=
+                                                                        null)
+                                                                    .toList()[
+                                                                        FFAppState()
+                                                                            .contador]
+                                                                    .numberProdutos]
+                                                                .numberProdutos) +
                                                             1,
                                                       ));
                                                   await Future.delayed(
