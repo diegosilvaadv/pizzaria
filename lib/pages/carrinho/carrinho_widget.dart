@@ -281,7 +281,6 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                         8.0, 0.0, 8.0, 8.0),
                                     child: Container(
                                       width: 100.0,
-                                      height: 162.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBackground,
@@ -406,9 +405,15 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                           children: [
                                                             Expanded(
                                                               child: Text(
-                                                                '${formatNumber(
+                                                                'Preço: ${formatNumber(
                                                                   pedidosItem
-                                                                      .valorSabor1,
+                                                                          .valorSabor1 +
+                                                                      pedidosItem
+                                                                          .valorSabor2 +
+                                                                      pedidosItem
+                                                                          .valorSabor3 +
+                                                                      pedidosItem
+                                                                          .valorSabor4,
                                                                   formatType:
                                                                       FormatType
                                                                           .custom,
@@ -418,51 +423,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                       '0.00',
                                                                   locale:
                                                                       'pt_BR',
-                                                                )} + ${formatNumber(
-                                                                  pedidosItem
-                                                                      .valorSabor2,
-                                                                  formatType:
-                                                                      FormatType
-                                                                          .custom,
-                                                                  currency:
-                                                                      'R\$',
-                                                                  format:
-                                                                      '0.00',
-                                                                  locale:
-                                                                      'pt_BR',
-                                                                )} + ${formatNumber(
-                                                                  pedidosItem
-                                                                      .valorSabor3,
-                                                                  formatType:
-                                                                      FormatType
-                                                                          .custom,
-                                                                  currency:
-                                                                      'R\$',
-                                                                  format:
-                                                                      '0.00',
-                                                                  locale:
-                                                                      'pt_BR',
-                                                                )} + ${formatNumber(
-                                                                  pedidosItem
-                                                                      .valorSabor4,
-                                                                  formatType:
-                                                                      FormatType
-                                                                          .custom,
-                                                                  currency:
-                                                                      'R\$',
-                                                                  format:
-                                                                      '0.00',
-                                                                  locale:
-                                                                      'pt_BR',
-                                                                )} X ${formatNumber(
-                                                                  pedidosItem
-                                                                      .quantity,
-                                                                  formatType:
-                                                                      FormatType
-                                                                          .custom,
-                                                                  format: '',
-                                                                  locale: '',
-                                                                )}',
+                                                                )} X ${pedidosItem.quantity.toString()}',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -494,45 +455,48 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
-                                                          Expanded(
-                                                            child: Text(
-                                                              '${valueOrDefault<String>(
-                                                                pedidosItem
-                                                                    .massaNome,
-                                                                'Sem Nome',
-                                                              )}: ${valueOrDefault<String>(
-                                                                formatNumber(
+                                                          if (pedidosItem
+                                                                  .valorpreferecias ==
+                                                              0.0)
+                                                            Expanded(
+                                                              child: Text(
+                                                                '${valueOrDefault<String>(
                                                                   pedidosItem
-                                                                      .valorpreferecias,
-                                                                  formatType:
-                                                                      FormatType
-                                                                          .custom,
-                                                                  currency:
-                                                                      'R\$',
-                                                                  format:
-                                                                      '0.00',
-                                                                  locale:
-                                                                      'pt_BR',
-                                                                ),
-                                                                '00',
-                                                              )} X ${pedidosItem.quantity.toString()}',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryText,
-                                                                    fontSize:
-                                                                        14.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
+                                                                      .massaNome,
+                                                                  'Sem Nome',
+                                                                )}: ${valueOrDefault<String>(
+                                                                  formatNumber(
+                                                                    pedidosItem
+                                                                        .valorpreferecias,
+                                                                    formatType:
+                                                                        FormatType
+                                                                            .custom,
+                                                                    currency:
+                                                                        'R\$',
+                                                                    format:
+                                                                        '0.00',
+                                                                    locale:
+                                                                        'pt_BR',
                                                                   ),
+                                                                  '00',
+                                                                )} X ${pedidosItem.quantity.toString()}',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      fontSize:
+                                                                          14.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                    ),
+                                                              ),
                                                             ),
-                                                          ),
                                                         ],
                                                       ),
                                                     ),
