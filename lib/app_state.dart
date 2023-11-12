@@ -191,6 +191,12 @@ class FFAppState extends ChangeNotifier {
   set precoSabor4(double value) {
     _precoSabor4 = value;
   }
+
+  int _Drawer = 0;
+  int get Drawer => _Drawer;
+  set Drawer(int value) {
+    _Drawer = value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

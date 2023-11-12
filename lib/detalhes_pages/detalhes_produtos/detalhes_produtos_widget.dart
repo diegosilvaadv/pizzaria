@@ -486,12 +486,15 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                                     CrossAxisAlignment
                                                                         .end,
                                                                 children: [
-                                                                  Text(
-                                                                    'Preço',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelSmall,
-                                                                  ),
+                                                                  if (FFAppState()
+                                                                          .quantity ==
+                                                                      1)
+                                                                    Text(
+                                                                      '${FFAppState().quantity.toString()} X ',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelSmall,
+                                                                    ),
                                                                   Row(
                                                                     mainAxisSize:
                                                                         MainAxisSize
