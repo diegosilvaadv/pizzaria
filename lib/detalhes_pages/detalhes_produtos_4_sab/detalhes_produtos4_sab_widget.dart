@@ -2388,6 +2388,10 @@ class _DetalhesProdutos4SabWidgetState
                                     valorSabor2: FFAppState().precoSabor2,
                                     valorSabor3: FFAppState().precoSabor3,
                                     valorSabor4: FFAppState().precoSabor4,
+                                    subTotal: FFAppState().precoSabor1 +
+                                        FFAppState().precoSabor2 +
+                                        FFAppState().precoSabor3 +
+                                        FFAppState().precoSabor4,
                                   ));
                                   FFAppState().totalprice =
                                       FFAppState().totalprice +
