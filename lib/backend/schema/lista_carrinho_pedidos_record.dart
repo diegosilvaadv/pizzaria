@@ -54,6 +54,16 @@ class ListaCarrinhoPedidosRecord extends FirestoreRecord {
   int get quanty => _quanty ?? 0;
   bool hasQuanty() => _quanty != null;
 
+  // "nBordas" field.
+  String? _nBordas;
+  String get nBordas => _nBordas ?? '';
+  bool hasNBordas() => _nBordas != null;
+
+  // "valorborda" field.
+  double? _valorborda;
+  double get valorborda => _valorborda ?? 0.0;
+  bool hasValorborda() => _valorborda != null;
+
   void _initializeFields() {
     _nomeProduto = snapshotData['nome_produto'] as String?;
     _img = snapshotData['img'] as String?;
@@ -63,6 +73,8 @@ class ListaCarrinhoPedidosRecord extends FirestoreRecord {
     _nPedido = castToType<double>(snapshotData['nPedido']);
     _valor = castToType<double>(snapshotData['valor']);
     _quanty = castToType<int>(snapshotData['quanty']);
+    _nBordas = snapshotData['nBordas'] as String?;
+    _valorborda = castToType<double>(snapshotData['valorborda']);
   }
 
   static CollectionReference get collection =>
@@ -110,6 +122,8 @@ Map<String, dynamic> createListaCarrinhoPedidosRecordData({
   double? nPedido,
   double? valor,
   int? quanty,
+  String? nBordas,
+  double? valorborda,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -121,6 +135,8 @@ Map<String, dynamic> createListaCarrinhoPedidosRecordData({
       'nPedido': nPedido,
       'valor': valor,
       'quanty': quanty,
+      'nBordas': nBordas,
+      'valorborda': valorborda,
     }.withoutNulls,
   );
 
@@ -140,7 +156,9 @@ class ListaCarrinhoPedidosRecordDocumentEquality
         e1?.userRef == e2?.userRef &&
         e1?.nPedido == e2?.nPedido &&
         e1?.valor == e2?.valor &&
-        e1?.quanty == e2?.quanty;
+        e1?.quanty == e2?.quanty &&
+        e1?.nBordas == e2?.nBordas &&
+        e1?.valorborda == e2?.valorborda;
   }
 
   @override
@@ -152,7 +170,9 @@ class ListaCarrinhoPedidosRecordDocumentEquality
         e?.userRef,
         e?.nPedido,
         e?.valor,
-        e?.quanty
+        e?.quanty,
+        e?.nBordas,
+        e?.valorborda
       ]);
 
   @override
