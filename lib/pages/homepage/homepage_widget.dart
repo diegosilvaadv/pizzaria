@@ -2610,7 +2610,10 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                                                 0.0),
                                                                             child:
                                                                                 Text(
-                                                                              listViewProdutosRecord.descricao.maybeHandleOverflow(maxChars: 25),
+                                                                              listViewProdutosRecord.descricao.maybeHandleOverflow(
+                                                                                maxChars: 30,
+                                                                                replacement: '…',
+                                                                              ),
                                                                               style: FlutterFlowTheme.of(context).labelMedium,
                                                                             ),
                                                                           ),
