@@ -1,11 +1,10 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/componets/pagamento/pagamento_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -166,7 +165,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 24.0,
+                      fontSize: 25.0,
                     ),
               ),
             ),
@@ -740,141 +739,87 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                           fontSize: 20.0,
                                         ),
                                   ),
-                                  Builder(
-                                    builder: (context) => Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          6.0, 0.0, 0.0, 0.0),
-                                      child: FutureBuilder<
-                                          List<ListaCarrinhoPedidosRecord>>(
-                                        future:
-                                            queryListaCarrinhoPedidosRecordOnce(),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  valueColor:
-                                                      AlwaysStoppedAnimation<
-                                                          Color>(
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                  ),
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                          List<ListaCarrinhoPedidosRecord>
-                                              buttonListaCarrinhoPedidosRecordList =
-                                              snapshot.data!;
-                                          return FFButtonWidget(
-                                            onPressed: () async {
-                                              if (FFAppState()
-                                                      .ProdutosDoCarrinho.isNotEmpty) {
-                                                setState(() {
-                                                  FFAppState().contador = -1;
-                                                });
-                                                while (FFAppState().contador <=
-                                                    FFAppState()
-                                                        .ProdutosDoCarrinho
-                                                        .length) {
-                                                  setState(() {
-                                                    FFAppState().contador =
-                                                        FFAppState().contador +
-                                                            1;
-                                                  });
-
-                                                  await NumberPedidosRecord.createDoc(
-                                                          buttonListaCarrinhoPedidosRecordList[
-                                                                  FFAppState()
-                                                                      .contador]
-                                                              .reference)
-                                                      .set(
-                                                          createNumberPedidosRecordData(
-                                                    nProduto: FFAppState()
-                                                        .ProdutosDoCarrinho[
-                                                            FFAppState()
-                                                                .contador]
-                                                        .nomeProduto,
-                                                  ));
-                                                  showAlignedDialog(
-                                                    barrierDismissible: false,
-                                                    context: context,
-                                                    isGlobal: false,
-                                                    avoidOverflow: true,
-                                                    targetAnchor:
-                                                        const AlignmentDirectional(
-                                                                0.0, 0.0)
-                                                            .resolve(
-                                                                Directionality.of(
-                                                                    context)),
-                                                    followerAnchor:
-                                                        const AlignmentDirectional(
-                                                                0.0, 0.0)
-                                                            .resolve(
-                                                                Directionality.of(
-                                                                    context)),
-                                                    builder: (dialogContext) {
-                                                      return Material(
-                                                        color:
-                                                            Colors.transparent,
-                                                        child: GestureDetector(
-                                                          onTap: () => _model
-                                                                  .unfocusNode
-                                                                  .canRequestFocus
-                                                              ? FocusScope.of(
-                                                                      context)
-                                                                  .requestFocus(
-                                                                      _model
-                                                                          .unfocusNode)
-                                                              : FocusScope.of(
-                                                                      context)
-                                                                  .unfocus(),
-                                                          child:
-                                                              const PagamentoWidget(),
-                                                        ),
-                                                      );
-                                                    },
-                                                  ).then((value) =>
-                                                      setState(() {}));
-                                                }
-                                              } else {
-                                                return;
-                                              }
-                                            },
-                                            text: 'Ir Para Pagamento',
-                                            options: FFButtonOptions(
-                                              height: 40.0,
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      15.0, 0.0, 15.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color:
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        6.0, 0.0, 0.0, 0.0),
+                                    child: FutureBuilder<
+                                        List<ListaCarrinhoPedidosRecord>>(
+                                      future:
+                                          queryListaCarrinhoPedidosRecordOnce(),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        color: Colors.white,
-                                                      ),
-                                              elevation: 3.0,
-                                              borderSide: const BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1.0,
+                                                ),
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
                                             ),
                                           );
-                                        },
-                                      ),
+                                        }
+                                        List<ListaCarrinhoPedidosRecord>
+                                            buttonListaCarrinhoPedidosRecordList =
+                                            snapshot.data!;
+                                        return FFButtonWidget(
+                                          onPressed: () async {
+                                            await ListaCarrinhoPedidosRecord
+                                                .collection
+                                                .doc()
+                                                .set(
+                                                    createListaCarrinhoPedidosRecordData(
+                                                  status: 'Não Paga',
+                                                  data: getCurrentTimestamp,
+                                                  userRef: currentUserReference,
+                                                ));
+
+                                            await NumberPedidosRecord.createDoc(
+                                                    buttonListaCarrinhoPedidosRecordList[
+                                                            FFAppState()
+                                                                .contador]
+                                                        .reference)
+                                                .set(
+                                                    createNumberPedidosRecordData(
+                                              nProduto: FFAppState()
+                                                  .ProdutosDoCarrinho[
+                                                      FFAppState().contador]
+                                                  .nomeProduto,
+                                            ));
+                                          },
+                                          text: 'Ir Para Pagamento',
+                                          options: FFButtonOptions(
+                                            height: 40.0,
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    15.0, 0.0, 15.0, 0.0),
+                                            iconPadding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      color: Colors.white,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: const BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                        );
+                                      },
                                     ),
                                   ),
                                 ],
