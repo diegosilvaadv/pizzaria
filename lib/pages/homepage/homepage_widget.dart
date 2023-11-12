@@ -3045,7 +3045,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.network(
-                                  'https://picsum.photos/seed/458/600',
+                                  'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHw2fHxQSVpaQXxlbnwwfHx8fDE2OTk3NDgyOTF8MA&ixlib=rb-4.0.3&q=80&w=1080',
                                   width: 300.0,
                                   height: 200.0,
                                   fit: BoxFit.cover,
