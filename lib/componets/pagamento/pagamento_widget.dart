@@ -110,7 +110,7 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                               .headlineSmall
                                               .override(
                                                 fontFamily: 'Outfit',
-                                                fontSize: 25.0,
+                                                fontSize: 24.0,
                                               ),
                                         ),
                                         Padding(
@@ -520,8 +520,12 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                   status: 'Preparando',
                                                   data: getCurrentTimestamp,
                                                   numberProdutos:
-                                                      buttonListaCarrinhoPedidosRecordList
-                                                          .length,
+                                                      buttonListaCarrinhoPedidosRecordList[
+                                                                  FFAppState()
+                                                                      .contador]
+                                                              .numberProdutos +
+                                                          1 -
+                                                          1,
                                                 ));
                                             await Future.delayed(const Duration(
                                                 milliseconds: 1000));
