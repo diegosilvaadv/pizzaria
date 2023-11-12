@@ -1618,6 +1618,11 @@ class _DetalhesProdutos2sabGGWidgetState
                                     massaNome:
                                         FFAppState().PrefReferencia.nomeMassa,
                                     valorSabor2: FFAppState().precoSabor2,
+                                    subTotal: valueOrDefault<double>(
+                                      FFAppState().precoSabor1 +
+                                          FFAppState().precoSabor2,
+                                      00.00,
+                                    ),
                                   ));
                                   FFAppState().totalprice =
                                       FFAppState().totalprice +

@@ -291,8 +291,6 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                       formatNumber(
                                                         produtosCardItem.valor +
                                                             produtosCardItem
-                                                                .valorBebidas +
-                                                            produtosCardItem
                                                                 .valorSabor1 +
                                                             produtosCardItem
                                                                 .valorSabor2 +
