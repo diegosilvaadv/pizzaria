@@ -523,6 +523,22 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                   numberProdutos: random_data
                                                       .randomInteger(0, 1000),
                                                 ));
+
+                                            await buttonListaCarrinhoPedidosRecordList[
+                                                    FFAppState().contador]
+                                                .reference
+                                                .update({
+                                              ...mapToFirestore(
+                                                {
+                                                  'NumberProdutos':
+                                                      FieldValue.increment(
+                                                          buttonListaCarrinhoPedidosRecordList[
+                                                                  FFAppState()
+                                                                      .contador]
+                                                              .numberProdutos),
+                                                },
+                                              ),
+                                            });
                                             await Future.delayed(const Duration(
                                                 milliseconds: 1000));
                                             setState(() {
