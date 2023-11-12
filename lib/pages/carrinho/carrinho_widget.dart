@@ -392,7 +392,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                             color:
                                                                                 const Color(0xFF26CB3A),
                                                                             fontSize:
-                                                                                18.0,
+                                                                                20.0,
                                                                             fontWeight:
                                                                                 FontWeight.w600,
                                                                           ),
@@ -411,7 +411,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                             .override(
                                                                               fontFamily: 'Readex Pro',
                                                                               color: FlutterFlowTheme.of(context).secondaryText,
-                                                                              fontSize: 15.0,
+                                                                              fontSize: 14.0,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
                                                                       ),
@@ -424,60 +424,6 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                         ],
                                                       ),
                                                     ),
-                                                    if (pedidosItem.valor ==
-                                                        0.0)
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    6.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Expanded(
-                                                              child: Text(
-                                                                'Preço: ${formatNumber(
-                                                                  pedidosItem
-                                                                          .valorSabor1 +
-                                                                      pedidosItem
-                                                                          .valorSabor2 +
-                                                                      pedidosItem
-                                                                          .valorSabor3 +
-                                                                      pedidosItem
-                                                                          .valorSabor4,
-                                                                  formatType:
-                                                                      FormatType
-                                                                          .custom,
-                                                                  currency:
-                                                                      'R\$',
-                                                                  format:
-                                                                      '0.00',
-                                                                  locale:
-                                                                      'pt_BR',
-                                                                )} X ${pedidosItem.quantity.toString()}',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
-                                                                      color: const Color(
-                                                                          0xFF26CB3A),
-                                                                      fontSize:
-                                                                          18.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
                                                     Padding(
                                                       padding:
                                                           const EdgeInsetsDirectional
@@ -491,7 +437,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                             MainAxisSize.max,
                                                         children: [
                                                           if (pedidosItem
-                                                                  .valorBebidas !=
+                                                                  .valorBebidas ==
                                                               0.0)
                                                             Expanded(
                                                               child: Text(
