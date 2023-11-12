@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/componets/pagamento/pagamento_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -788,76 +787,12 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                             1;
                                                   });
 
-                                                  await ListaCarrinhoPedidosRecord
+                                                  await ProdutosRecord
                                                       .collection
                                                       .doc()
                                                       .set(
-                                                          createListaCarrinhoPedidosRecordData(
-                                                        nomeProduto: FFAppState()
-                                                            .ProdutosDoCarrinho[
-                                                                FFAppState()
-                                                                    .contador]
-                                                            .nomeProduto,
-                                                        img: FFAppState()
-                                                            .ProdutosDoCarrinho[
-                                                                FFAppState()
-                                                                    .contador]
-                                                            .img,
-                                                        data:
-                                                            getCurrentTimestamp,
-                                                        status: 'Não Paga',
-                                                        userRef:
-                                                            currentUserReference,
-                                                        nPedido:
-                                                            buttonListaCarrinhoPedidosRecordList
-                                                                    .first
-                                                                    .nPedido +
-                                                                1,
-                                                        valor: FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .valor +
-                                                            FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .valorBebidas +
-                                                            FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .valorSabor1 +
-                                                            FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .valorSabor2 +
-                                                            FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .valorSabor3 +
-                                                            FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .valorSabor4,
-                                                        quanty: FFAppState()
-                                                            .ProdutosDoCarrinho[
-                                                                FFAppState()
-                                                                    .contador]
-                                                            .quantity,
-                                                        nBordas: FFAppState()
-                                                            .ProdutosDoCarrinho[
-                                                                FFAppState()
-                                                                    .contador]
-                                                            .massaNome,
-                                                        valorborda: FFAppState()
-                                                            .ProdutosDoCarrinho[
-                                                                FFAppState()
-                                                                    .contador]
-                                                            .valorpreferecias,
+                                                          createProdutosRecordData(
+                                                        nomeProduto: 'teste',
                                                       ));
                                                   showAlignedDialog(
                                                     barrierDismissible: false,
