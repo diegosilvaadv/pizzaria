@@ -503,33 +503,32 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                                       Column(
                                                                         mainAxisSize:
                                                                             MainAxisSize.max,
+                                                                        mainAxisAlignment:
+                                                                            MainAxisAlignment.center,
                                                                         crossAxisAlignment:
                                                                             CrossAxisAlignment.end,
                                                                         children: [
-                                                                          Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                0.0,
-                                                                                4.0,
-                                                                                0.0),
-                                                                            child:
-                                                                                Text(
-                                                                              valueOrDefault<String>(
-                                                                                formatNumber(
-                                                                                  FFAppState().PrefReferencia.valorMassa,
-                                                                                  formatType: FormatType.custom,
-                                                                                  currency: '+R\$',
-                                                                                  format: '0.00',
-                                                                                  locale: 'pt_BR',
-                                                                                ),
-                                                                                '0.00',
-                                                                              ),
-                                                                              style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                                    fontFamily: 'Outfit',
-                                                                                    fontSize: 20.0,
+                                                                          if (FFAppState().preferec !=
+                                                                              0.0)
+                                                                            Padding(
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                                              child: Text(
+                                                                                valueOrDefault<String>(
+                                                                                  formatNumber(
+                                                                                    FFAppState().PrefReferencia.valorMassa,
+                                                                                    formatType: FormatType.custom,
+                                                                                    currency: '+R\$',
+                                                                                    format: '0.00',
+                                                                                    locale: 'pt_BR',
                                                                                   ),
+                                                                                  '0.00',
+                                                                                ),
+                                                                                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                                                                                      fontFamily: 'Outfit',
+                                                                                      fontSize: 20.0,
+                                                                                    ),
+                                                                              ),
                                                                             ),
-                                                                          ),
                                                                           if (FFAppState().preferec ==
                                                                               0.0)
                                                                             Padding(
@@ -538,6 +537,18 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                                                 'Grátis',
                                                                                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                                                                                       fontFamily: 'Outfit',
+                                                                                      color: valueOrDefault<Color>(
+                                                                                        () {
+                                                                                          if (FFAppState().condicao == 0) {
+                                                                                            return FlutterFlowTheme.of(context).primaryBackground;
+                                                                                          } else if (FFAppState().condicao != 0) {
+                                                                                            return const Color(0xFF10DA26);
+                                                                                          } else {
+                                                                                            return FlutterFlowTheme.of(context).primaryBackground;
+                                                                                          }
+                                                                                        }(),
+                                                                                        FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                      ),
                                                                                       fontSize: 20.0,
                                                                                     ),
                                                                               ),
