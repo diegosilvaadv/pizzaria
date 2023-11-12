@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -519,9 +520,8 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                           .last.reference,
                                                   status: 'Preparando',
                                                   data: getCurrentTimestamp,
-                                                  numberProdutos:
-                                                      buttonListaCarrinhoPedidosRecordList
-                                                          .last.numberProdutos,
+                                                  numberProdutos: random_data
+                                                      .randomInteger(0, 1000),
                                                 ));
                                             await Future.delayed(const Duration(
                                                 milliseconds: 1000));

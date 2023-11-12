@@ -265,9 +265,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                           listaCarrinhoPedidosRecord
                                                               .where(
                                                     'NumberProdutos',
-                                                    isEqualTo:
-                                                        listViewSubNumeroPedidosRecord
-                                                            .numberProdutos,
+                                                    isEqualTo: listViewIndex,
                                                   ),
                                                 ),
                                                 builder: (context, snapshot) {
