@@ -166,7 +166,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 24.0,
+                      fontSize: 25.0,
                     ),
               ),
             ),
@@ -810,7 +810,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                             .ProdutosDoCarrinho[
                                                                 FFAppState()
                                                                     .contador]
-                                                            .valor,
+                                                            .subTotal,
                                                       ));
                                                   showAlignedDialog(
                                                     barrierDismissible: false,
