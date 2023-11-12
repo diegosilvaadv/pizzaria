@@ -9,7 +9,7 @@
           "order": "ASCENDING"
         },
         {
-          "fieldPath": "data",
+          "fieldPath": "NumberProdutos",
           "order": "DESCENDING"
         }
       ]

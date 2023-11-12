@@ -827,16 +827,16 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                         status: 'Não Paga',
                                                         userRef:
                                                             currentUserReference,
-                                                        nPedido:
-                                                            buttonListaCarrinhoPedidosRecordList
-                                                                    .last
-                                                                    .nPedido +
-                                                                1,
                                                         nBordas: FFAppState()
                                                             .ProdutosDoCarrinho[
                                                                 FFAppState()
                                                                     .contador]
                                                             .massaNome,
+                                                        numberProdutos: buttonListaCarrinhoPedidosRecordList[
+                                                                    FFAppState()
+                                                                        .contador]
+                                                                .numberProdutos +
+                                                            1,
                                                       ));
                                                   showAlignedDialog(
                                                     barrierDismissible: false,

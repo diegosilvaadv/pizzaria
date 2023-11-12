@@ -39,11 +39,6 @@ class ListaCarrinhoPedidosRecord extends FirestoreRecord {
   DocumentReference? get userRef => _userRef;
   bool hasUserRef() => _userRef != null;
 
-  // "nPedido" field.
-  double? _nPedido;
-  double get nPedido => _nPedido ?? 0.0;
-  bool hasNPedido() => _nPedido != null;
-
   // "valor" field.
   double? _valor;
   double get valor => _valor ?? 0.0;
@@ -64,17 +59,22 @@ class ListaCarrinhoPedidosRecord extends FirestoreRecord {
   double get valorborda => _valorborda ?? 0.0;
   bool hasValorborda() => _valorborda != null;
 
+  // "NumberProdutos" field.
+  int? _numberProdutos;
+  int get numberProdutos => _numberProdutos ?? 0;
+  bool hasNumberProdutos() => _numberProdutos != null;
+
   void _initializeFields() {
     _nomeProduto = snapshotData['nome_produto'] as String?;
     _img = snapshotData['img'] as String?;
     _data = snapshotData['data'] as DateTime?;
     _status = snapshotData['status'] as String?;
     _userRef = snapshotData['userRef'] as DocumentReference?;
-    _nPedido = castToType<double>(snapshotData['nPedido']);
     _valor = castToType<double>(snapshotData['valor']);
     _quanty = castToType<int>(snapshotData['quanty']);
     _nBordas = snapshotData['nBordas'] as String?;
     _valorborda = castToType<double>(snapshotData['valorborda']);
+    _numberProdutos = castToType<int>(snapshotData['NumberProdutos']);
   }
 
   static CollectionReference get collection =>
@@ -119,11 +119,11 @@ Map<String, dynamic> createListaCarrinhoPedidosRecordData({
   DateTime? data,
   String? status,
   DocumentReference? userRef,
-  double? nPedido,
   double? valor,
   int? quanty,
   String? nBordas,
   double? valorborda,
+  int? numberProdutos,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -132,11 +132,11 @@ Map<String, dynamic> createListaCarrinhoPedidosRecordData({
       'data': data,
       'status': status,
       'userRef': userRef,
-      'nPedido': nPedido,
       'valor': valor,
       'quanty': quanty,
       'nBordas': nBordas,
       'valorborda': valorborda,
+      'NumberProdutos': numberProdutos,
     }.withoutNulls,
   );
 
@@ -154,11 +154,11 @@ class ListaCarrinhoPedidosRecordDocumentEquality
         e1?.data == e2?.data &&
         e1?.status == e2?.status &&
         e1?.userRef == e2?.userRef &&
-        e1?.nPedido == e2?.nPedido &&
         e1?.valor == e2?.valor &&
         e1?.quanty == e2?.quanty &&
         e1?.nBordas == e2?.nBordas &&
-        e1?.valorborda == e2?.valorborda;
+        e1?.valorborda == e2?.valorborda &&
+        e1?.numberProdutos == e2?.numberProdutos;
   }
 
   @override
@@ -168,11 +168,11 @@ class ListaCarrinhoPedidosRecordDocumentEquality
         e?.data,
         e?.status,
         e?.userRef,
-        e?.nPedido,
         e?.valor,
         e?.quanty,
         e?.nBordas,
-        e?.valorborda
+        e?.valorborda,
+        e?.numberProdutos
       ]);
 
   @override

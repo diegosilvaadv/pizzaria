@@ -518,10 +518,12 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                       buttonListaCarrinhoPedidosRecordList
                                                           .last.reference,
                                                   status: 'Preparando',
-                                                  nPedido:
-                                                      buttonListaCarrinhoPedidosRecordList
-                                                          .last.nPedido,
                                                   data: getCurrentTimestamp,
+                                                  numberProdutos:
+                                                      buttonListaCarrinhoPedidosRecordList[
+                                                              FFAppState()
+                                                                  .contador]
+                                                          .numberProdutos,
                                                 ));
                                             await Future.delayed(const Duration(
                                                 milliseconds: 1000));

@@ -24,21 +24,21 @@ class SubNumeroPedidosRecord extends FirestoreRecord {
   String get status => _status ?? '';
   bool hasStatus() => _status != null;
 
-  // "nPedido" field.
-  double? _nPedido;
-  double get nPedido => _nPedido ?? 0.0;
-  bool hasNPedido() => _nPedido != null;
-
   // "data" field.
   DateTime? _data;
   DateTime? get data => _data;
   bool hasData() => _data != null;
 
+  // "NumberProdutos" field.
+  int? _numberProdutos;
+  int get numberProdutos => _numberProdutos ?? 0;
+  bool hasNumberProdutos() => _numberProdutos != null;
+
   void _initializeFields() {
     _referecia = snapshotData['referecia'] as DocumentReference?;
     _status = snapshotData['status'] as String?;
-    _nPedido = castToType<double>(snapshotData['nPedido']);
     _data = snapshotData['data'] as DateTime?;
+    _numberProdutos = castToType<int>(snapshotData['NumberProdutos']);
   }
 
   static CollectionReference get collection =>
@@ -79,15 +79,15 @@ class SubNumeroPedidosRecord extends FirestoreRecord {
 Map<String, dynamic> createSubNumeroPedidosRecordData({
   DocumentReference? referecia,
   String? status,
-  double? nPedido,
   DateTime? data,
+  int? numberProdutos,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'referecia': referecia,
       'status': status,
-      'nPedido': nPedido,
       'data': data,
+      'NumberProdutos': numberProdutos,
     }.withoutNulls,
   );
 
@@ -102,13 +102,13 @@ class SubNumeroPedidosRecordDocumentEquality
   bool equals(SubNumeroPedidosRecord? e1, SubNumeroPedidosRecord? e2) {
     return e1?.referecia == e2?.referecia &&
         e1?.status == e2?.status &&
-        e1?.nPedido == e2?.nPedido &&
-        e1?.data == e2?.data;
+        e1?.data == e2?.data &&
+        e1?.numberProdutos == e2?.numberProdutos;
   }
 
   @override
-  int hash(SubNumeroPedidosRecord? e) =>
-      const ListEquality().hash([e?.referecia, e?.status, e?.nPedido, e?.data]);
+  int hash(SubNumeroPedidosRecord? e) => const ListEquality()
+      .hash([e?.referecia, e?.status, e?.data, e?.numberProdutos]);
 
   @override
   bool isValidKey(Object? o) => o is SubNumeroPedidosRecord;

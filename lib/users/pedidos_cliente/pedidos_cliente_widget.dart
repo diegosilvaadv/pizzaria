@@ -194,7 +194,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                     subNumeroPedidosRecord.whereIn('status', [
                                   'Não Paga',
                                   'Preparando'
-                                ]).orderBy('data', descending: true),
+                                ]).orderBy('NumberProdutos', descending: true),
                               ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
@@ -264,10 +264,10 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                       (listaCarrinhoPedidosRecord) =>
                                                           listaCarrinhoPedidosRecord
                                                               .where(
-                                                    'nPedido',
+                                                    'NumberProdutos',
                                                     isEqualTo:
                                                         listViewSubNumeroPedidosRecord
-                                                            .nPedido,
+                                                            .numberProdutos,
                                                   ),
                                                 ),
                                                 builder: (context, snapshot) {
@@ -482,7 +482,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                         child: Text(
                                                           'Numero do Pedido: ${formatNumber(
                                                             listViewSubNumeroPedidosRecord
-                                                                .nPedido,
+                                                                .numberProdutos,
                                                             formatType:
                                                                 FormatType
                                                                     .custom,
@@ -801,7 +801,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                                     child: Text(
                                                                       'Pedido: ${formatNumber(
                                                                         listViewListaCarrinhoPedidosRecord
-                                                                            .nPedido,
+                                                                            .numberProdutos,
                                                                         formatType:
                                                                             FormatType.custom,
                                                                         format:
