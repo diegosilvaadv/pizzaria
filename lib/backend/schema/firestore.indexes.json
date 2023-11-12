@@ -14,7 +14,7 @@
         },
         {
           "fieldPath": "data",
-          "order": "ASCENDING"
+          "order": "DESCENDING"
         }
       ]
     },
