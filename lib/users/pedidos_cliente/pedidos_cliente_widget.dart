@@ -135,7 +135,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
             'Meus Pedidos',
             style: FlutterFlowTheme.of(context).displaySmall.override(
                   fontFamily: 'Outfit',
-                  fontSize: 34.0,
+                  fontSize: 35.0,
                 ),
           ),
           actions: const [],
@@ -255,18 +255,19 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              StreamBuilder<
+                                              FutureBuilder<
                                                   List<
                                                       ListaCarrinhoPedidosRecord>>(
-                                                stream:
-                                                    queryListaCarrinhoPedidosRecord(
+                                                future:
+                                                    queryListaCarrinhoPedidosRecordOnce(
                                                   queryBuilder:
                                                       (listaCarrinhoPedidosRecord) =>
                                                           listaCarrinhoPedidosRecord
                                                               .where(
-                                                    'data',
-                                                    isGreaterThanOrEqualTo:
-                                                        getCurrentTimestamp,
+                                                    'NumberProdutos',
+                                                    isEqualTo:
+                                                        listViewSubNumeroPedidosRecord
+                                                            .numberProdutos,
                                                   ),
                                                 ),
                                                 builder: (context, snapshot) {
