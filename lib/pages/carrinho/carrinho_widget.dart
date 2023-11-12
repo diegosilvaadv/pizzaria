@@ -787,11 +787,11 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                             1;
                                                   });
 
-                                                  await ProdutosRecord
+                                                  await ListaCarrinhoPedidosRecord
                                                       .collection
                                                       .doc()
                                                       .set(
-                                                          createProdutosRecordData(
+                                                          createListaCarrinhoPedidosRecordData(
                                                         nomeProduto: 'teste',
                                                       ));
                                                   showAlignedDialog(
