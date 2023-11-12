@@ -814,35 +814,51 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                     .nPedido +
                                                                 1,
                                                         valor: FFAppState()
-                                                            .ProdutosDoCarrinho[
-                                                                FFAppState()
-                                                                    .contador]
-                                                            .valorBebidas,
+                                                                .ProdutosDoCarrinho[
+                                                                    FFAppState()
+                                                                        .contador]
+                                                                .valor +
+                                                            FFAppState()
+                                                                .ProdutosDoCarrinho[
+                                                                    FFAppState()
+                                                                        .contador]
+                                                                .valorBebidas +
+                                                            FFAppState()
+                                                                .ProdutosDoCarrinho[
+                                                                    FFAppState()
+                                                                        .contador]
+                                                                .valorSabor1 +
+                                                            FFAppState()
+                                                                .ProdutosDoCarrinho[
+                                                                    FFAppState()
+                                                                        .contador]
+                                                                .valorSabor2 +
+                                                            FFAppState()
+                                                                .ProdutosDoCarrinho[
+                                                                    FFAppState()
+                                                                        .contador]
+                                                                .valorSabor3 +
+                                                            FFAppState()
+                                                                .ProdutosDoCarrinho[
+                                                                    FFAppState()
+                                                                        .contador]
+                                                                .valorSabor4,
                                                         quanty: FFAppState()
                                                             .ProdutosDoCarrinho[
                                                                 FFAppState()
                                                                     .contador]
                                                             .quantity,
+                                                        nBordas: FFAppState()
+                                                            .ProdutosDoCarrinho[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .massaNome,
+                                                        valorborda: FFAppState()
+                                                            .ProdutosDoCarrinho[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .valorpreferecias,
                                                       ));
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    SnackBar(
-                                                      content: Text(
-                                                        'teste',
-                                                        style: TextStyle(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                        ),
-                                                      ),
-                                                      duration: const Duration(
-                                                          milliseconds: 4000),
-                                                      backgroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondary,
-                                                    ),
-                                                  );
                                                   showAlignedDialog(
                                                     barrierDismissible: false,
                                                     context: context,
