@@ -634,10 +634,10 @@ class _DetalhesProdutos4SabWidgetState
                                                                       FFAppState()
                                                                           .updateSaboresAppStruct(
                                                                         (e) => e
-                                                                          ..sabor1 =
-                                                                              'Nenhum'
-                                                                          ..precoSabor1 =
-                                                                              0.00,
+                                                                          ..sabor1GG =
+                                                                              null
+                                                                          ..precoSab1GG =
+                                                                              null,
                                                                       );
                                                                       FFAppState()
                                                                           .precoSabor1 = 0;
@@ -1017,10 +1017,10 @@ class _DetalhesProdutos4SabWidgetState
                                                                       FFAppState()
                                                                           .updateSaboresAppStruct(
                                                                         (e) => e
-                                                                          ..sabor2 =
-                                                                              'Nenhum'
-                                                                          ..precoSabor2 =
-                                                                              0.00,
+                                                                          ..sabor2GG =
+                                                                              null
+                                                                          ..precoSab2GG =
+                                                                              null,
                                                                       );
                                                                       FFAppState()
                                                                           .precoSabor2 = 0;
