@@ -843,6 +843,31 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                       },
                                                     ),
                                                   });
+
+                                                  await NumberPedidosRecord.createDoc(
+                                                          buttonListaCarrinhoPedidosRecordList[
+                                                                  FFAppState()
+                                                                      .contador]
+                                                              .reference)
+                                                      .set(
+                                                          createNumberPedidosRecordData(
+                                                    nProduto:
+                                                        buttonListaCarrinhoPedidosRecordList[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .nomeProduto,
+                                                    valor:
+                                                        buttonListaCarrinhoPedidosRecordList[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .valor,
+                                                    quanty:
+                                                        buttonListaCarrinhoPedidosRecordList[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .quanty
+                                                            .toDouble(),
+                                                  ));
                                                   showAlignedDialog(
                                                     barrierDismissible: false,
                                                     context: context,

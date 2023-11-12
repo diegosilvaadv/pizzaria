@@ -259,20 +259,9 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                 CrossAxisAlignment.start,
                                             children: [
                                               StreamBuilder<
-                                                  List<
-                                                      ListaCarrinhoPedidosRecord>>(
+                                                  List<NumberPedidosRecord>>(
                                                 stream:
-                                                    queryListaCarrinhoPedidosRecord(
-                                                  queryBuilder:
-                                                      (listaCarrinhoPedidosRecord) =>
-                                                          listaCarrinhoPedidosRecord
-                                                              .where(
-                                                    'nPedido',
-                                                    isEqualTo:
-                                                        listViewListaCarrinhoPedidosRecord
-                                                            .nPedido,
-                                                  ),
-                                                ),
+                                                    queryNumberPedidosRecord(),
                                                 builder: (context, snapshot) {
                                                   // Customize what your widget looks like when it's loading.
                                                   if (!snapshot.hasData) {
@@ -293,18 +282,18 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                       ),
                                                     );
                                                   }
-                                                  List<ListaCarrinhoPedidosRecord>
-                                                      columnListaCarrinhoPedidosRecordList =
+                                                  List<NumberPedidosRecord>
+                                                      columnNumberPedidosRecordList =
                                                       snapshot.data!;
                                                   return Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     children: List.generate(
-                                                        columnListaCarrinhoPedidosRecordList
+                                                        columnNumberPedidosRecordList
                                                             .length,
                                                         (columnIndex) {
-                                                      final columnListaCarrinhoPedidosRecord =
-                                                          columnListaCarrinhoPedidosRecordList[
+                                                      final columnNumberPedidosRecord =
+                                                          columnNumberPedidosRecordList[
                                                               columnIndex];
                                                       return Row(
                                                         mainAxisSize:
@@ -315,8 +304,8 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                         children: [
                                                           Expanded(
                                                             child: Text(
-                                                              listViewListaCarrinhoPedidosRecord
-                                                                  .nomeProduto,
+                                                              columnNumberPedidosRecord
+                                                                  .nProduto,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .headlineMedium
@@ -338,7 +327,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                             children: [
                                                               Text(
                                                                 formatNumber(
-                                                                  listViewListaCarrinhoPedidosRecord
+                                                                  columnNumberPedidosRecord
                                                                       .valor,
                                                                   formatType:
                                                                       FormatType
@@ -361,7 +350,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                                     ),
                                                               ),
                                                               Text(
-                                                                'X ${listViewListaCarrinhoPedidosRecord.quanty.toString()}',
+                                                                'X ${columnNumberPedidosRecord.quanty.toString()}',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .headlineSmall
