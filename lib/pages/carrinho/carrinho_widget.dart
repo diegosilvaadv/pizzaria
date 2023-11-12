@@ -167,7 +167,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 24.0,
+                      fontSize: 25.0,
                     ),
               ),
             ),
@@ -468,21 +468,23 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                       CrossAxisAlignment
                                                                           .start,
                                                                   children: [
-                                                                    if (pedidosItem
-                                                                            .valorpreferecias !=
-                                                                        0.0)
-                                                                      Text(
-                                                                        pedidosItem
-                                                                            .massaNome,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Readex Pro',
-                                                                              color: FlutterFlowTheme.of(context).primaryText,
-                                                                              fontSize: 16.0,
-                                                                              fontWeight: FontWeight.w600,
-                                                                            ),
-                                                                      ),
+                                                                    Text(
+                                                                      pedidosItem
+                                                                          .massaNome,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Readex Pro',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryText,
+                                                                            fontSize:
+                                                                                16.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                          ),
+                                                                    ),
                                                                     if (pedidosItem
                                                                             .valorpreferecias ==
                                                                         0.0)
@@ -797,56 +799,6 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                 FFAppState()
                                                                     .contador]
                                                             .img,
-                                                        valorPizzaInteira:
-                                                            FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .valor,
-                                                        quantyPizzaInteira:
-                                                            FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .quantity,
-                                                        nomeMassaPizzaInteira:
-                                                            FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .massaNome,
-                                                        valorMassaPizzaInteira:
-                                                            FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .valorpreferecias,
-                                                        nomeSabor1: FFAppState()
-                                                            .ProdutosDoCarrinho[
-                                                                FFAppState()
-                                                                    .contador]
-                                                            .nomeProduto,
-                                                        valorSabor1: FFAppState()
-                                                            .ProdutosDoCarrinho[
-                                                                FFAppState()
-                                                                    .contador]
-                                                            .valorSabor1,
-                                                        nomeSabor2: FFAppState()
-                                                            .ProdutosDoCarrinho[
-                                                                FFAppState()
-                                                                    .contador]
-                                                            .nomeProduto,
-                                                        valorSabor2: FFAppState()
-                                                            .ProdutosDoCarrinho[
-                                                                FFAppState()
-                                                                    .contador]
-                                                            .valorSabor2,
-                                                        quantyPizza2sabores:
-                                                            FFAppState()
-                                                                .ProdutosDoCarrinho[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .quantity,
                                                         data:
                                                             getCurrentTimestamp,
                                                         status: 'Não Paga',
@@ -857,6 +809,41 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                     .first
                                                                     .nPedido +
                                                                 1,
+                                                        valor: FFAppState()
+                                                                .ProdutosDoCarrinho[
+                                                                    FFAppState()
+                                                                        .contador]
+                                                                .valor +
+                                                            FFAppState()
+                                                                .ProdutosDoCarrinho[
+                                                                    FFAppState()
+                                                                        .contador]
+                                                                .valorBebidas +
+                                                            FFAppState()
+                                                                .ProdutosDoCarrinho[
+                                                                    FFAppState()
+                                                                        .contador]
+                                                                .valorSabor1 +
+                                                            FFAppState()
+                                                                .ProdutosDoCarrinho[
+                                                                    FFAppState()
+                                                                        .contador]
+                                                                .valorSabor2 +
+                                                            FFAppState()
+                                                                .ProdutosDoCarrinho[
+                                                                    FFAppState()
+                                                                        .contador]
+                                                                .valorSabor3 +
+                                                            FFAppState()
+                                                                .ProdutosDoCarrinho[
+                                                                    FFAppState()
+                                                                        .contador]
+                                                                .valorSabor4,
+                                                        quanty: FFAppState()
+                                                            .ProdutosDoCarrinho[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .quantity,
                                                       ));
                                                   showAlignedDialog(
                                                     barrierDismissible: false,

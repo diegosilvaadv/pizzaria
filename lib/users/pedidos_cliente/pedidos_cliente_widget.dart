@@ -279,27 +279,48 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                               ),
                                                     ),
                                                   ),
-                                                  Text(
-                                                    formatNumber(
-                                                      listViewListaCarrinhoPedidosRecord
-                                                              .valorPizzaInteira +
+                                                  Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.end,
+                                                    children: [
+                                                      Text(
+                                                        formatNumber(
                                                           listViewListaCarrinhoPedidosRecord
-                                                              .valorSabor1 +
-                                                          listViewListaCarrinhoPedidosRecord
-                                                              .valorSabor2,
-                                                      formatType:
-                                                          FormatType.custom,
-                                                      currency: 'R\$',
-                                                      format: '0.00',
-                                                      locale: 'pt_BR',
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .headlineSmall
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          fontSize: 20.0,
+                                                              .valor,
+                                                          formatType:
+                                                              FormatType.custom,
+                                                          currency: 'R\$',
+                                                          format: '0.00',
+                                                          locale: 'pt_BR',
                                                         ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .headlineSmall
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Outfit',
+                                                              fontSize: 20.0,
+                                                            ),
+                                                      ),
+                                                      Text(
+                                                        'X ${listViewListaCarrinhoPedidosRecord.quanty.toString()}',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .headlineSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Outfit',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  fontSize:
+                                                                      15.0,
+                                                                ),
+                                                      ),
+                                                    ],
                                                   ),
                                                   Padding(
                                                     padding:
@@ -723,14 +744,14 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
                                                               .center,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .end,
                                                       children: [
                                                         Text(
                                                           formatNumber(
-                                                            listViewListaCarrinhoPedidosRecord.valorPizzaInteira +
-                                                                listViewListaCarrinhoPedidosRecord
-                                                                    .valorSabor1 +
-                                                                listViewListaCarrinhoPedidosRecord
-                                                                    .valorSabor2,
+                                                            listViewListaCarrinhoPedidosRecord
+                                                                .valor,
                                                             formatType:
                                                                 FormatType
                                                                     .custom,
@@ -748,7 +769,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                                               ),
                                                         ),
                                                         Text(
-                                                          ' X ${listViewListaCarrinhoPedidosRecord.quantyPizzaInteira.toString()}',
+                                                          'X ${listViewListaCarrinhoPedidosRecord.quanty.toString()}',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
