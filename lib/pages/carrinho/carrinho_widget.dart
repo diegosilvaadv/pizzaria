@@ -543,6 +543,43 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                       size: 24.0,
                                                     ),
                                                   ),
+                                                  InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      setState(() {
+                                                        FFAppState()
+                                                            .removeAtIndexFromProdutosDoCarrinho(
+                                                                pedidosIndex);
+                                                        FFAppState()
+                                                            .totalprice = FFAppState()
+                                                                .totalprice +
+                                                            (-pedidosItem
+                                                                    .valorBebidas) *
+                                                                (pedidosItem
+                                                                    .quantity);
+                                                        FFAppState()
+                                                                .numberCarrinho =
+                                                            FFAppState()
+                                                                    .numberCarrinho +
+                                                                -1;
+                                                      });
+                                                    },
+                                                    child: Icon(
+                                                      Icons.delete_forever,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      size: 24.0,
+                                                    ),
+                                                  ),
                                                 ],
                                               ),
                                             ),
