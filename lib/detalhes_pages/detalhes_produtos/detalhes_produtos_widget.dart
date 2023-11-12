@@ -487,7 +487,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                                         .end,
                                                                 children: [
                                                                   if (FFAppState()
-                                                                          .quantity ==
+                                                                          .quantity !=
                                                                       1)
                                                                     Text(
                                                                       '${FFAppState().quantity.toString()} X ',
