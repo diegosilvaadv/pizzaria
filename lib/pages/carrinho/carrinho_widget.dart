@@ -515,7 +515,8 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                                     pedidosItem
                                                                         .valorSabor2 -
                                                                     pedidosItem
-                                                                        .valor -
+                                                                            .valor /
+                                                                        2 -
                                                                     pedidosItem
                                                                         .valorpreferecias -
                                                                     pedidosItem
