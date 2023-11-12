@@ -168,7 +168,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 24.0,
+                      fontSize: 25.0,
                     ),
               ),
             ),
@@ -789,20 +789,6 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                             1;
                                                   });
 
-                                                  await NumberPedidosRecord.createDoc(
-                                                          buttonListaCarrinhoPedidosRecordList[
-                                                                  FFAppState()
-                                                                      .contador]
-                                                              .reference)
-                                                      .set(
-                                                          createNumberPedidosRecordData(
-                                                    nProduto: FFAppState()
-                                                        .ProdutosDoCarrinho[
-                                                            FFAppState()
-                                                                .contador]
-                                                        .nomeProduto,
-                                                  ));
-
                                                   await ListaCarrinhoPedidosRecord
                                                       .collection
                                                       .doc()
@@ -822,6 +808,21 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                       },
                                                     ),
                                                   });
+
+                                                  await NumberPedidosRecord
+                                                          .createDoc(FFAppState()
+                                                              .ProdutosDoCarrinho[
+                                                                  FFAppState()
+                                                                      .contador]
+                                                              .referencia!)
+                                                      .set(
+                                                          createNumberPedidosRecordData(
+                                                    nProduto: FFAppState()
+                                                        .ProdutosDoCarrinho[
+                                                            FFAppState()
+                                                                .contador]
+                                                        .nomeProduto,
+                                                  ));
                                                   showAlignedDialog(
                                                     barrierDismissible: false,
                                                     context: context,
