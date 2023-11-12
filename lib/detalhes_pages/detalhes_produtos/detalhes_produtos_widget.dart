@@ -892,11 +892,11 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                     nomeProduto: widget.produtoRef?.nomeProduto,
                                     img: widget.produtoRef?.img,
                                     quantity: FFAppState().quantity,
-                                    valor: widget.produtoRef?.valorPizza,
                                     valorpreferecias:
                                         FFAppState().PrefReferencia.valorMassa,
                                     massaNome:
                                         FFAppState().PrefReferencia.nomeMassa,
+                                    valor: widget.produtoRef!.valorPizza / 2,
                                   ));
                                   FFAppState().totalprice =
                                       FFAppState().totalprice +
