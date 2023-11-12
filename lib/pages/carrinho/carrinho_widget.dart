@@ -448,76 +448,99 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
-                                                          Expanded(
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          6.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  if (pedidosItem
-                                                                          .valorBebidas ==
-                                                                      0.0)
-                                                                    Text(
-                                                                      '${valueOrDefault<String>(
+                                                          if (pedidosItem
+                                                                  .valorBebidas ==
+                                                              0.0)
+                                                            Expanded(
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            6.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    if (pedidosItem
+                                                                            .valorpreferecias !=
+                                                                        0.0)
+                                                                      Text(
                                                                         pedidosItem
                                                                             .massaNome,
-                                                                        'Sem Nome',
-                                                                      )}: ${valueOrDefault<String>(
-                                                                        formatNumber(
-                                                                          pedidosItem
-                                                                              .valorpreferecias,
-                                                                          formatType:
-                                                                              FormatType.custom,
-                                                                          currency:
-                                                                              'R\$',
-                                                                          format:
-                                                                              '0.00',
-                                                                          locale:
-                                                                              'pt_BR',
-                                                                        ),
-                                                                        '00',
-                                                                      )}',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Readex Pro',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryText,
-                                                                            fontSize:
-                                                                                16.0,
-                                                                            fontWeight:
-                                                                                FontWeight.w600,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Readex Pro',
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
+                                                                              fontSize: 16.0,
+                                                                              fontWeight: FontWeight.w600,
+                                                                            ),
+                                                                      ),
+                                                                    if (pedidosItem
+                                                                            .valorpreferecias ==
+                                                                        0.0)
+                                                                      Text(
+                                                                        'Grátis',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Readex Pro',
+                                                                              color: const Color(0xFF10DA26),
+                                                                              fontSize: 16.0,
+                                                                              fontWeight: FontWeight.w600,
+                                                                            ),
+                                                                      ),
+                                                                    if (pedidosItem
+                                                                            .valorpreferecias !=
+                                                                        0.0)
+                                                                      Text(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          formatNumber(
+                                                                            pedidosItem.valorpreferecias,
+                                                                            formatType:
+                                                                                FormatType.custom,
+                                                                            currency:
+                                                                                'R\$',
+                                                                            format:
+                                                                                '0.00',
+                                                                            locale:
+                                                                                'pt_BR',
                                                                           ),
-                                                                    ),
-                                                                  Text(
-                                                                    ' X ${pedidosItem.quantity.toString()}',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).secondaryText,
+                                                                          '00',
                                                                         ),
-                                                                  ),
-                                                                ],
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Readex Pro',
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
+                                                                              fontSize: 16.0,
+                                                                              fontWeight: FontWeight.w600,
+                                                                            ),
+                                                                      ),
+                                                                    if (pedidosItem
+                                                                            .valorpreferecias !=
+                                                                        0.0)
+                                                                      Text(
+                                                                        ' X ${pedidosItem.quantity.toString()}',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Readex Pro',
+                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                            ),
+                                                                      ),
+                                                                  ],
+                                                                ),
                                                               ),
                                                             ),
-                                                          ),
                                                         ],
                                                       ),
                                                     ),
