@@ -520,9 +520,8 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                   status: 'Preparando',
                                                   data: getCurrentTimestamp,
                                                   numberProdutos:
-                                                      buttonListaCarrinhoPedidosRecordList[
-                                                                  FFAppState()
-                                                                      .contador]
+                                                      buttonListaCarrinhoPedidosRecordList
+                                                              .last
                                                               .numberProdutos +
                                                           1 -
                                                           1,
