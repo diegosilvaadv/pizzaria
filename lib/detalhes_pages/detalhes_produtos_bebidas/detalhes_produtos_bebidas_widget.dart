@@ -439,7 +439,7 @@ class _DetalhesProdutosBebidasWidgetState
                                 ));
                                 FFAppState().totalprice =
                                     FFAppState().totalprice +
-                                        widget.produtoRef!.valorBebidas *
+                                        (widget.produtoRef!.valorBebidas) *
                                             FFAppState().quantity;
                                 FFAppState().condicao = 0;
                                 FFAppState().quantity = 1;
