@@ -2633,7 +2633,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                               Text(
                                                                 formatNumber(
                                                                   listViewProdutosRecord
-                                                                      .valorPizza,
+                                                                      .valorBebidas,
                                                                   formatType:
                                                                       FormatType
                                                                           .custom,
@@ -2958,7 +2958,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
                                                               Text(
                                                                 formatNumber(
                                                                   listViewProdutosRecord
-                                                                      .valorPizza,
+                                                                      .valorBebidas,
                                                                   formatType:
                                                                       FormatType
                                                                           .custom,

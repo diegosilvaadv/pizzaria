@@ -473,12 +473,11 @@ class _DetalhesProdutosBebidasWidgetState
                                 Text(
                                   valueOrDefault<String>(
                                     formatNumber(
-                                      (widget.produtoRef!.valorPizza +
-                                              FFAppState().preferec) *
+                                      (widget.produtoRef!.valorBebidas) *
                                           FFAppState().quantity,
                                       formatType: FormatType.custom,
                                       currency: 'R\$',
-                                      format: '.00',
+                                      format: '0.00',
                                       locale: 'pt_BR',
                                     ),
                                     '00.00',
