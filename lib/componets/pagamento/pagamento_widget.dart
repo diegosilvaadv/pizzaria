@@ -108,7 +108,11 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                         Text(
                                           'Realizar Pagamento',
                                           style: FlutterFlowTheme.of(context)
-                                              .headlineSmall,
+                                              .headlineSmall
+                                              .override(
+                                                fontFamily: 'Outfit',
+                                                fontSize: 25.0,
+                                              ),
                                         ),
                                         Padding(
                                           padding:

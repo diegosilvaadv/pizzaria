@@ -776,6 +776,25 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                             onPressed: () async {
                                               if (FFAppState()
                                                       .ProdutosDoCarrinho.isNotEmpty) {
+                                                await ListaCarrinhoPedidosRecord
+                                                    .collection
+                                                    .doc()
+                                                    .set({
+                                                  ...createListaCarrinhoPedidosRecordData(
+                                                    status: 'Não Paga',
+                                                    nPedido: random_data
+                                                        .randomInteger(0, 100)
+                                                        .toDouble(),
+                                                    userRef:
+                                                        currentUserReference,
+                                                  ),
+                                                  ...mapToFirestore(
+                                                    {
+                                                      'data': FieldValue
+                                                          .serverTimestamp(),
+                                                    },
+                                                  ),
+                                                });
                                                 setState(() {
                                                   FFAppState().contador = -1;
                                                 });
@@ -789,25 +808,19 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                             1;
                                                   });
 
-                                                  await ListaCarrinhoPedidosRecord
-                                                      .collection
-                                                      .doc()
-                                                      .set({
-                                                    ...createListaCarrinhoPedidosRecordData(
-                                                      status: 'Não Paga',
-                                                      nPedido: random_data
-                                                          .randomInteger(0, 100)
-                                                          .toDouble(),
-                                                      userRef:
-                                                          currentUserReference,
-                                                    ),
-                                                    ...mapToFirestore(
-                                                      {
-                                                        'data': FieldValue
-                                                            .serverTimestamp(),
-                                                      },
-                                                    ),
-                                                  });
+                                                  await NumberPedidosRecord.createDoc(
+                                                          buttonListaCarrinhoPedidosRecordList[
+                                                                  FFAppState()
+                                                                      .contador]
+                                                              .reference)
+                                                      .set(
+                                                          createNumberPedidosRecordData(
+                                                    nProduto: FFAppState()
+                                                        .ProdutosDoCarrinho[
+                                                            FFAppState()
+                                                                .contador]
+                                                        .nomeProduto,
+                                                  ));
                                                   showAlignedDialog(
                                                     barrierDismissible: false,
                                                     context: context,
