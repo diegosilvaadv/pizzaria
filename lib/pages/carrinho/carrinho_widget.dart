@@ -168,7 +168,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 24.0,
+                      fontSize: 25.0,
                     ),
               ),
             ),
@@ -723,24 +723,50 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                       print('IconButton pressed ...');
                                     },
                                   ),
-                                  Text(
-                                    valueOrDefault<String>(
-                                      formatNumber(
-                                        FFAppState().totalprice,
-                                        formatType: FormatType.custom,
-                                        currency: 'R\$',
-                                        format: '.00',
-                                        locale: 'pt_BR',
-                                      ),
-                                      '0',
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: const Color(0xFF26CB3A),
-                                          fontSize: 20.0,
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      await ListaCarrinhoPedidosRecord
+                                          .collection
+                                          .doc()
+                                          .set({
+                                        ...createListaCarrinhoPedidosRecordData(
+                                          status: 'Não Paga',
+                                          nPedido: random_data
+                                              .randomInteger(0, 100)
+                                              .toDouble(),
+                                          userRef: currentUserReference,
                                         ),
+                                        ...mapToFirestore(
+                                          {
+                                            'data':
+                                                FieldValue.serverTimestamp(),
+                                          },
+                                        ),
+                                      });
+                                    },
+                                    child: Text(
+                                      valueOrDefault<String>(
+                                        formatNumber(
+                                          FFAppState().totalprice,
+                                          formatType: FormatType.custom,
+                                          currency: 'R\$',
+                                          format: '.00',
+                                          locale: 'pt_BR',
+                                        ),
+                                        '0',
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: const Color(0xFF26CB3A),
+                                            fontSize: 20.0,
+                                          ),
+                                    ),
                                   ),
                                   Builder(
                                     builder: (context) => Padding(
@@ -774,112 +800,82 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                               snapshot.data!;
                                           return FFButtonWidget(
                                             onPressed: () async {
-                                              final firestoreBatch =
-                                                  FirebaseFirestore.instance
-                                                      .batch();
-                                              try {
-                                                if (FFAppState()
-                                                        .ProdutosDoCarrinho.isNotEmpty) {
-                                                  firestoreBatch.set(
-                                                      ListaCarrinhoPedidosRecord
-                                                          .collection
-                                                          .doc(),
-                                                      {
-                                                        ...createListaCarrinhoPedidosRecordData(
-                                                          status: 'Não Paga',
-                                                          nPedido: random_data
-                                                              .randomInteger(
-                                                                  0, 100)
-                                                              .toDouble(),
-                                                          userRef:
-                                                              currentUserReference,
-                                                        ),
-                                                        ...mapToFirestore(
-                                                          {
-                                                            'data': FieldValue
-                                                                .serverTimestamp(),
-                                                          },
-                                                        ),
-                                                      });
+                                              if (FFAppState()
+                                                      .ProdutosDoCarrinho.isNotEmpty) {
+                                                setState(() {
+                                                  FFAppState().contador = -1;
+                                                });
+                                                while (FFAppState().contador <=
+                                                    FFAppState()
+                                                        .ProdutosDoCarrinho
+                                                        .length) {
                                                   setState(() {
-                                                    FFAppState().contador = -1;
+                                                    FFAppState().contador =
+                                                        FFAppState().contador +
+                                                            1;
                                                   });
-                                                  while (FFAppState()
-                                                          .contador <=
-                                                      FFAppState()
-                                                          .ProdutosDoCarrinho
-                                                          .length) {
-                                                    setState(() {
-                                                      FFAppState().contador =
-                                                          FFAppState()
-                                                                  .contador +
-                                                              1;
-                                                    });
 
-                                                    firestoreBatch.set(
-                                                        NumberPedidosRecord.createDoc(
-                                                            buttonListaCarrinhoPedidosRecordList[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .reference),
-                                                        createNumberPedidosRecordData(
-                                                          nProduto: FFAppState()
-                                                              .ProdutosDoCarrinho[
+                                                  await NumberPedidosRecord.createDoc(
+                                                          buttonListaCarrinhoPedidosRecordList[
                                                                   FFAppState()
                                                                       .contador]
-                                                              .nomeProduto,
-                                                          referenc: buttonListaCarrinhoPedidosRecordList[
-                                                                  FFAppState()
-                                                                      .contador]
-                                                              .reference,
-                                                        ));
-                                                    showAlignedDialog(
-                                                      barrierDismissible: false,
-                                                      context: context,
-                                                      isGlobal: false,
-                                                      avoidOverflow: true,
-                                                      targetAnchor:
-                                                          const AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                              .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                      followerAnchor:
-                                                          const AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                              .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                      builder: (dialogContext) {
-                                                        return Material(
-                                                          color: Colors
-                                                              .transparent,
+                                                              .reference)
+                                                      .set(
+                                                          createNumberPedidosRecordData(
+                                                    nProduto: FFAppState()
+                                                        .ProdutosDoCarrinho[
+                                                            FFAppState()
+                                                                .contador]
+                                                        .nomeProduto,
+                                                    referenc:
+                                                        buttonListaCarrinhoPedidosRecordList[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .reference,
+                                                  ));
+                                                  showAlignedDialog(
+                                                    barrierDismissible: false,
+                                                    context: context,
+                                                    isGlobal: false,
+                                                    avoidOverflow: true,
+                                                    targetAnchor:
+                                                        const AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    followerAnchor:
+                                                        const AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    builder: (dialogContext) {
+                                                      return Material(
+                                                        color:
+                                                            Colors.transparent,
+                                                        child: GestureDetector(
+                                                          onTap: () => _model
+                                                                  .unfocusNode
+                                                                  .canRequestFocus
+                                                              ? FocusScope.of(
+                                                                      context)
+                                                                  .requestFocus(
+                                                                      _model
+                                                                          .unfocusNode)
+                                                              : FocusScope.of(
+                                                                      context)
+                                                                  .unfocus(),
                                                           child:
-                                                              GestureDetector(
-                                                            onTap: () => _model
-                                                                    .unfocusNode
-                                                                    .canRequestFocus
-                                                                ? FocusScope.of(
-                                                                        context)
-                                                                    .requestFocus(
-                                                                        _model
-                                                                            .unfocusNode)
-                                                                : FocusScope.of(
-                                                                        context)
-                                                                    .unfocus(),
-                                                            child:
-                                                                const PagamentoWidget(),
-                                                          ),
-                                                        );
-                                                      },
-                                                    ).then((value) =>
-                                                        setState(() {}));
-                                                  }
-                                                } else {
-                                                  return;
+                                                              const PagamentoWidget(),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      setState(() {}));
                                                 }
-                                              } finally {
-                                                await firestoreBatch.commit();
+                                              } else {
+                                                return;
                                               }
                                             },
                                             text: 'Ir Para Pagamento',
