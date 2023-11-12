@@ -8,7 +8,6 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
 import 'pedidos_cliente_model.dart';
 export 'pedidos_cliente_model.dart';
@@ -136,7 +135,7 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
             'Meus Pedidos',
             style: FlutterFlowTheme.of(context).displaySmall.override(
                   fontFamily: 'Outfit',
-                  fontSize: 34.0,
+                  fontSize: 35.0,
                 ),
           ),
           actions: const [],
@@ -189,422 +188,421 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 20.0),
-                            child: PagedListView<DocumentSnapshot<Object?>?,
-                                SubNumeroPedidosRecord>(
-                              pagingController: _model.setListViewController1(
-                                SubNumeroPedidosRecord.collection
-                                    .whereIn(
-                                        'status', ['Não Paga', 'Preparando'])
-                                    .orderBy('data', descending: true)
-                                    .orderBy('nPedido'),
+                            child: FutureBuilder<List<SubNumeroPedidosRecord>>(
+                              future: querySubNumeroPedidosRecordOnce(
+                                queryBuilder: (subNumeroPedidosRecord) =>
+                                    subNumeroPedidosRecord.whereIn('status', [
+                                  'Não Paga',
+                                  'Preparando'
+                                ]).orderBy('data', descending: true),
                               ),
-                              padding: EdgeInsets.zero,
-                              primary: false,
-                              shrinkWrap: true,
-                              reverse: false,
-                              scrollDirection: Axis.vertical,
-                              builderDelegate: PagedChildBuilderDelegate<
-                                  SubNumeroPedidosRecord>(
-                                // Customize what your widget looks like when it's loading the first page.
-                                firstPageProgressIndicatorBuilder: (_) =>
-                                    Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          FlutterFlowTheme.of(context).primary,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                                // Customize what your widget looks like when it's loading another page.
-                                newPageProgressIndicatorBuilder: (_) => Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-
-                                itemBuilder: (context, _, listViewIndex) {
-                                  final listViewSubNumeroPedidosRecord = _model
-                                      .listViewPagingController1!
-                                      .itemList![listViewIndex];
-                                  return Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 12.0),
-                                    child: Container(
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        boxShadow: const [
-                                          BoxShadow(
-                                            blurRadius: 4.0,
-                                            color: Color(0x520E151B),
-                                            offset: Offset(0.0, 2.0),
-                                          )
-                                        ],
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 12.0, 12.0, 12.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            StreamBuilder<
-                                                List<
-                                                    ListaCarrinhoPedidosRecord>>(
-                                              stream:
-                                                  queryListaCarrinhoPedidosRecord(
-                                                queryBuilder:
-                                                    (listaCarrinhoPedidosRecord) =>
-                                                        listaCarrinhoPedidosRecord
-                                                            .where(
-                                                  'nPedido',
-                                                  isEqualTo:
-                                                      listViewSubNumeroPedidosRecord
-                                                          .nPedido,
+                                  );
+                                }
+                                List<SubNumeroPedidosRecord>
+                                    listViewSubNumeroPedidosRecordList =
+                                    snapshot.data!;
+                                return ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  primary: false,
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount:
+                                      listViewSubNumeroPedidosRecordList.length,
+                                  itemBuilder: (context, listViewIndex) {
+                                    final listViewSubNumeroPedidosRecord =
+                                        listViewSubNumeroPedidosRecordList[
+                                            listViewIndex];
+                                    return Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 12.0),
+                                      child: Container(
+                                        width: double.infinity,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              blurRadius: 4.0,
+                                              color: Color(0x520E151B),
+                                              offset: Offset(0.0, 2.0),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 12.0, 12.0, 12.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              StreamBuilder<
+                                                  List<
+                                                      ListaCarrinhoPedidosRecord>>(
+                                                stream:
+                                                    queryListaCarrinhoPedidosRecord(
+                                                  queryBuilder:
+                                                      (listaCarrinhoPedidosRecord) =>
+                                                          listaCarrinhoPedidosRecord
+                                                              .where(
+                                                    'nPedido',
+                                                    isEqualTo:
+                                                        listViewSubNumeroPedidosRecord
+                                                            .nPedido,
+                                                  ),
                                                 ),
-                                              ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 50.0,
-                                                      height: 50.0,
-                                                      child:
-                                                          CircularProgressIndicator(
-                                                        valueColor:
-                                                            AlwaysStoppedAnimation<
-                                                                Color>(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                List<ListaCarrinhoPedidosRecord>
-                                                    columnListaCarrinhoPedidosRecordList =
-                                                    snapshot.data!;
-                                                return Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: List.generate(
-                                                      columnListaCarrinhoPedidosRecordList
-                                                          .length,
-                                                      (columnIndex) {
-                                                    final columnListaCarrinhoPedidosRecord =
-                                                        columnListaCarrinhoPedidosRecordList[
-                                                            columnIndex];
-                                                    return Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        Expanded(
-                                                          child: Text(
-                                                            columnListaCarrinhoPedidosRecord
-                                                                .nomeProduto,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .headlineMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Outfit',
-                                                                  fontSize:
-                                                                      15.0,
-                                                                ),
+                                                builder: (context, snapshot) {
+                                                  // Customize what your widget looks like when it's loading.
+                                                  if (!snapshot.hasData) {
+                                                    return Center(
+                                                      child: SizedBox(
+                                                        width: 50.0,
+                                                        height: 50.0,
+                                                        child:
+                                                            CircularProgressIndicator(
+                                                          valueColor:
+                                                              AlwaysStoppedAnimation<
+                                                                  Color>(
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
                                                           ),
                                                         ),
-                                                        Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .end,
-                                                          children: [
-                                                            Text(
-                                                              formatNumber(
-                                                                columnListaCarrinhoPedidosRecord
-                                                                    .valor,
-                                                                formatType:
-                                                                    FormatType
-                                                                        .custom,
-                                                                currency: 'R\$',
-                                                                format: '0.00',
-                                                                locale: 'pt_BR',
-                                                              ),
+                                                      ),
+                                                    );
+                                                  }
+                                                  List<ListaCarrinhoPedidosRecord>
+                                                      columnListaCarrinhoPedidosRecordList =
+                                                      snapshot.data!;
+                                                  return Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: List.generate(
+                                                        columnListaCarrinhoPedidosRecordList
+                                                            .length,
+                                                        (columnIndex) {
+                                                      final columnListaCarrinhoPedidosRecord =
+                                                          columnListaCarrinhoPedidosRecordList[
+                                                              columnIndex];
+                                                      return Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Expanded(
+                                                            child: Text(
+                                                              columnListaCarrinhoPedidosRecord
+                                                                  .nomeProduto,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .headlineSmall
+                                                                  .headlineMedium
                                                                   .override(
                                                                     fontFamily:
                                                                         'Outfit',
-                                                                    fontSize:
-                                                                        20.0,
-                                                                  ),
-                                                            ),
-                                                            Text(
-                                                              'X ${columnListaCarrinhoPedidosRecord.quanty.toString()}',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .headlineSmall
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Outfit',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryText,
                                                                     fontSize:
                                                                         15.0,
                                                                   ),
                                                             ),
-                                                          ],
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      16.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child:
-                                                              FlutterFlowIconButton(
-                                                            borderColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .alternate,
-                                                            borderRadius: 20.0,
-                                                            borderWidth: 1.0,
-                                                            buttonSize: 40.0,
-                                                            fillColor: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            hoverColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .alternate,
-                                                            hoverIconColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                            icon: Icon(
-                                                              Icons.more_vert,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              size: 24.0,
-                                                            ),
-                                                            onPressed:
-                                                                () async {
-                                                              await listViewSubNumeroPedidosRecord
-                                                                  .reference
-                                                                  .delete();
-                                                              await columnListaCarrinhoPedidosRecord
-                                                                  .reference
-                                                                  .delete();
-                                                            },
                                                           ),
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .end,
+                                                            children: [
+                                                              Text(
+                                                                formatNumber(
+                                                                  columnListaCarrinhoPedidosRecord
+                                                                      .valor,
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .custom,
+                                                                  currency:
+                                                                      'R\$',
+                                                                  format:
+                                                                      '0.00',
+                                                                  locale:
+                                                                      'pt_BR',
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Outfit',
+                                                                      fontSize:
+                                                                          20.0,
+                                                                    ),
+                                                              ),
+                                                              Text(
+                                                                'X ${columnListaCarrinhoPedidosRecord.quanty.toString()}',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Outfit',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      fontSize:
+                                                                          15.0,
+                                                                    ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child:
+                                                                FlutterFlowIconButton(
+                                                              borderColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .alternate,
+                                                              borderRadius:
+                                                                  20.0,
+                                                              borderWidth: 1.0,
+                                                              buttonSize: 40.0,
+                                                              fillColor: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                              hoverColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .alternate,
+                                                              hoverIconColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                              icon: Icon(
+                                                                Icons.more_vert,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                size: 24.0,
+                                                              ),
+                                                              onPressed:
+                                                                  () async {
+                                                                await listViewSubNumeroPedidosRecord
+                                                                    .reference
+                                                                    .delete();
+                                                                await columnListaCarrinhoPedidosRecord
+                                                                    .reference
+                                                                    .delete();
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    }),
+                                                  );
+                                                },
+                                              ),
+                                              Divider(
+                                                thickness: 1.0,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                              ),
+                                              Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    4.0,
+                                                                    0.0,
+                                                                    2.0),
+                                                        child: Text(
+                                                          'Pedido Criado em: ${dateTimeFormat(
+                                                            'dd/MM/yyyy | kk:mm',
+                                                            listViewSubNumeroPedidosRecord
+                                                                .data,
+                                                            locale: FFLocalizations
+                                                                    .of(context)
+                                                                .languageCode,
+                                                          )}',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium,
                                                         ),
-                                                      ],
-                                                    );
-                                                  }),
-                                                );
-                                              },
-                                            ),
-                                            Divider(
-                                              thickness: 1.0,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                            ),
-                                            Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  4.0,
-                                                                  0.0,
-                                                                  2.0),
-                                                      child: Text(
-                                                        'Pedido Criado em: ${dateTimeFormat(
-                                                          'dd/MM/yyyy | kk:mm',
-                                                          listViewSubNumeroPedidosRecord
-                                                              .data,
-                                                          locale:
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .languageCode,
-                                                        )}',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium,
                                                       ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  2.0),
-                                                      child: Text(
-                                                        'Numero do Pedido: ${formatNumber(
-                                                          listViewSubNumeroPedidosRecord
-                                                              .nPedido,
-                                                          formatType:
-                                                              FormatType.custom,
-                                                          format: '',
-                                                          locale: '',
-                                                        )}',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium,
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    2.0),
+                                                        child: Text(
+                                                          'Numero do Pedido: ${formatNumber(
+                                                            listViewSubNumeroPedidosRecord
+                                                                .nPedido,
+                                                            formatType:
+                                                                FormatType
+                                                                    .custom,
+                                                            format: '',
+                                                            locale: '',
+                                                          )}',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium,
+                                                        ),
                                                       ),
-                                                    ),
-                                                    Container(
-                                                      height: 32.0,
-                                                      decoration: BoxDecoration(
-                                                        color: () {
-                                                          if (listViewSubNumeroPedidosRecord
-                                                                  .status ==
-                                                              'Pending') {
-                                                            return FlutterFlowTheme
-                                                                    .of(context)
-                                                                .accent3;
-                                                          } else if (listViewSubNumeroPedidosRecord
-                                                                  .status ==
-                                                              'Accepted') {
-                                                            return FlutterFlowTheme
-                                                                    .of(context)
-                                                                .accent2;
-                                                          } else {
-                                                            return FlutterFlowTheme
-                                                                    .of(context)
-                                                                .accent1;
-                                                          }
-                                                        }(),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
-                                                        border: Border.all(
+                                                      Container(
+                                                        height: 32.0,
+                                                        decoration:
+                                                            BoxDecoration(
                                                           color: () {
                                                             if (listViewSubNumeroPedidosRecord
                                                                     .status ==
                                                                 'Pending') {
                                                               return FlutterFlowTheme
                                                                       .of(context)
-                                                                  .tertiary;
+                                                                  .accent3;
                                                             } else if (listViewSubNumeroPedidosRecord
                                                                     .status ==
                                                                 'Accepted') {
                                                               return FlutterFlowTheme
                                                                       .of(context)
-                                                                  .secondary;
+                                                                  .accent2;
                                                             } else {
                                                               return FlutterFlowTheme
                                                                       .of(context)
-                                                                  .primary;
+                                                                  .accent1;
                                                             }
                                                           }(),
-                                                          width: 2.0,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          border: Border.all(
+                                                            color: () {
+                                                              if (listViewSubNumeroPedidosRecord
+                                                                      .status ==
+                                                                  'Pending') {
+                                                                return FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .tertiary;
+                                                              } else if (listViewSubNumeroPedidosRecord
+                                                                      .status ==
+                                                                  'Accepted') {
+                                                                return FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary;
+                                                              } else {
+                                                                return FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary;
+                                                              }
+                                                            }(),
+                                                            width: 2.0,
+                                                          ),
+                                                        ),
+                                                        alignment:
+                                                            const AlignmentDirectional(
+                                                                0.00, 0.00),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      16.0,
+                                                                      0.0,
+                                                                      16.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            listViewSubNumeroPedidosRecord
+                                                                .status,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  color: () {
+                                                                    if (listViewSubNumeroPedidosRecord
+                                                                            .status ==
+                                                                        'Pending') {
+                                                                      return FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .tertiary;
+                                                                    } else if (listViewSubNumeroPedidosRecord
+                                                                            .status ==
+                                                                        'Accepted') {
+                                                                      return FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondary;
+                                                                    } else {
+                                                                      return FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary;
+                                                                    }
+                                                                  }(),
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                ),
+                                                          ),
                                                         ),
                                                       ),
-                                                      alignment:
-                                                          const AlignmentDirectional(
-                                                              0.00, 0.00),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    16.0,
-                                                                    0.0,
-                                                                    16.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          listViewSubNumeroPedidosRecord
-                                                              .status,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                color: () {
-                                                                  if (listViewSubNumeroPedidosRecord
-                                                                          .status ==
-                                                                      'Pending') {
-                                                                    return FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .tertiary;
-                                                                  } else if (listViewSubNumeroPedidosRecord
-                                                                          .status ==
-                                                                      'Accepted') {
-                                                                    return FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondary;
-                                                                  } else {
-                                                                    return FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary;
-                                                                  }
-                                                                }(),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ],
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ).animateOnPageLoad(animationsMap[
-                                        'containerOnPageLoadAnimation']!),
-                                  );
-                                },
-                              ),
+                                      ).animateOnPageLoad(animationsMap[
+                                          'containerOnPageLoadAnimation']!),
+                                    );
+                                  },
+                                );
+                              },
                             ),
                           ),
                         Padding(
