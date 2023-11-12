@@ -261,7 +261,11 @@ class _PedidosClienteWidgetState extends State<PedidosClienteWidget>
                                               StreamBuilder<
                                                   List<NumberPedidosRecord>>(
                                                 stream:
-                                                    queryNumberPedidosRecord(),
+                                                    queryNumberPedidosRecord(
+                                                  parent:
+                                                      listViewListaCarrinhoPedidosRecord
+                                                          .reference,
+                                                ),
                                                 builder: (context, snapshot) {
                                                   // Customize what your widget looks like when it's loading.
                                                   if (!snapshot.hasData) {
