@@ -792,7 +792,25 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                                       .doc()
                                                       .set(
                                                           createListaCarrinhoPedidosRecordData(
-                                                        nomeProduto: 'teste',
+                                                        nomeProduto: FFAppState()
+                                                            .ProdutosDoCarrinho[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .nomeProduto,
+                                                        img: valueOrDefault<
+                                                            String>(
+                                                          FFAppState()
+                                                              .ProdutosDoCarrinho[
+                                                                  FFAppState()
+                                                                      .contador]
+                                                              .img,
+                                                          'https://tpaempreendimentos.com.br/blog/wp-content/uploads/2019/02/shutterstock-84904912-1024x683.jpg',
+                                                        ),
+                                                        valor: FFAppState()
+                                                            .ProdutosDoCarrinho[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .valor,
                                                       ));
                                                   showAlignedDialog(
                                                     barrierDismissible: false,
