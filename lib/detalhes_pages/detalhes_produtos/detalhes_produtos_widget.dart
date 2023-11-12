@@ -133,7 +133,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                           setState(() {
                                             FFAppState().quantity = 1;
                                             FFAppState().condicao = 0;
-                                            FFAppState().preferec = 0;
+                                            FFAppState().preferec = 0.0;
                                             FFAppState().PrefReferencia =
                                                 PrefenciasAppSStruct
                                                     .fromSerializableMap(jsonDecode(
@@ -698,7 +698,8 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                                           PrefenciasAppSStruct.fromSerializableMap(
                                                                               jsonDecode('{"nome_massa":"Nenhuma","valor_massa":"0"}'));
                                                                       FFAppState()
-                                                                          .preferec = 0;
+                                                                              .preferec =
+                                                                          0.0;
                                                                     });
                                                                   },
                                                                   child: Icon(

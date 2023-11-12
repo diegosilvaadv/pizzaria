@@ -36,7 +36,7 @@ class _DetalhesProdutos2sabGGWidgetState
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
-        FFAppState().preferec = 0;
+        FFAppState().preferec = 0.0;
         FFAppState().condicao = 0;
         FFAppState().PrefReferencia = PrefenciasAppSStruct.fromSerializableMap(
             jsonDecode('{"nome_massa":"Nenhuma","valor_massa":"0"}'));
@@ -145,7 +145,7 @@ class _DetalhesProdutos2sabGGWidgetState
                                           setState(() {
                                             FFAppState().quantity = 1;
                                             FFAppState().condicao = 0;
-                                            FFAppState().preferec = 0;
+                                            FFAppState().preferec = 0.0;
                                             FFAppState().PrefReferencia =
                                                 PrefenciasAppSStruct
                                                     .fromSerializableMap(jsonDecode(
@@ -1399,7 +1399,8 @@ class _DetalhesProdutos2sabGGWidgetState
                                                                           PrefenciasAppSStruct.fromSerializableMap(
                                                                               jsonDecode('{"nome_massa":"Nenhuma","valor_massa":"0"}'));
                                                                       FFAppState()
-                                                                          .preferec = 0;
+                                                                              .preferec =
+                                                                          0.0;
                                                                     });
                                                                   },
                                                                   child: Icon(
@@ -1639,7 +1640,7 @@ class _DetalhesProdutos2sabGGWidgetState
                                           '{"sabor1":"Nenhum","sabor2":"Nenhum","preco_sabor1":"0","preco_sabor2":"0"}'));
                                   FFAppState().precoSabor1 = 0.0;
                                   FFAppState().precoSabor2 = 0.0;
-                                  FFAppState().preferec = 0;
+                                  FFAppState().preferec = 0.0;
                                   FFAppState().PrefReferencia =
                                       PrefenciasAppSStruct.fromSerializableMap(
                                           jsonDecode(

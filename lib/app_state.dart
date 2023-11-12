@@ -119,7 +119,7 @@ class FFAppState extends ChangeNotifier {
     _condicao = value;
   }
 
-  double _preferec = 0;
+  double _preferec = 0.0;
   double get preferec => _preferec;
   set preferec(double value) {
     _preferec = value;
