@@ -254,35 +254,22 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                               CrossAxisAlignment
                                                                   .start,
                                                           children: [
-                                                            if (produtosCardItem
-                                                                    .valor !=
-                                                                0.0)
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            6.0,
-                                                                            0.0),
-                                                                child: Text(
-                                                                  produtosCardItem
-                                                                      .nomeProduto,
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium,
-                                                                ),
-                                                              ),
-                                                            if (produtosCardItem
-                                                                    .valor ==
-                                                                0.0)
-                                                              Text(
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          6.0,
+                                                                          0.0),
+                                                              child: Text(
                                                                 produtosCardItem
                                                                     .nomeProduto,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelMedium,
                                                               ),
+                                                            ),
                                                           ],
                                                         ),
                                                       ),
@@ -300,44 +287,30 @@ class _PagamentoWidgetState extends State<PagamentoWidget> {
                                                                   context)
                                                               .labelMedium,
                                                     ),
-                                                    if (produtosCardItem
-                                                            .valor !=
-                                                        0.0)
-                                                      Text(
-                                                        formatNumber(
-                                                          produtosCardItem
-                                                              .valor,
-                                                          formatType:
-                                                              FormatType.custom,
-                                                          currency: 'R\$',
-                                                          format: '0.00',
-                                                          locale: 'pt_BR',
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleLarge,
+                                                    Text(
+                                                      formatNumber(
+                                                        produtosCardItem.valor +
+                                                            produtosCardItem
+                                                                .valorBebidas +
+                                                            produtosCardItem
+                                                                .valorSabor1 +
+                                                            produtosCardItem
+                                                                .valorSabor2 +
+                                                            produtosCardItem
+                                                                .valorSabor3 +
+                                                            produtosCardItem
+                                                                .valorSabor4,
+                                                        formatType:
+                                                            FormatType.custom,
+                                                        currency: 'R\$',
+                                                        format: '0.00',
+                                                        locale: 'pt_BR',
                                                       ),
-                                                    if (produtosCardItem
-                                                            .valor ==
-                                                        0.0)
-                                                      Text(
-                                                        formatNumber(
-                                                          produtosCardItem
-                                                                  .valorSabor1 +
-                                                              produtosCardItem
-                                                                  .valorSabor2,
-                                                          formatType:
-                                                              FormatType.custom,
-                                                          currency: 'R\$',
-                                                          format: '0.00',
-                                                          locale: 'pt_BR',
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleLarge,
-                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleLarge,
+                                                    ),
                                                   ],
                                                 ),
                                               ],
