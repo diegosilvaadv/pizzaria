@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -168,7 +167,7 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 25.0,
+                      fontSize: 24.0,
                     ),
               ),
             ),
@@ -774,111 +773,83 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                               snapshot.data!;
                                           return FFButtonWidget(
                                             onPressed: () async {
-                                              final firestoreBatch =
-                                                  FirebaseFirestore.instance
-                                                      .batch();
-                                              try {
-                                                if (FFAppState()
-                                                        .ProdutosDoCarrinho.isNotEmpty) {
-                                                  firestoreBatch.set(
-                                                      ListaCarrinhoPedidosRecord
-                                                          .collection
-                                                          .doc(),
-                                                      createListaCarrinhoPedidosRecordData(
-                                                        status: 'Não Paga',
-                                                        data:
-                                                            getCurrentTimestamp,
-                                                        nPedido: random_data
-                                                            .randomInteger(
-                                                                0, 100)
-                                                            .toDouble(),
-                                                        userRef:
-                                                            currentUserReference,
-                                                      ));
-                                                  await Future.delayed(
-                                                      const Duration(
-                                                          milliseconds: 2000));
+                                              if (FFAppState()
+                                                      .ProdutosDoCarrinho.isNotEmpty) {
+                                                setState(() {
+                                                  FFAppState().contador = -1;
+                                                });
+                                                while (FFAppState().contador <=
+                                                    FFAppState()
+                                                        .ProdutosDoCarrinho
+                                                        .length) {
                                                   setState(() {
-                                                    FFAppState().contador = -1;
+                                                    FFAppState().contador =
+                                                        FFAppState().contador +
+                                                            1;
                                                   });
-                                                  while (FFAppState()
-                                                          .contador <=
-                                                      FFAppState()
-                                                          .ProdutosDoCarrinho
-                                                          .length) {
-                                                    setState(() {
-                                                      FFAppState().contador =
-                                                          FFAppState()
-                                                                  .contador +
-                                                              1;
-                                                    });
 
-                                                    firestoreBatch.set(
-                                                        NumberPedidosRecord.createDoc(
-                                                            buttonListaCarrinhoPedidosRecordList[
-                                                                    FFAppState()
-                                                                        .contador]
-                                                                .reference),
-                                                        createNumberPedidosRecordData(
-                                                          nProduto: FFAppState()
-                                                              .ProdutosDoCarrinho[
+                                                  await NumberPedidosRecord.createDoc(
+                                                          buttonListaCarrinhoPedidosRecordList[
                                                                   FFAppState()
                                                                       .contador]
-                                                              .nomeProduto,
-                                                          referenc: buttonListaCarrinhoPedidosRecordList[
-                                                                  FFAppState()
-                                                                      .contador]
-                                                              .reference,
-                                                          user:
-                                                              currentUserReference,
-                                                        ));
-                                                    showAlignedDialog(
-                                                      barrierDismissible: false,
-                                                      context: context,
-                                                      isGlobal: false,
-                                                      avoidOverflow: true,
-                                                      targetAnchor:
-                                                          const AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                              .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                      followerAnchor:
-                                                          const AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                              .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                      builder: (dialogContext) {
-                                                        return Material(
-                                                          color: Colors
-                                                              .transparent,
+                                                              .reference)
+                                                      .set(
+                                                          createNumberPedidosRecordData(
+                                                    nProduto: FFAppState()
+                                                        .ProdutosDoCarrinho[
+                                                            FFAppState()
+                                                                .contador]
+                                                        .nomeProduto,
+                                                    referenc:
+                                                        buttonListaCarrinhoPedidosRecordList[
+                                                                FFAppState()
+                                                                    .contador]
+                                                            .reference,
+                                                    user: currentUserReference,
+                                                  ));
+                                                  showAlignedDialog(
+                                                    barrierDismissible: false,
+                                                    context: context,
+                                                    isGlobal: false,
+                                                    avoidOverflow: true,
+                                                    targetAnchor:
+                                                        const AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    followerAnchor:
+                                                        const AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    builder: (dialogContext) {
+                                                      return Material(
+                                                        color:
+                                                            Colors.transparent,
+                                                        child: GestureDetector(
+                                                          onTap: () => _model
+                                                                  .unfocusNode
+                                                                  .canRequestFocus
+                                                              ? FocusScope.of(
+                                                                      context)
+                                                                  .requestFocus(
+                                                                      _model
+                                                                          .unfocusNode)
+                                                              : FocusScope.of(
+                                                                      context)
+                                                                  .unfocus(),
                                                           child:
-                                                              GestureDetector(
-                                                            onTap: () => _model
-                                                                    .unfocusNode
-                                                                    .canRequestFocus
-                                                                ? FocusScope.of(
-                                                                        context)
-                                                                    .requestFocus(
-                                                                        _model
-                                                                            .unfocusNode)
-                                                                : FocusScope.of(
-                                                                        context)
-                                                                    .unfocus(),
-                                                            child:
-                                                                const PagamentoWidget(),
-                                                          ),
-                                                        );
-                                                      },
-                                                    ).then((value) =>
-                                                        setState(() {}));
-                                                  }
-                                                } else {
-                                                  return;
+                                                              const PagamentoWidget(),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      setState(() {}));
                                                 }
-                                              } finally {
-                                                await firestoreBatch.commit();
+                                              } else {
+                                                return;
                                               }
                                             },
                                             text: 'Ir Para Pagamento',
