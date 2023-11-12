@@ -199,7 +199,7 @@ class _DetalhesProdutosWidgetState extends State<DetalhesProdutosWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
-                                                          fontSize: 21.0,
+                                                          fontSize: 22.0,
                                                         ),
                                                   ),
                                                 ),

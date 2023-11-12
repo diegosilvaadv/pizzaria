@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_util.dart';
 import 'homepage_widget.dart' show HomepageWidget;
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
@@ -27,6 +28,11 @@ class HomepageModel extends FlutterFlowModel<HomepageWidget> {
 
   // State field(s) for pizzasalgada widget.
   late ExpandableController pizzasalgadaController7;
+
+  // State field(s) for Carousel widget.
+  CarouselController? carouselController;
+
+  int carouselCurrentIndex = 1;
 
   /// Initialization and disposal methods.
 

@@ -6,11 +6,13 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:badges/badges.dart' as badges;
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'homepage_model.dart';
@@ -185,6 +187,7 @@ class _HomepageWidgetState extends State<HomepageWidget>
         FFAppState().MenuCondicao = 'Monte Sua Pizza';
         FFAppState().precoSabor3 = 0.0;
         FFAppState().precoSabor4 = 0.0;
+        FFAppState().Drawer = 0;
       });
     });
 
@@ -529,36 +532,42 @@ class _HomepageWidgetState extends State<HomepageWidget>
                           Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  scaffoldKey.currentState!.openDrawer();
-                                },
-                                child: Icon(
-                                  Icons.dehaze,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  size: 30.0,
+                              if (FFAppState().Drawer != 0)
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    scaffoldKey.currentState!.openDrawer();
+                                  },
+                                  child: FaIcon(
+                                    FontAwesomeIcons.gripLinesVertical,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 30.0,
+                                  ),
                                 ),
-                              ),
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  scaffoldKey.currentState!.openDrawer();
-                                },
-                                child: Icon(
-                                  Icons.filter_list_sharp,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  size: 30.0,
+                              if (FFAppState().Drawer == 0)
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    setState(() {
+                                      FFAppState().Drawer =
+                                          FFAppState().Drawer + 1;
+                                    });
+                                    scaffoldKey.currentState!.openDrawer();
+                                  },
+                                  child: Icon(
+                                    Icons.dehaze,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 30.0,
+                                  ),
                                 ),
-                              ),
                             ],
                           ),
                         ],
@@ -3021,6 +3030,75 @@ class _HomepageWidgetState extends State<HomepageWidget>
                       ),
                     ),
                   ),
+                Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: SizedBox(
+                          width: double.infinity,
+                          height: 180.0,
+                          child: CarouselSlider(
+                            items: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.network(
+                                  'https://picsum.photos/seed/458/600',
+                                  width: 300.0,
+                                  height: 200.0,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.network(
+                                  'https://images.unsplash.com/photo-1513104890138-7c749659a591?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxfHxQSVpaQXxlbnwwfHx8fDE2OTk3NDgyOTF8MA&ixlib=rb-4.0.3&q=80&w=1080',
+                                  width: 300.0,
+                                  height: 200.0,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.network(
+                                  'https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHw1fHxQSVpaQXxlbnwwfHx8fDE2OTk3NDgyOTF8MA&ixlib=rb-4.0.3&q=80&w=1080',
+                                  width: 300.0,
+                                  height: 200.0,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.network(
+                                  'https://images.unsplash.com/photo-1590947132387-155cc02f3212?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHw3fHxQSVpaQXxlbnwwfHx8fDE2OTk3NDgyOTF8MA&ixlib=rb-4.0.3&q=80&w=1080',
+                                  width: 300.0,
+                                  height: 200.0,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ],
+                            carouselController: _model.carouselController ??=
+                                CarouselController(),
+                            options: CarouselOptions(
+                              initialPage: 1,
+                              viewportFraction: 0.5,
+                              disableCenter: true,
+                              enlargeCenterPage: true,
+                              enlargeFactor: 0.25,
+                              enableInfiniteScroll: true,
+                              scrollDirection: Axis.horizontal,
+                              autoPlay: false,
+                              onPageChanged: (index, _) =>
+                                  _model.carouselCurrentIndex = index,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation2']!),
