@@ -774,96 +774,112 @@ class _CarrinhoWidgetState extends State<CarrinhoWidget>
                                               snapshot.data!;
                                           return FFButtonWidget(
                                             onPressed: () async {
-                                              if (FFAppState()
-                                                      .ProdutosDoCarrinho.isNotEmpty) {
-                                                await ListaCarrinhoPedidosRecord
-                                                    .collection
-                                                    .doc()
-                                                    .set({
-                                                  ...createListaCarrinhoPedidosRecordData(
-                                                    status: 'Não Paga',
-                                                    nPedido: random_data
-                                                        .randomInteger(0, 100)
-                                                        .toDouble(),
-                                                    userRef:
-                                                        currentUserReference,
-                                                  ),
-                                                  ...mapToFirestore(
-                                                    {
-                                                      'data': FieldValue
-                                                          .serverTimestamp(),
-                                                    },
-                                                  ),
-                                                });
-                                                setState(() {
-                                                  FFAppState().contador = -1;
-                                                });
-                                                while (FFAppState().contador <=
-                                                    FFAppState()
-                                                        .ProdutosDoCarrinho
-                                                        .length) {
+                                              final firestoreBatch =
+                                                  FirebaseFirestore.instance
+                                                      .batch();
+                                              try {
+                                                if (FFAppState()
+                                                        .ProdutosDoCarrinho.isNotEmpty) {
+                                                  firestoreBatch.set(
+                                                      ListaCarrinhoPedidosRecord
+                                                          .collection
+                                                          .doc(),
+                                                      {
+                                                        ...createListaCarrinhoPedidosRecordData(
+                                                          status: 'Não Paga',
+                                                          nPedido: random_data
+                                                              .randomInteger(
+                                                                  0, 100)
+                                                              .toDouble(),
+                                                          userRef:
+                                                              currentUserReference,
+                                                        ),
+                                                        ...mapToFirestore(
+                                                          {
+                                                            'data': FieldValue
+                                                                .serverTimestamp(),
+                                                          },
+                                                        ),
+                                                      });
                                                   setState(() {
-                                                    FFAppState().contador =
-                                                        FFAppState().contador +
-                                                            1;
+                                                    FFAppState().contador = -1;
                                                   });
+                                                  while (FFAppState()
+                                                          .contador <=
+                                                      FFAppState()
+                                                          .ProdutosDoCarrinho
+                                                          .length) {
+                                                    setState(() {
+                                                      FFAppState().contador =
+                                                          FFAppState()
+                                                                  .contador +
+                                                              1;
+                                                    });
 
-                                                  await NumberPedidosRecord.createDoc(
-                                                          buttonListaCarrinhoPedidosRecordList[
+                                                    firestoreBatch.set(
+                                                        NumberPedidosRecord.createDoc(
+                                                            buttonListaCarrinhoPedidosRecordList[
+                                                                    FFAppState()
+                                                                        .contador]
+                                                                .reference),
+                                                        createNumberPedidosRecordData(
+                                                          nProduto: FFAppState()
+                                                              .ProdutosDoCarrinho[
                                                                   FFAppState()
                                                                       .contador]
-                                                              .reference)
-                                                      .set(
-                                                          createNumberPedidosRecordData(
-                                                    nProduto: FFAppState()
-                                                        .ProdutosDoCarrinho[
-                                                            FFAppState()
-                                                                .contador]
-                                                        .nomeProduto,
-                                                  ));
-                                                  showAlignedDialog(
-                                                    barrierDismissible: false,
-                                                    context: context,
-                                                    isGlobal: false,
-                                                    avoidOverflow: true,
-                                                    targetAnchor:
-                                                        const AlignmentDirectional(
-                                                                0.0, 0.0)
-                                                            .resolve(
-                                                                Directionality.of(
-                                                                    context)),
-                                                    followerAnchor:
-                                                        const AlignmentDirectional(
-                                                                0.0, 0.0)
-                                                            .resolve(
-                                                                Directionality.of(
-                                                                    context)),
-                                                    builder: (dialogContext) {
-                                                      return Material(
-                                                        color:
-                                                            Colors.transparent,
-                                                        child: GestureDetector(
-                                                          onTap: () => _model
-                                                                  .unfocusNode
-                                                                  .canRequestFocus
-                                                              ? FocusScope.of(
-                                                                      context)
-                                                                  .requestFocus(
-                                                                      _model
-                                                                          .unfocusNode)
-                                                              : FocusScope.of(
-                                                                      context)
-                                                                  .unfocus(),
+                                                              .nomeProduto,
+                                                          referenc: buttonListaCarrinhoPedidosRecordList[
+                                                                  FFAppState()
+                                                                      .contador]
+                                                              .reference,
+                                                        ));
+                                                    showAlignedDialog(
+                                                      barrierDismissible: false,
+                                                      context: context,
+                                                      isGlobal: false,
+                                                      avoidOverflow: true,
+                                                      targetAnchor:
+                                                          const AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      followerAnchor:
+                                                          const AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      builder: (dialogContext) {
+                                                        return Material(
+                                                          color: Colors
+                                                              .transparent,
                                                           child:
-                                                              const PagamentoWidget(),
-                                                        ),
-                                                      );
-                                                    },
-                                                  ).then((value) =>
-                                                      setState(() {}));
+                                                              GestureDetector(
+                                                            onTap: () => _model
+                                                                    .unfocusNode
+                                                                    .canRequestFocus
+                                                                ? FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode)
+                                                                : FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
+                                                            child:
+                                                                const PagamentoWidget(),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        setState(() {}));
+                                                  }
+                                                } else {
+                                                  return;
                                                 }
-                                              } else {
-                                                return;
+                                              } finally {
+                                                await firestoreBatch.commit();
                                               }
                                             },
                                             text: 'Ir Para Pagamento',
